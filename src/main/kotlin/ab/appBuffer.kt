@@ -1,10 +1,7 @@
-package appBuffer
+package ab
 
-import glm_.BYTES
-import glm_.L
+import glm_.*
 import glm_.buffer.bufferBig
-import glm_.pow
-import glm_.set
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
@@ -13,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong
 
 object appBuffer {
 
-    val SIZE = 2 pow 16  // 65536
+    val SIZE = 2 shl 16  // 65536
 
     var buffer = bufferBig(SIZE)
     var address = MemoryUtil.memAddress(buffer)
@@ -69,11 +66,12 @@ object appBuffer {
     inline val float get() = ptr.advance(Float.BYTES)
     inline val double get() = ptr.advance(Double.BYTES)
     inline val pointer get() = ptr.advance(Pointer.POINTER_SIZE)
-//    inline val int get() = pointer.getAndAdd(Int.BYTES)
 
+    inline fun byteArray(size: Int) = ptr.advance(Byte.BYTES * size)
     inline fun intArray(size: Int) = ptr.advance(Int.BYTES * size)
     inline fun longArray(size: Int) = ptr.advance(Long.BYTES * size)
     inline fun pointerArray(size: Int) = ptr.advance(Pointer.POINTER_SIZE * size)
+
     inline fun floats(float: Float): Long {
         val res = ptr.advance(Float.BYTES)
         MemoryUtil.memPutFloat(res, float)
@@ -182,6 +180,16 @@ object appBuffer {
     }
 
     inline fun buffer(size: Int): ByteBuffer = MemoryUtil.memByteBuffer(ptr.advance(Byte.BYTES * size), size)
+
+    inline fun bufferOfAscii(string: String, nullTerminated: Boolean = true): ByteBuffer {
+        val bytes = buffer(string.length + if(nullTerminated) 1 else 0)
+        for(i in string.indices)
+            bytes[i] = string[i].b
+        if(nullTerminated)
+            bytes[string.length] = 0
+        return bytes
+    }
+
     inline fun intBuffer(size: Int): IntBuffer = MemoryUtil.memIntBuffer(ptr.advance(Int.BYTES * size), size)
     inline fun intBuffer(size: Int, block: (Int) -> Int): IntBuffer {
         val res = intBuffer(size)
