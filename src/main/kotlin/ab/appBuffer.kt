@@ -190,6 +190,12 @@ object appBuffer {
         return bytes
     }
 
+    inline fun bufferOfUtf8(string: String, nullTerminated: Boolean = true): ByteBuffer {
+        val bytes = buffer(MemoryUtil.memLengthUTF8(string, nullTerminated))
+        MemoryUtil.memUTF8(string, nullTerminated, bytes)
+        return bytes
+    }
+
     inline fun intBuffer(size: Int): IntBuffer = MemoryUtil.memIntBuffer(ptr.advance(Int.BYTES * size), size)
     inline fun intBuffer(size: Int, block: (Int) -> Int): IntBuffer {
         val res = intBuffer(size)
