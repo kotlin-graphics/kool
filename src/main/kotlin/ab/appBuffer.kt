@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong
 
 object appBuffer {
 
-    val SIZE = 2 shl 16  // 65536
+    var SIZE = 2 shl 16  // 65536
 
     var buffer = bufferBig(SIZE)
     var address = MemoryUtil.memAddress(buffer)
@@ -223,6 +223,8 @@ object appBuffer {
     fun printNext() = println("@${ptr.get() - address}: ${next()}")
     val remaining get() = SIZE - consumed
     val consumed get() = ptr.get() - address
+
+    val VERSION = "0.2"
 }
 
 inline fun AtomicLong.advance(int: Int) = getAndAdd(int.L)
