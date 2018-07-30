@@ -1,7 +1,10 @@
 package ab
 
-import glm_.*
+import glm_.BYTES
+import glm_.L
+import glm_.b
 import glm_.buffer.bufferBig
+import glm_.set
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
@@ -49,12 +52,15 @@ object appBuffer {
     inline fun pointerBufferOf(long0: Long, long1: Long) = pointerBuffer(1).apply {
         put(0, long0).put(1, long1)
     }
+
     inline fun pointerBufferOf(long0: Long, long1: Long, long2: Long) = pointerBuffer(1).apply {
         put(0, long0).put(1, long1).put(2, long2)
     }
+
     inline fun pointerBufferOf(long0: Long, long1: Long, long2: Long, long3: Long) = pointerBuffer(1).apply {
         put(0, long0).put(1, long1).put(2, long2).put(3, long3)
     }
+
     inline fun pointerBufferOf(long0: Long, long1: Long, long2: Long, long3: Long, long4: Long) = pointerBuffer(1).apply {
         put(0, long0).put(1, long1).put(2, long2).put(3, long3).put(4, long4)
     }
@@ -182,10 +188,10 @@ object appBuffer {
     inline fun buffer(size: Int): ByteBuffer = MemoryUtil.memByteBuffer(ptr.advance(Byte.BYTES * size), size)
 
     inline fun bufferOfAscii(string: String, nullTerminated: Boolean = true): ByteBuffer {
-        val bytes = buffer(string.length + if(nullTerminated) 1 else 0)
-        for(i in string.indices)
+        val bytes = buffer(string.length + if (nullTerminated) 1 else 0)
+        for (i in string.indices)
             bytes[i] = string[i].b
-        if(nullTerminated)
+        if (nullTerminated)
             bytes[string.length] = 0
         return bytes
     }
@@ -203,6 +209,7 @@ object appBuffer {
             res[i] = block(i)
         return res
     }
+
     inline fun shortBuffer(size: Int): ShortBuffer = MemoryUtil.memShortBuffer(ptr.advance(Short.BYTES * size), size)
     inline fun shortBuffer(size: Int, block: (Int) -> Int): ShortBuffer {
         val res = shortBuffer(size)
@@ -218,6 +225,21 @@ object appBuffer {
         ptr.set(address)
         MemoryUtil.memSet(address, 0, SIZE.L)
     }
+
+
+    // TODO others
+    inline fun withIntPtr(block: (Long) -> Unit): Int {
+        val intPtr = int
+        block(intPtr)
+        return MemoryUtil.memGetInt(intPtr)
+    }
+
+    inline fun withIntBuffer(block: (IntBuffer) -> Unit): Int {
+        val int = intBuffer
+        block(int)
+        return int[0]
+    }
+
 
     fun next() = MemoryUtil.memGetByte(ptr.get())
     fun printNext() = println("@${ptr.get() - address}: ${next()}")
