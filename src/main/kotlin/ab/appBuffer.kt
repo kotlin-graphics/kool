@@ -228,6 +228,9 @@ object appBuffer {
 
 
     // TODO others
+
+    // getters
+
     inline fun withIntPtr(block: (Long) -> Unit): Int {
         val intPtr = int
         block(intPtr)
@@ -238,6 +241,20 @@ object appBuffer {
         val int = intBuffer
         block(int)
         return int[0]
+    }
+
+    // setters
+
+    inline fun withIntPtr(int: Int, block: (Long) -> Unit) {
+        val intPtr = this.int
+        MemoryUtil.memPutInt(intPtr, int)
+        block(intPtr)
+    }
+
+    inline fun withIntBuffer(int_: Int, block: (IntBuffer) -> Unit) {
+        val int = intBuffer
+        int[0] = int_
+        block(int)
     }
 
 
