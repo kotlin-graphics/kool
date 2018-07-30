@@ -77,6 +77,8 @@ object appBuffer {
     inline fun intArray(size: Int) = ptr.advance(Int.BYTES * size)
     inline fun longArray(size: Int) = ptr.advance(Long.BYTES * size)
     inline fun pointerArray(size: Int) = ptr.advance(Pointer.POINTER_SIZE * size)
+    inline fun floatArray(size: Int) = ptr.advance(Float.BYTES * size)
+    inline fun doubleArray(size: Int) = ptr.advance(Double.BYTES * size)
 
     inline fun floats(float: Float): Long {
         val res = ptr.advance(Float.BYTES)
