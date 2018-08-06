@@ -265,7 +265,7 @@ object appBuffer {
     val remaining get() = SIZE - consumed
     val consumed get() = ptr.get() - address
 
-    val VERSION = "0.3"
+    val VERSION = "0.4"
 }
 
 inline fun AtomicLong.advance(int: Int) = getAndAdd(int.L)
