@@ -1,7 +1,6 @@
 package ab
 
 
-import glm_.BYTES
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryUtil
 import java.nio.*
@@ -54,13 +53,13 @@ inline val Buffer.rem: Int
 
 inline val Buffer.remSize: Int
     get() = rem * when(this) {
-        is ByteBuffer -> Byte.BYTES
-        is ShortBuffer -> Short.BYTES
-        is IntBuffer -> Int.BYTES
-        is LongBuffer -> Long.BYTES
-        is FloatBuffer -> Float.BYTES
-        is DoubleBuffer -> Double.BYTES
-        is CharBuffer -> Char.BYTES
+        is ByteBuffer -> 1
+        is ShortBuffer -> 2
+        is IntBuffer -> 4
+        is LongBuffer -> 8
+        is FloatBuffer -> 4
+        is DoubleBuffer -> 8
+//        is CharBuffer -> java.lang.Integer.BYTES
         else -> throw Error("unsupported buffer type")
     }
 
