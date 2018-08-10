@@ -1,4 +1,4 @@
-package ab
+package kool_
 
 
 import org.lwjgl.PointerBuffer
@@ -27,7 +27,7 @@ fun pointerBufferBig(capacity: IntArray): PointerBuffer = MemoryUtil.memCallocPo
 
 fun Buffer.free() = MemoryUtil.memFree(this)
 
-inline val Buffer.adr: Pointer
+inline val Buffer.adr: Ptr
     get() = when (this) {
         is ByteBuffer -> MemoryUtil.memAddress(this)
         is ShortBuffer -> MemoryUtil.memAddress(this)
@@ -64,7 +64,7 @@ inline val Buffer.remSize: Int
     }
 
 
-inline val PointerBuffer.adr: Pointer
+inline val PointerBuffer.adr: Ptr
     get() = MemoryUtil.memAddress(this)
 
 inline var PointerBuffer.pos: Int
@@ -82,4 +82,11 @@ inline val PointerBuffer.rem: Int
 inline val PointerBuffer.remSize: Int
     get() = remaining() * org.lwjgl.system.Pointer.POINTER_SIZE
 
-typealias Pointer = Long // TODO -> inline class
+typealias Ptr = Long // TODO -> inline class
+
+
+class A
+
+fun main(args: Array<String>) {
+
+}
