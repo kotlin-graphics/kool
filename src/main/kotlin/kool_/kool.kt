@@ -724,9 +724,9 @@ object kool {
     }
 
     inline fun withByteBuffer(byte: Byte, block: (ByteBuffer) -> Unit) {
-        val b = byteBuffer
-        b.put(0, byte)
-        block(b)
+        val buf = byteBuffer
+        buf.put(0, byte)
+        block(buf)
     }
 
     inline fun withShortPtr(short: Short, block: (Ptr) -> Unit) {
@@ -736,9 +736,9 @@ object kool {
     }
 
     inline fun withShortBuffer(short: Short, block: (ShortBuffer) -> Unit) {
-        val i = shortBuffer
-        i.put(0, short)
-        block(i)
+        val buf = shortBuffer
+        buf.put(0, short)
+        block(buf)
     }
 
     inline fun withIntPtr(int: Int, block: (Ptr) -> Unit) {
@@ -748,9 +748,9 @@ object kool {
     }
 
     inline fun withIntBuffer(int: Int, block: (IntBuffer) -> Unit) {
-        val i = intBuffer
-        i.put(0, int)
-        block(i)
+        val buf = intBuffer
+        buf.put(0, int)
+        block(buf)
     }
 
     inline fun withLongPtr(long: Long, block: (Ptr) -> Unit) {
@@ -760,9 +760,33 @@ object kool {
     }
 
     inline fun withLongBuffer(long: Long, block: (LongBuffer) -> Unit) {
-        val i = longBuffer
-        i.put(0, long)
-        block(i)
+        val buf = longBuffer
+        buf.put(0, long)
+        block(buf)
+    }
+
+    inline fun withFloatPtr(float: Float, block: (Ptr) -> Unit) {
+        val ptr = this.float
+        MemoryUtil.memPutFloat(ptr, float)
+        block(ptr)
+    }
+
+    inline fun withFloatBuffer(float: Float, block: (FloatBuffer) -> Unit) {
+        val buf = floatBuffer
+        buf.put(0, float)
+        block(buf)
+    }
+
+    inline fun withDoublePtr(double: Double, block: (Ptr) -> Unit) {
+        val ptr = this.double
+        MemoryUtil.memPutDouble(ptr, double)
+        block(ptr)
+    }
+
+    inline fun withDoubleBuffer(double: Double, block: (DoubleBuffer) -> Unit) {
+        val buf = doubleBuffer
+        buf.put(0, double)
+        block(buf)
     }
 
 
