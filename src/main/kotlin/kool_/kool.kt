@@ -66,19 +66,19 @@ object kool {
     }
 
     fun pointerBufferOf(pointer0: Pointer, pointer1: Pointer): PointerBuffer {
-        return pointerBuffer(1).put(0, pointer0).put(1, pointer1)
+        return pointerBuffer(2).put(0, pointer0).put(1, pointer1)
     }
 
     fun pointerBufferOf(pointer0: Pointer, pointer1: Pointer, pointer2: Pointer): PointerBuffer {
-        return pointerBuffer(1).put(0, pointer0).put(1, pointer1).put(2, pointer2)
+        return pointerBuffer(3).put(0, pointer0).put(1, pointer1).put(2, pointer2)
     }
 
     fun pointerBufferOf(pointer0: Pointer, pointer1: Pointer, pointer2: Pointer, pointer3: Pointer): PointerBuffer {
-        return pointerBuffer(1).put(0, pointer0).put(1, pointer1).put(2, pointer2).put(3, pointer3)
+        return pointerBuffer(4).put(0, pointer0).put(1, pointer1).put(2, pointer2).put(3, pointer3)
     }
 
     fun pointerBufferOf(pointer0: Pointer, pointer1: Pointer, pointer2: Pointer, pointer3: Pointer, pointer4: Pointer): PointerBuffer {
-        return pointerBuffer(1).put(0, pointer0).put(1, pointer1).put(2, pointer2).put(3, pointer3).put(4, pointer4)
+        return pointerBuffer(5).put(0, pointer0).put(1, pointer1).put(2, pointer2).put(3, pointer3).put(4, pointer4)
     }
 
     fun pointerBufferOf(pointers: Collection<Pointer>): PointerBuffer {
@@ -102,11 +102,11 @@ object kool {
     }
 
     fun pointerBufferOf(long0: Ptr, long1: Ptr, long2: Ptr, long3: Ptr): PointerBuffer {
-        return pointerBuffer(1).put(0, long0).put(1, long1).put(2, long2).put(3, long3)
+        return pointerBuffer(4).put(0, long0).put(1, long1).put(2, long2).put(3, long3)
     }
 
     fun pointerBufferOf(long0: Ptr, long1: Ptr, long2: Ptr, long3: Ptr, long4: Ptr): PointerBuffer {
-        return pointerBuffer(1).put(0, long0).put(1, long1).put(2, long2).put(3, long3).put(4, long4)
+        return pointerBuffer(5).put(0, long0).put(1, long1).put(2, long2).put(3, long3).put(4, long4)
     }
 
     fun pointerBufferOf_(pointers: Collection<Ptr>): PointerBuffer {
@@ -364,19 +364,19 @@ object kool {
     }
 
     fun bufferOf(byte0: Byte, byte1: Byte): ByteBuffer {
-        return buffer(1).put(0, byte0).put(1, byte1)
+        return buffer(2).put(0, byte0).put(1, byte1)
     }
 
     fun bufferOf(byte0: Byte, byte1: Byte, byte2: Byte): ByteBuffer {
-        return buffer(1).put(0, byte0).put(1, byte1).put(2, byte2)
+        return buffer(3).put(0, byte0).put(1, byte1).put(2, byte2)
     }
 
     fun bufferOf(byte0: Byte, byte1: Byte, byte2: Byte, byte3: Byte): ByteBuffer {
-        return buffer(1).put(0, byte0).put(1, byte1).put(2, byte2).put(3, byte3)
+        return buffer(4).put(0, byte0).put(1, byte1).put(2, byte2).put(3, byte3)
     }
 
     fun bufferOf(byte0: Byte, byte1: Byte, byte2: Byte, byte3: Byte, byte4: Byte): ByteBuffer {
-        return buffer(1).put(0, byte0).put(1, byte1).put(2, byte2).put(3, byte3).put(4, byte4)
+        return buffer(5).put(0, byte0).put(1, byte1).put(2, byte2).put(3, byte3).put(4, byte4)
     }
 
     fun bufferOf(vararg bytes: Byte): ByteBuffer {
@@ -399,19 +399,19 @@ object kool {
     }
 
     fun shortBufferOf(short0: Short, short1: Short): ShortBuffer {
-        return shortBuffer(1).put(0, short0).put(1, short1)
+        return shortBuffer(2).put(0, short0).put(1, short1)
     }
 
     fun shortBufferOf(short0: Short, short1: Short, short2: Short): ShortBuffer {
-        return shortBuffer(1).put(0, short0).put(1, short1).put(2, short2)
+        return shortBuffer(3).put(0, short0).put(1, short1).put(2, short2)
     }
 
     fun shortBufferOf(short0: Short, short1: Short, short2: Short, short3: Short): ShortBuffer {
-        return shortBuffer(1).put(0, short0).put(1, short1).put(2, short2).put(3, short3)
+        return shortBuffer(4).put(0, short0).put(1, short1).put(2, short2).put(3, short3)
     }
 
     fun shortBufferOf(short0: Short, short1: Short, short2: Short, short3: Short, short4: Short): ShortBuffer {
-        return shortBuffer(1).put(0, short0).put(1, short1).put(2, short2).put(3, short3).put(4, short4)
+        return shortBuffer(5).put(0, short0).put(1, short1).put(2, short2).put(3, short3).put(4, short4)
     }
 
     fun shortBufferOf(vararg shorts: Short): ShortBuffer {
@@ -434,19 +434,19 @@ object kool {
     }
 
     fun intBufferOf(int0: Int, int1: Int): IntBuffer {
-        return intBuffer(1).put(0, int0).put(1, int1)
+        return intBuffer(2).put(0, int0).put(1, int1)
     }
 
     fun intBufferOf(int0: Int, int1: Int, int2: Int): IntBuffer {
-        return intBuffer(1).put(0, int0).put(1, int1).put(2, int2)
+        return intBuffer(3).put(0, int0).put(1, int1).put(2, int2)
     }
 
     fun intBufferOf(int0: Int, int1: Int, int2: Int, int3: Int): IntBuffer {
-        return intBuffer(1).put(0, int0).put(1, int1).put(2, int2).put(3, int3)
+        return intBuffer(4).put(0, int0).put(1, int1).put(2, int2).put(3, int3)
     }
 
     fun intBufferOf(int0: Int, int1: Int, int2: Int, int3: Int, int4: Int): IntBuffer {
-        return intBuffer(1).put(0, int0).put(1, int1).put(2, int2).put(3, int3).put(4, int4)
+        return intBuffer(5).put(0, int0).put(1, int1).put(2, int2).put(3, int3).put(4, int4)
     }
 
     fun intBufferOf(vararg ints: Int): IntBuffer {
@@ -469,19 +469,19 @@ object kool {
     }
 
     fun longBufferOf(long0: Long, long1: Long): LongBuffer {
-        return longBuffer(1).put(0, long0).put(1, long1)
+        return longBuffer(2).put(0, long0).put(1, long1)
     }
 
     fun longBufferOf(long0: Long, long1: Long, long2: Long): LongBuffer {
-        return longBuffer(1).put(0, long0).put(1, long1).put(2, long2)
+        return longBuffer(3).put(0, long0).put(1, long1).put(2, long2)
     }
 
     fun longBufferOf(long0: Long, long1: Long, long2: Long, long3: Long): LongBuffer {
-        return longBuffer(1).put(0, long0).put(1, long1).put(2, long2).put(3, long3)
+        return longBuffer(4).put(0, long0).put(1, long1).put(2, long2).put(3, long3)
     }
 
     fun longBufferOf(long0: Long, long1: Long, long2: Long, long3: Long, long4: Long): LongBuffer {
-        return longBuffer(1).put(0, long0).put(1, long1).put(2, long2).put(3, long3).put(4, long4)
+        return longBuffer(5).put(0, long0).put(1, long1).put(2, long2).put(3, long3).put(4, long4)
     }
 
     fun longBufferOf(vararg longs: Long): LongBuffer {
@@ -508,15 +508,15 @@ object kool {
     }
 
     fun floatBufferOf(float0: Float, float1: Float, float2: Float): FloatBuffer {
-        return floatBuffer(2).put(0, float0).put(1, float1).put(2, float2)
+        return floatBuffer(3).put(0, float0).put(1, float1).put(2, float2)
     }
 
     fun floatBufferOf(float0: Float, float1: Float, float2: Float, float3: Float): FloatBuffer {
-        return floatBuffer(2).put(0, float0).put(1, float1).put(2, float2).put(3, float3)
+        return floatBuffer(4).put(0, float0).put(1, float1).put(2, float2).put(3, float3)
     }
 
     fun floatBufferOf(float0: Float, float1: Float, float2: Float, float3: Float, float4: Float): FloatBuffer {
-        return floatBuffer(2).put(0, float0).put(1, float1).put(2, float2).put(3, float3).put(4, float4)
+        return floatBuffer(5).put(0, float0).put(1, float1).put(2, float2).put(3, float3).put(4, float4)
     }
 
     fun floatBufferOf(vararg floats: Float): FloatBuffer {
@@ -536,15 +536,15 @@ object kool {
     }
 
     fun doubleBufferOf(double0: Double, double1: Double, double2: Double): DoubleBuffer {
-        return doubleBuffer(2).put(0, double0).put(1, double1).put(2, double2)
+        return doubleBuffer(3).put(0, double0).put(1, double1).put(2, double2)
     }
 
     fun doubleBufferOf(double0: Double, double1: Double, double2: Double, double3: Double): DoubleBuffer {
-        return doubleBuffer(2).put(0, double0).put(1, double1).put(2, double2).put(3, double3)
+        return doubleBuffer(4).put(0, double0).put(1, double1).put(2, double2).put(3, double3)
     }
 
     fun doubleBufferOf(double0: Double, double1: Double, double2: Double, double3: Double, double4: Double): DoubleBuffer {
-        return doubleBuffer(2).put(0, double0).put(1, double1).put(2, double2).put(3, double3).put(4, double4)
+        return doubleBuffer(5).put(0, double0).put(1, double1).put(2, double2).put(3, double3).put(4, double4)
     }
 
     fun doubleBufferOf(vararg doubles: Double): DoubleBuffer {
