@@ -11,9 +11,11 @@ fun main(args: Array<String>) {
 
     println("$times allocations of 1 integer, warmup = $warmup")
     println("koolUnsafe: ${measure(::koolUnsafe)}")
-    println("stackUnsafe: ${measure(::stackUnsafe)}")
+    println("stackUnsafeMultiple: ${measure(::stackUnsafeMultiple)}")
+    println("stackUnsafeSingle: ${measure(::stackUnsafeSingle)}")
     println("koolSafe: ${measure(::koolSafe)}")
-    println("stackSafe: ${measure(::stackSafe)}")
+    println("stackSafeMultiple: ${measure(::stackSafeMultiple)}")
+    println("stackSafeSingle: ${measure(::stackSafeSingle)}")
 }
 
 inline fun measure(block: () -> Unit): Long {
@@ -21,7 +23,7 @@ inline fun measure(block: () -> Unit): Long {
 
     return measureNanoTime {
         for(i in 0 until times) block()
-    }
+    } / times
 }
 
 fun koolUnsafe() {
@@ -29,16 +31,22 @@ fun koolUnsafe() {
         kool.int
 }
 
-fun stackUnsafe() {
-//    val a: MemoryStack = MemoryStack.stackGet()
-//    a.push()
+fun stackUnsafeMultiple() {
     for (i in 0 until times) {
         val a: MemoryStack = MemoryStack.stackGet()
         a.push()
-        a.nmalloc(4)
+        a.ncalloc(1, 1, 4)
         a.pop()
     }
-//    a.pop()
+}
+
+fun stackUnsafeSingle() {
+    val a: MemoryStack = MemoryStack.stackGet()
+    for (i in 0 until times) {
+        a.push()
+        a.ncalloc(1, 1, 4)
+        a.pop()
+    }
 }
 
 fun koolSafe() {
@@ -46,14 +54,20 @@ fun koolSafe() {
         kool.intBuffer
 }
 
-fun stackSafe() {
-//    val a: MemoryStack = MemoryStack.stackGet()
-//    a.push()
+fun stackSafeMultiple() {
     for (i in 0 until times) {
         val a: MemoryStack = MemoryStack.stackGet()
         a.push()
         a.callocInt(1)
         a.pop()
     }
-//    a.pop()
+}
+
+fun stackSafeSingle() {
+    val a: MemoryStack = MemoryStack.stackGet()
+    for (i in 0 until times) {
+        a.push()
+        a.callocInt(1)
+        a.pop()
+    }
 }

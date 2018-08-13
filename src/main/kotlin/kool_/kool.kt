@@ -15,6 +15,12 @@ object kool {
     var address = MemoryUtil.memAddress(buffer)
 
     val ptr = AtomicLong(address)
+    var ptr_ = 0L
+
+    fun int(): Long {
+        ptr_ += 4
+        return ptr_
+    }
 
     // one-slot buffers
 
