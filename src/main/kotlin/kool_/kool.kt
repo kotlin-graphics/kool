@@ -715,8 +715,20 @@ object kool {
         return MemoryUtil.memGetDouble(ptr)
     }
 
-    inline fun withFloatBuffer(block: (DoubleBuffer) -> Unit): Double {
+    inline fun withDoubleBuffer(block: (DoubleBuffer) -> Unit): Double {
         val buf = doubleBuffer
+        block(buf)
+        return buf[0]
+    }
+
+    inline fun withPointer(block: (Ptr) -> Unit): Long {
+        val ptr = pointer
+        block(ptr)
+        return MemoryUtil.memGetAddress(ptr)
+    }
+
+    inline fun withPointerBuffer(block: (PointerBuffer) -> Unit): Long {
+        val buf = pointerBuffer
         block(buf)
         return buf[0]
     }
@@ -792,6 +804,18 @@ object kool {
     inline fun withDoubleBuffer(double: Double, block: (DoubleBuffer) -> Unit) {
         val buf = doubleBuffer
         buf.put(0, double)
+        block(buf)
+    }
+
+    inline fun withPointer(pointer: Pointer, block: (Ptr) -> Unit) {
+        val ptr = this.pointer
+        MemoryUtil.memPutAddress(ptr, pointer.address())
+        block(ptr)
+    }
+
+    inline fun withPointerBuffer(pointer: Pointer, block: (PointerBuffer) -> Unit) {
+        val buf = pointerBuffer
+        buf.put(0, pointer)
         block(buf)
     }
 
