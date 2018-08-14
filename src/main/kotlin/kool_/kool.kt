@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicLong
 
 object kool {
 
-    var SIZE = 2 shl 19  // 65536
+    var SIZE = 2 shl 16  // 65536
 
     var buffer = bufferBig(SIZE)
     var address = MemoryUtil.memAddress(buffer)

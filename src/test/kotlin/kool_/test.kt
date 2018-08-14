@@ -4,7 +4,8 @@ import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import kotlin.system.measureNanoTime
 
-const val times = 100_000
+const val times = 10_000
+const val iterations = 100_000
 
 const val warmup = times
 
@@ -22,12 +23,14 @@ fun main(args: Array<String>) {
     println("stackSafeSingle: ${measure(::stackSafeSingle)}")
 }
 
-fun measure(block: () -> Unit): Long {
+fun measure(block: () -> Unit): Double {
     block()
-    kool.reset()
-    return measureNanoTime {
-        block()
-    } / times
+    var total = 0.0
+    for (i in 0 until iterations) {
+        kool.reset()
+        total += measureNanoTime { block() }
+    }
+    return total / iterations / times
 }
 
 fun koolUnsafe() {
