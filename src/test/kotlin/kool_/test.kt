@@ -1,13 +1,17 @@
 package kool_
 
 import org.lwjgl.system.MemoryStack
+import org.lwjgl.system.MemoryUtil
 import kotlin.system.measureNanoTime
 
-val times = 10_000
+const val times = 100_000
 
-val warmup = times
+const val warmup = times
 
 fun main(args: Array<String>) {
+
+    for (i in 0 until times)
+        System.nanoTime()
 
     println("$times allocations of 1 integer, warmup = $warmup")
     println("koolUnsafe: ${measure(::koolUnsafe)}")
@@ -18,24 +22,25 @@ fun main(args: Array<String>) {
     println("stackSafeSingle: ${measure(::stackSafeSingle)}")
 }
 
-inline fun measure(block: () -> Unit): Long {
-    for(i in 0 until warmup) block()
-
+fun measure(block: () -> Unit): Long {
+    block()
+    kool.reset()
     return measureNanoTime {
-        for(i in 0 until times) block()
+        block()
     } / times
 }
 
 fun koolUnsafe() {
     for (i in 0 until times)
-        kool.int
+        MemoryUtil.memPutInt(kool.int, 1)
 }
 
 fun stackUnsafeMultiple() {
     for (i in 0 until times) {
         val a: MemoryStack = MemoryStack.stackGet()
         a.push()
-        a.ncalloc(1, 1, 4)
+        val ptr = a.ncalloc(4, 1, 4)
+        MemoryUtil.memPutInt(ptr, 1)
         a.pop()
     }
 }
@@ -44,21 +49,22 @@ fun stackUnsafeSingle() {
     val a: MemoryStack = MemoryStack.stackGet()
     for (i in 0 until times) {
         a.push()
-        a.ncalloc(1, 1, 4)
+        val ptr = a.ncalloc(4, 1, 4)
+        MemoryUtil.memPutInt(ptr, 1)
         a.pop()
     }
 }
 
 fun koolSafe() {
     for (i in 0 until times)
-        kool.intBuffer
+        kool.intBuffer.put(0, 1)
 }
 
 fun stackSafeMultiple() {
     for (i in 0 until times) {
         val a: MemoryStack = MemoryStack.stackGet()
         a.push()
-        a.callocInt(1)
+        a.callocInt(1).put(0, 1)
         a.pop()
     }
 }
@@ -67,7 +73,7 @@ fun stackSafeSingle() {
     val a: MemoryStack = MemoryStack.stackGet()
     for (i in 0 until times) {
         a.push()
-        a.callocInt(1)
+        a.callocInt(1).put(0, 1)
         a.pop()
     }
 }
