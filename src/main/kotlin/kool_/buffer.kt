@@ -83,6 +83,7 @@ inline val PointerBuffer.remSize: Int
     get() = remaining() * org.lwjgl.system.Pointer.POINTER_SIZE
 
 typealias Ptr = Long // TODO -> inline class
+typealias Adr = Long // TODO -> inline class
 
 
 class A

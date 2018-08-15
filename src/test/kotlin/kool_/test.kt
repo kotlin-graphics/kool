@@ -27,7 +27,7 @@ fun measure(block: () -> Unit): Double {
     block()
     var total = 0.0
     for (i in 0 until iterations) {
-        kool.reset()
+        stak.reset()
         total += measureNanoTime { block() }
     }
     return total / iterations / times
@@ -35,7 +35,7 @@ fun measure(block: () -> Unit): Double {
 
 fun koolUnsafe() {
     for (i in 0 until times)
-        MemoryUtil.memPutInt(kool.int, 1)
+        MemoryUtil.memPutInt(stak.int, 1)
 }
 
 fun stackUnsafeMultiple() {
@@ -60,7 +60,7 @@ fun stackUnsafeSingle() {
 
 fun koolSafe() {
     for (i in 0 until times)
-        kool.intBuffer.put(0, 1)
+        stak.intBuffer.put(0, 1)
 }
 
 fun stackSafeMultiple() {
