@@ -1,4 +1,4 @@
-package kool_
+package kool
 
 import org.lwjgl.system.MemoryStack
 import java.nio.*
