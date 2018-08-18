@@ -17,9 +17,10 @@
             <array />
           </option>
           <option name="pluginClasspaths">
-            <array />
+            <array>
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler-embeddable/1.2.60/b429653327c8e0e396f940d16b6608df3b3e15c2/kotlin-scripting-compiler-embeddable-1.2.60.jar" />
+            </array>
           </option>
-          <option name="coroutinesState" value="warn" />
         </compilerArguments>
       </configuration>
     </facet>
