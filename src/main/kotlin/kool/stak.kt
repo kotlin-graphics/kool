@@ -637,74 +637,88 @@ object stak {
 
     // getters
 
-    inline fun <R> byteAddress(block: (Adr) -> R): R = this {
+    inline fun <R> byteAddress(block: (Adr) -> R): Byte = this {
         val adr = it.nmalloc(1, 1)
-        block(adr).also { MemoryUtil.memGetByte(adr) }
+        block(adr)
+        MemoryUtil.memGetByte(adr)
     }
 
-    inline fun <R> byteBuffer(block: (ByteBuffer) -> R): R = this {
+    inline fun <R> byteBuffer(block: (ByteBuffer) -> R): Byte = this {
         val buf = MemoryUtil.memByteBuffer(it.nmalloc(1, 1), 1)
         block(buf)
+        buf[0]
     }
 
-    inline fun <R> shortAddress(block: (Adr) -> R): R = this {
+    inline fun <R> shortAddress(block: (Adr) -> R): Short = this {
         val adr = it.nmalloc(2, 2)
-        block(adr).also { MemoryUtil.memGetShort(adr) }
+        block(adr)
+        MemoryUtil.memGetShort(adr)
     }
 
-    inline fun <R> shortBuffer(block: (ShortBuffer) -> R): R = this {
+    inline fun <R> shortBuffer(block: (ShortBuffer) -> R): Short = this {
         val buf = MemoryUtil.memShortBuffer(it.nmalloc(2, 2), 1)
         block(buf)
+        buf[0]
     }
 
-    inline fun <R> intAddress(block: (Adr) -> R): R = this {
+    inline fun <R> intAddress(block: (Adr) -> R): Int = this {
         val adr = it.nmalloc(4, 4)
-        block(adr).also { MemoryUtil.memGetInt(adr) }
+        block(adr)
+        MemoryUtil.memGetInt(adr)
     }
 
-    inline fun <R> intBuffer(block: (IntBuffer) -> R): R = this {
+    inline fun <R> intBuffer(block: (IntBuffer) -> R): Int = this {
         val buf = MemoryUtil.memIntBuffer(it.nmalloc(4, 4), 1)
-         block(buf)
+        block(buf)
+        buf[0]
     }
 
-    inline fun <R> longAddress(block: (Adr) -> R): R = this {
+    inline fun <R> longAddress(block: (Adr) -> R): Long = this {
         val adr = it.nmalloc(8, 8)
-        block(adr).also { MemoryUtil.memGetLong(adr) }
+        block(adr)
+        MemoryUtil.memGetLong(adr)
     }
 
-    inline fun <R> longBuffer(block: (LongBuffer) -> R): R = this {
+    inline fun <R> longBuffer(block: (LongBuffer) -> R): Long = this {
         val buf = MemoryUtil.memLongBuffer(it.nmalloc(8, 8), 1)
         block(buf)
+        buf[0]
     }
 
-    inline fun <R> floatAddress(block: (Adr) -> R): R = this {
+    inline fun <R> floatAddress(block: (Adr) -> R): Float = this {
         val adr = it.nmalloc(4, 4)
-        block(adr).also { MemoryUtil.memGetFloat(adr) }
+        block(adr)
+        MemoryUtil.memGetFloat(adr)
     }
 
-    inline fun <R> floatBuffer(block: (FloatBuffer) -> R): R = this {
+    inline fun <R> floatBuffer(block: (FloatBuffer) -> R): Float = this {
         val buf = MemoryUtil.memFloatBuffer(it.nmalloc(4, 4), 1)
         block(buf)
+        buf[0]
     }
 
-    inline fun <R> doubleAddress(block: (Adr) -> R): R = this {
+    inline fun <R> doubleAddress(block: (Adr) -> R): Double = this {
         val adr = it.nmalloc(8, 8)
-        block(adr).also { MemoryUtil.memGetDouble(adr) }
+        block(adr)
+        MemoryUtil.memGetDouble(adr)
     }
 
-    inline fun <R> doubleBuffer(block: (DoubleBuffer) -> R): R = this {
+    inline fun <R> doubleBuffer(block: (DoubleBuffer) -> R): Double = this {
         val buf = MemoryUtil.memDoubleBuffer(it.nmalloc(8, 8), 1)
         block(buf)
+        buf[0]
     }
 
-    inline fun <R> pointerAddress(block: (Adr) -> R): R = this {
+    inline fun <R> pointerAddress(block: (Adr) -> R): Ptr = this {
         val adr = it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE)
-        block(adr).also { MemoryUtil.memGetAddress(adr) }
+        block(adr)
+        MemoryUtil.memGetAddress(adr)
     }
 
-    inline fun <R> pointerBuffer(block: (PointerBuffer) -> R): R = this {
+    inline fun <R> pointerBuffer(block: (PointerBuffer) -> R): Ptr = this {
         val buf = MemoryUtil.memPointerBuffer(it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE), 1)
         block(buf)
+        buf[0]
     }
 
 
@@ -769,6 +783,7 @@ object stak {
         buf.put(0, pointer)
         block(buf)
     }
+
 
 
 //    fun next() = MemoryUtil.memGetByte(ptr.get())
