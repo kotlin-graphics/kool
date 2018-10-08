@@ -650,61 +650,61 @@ object stak {
     }
 
     inline fun <R> shortAddress(block: (Adr) -> R): Short = this {
-        val adr = it.nmalloc(2, 2)
+        val adr = it.nmalloc(1, 2)
         block(adr)
         MemoryUtil.memGetShort(adr)
     }
 
     inline fun <R> shortBuffer(block: (ShortBuffer) -> R): Short = this {
-        val buf = MemoryUtil.memShortBuffer(it.nmalloc(2, 2), 1)
+        val buf = MemoryUtil.memShortBuffer(it.nmalloc(1, 2), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> intAddress(block: (Adr) -> R): Int = this {
-        val adr = it.nmalloc(4, 4)
+        val adr = it.nmalloc(1, 4)
         block(adr)
         MemoryUtil.memGetInt(adr)
     }
 
     inline fun <R> intBuffer(block: (IntBuffer) -> R): Int = this {
-        val buf = MemoryUtil.memIntBuffer(it.nmalloc(4, 4), 1)
+        val buf = MemoryUtil.memIntBuffer(it.nmalloc(1, 4), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> longAddress(block: (Adr) -> R): Long = this {
-        val adr = it.nmalloc(8, 8)
+        val adr = it.nmalloc(1, 8)
         block(adr)
         MemoryUtil.memGetLong(adr)
     }
 
     inline fun <R> longBuffer(block: (LongBuffer) -> R): Long = this {
-        val buf = MemoryUtil.memLongBuffer(it.nmalloc(8, 8), 1)
+        val buf = MemoryUtil.memLongBuffer(it.nmalloc(1, 8), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> floatAddress(block: (Adr) -> R): Float = this {
-        val adr = it.nmalloc(4, 4)
+        val adr = it.nmalloc(1, 4)
         block(adr)
         MemoryUtil.memGetFloat(adr)
     }
 
     inline fun <R> floatBuffer(block: (FloatBuffer) -> R): Float = this {
-        val buf = MemoryUtil.memFloatBuffer(it.nmalloc(4, 4), 1)
+        val buf = MemoryUtil.memFloatBuffer(it.nmalloc(1, 4), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> doubleAddress(block: (Adr) -> R): Double = this {
-        val adr = it.nmalloc(8, 8)
+        val adr = it.nmalloc(1, 8)
         block(adr)
         MemoryUtil.memGetDouble(adr)
     }
 
     inline fun <R> doubleBuffer(block: (DoubleBuffer) -> R): Double = this {
-        val buf = MemoryUtil.memDoubleBuffer(it.nmalloc(8, 8), 1)
+        val buf = MemoryUtil.memDoubleBuffer(it.nmalloc(1, 8), 1)
         block(buf)
         buf[0]
     }
@@ -737,37 +737,37 @@ object stak {
     }
 
     inline fun <R> shortAddress(short: Short, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(2, 2)
+        val adr = it.nmalloc(1, 2)
         MemoryUtil.memPutShort(adr, short)
         block(adr)
     }
 
     inline fun <R> shortBuffer(short: Short, block: (ShortBuffer) -> R): R = this {
-        val buf = MemoryUtil.memShortBuffer(it.nmalloc(2, 2), 1)
+        val buf = MemoryUtil.memShortBuffer(it.nmalloc(1, 2), 1)
         buf.put(0, short)
         block(buf)
     }
 
     inline fun <R> intAddress(int: Int, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(4, 4)
+        val adr = it.nmalloc(1, 4)
         MemoryUtil.memPutInt(adr, int)
         block(adr)
     }
 
     inline fun <R> intBuffer(int: Int, block: (IntBuffer) -> R): R = this {
-        val buf = MemoryUtil.memIntBuffer(it.nmalloc(4, 4), 1)
+        val buf = MemoryUtil.memIntBuffer(it.nmalloc(1, 4), 1)
         buf.put(0, int)
         block(buf)
     }
 
     inline fun <R> longAddress(long: Long, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(8, 8)
+        val adr = it.nmalloc(1, 8)
         MemoryUtil.memPutLong(adr, long)
         block(adr)
     }
 
     inline fun <R> longBuffer(long: Long, block: (LongBuffer) -> R): R = this {
-        val buf = MemoryUtil.memLongBuffer(it.nmalloc(8, 8), 1)
+        val buf = MemoryUtil.memLongBuffer(it.nmalloc(1, 8), 1)
         buf.put(0, long)
         block(buf)
     }
@@ -779,7 +779,7 @@ object stak {
     }
 
     inline fun <R> pointerBuffer(pointer: Pointer, block: (PointerBuffer) -> R): R = this {
-        val buf = MemoryUtil.memPointerBuffer(it.nmalloc(8, 8), 1)
+        val buf = MemoryUtil.memPointerBuffer(it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE), 1)
         buf.put(0, pointer)
         block(buf)
     }

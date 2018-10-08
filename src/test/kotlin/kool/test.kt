@@ -1,19 +1,17 @@
-//package kool
-//
-//import org.lwjgl.system.MemoryStack
-//import org.lwjgl.system.MemoryUtil
-//import kotlin.system.measureNanoTime
-//
-//const val times = 10_000
-//const val iterations = 100_000
-//
-//const val warmup = times
-//
-//fun main(args: Array<String>) {
-//
-//    for (i in 0 until times)
-//        System.nanoTime()
-//
+package kool
+
+import org.lwjgl.system.Configuration
+
+const val times = 10_000
+const val iterations = 100_000
+
+const val warmup = times
+
+fun main(args: Array<String>) {
+
+    for (i in 0 until times)
+        System.nanoTime()
+
 //    println("$times allocations of 1 integer, warmup = $warmup")
 //    println("koolUnsafe: ${measure(::koolUnsafe)}")
 //    println("stackUnsafeMultiple: ${measure(::stackUnsafeMultiple)}")
@@ -21,7 +19,21 @@
 //    println("koolSafe: ${measure(::koolSafe)}")
 //    println("stackSafeMultiple: ${measure(::stackSafeMultiple)}")
 //    println("stackSafeSingle: ${measure(::stackSafeSingle)}")
-//}
+
+    var memory = 0
+    val max = Configuration.STACK_SIZE.get(64) * 1024
+    stak {
+        assert(max == it.size)
+        println(it.pointer)
+        while (memory < max) {
+            it.malloc(1)
+            memory++
+        }
+        println(it.pointer)
+        it.malloc(1)
+        println(it.pointer)
+    }
+}
 //
 //fun measure(block: () -> Unit): Double {
 //    block()
