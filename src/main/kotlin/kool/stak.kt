@@ -785,7 +785,6 @@ object stak {
     }
 
 
-
 //    fun next() = MemoryUtil.memGetByte(ptr.get())
 //    fun printNext() = println("@${ptr.get() - address}: ${next()}")
 //    val remaining get() = SIZE - consumed
@@ -794,7 +793,10 @@ object stak {
     val VERSION = "0.5"
 
     inline operator fun <R> invoke(block: (MemoryStack) -> R): R {
-        val stack = MemoryStack.stackPush()
-        return block(stack).also { stack.pop() }
+        val stack = MemoryStack.stackGet()
+        val ptr = stack.pointer
+        return block(stack).also {
+            stack.pointer = ptr
+        }
     }
 }
