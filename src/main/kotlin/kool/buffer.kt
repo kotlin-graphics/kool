@@ -27,8 +27,9 @@ fun pointerBufferBig(capacity: IntArray): PointerBuffer = MemoryUtil.memCallocPo
 
 fun Buffer.free() = MemoryUtil.memFree(this)
 
+// TODO specific
 inline val Buffer.adr: Ptr
-    get() = MemoryUtil.memAddress0(this) + pos shl when (this) {
+    get() = MemoryUtil.memAddress0(this) + (pos shl when (this) {
         is ByteBuffer -> 0
         is ShortBuffer -> 1
         is CharBuffer -> 1
@@ -37,7 +38,7 @@ inline val Buffer.adr: Ptr
         is FloatBuffer -> 2
         is DoubleBuffer -> 3
         else -> throw Error("unsupported buffer type")
-    }
+    })
 
 inline var Buffer.pos: Int
     get() = position()
