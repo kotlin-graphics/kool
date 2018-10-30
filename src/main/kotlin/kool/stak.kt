@@ -2,7 +2,7 @@ package kool
 
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryStack
-import org.lwjgl.system.MemoryUtil
+import org.lwjgl.system.MemoryUtil.*
 import org.lwjgl.system.Pointer
 import java.nio.*
 
@@ -12,25 +12,25 @@ object stak {
     // one-slot buffers
 
 //    inline val byteBuffer: ByteBuffer
-//        get() = MemoryUtil.memByteBuffer(ptr advance 1, 1)
+//        get() = memByteBuffer(ptr advance 1, 1)
 //
 //    inline val shortBuffer: ShortBuffer
-//        get() = MemoryUtil.memShortBuffer(ptr advance 2, 1)
+//        get() = memShortBuffer(ptr advance 2, 1)
 //
 //    inline val intBuffer: IntBuffer
-//        get() = MemoryUtil.memIntBuffer(ptr advance 4, 1)
+//        get() = memIntBuffer(ptr advance 4, 1)
 //
 //    inline val longBuffer: LongBuffer
-//        get() = MemoryUtil.memLongBuffer(ptr advance 8, 1)
+//        get() = memLongBuffer(ptr advance 8, 1)
 //
 //    inline val floatBuffer: FloatBuffer
-//        get() = MemoryUtil.memFloatBuffer(ptr advance 4, 1)
+//        get() = memFloatBuffer(ptr advance 4, 1)
 //
 //    inline val doubleBuffer: DoubleBuffer
-//        get() = MemoryUtil.memDoubleBuffer(ptr advance 8, 1)
+//        get() = memDoubleBuffer(ptr advance 8, 1)
 //
 //    inline val pointerBuffer: PointerBuffer
-//        get() = MemoryUtil.memPointerBuffer(ptr advance Pointer.POINTER_SIZE, 1)
+//        get() = memPointerBuffer(ptr advance Pointer.POINTER_SIZE, 1)
 //
 //    inline val byte: Ptr get() = ptr advance 1
 //    inline val short: Ptr get() = ptr advance 2
@@ -52,7 +52,7 @@ object stak {
 //    infix fun pointerBuffer(capacity: Int): PointerBuffer {
 //        var vbo: Int
 //        val size = Pointer.POINTER_SIZE * capacity
-//        return MemoryUtil.memPointerBuffer(ptr advance size, capacity)
+//        return memPointerBuffer(ptr advance size, capacity)
 //    }
 //
 //    infix fun pointerBufferOf(pointer: Pointer): PointerBuffer {
@@ -114,241 +114,241 @@ object stak {
 //
 //    fun bytes(byte: Byte): Ptr {
 //        val res = ptr advance 1
-//        MemoryUtil.memPutByte(res, byte)
+//        memPutByte(res, byte)
 //        return res
 //    }
 //
 //    fun bytes(byte0: Byte, byte1: Byte): Ptr {
 //        val res = ptr advance 2
-//        MemoryUtil.memPutByte(res, byte0)
-//        MemoryUtil.memPutByte(res + 1, byte1)
+//        memPutByte(res, byte0)
+//        memPutByte(res + 1, byte1)
 //        return res
 //    }
 //
 //    fun bytes(byte0: Byte, byte1: Byte, byte2: Byte): Ptr {
 //        val res = ptr advance 3
-//        MemoryUtil.memPutByte(res, byte0)
-//        MemoryUtil.memPutByte(res + 1, byte1)
-//        MemoryUtil.memPutByte(res + 2, byte2)
+//        memPutByte(res, byte0)
+//        memPutByte(res + 1, byte1)
+//        memPutByte(res + 2, byte2)
 //        return res
 //    }
 //
 //    fun bytes(byte0: Byte, byte1: Byte, byte2: Byte, byte3: Byte): Ptr {
 //        val res = ptr advance 4
-//        MemoryUtil.memPutByte(res, byte0)
-//        MemoryUtil.memPutByte(res + 1, byte1)
-//        MemoryUtil.memPutByte(res + 2, byte2)
-//        MemoryUtil.memPutByte(res + 3, byte3)
+//        memPutByte(res, byte0)
+//        memPutByte(res + 1, byte1)
+//        memPutByte(res + 2, byte2)
+//        memPutByte(res + 3, byte3)
 //        return res
 //    }
 //
 //    fun bytes(byte0: Byte, byte1: Byte, byte2: Byte, byte3: Byte, byte4: Byte): Ptr {
 //        val res = ptr advance 5
-//        MemoryUtil.memPutByte(res, byte0)
-//        MemoryUtil.memPutByte(res + 1, byte1)
-//        MemoryUtil.memPutByte(res + 2, byte2)
-//        MemoryUtil.memPutByte(res + 3, byte3)
-//        MemoryUtil.memPutByte(res + 4, byte4)
+//        memPutByte(res, byte0)
+//        memPutByte(res + 1, byte1)
+//        memPutByte(res + 2, byte2)
+//        memPutByte(res + 3, byte3)
+//        memPutByte(res + 4, byte4)
 //        return res
 //    }
 //
 //    fun shorts(short: Short): Ptr {
 //        val res = ptr advance 2
-//        MemoryUtil.memPutShort(res, short)
+//        memPutShort(res, short)
 //        return res
 //    }
 //
 //    fun shorts(short0: Short, short1: Short): Ptr {
 //        val res = ptr advance (2 * 2)
-//        MemoryUtil.memPutShort(res, short0)
-//        MemoryUtil.memPutShort(res + 2, short1)
+//        memPutShort(res, short0)
+//        memPutShort(res + 2, short1)
 //        return res
 //    }
 //
 //    fun shorts(short0: Short, short1: Short, short2: Short): Ptr {
 //        val res = ptr advance (2 * 3)
-//        MemoryUtil.memPutShort(res, short0)
-//        MemoryUtil.memPutShort(res + 2, short1)
-//        MemoryUtil.memPutShort(res + 4, short2)
+//        memPutShort(res, short0)
+//        memPutShort(res + 2, short1)
+//        memPutShort(res + 4, short2)
 //        return res
 //    }
 //
 //    fun shorts(short0: Short, short1: Short, short2: Short, short3: Short): Ptr {
 //        val res = ptr advance (2 * 4)
-//        MemoryUtil.memPutShort(res, short0)
-//        MemoryUtil.memPutShort(res + 2, short1)
-//        MemoryUtil.memPutShort(res + 4, short2)
-//        MemoryUtil.memPutShort(res + 6, short3)
+//        memPutShort(res, short0)
+//        memPutShort(res + 2, short1)
+//        memPutShort(res + 4, short2)
+//        memPutShort(res + 6, short3)
 //        return res
 //    }
 //
 //    fun shorts(short0: Short, short1: Short, short2: Short, short3: Short, short4: Short): Ptr {
 //        val res = ptr advance (2 * 5)
-//        MemoryUtil.memPutShort(res, short0)
-//        MemoryUtil.memPutShort(res + 2, short1)
-//        MemoryUtil.memPutShort(res + 4, short2)
-//        MemoryUtil.memPutShort(res + 6, short3)
-//        MemoryUtil.memPutShort(res + 8, short4)
+//        memPutShort(res, short0)
+//        memPutShort(res + 2, short1)
+//        memPutShort(res + 4, short2)
+//        memPutShort(res + 6, short3)
+//        memPutShort(res + 8, short4)
 //        return res
 //    }
 //
 //    fun ints(int: Int): Ptr {
 //        val res = ptr advance 4
-//        MemoryUtil.memPutInt(res, int)
+//        memPutInt(res, int)
 //        return res
 //    }
 //
 //    fun ints(int0: Int, int1: Int): Ptr {
 //        val res = ptr advance (4 * 2)
-//        MemoryUtil.memPutInt(res, int0)
-//        MemoryUtil.memPutInt(res + 4, int1)
+//        memPutInt(res, int0)
+//        memPutInt(res + 4, int1)
 //        return res
 //    }
 //
 //    fun ints(int0: Int, int1: Int, int2: Int): Ptr {
 //        val res = ptr advance (4 * 3)
-//        MemoryUtil.memPutInt(res, int0)
-//        MemoryUtil.memPutInt(res + 4, int1)
-//        MemoryUtil.memPutInt(res + 8, int2)
+//        memPutInt(res, int0)
+//        memPutInt(res + 4, int1)
+//        memPutInt(res + 8, int2)
 //        return res
 //    }
 //
 //    fun ints(int0: Int, int1: Int, int2: Int, int3: Int): Ptr {
 //        val res = ptr advance (4 * 4)
-//        MemoryUtil.memPutInt(res, int0)
-//        MemoryUtil.memPutInt(res + 4, int1)
-//        MemoryUtil.memPutInt(res + 8, int2)
-//        MemoryUtil.memPutInt(res + 12, int3)
+//        memPutInt(res, int0)
+//        memPutInt(res + 4, int1)
+//        memPutInt(res + 8, int2)
+//        memPutInt(res + 12, int3)
 //        return res
 //    }
 //
 //    fun ints(int0: Int, int1: Int, int2: Int, int3: Int, int4: Int): Ptr {
 //        val res = ptr advance (4 * 5)
-//        MemoryUtil.memPutInt(res, int0)
-//        MemoryUtil.memPutInt(res + 4, int1)
-//        MemoryUtil.memPutInt(res + 8, int2)
-//        MemoryUtil.memPutInt(res + 12, int3)
-//        MemoryUtil.memPutInt(res + 16, int4)
+//        memPutInt(res, int0)
+//        memPutInt(res + 4, int1)
+//        memPutInt(res + 8, int2)
+//        memPutInt(res + 12, int3)
+//        memPutInt(res + 16, int4)
 //        return res
 //    }
 //
 //    fun longs(long: Long): Ptr {
 //        val res = ptr advance 8
-//        MemoryUtil.memPutLong(res, long)
+//        memPutLong(res, long)
 //        return res
 //    }
 //
 //    fun longs(long0: Long, long1: Long): Ptr {
 //        val res = ptr advance (8 * 2)
-//        MemoryUtil.memPutLong(res, long0)
-//        MemoryUtil.memPutLong(res + 4, long1)
+//        memPutLong(res, long0)
+//        memPutLong(res + 4, long1)
 //        return res
 //    }
 //
 //    fun longs(long0: Long, long1: Long, long2: Long): Ptr {
 //        val res = ptr advance (8 * 3)
-//        MemoryUtil.memPutLong(res, long0)
-//        MemoryUtil.memPutLong(res + 4, long1)
-//        MemoryUtil.memPutLong(res + 8, long2)
+//        memPutLong(res, long0)
+//        memPutLong(res + 4, long1)
+//        memPutLong(res + 8, long2)
 //        return res
 //    }
 //
 //    fun longs(long0: Long, long1: Long, long2: Long, long3: Long): Ptr {
 //        val res = ptr advance (8 * 4)
-//        MemoryUtil.memPutLong(res, long0)
-//        MemoryUtil.memPutLong(res + 4, long1)
-//        MemoryUtil.memPutLong(res + 8, long2)
-//        MemoryUtil.memPutLong(res + 12, long3)
+//        memPutLong(res, long0)
+//        memPutLong(res + 4, long1)
+//        memPutLong(res + 8, long2)
+//        memPutLong(res + 12, long3)
 //        return res
 //    }
 //
 //    fun longs(long0: Long, long1: Long, long2: Long, long3: Long, long4: Long): Ptr {
 //        val res = ptr advance (8 * 5)
-//        MemoryUtil.memPutLong(res, long0)
-//        MemoryUtil.memPutLong(res + 4, long1)
-//        MemoryUtil.memPutLong(res + 8, long2)
-//        MemoryUtil.memPutLong(res + 12, long3)
-//        MemoryUtil.memPutLong(res + 16, long4)
+//        memPutLong(res, long0)
+//        memPutLong(res + 4, long1)
+//        memPutLong(res + 8, long2)
+//        memPutLong(res + 12, long3)
+//        memPutLong(res + 16, long4)
 //        return res
 //    }
 //
 //    fun floats(float: Float): Ptr {
 //        val res = ptr advance 4
-//        MemoryUtil.memPutFloat(res, float)
+//        memPutFloat(res, float)
 //        return res
 //    }
 //
 //    fun floats(float0: Float, float1: Float): Ptr {
 //        val res = ptr advance (4 * 2)
-//        MemoryUtil.memPutFloat(res, float0)
-//        MemoryUtil.memPutFloat(res + 4, float1)
+//        memPutFloat(res, float0)
+//        memPutFloat(res + 4, float1)
 //        return res
 //    }
 //
 //    fun floats(float0: Float, float1: Float, float2: Float): Ptr {
 //        val res = ptr advance (4 * 3)
-//        MemoryUtil.memPutFloat(res, float0)
-//        MemoryUtil.memPutFloat(res + 4, float1)
-//        MemoryUtil.memPutFloat(res + 8, float2)
+//        memPutFloat(res, float0)
+//        memPutFloat(res + 4, float1)
+//        memPutFloat(res + 8, float2)
 //        return res
 //    }
 //
 //    fun floats(float0: Float, float1: Float, float2: Float, float3: Float): Ptr {
 //        val res = ptr advance (4 * 4)
-//        MemoryUtil.memPutFloat(res, float0)
-//        MemoryUtil.memPutFloat(res + 4, float1)
-//        MemoryUtil.memPutFloat(res + 8, float2)
-//        MemoryUtil.memPutFloat(res + 12, float3)
+//        memPutFloat(res, float0)
+//        memPutFloat(res + 4, float1)
+//        memPutFloat(res + 8, float2)
+//        memPutFloat(res + 12, float3)
 //        return res
 //    }
 //
 //    fun floats(float0: Float, float1: Float, float2: Float, float3: Float, float4: Float): Ptr {
 //        val res = ptr advance (4 * 5)
-//        MemoryUtil.memPutFloat(res, float0)
-//        MemoryUtil.memPutFloat(res + 4, float1)
-//        MemoryUtil.memPutFloat(res + 8, float2)
-//        MemoryUtil.memPutFloat(res + 12, float3)
-//        MemoryUtil.memPutFloat(res + 16, float4)
+//        memPutFloat(res, float0)
+//        memPutFloat(res + 4, float1)
+//        memPutFloat(res + 8, float2)
+//        memPutFloat(res + 12, float3)
+//        memPutFloat(res + 16, float4)
 //        return res
 //    }
 //
 //    fun doubles(double: Double): Ptr {
 //        val res = ptr advance 8
-//        MemoryUtil.memPutDouble(res, double)
+//        memPutDouble(res, double)
 //        return res
 //    }
 //
 //    fun doubles(double0: Double, double1: Double): Ptr {
 //        val res = ptr advance (8 * 2)
-//        MemoryUtil.memPutDouble(res, double0)
-//        MemoryUtil.memPutDouble(res + 4, double1)
+//        memPutDouble(res, double0)
+//        memPutDouble(res + 4, double1)
 //        return res
 //    }
 //
 //    fun doubles(double0: Double, double1: Double, double2: Double): Ptr {
 //        val res = ptr advance (8 * 3)
-//        MemoryUtil.memPutDouble(res, double0)
-//        MemoryUtil.memPutDouble(res + 4, double1)
-//        MemoryUtil.memPutDouble(res + 8, double2)
+//        memPutDouble(res, double0)
+//        memPutDouble(res + 4, double1)
+//        memPutDouble(res + 8, double2)
 //        return res
 //    }
 //
 //    fun doubles(double0: Double, double1: Double, double2: Double, double3: Double): Ptr {
 //        val res = ptr advance (8 * 4)
-//        MemoryUtil.memPutDouble(res, double0)
-//        MemoryUtil.memPutDouble(res + 4, double1)
-//        MemoryUtil.memPutDouble(res + 8, double2)
-//        MemoryUtil.memPutDouble(res + 12, double3)
+//        memPutDouble(res, double0)
+//        memPutDouble(res + 4, double1)
+//        memPutDouble(res + 8, double2)
+//        memPutDouble(res + 12, double3)
 //        return res
 //    }
 //
 //    fun doubles(double0: Double, double1: Double, double2: Double, double3: Double, double4: Double): Ptr {
 //        val res = ptr advance (8 * 5)
-//        MemoryUtil.memPutDouble(res, double0)
-//        MemoryUtil.memPutDouble(res + 8, double1)
-//        MemoryUtil.memPutDouble(res + 16, double2)
-//        MemoryUtil.memPutDouble(res + 24, double3)
-//        MemoryUtil.memPutDouble(res + 30, double4)
+//        memPutDouble(res, double0)
+//        memPutDouble(res + 8, double1)
+//        memPutDouble(res + 16, double2)
+//        memPutDouble(res + 24, double3)
+//        memPutDouble(res + 30, double4)
 //        return res
 //    }
 //
@@ -552,9 +552,9 @@ object stak {
 //    fun pointerOfAscii(string: String, nullTerminated: Boolean = true): Ptr {
 //        val bytes = byteArray(string.length + if (nullTerminated) 1 else 0)
 //        for (i in string.indices)
-//            MemoryUtil.memPutByte(bytes + i, string[i].toByte())
+//            memPutByte(bytes + i, string[i].toByte())
 //        if (nullTerminated)
-//            MemoryUtil.memPutByte(bytes + string.length, 0)
+//            memPutByte(bytes + string.length, 0)
 //        return bytes
 //    }
 //
@@ -569,19 +569,19 @@ object stak {
 //
 //
 ////    fun pointerOfUtf8(string: String, nullTerminated: Boolean = true): Ptr { TODO
-////        val bytes = byteArray(MemoryUtil.memLengthUTF8(string, nullTerminated))
-////        MemoryUtil.memUTF8(string, nullTerminated, bytes)
+////        val bytes = byteArray(memLengthUTF8(string, nullTerminated))
+////        memUTF8(string, nullTerminated, bytes)
 ////        return bytes
 ////    }
 //
 //    fun bufferOfUtf8(string: String, nullTerminated: Boolean = true): ByteBuffer {
-//        val bytes = buffer(MemoryUtil.memLengthUTF8(string, nullTerminated))
-//        MemoryUtil.memUTF8(string, nullTerminated, bytes)
+//        val bytes = buffer(memLengthUTF8(string, nullTerminated))
+//        memUTF8(string, nullTerminated, bytes)
 //        return bytes
 //    }
 //
 //
-//    fun buffer(size: Int): ByteBuffer = MemoryUtil.memByteBuffer(ptr.advance(size), size)
+//    fun buffer(size: Int): ByteBuffer = memByteBuffer(ptr.advance(size), size)
 //    inline fun buffer(size: Int, block: (Int) -> Byte): ByteBuffer {
 //        val res = buffer(size)
 //        for (i in 0 until res.remaining())
@@ -589,7 +589,7 @@ object stak {
 //        return res
 //    }
 //
-//    fun shortBuffer(size: Int): ShortBuffer = MemoryUtil.memShortBuffer(ptr.advance(2 * size), size)
+//    fun shortBuffer(size: Int): ShortBuffer = memShortBuffer(ptr.advance(2 * size), size)
 //    inline fun shortBuffer(size: Int, block: (Int) -> Short): ShortBuffer {
 //        val res = shortBuffer(size)
 //        for (i in 0 until res.remaining())
@@ -597,7 +597,7 @@ object stak {
 //        return res
 //    }
 //
-//    fun intBuffer(size: Int): IntBuffer = MemoryUtil.memIntBuffer(ptr.advance(4 * size), size)
+//    fun intBuffer(size: Int): IntBuffer = memIntBuffer(ptr.advance(4 * size), size)
 //    inline fun intBuffer(size: Int, block: (Int) -> Int): IntBuffer {
 //        val res = intBuffer(size)
 //        for (i in 0 until res.remaining())
@@ -605,7 +605,7 @@ object stak {
 //        return res
 //    }
 //
-//    fun longBuffer(size: Int): LongBuffer = MemoryUtil.memLongBuffer(ptr.advance(8 * size), size)
+//    fun longBuffer(size: Int): LongBuffer = memLongBuffer(ptr.advance(8 * size), size)
 //    inline fun longBuffer(size: Int, block: (Int) -> Long): LongBuffer {
 //        val res = longBuffer(size)
 //        for (i in 0 until res.remaining())
@@ -613,7 +613,7 @@ object stak {
 //        return res
 //    }
 //
-//    fun floatBuffer(size: Int): FloatBuffer = MemoryUtil.memFloatBuffer(ptr.advance(4 * size), size)
+//    fun floatBuffer(size: Int): FloatBuffer = memFloatBuffer(ptr.advance(4 * size), size)
 //    inline fun floatBuffer(size: Int, block: (Int) -> Float): FloatBuffer {
 //        val res = floatBuffer(size)
 //        for (i in 0 until res.remaining())
@@ -621,7 +621,7 @@ object stak {
 //        return res
 //    }
 //
-//    fun doubleBuffer(size: Int): DoubleBuffer = MemoryUtil.memDoubleBuffer(ptr.advance(8 * size), size)
+//    fun doubleBuffer(size: Int): DoubleBuffer = memDoubleBuffer(ptr.advance(8 * size), size)
 //    inline fun doubleBuffer(size: Int, block: (Int) -> Double): DoubleBuffer {
 //        val res = doubleBuffer(size)
 //        for (i in 0 until res.remaining())
@@ -631,80 +631,80 @@ object stak {
 //
 //    fun reset() {
 //        ptr.set(address)
-//        MemoryUtil.memSet(address, 0, SIZE.toLong())
+//        memSet(address, 0, SIZE.toLong())
 //    }
 
 
     // getters
 
     inline fun <R> byteAddress(block: (Adr) -> R): Byte = this {
-        val adr = it.nmalloc(1, 1)
+        val adr = it.nmalloc(1, java.lang.Byte.BYTES)
         block(adr)
-        MemoryUtil.memGetByte(adr)
+        memGetByte(adr)
     }
 
     inline fun <R> byteBuffer(block: (ByteBuffer) -> R): Byte = this {
-        val buf = MemoryUtil.memByteBuffer(it.nmalloc(1, 1), 1)
+        val buf = memByteBuffer(it.nmalloc(1, java.lang.Byte.BYTES), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> shortAddress(block: (Adr) -> R): Short = this {
-        val adr = it.nmalloc(1, 2)
+        val adr = it.nmalloc(1, java.lang.Short.BYTES)
         block(adr)
-        MemoryUtil.memGetShort(adr)
+        memGetShort(adr)
     }
 
     inline fun <R> shortBuffer(block: (ShortBuffer) -> R): Short = this {
-        val buf = MemoryUtil.memShortBuffer(it.nmalloc(1, 2), 1)
+        val buf = memShortBuffer(it.nmalloc(1, java.lang.Short.BYTES), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> intAddress(block: (Adr) -> R): Int = this {
-        val adr = it.nmalloc(1, 4)
+        val adr = it.nmalloc(1, java.lang.Integer.BYTES)
         block(adr)
-        MemoryUtil.memGetInt(adr)
+        memGetInt(adr)
     }
 
     inline fun <R> intBuffer(block: (IntBuffer) -> R): Int = this {
-        val buf = MemoryUtil.memIntBuffer(it.nmalloc(1, 4), 1)
+        val buf = memIntBuffer(it.nmalloc(1, java.lang.Integer.BYTES), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> longAddress(block: (Adr) -> R): Long = this {
-        val adr = it.nmalloc(1, 8)
+        val adr = it.nmalloc(1, java.lang.Long.BYTES)
         block(adr)
-        MemoryUtil.memGetLong(adr)
+        memGetLong(adr)
     }
 
     inline fun <R> longBuffer(block: (LongBuffer) -> R): Long = this {
-        val buf = MemoryUtil.memLongBuffer(it.nmalloc(1, 8), 1)
+        val buf = memLongBuffer(it.nmalloc(1, java.lang.Long.BYTES), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> floatAddress(block: (Adr) -> R): Float = this {
-        val adr = it.nmalloc(1, 4)
+        val adr = it.nmalloc(1, java.lang.Float.BYTES)
         block(adr)
-        MemoryUtil.memGetFloat(adr)
+        memGetFloat(adr)
     }
 
     inline fun <R> floatBuffer(block: (FloatBuffer) -> R): Float = this {
-        val buf = MemoryUtil.memFloatBuffer(it.nmalloc(1, 4), 1)
+        val buf = memFloatBuffer(it.nmalloc(1, java.lang.Float.BYTES), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> doubleAddress(block: (Adr) -> R): Double = this {
-        val adr = it.nmalloc(1, 8)
+        val adr = it.nmalloc(1, java.lang.Double.BYTES)
         block(adr)
-        MemoryUtil.memGetDouble(adr)
+        memGetDouble(adr)
     }
 
     inline fun <R> doubleBuffer(block: (DoubleBuffer) -> R): Double = this {
-        val buf = MemoryUtil.memDoubleBuffer(it.nmalloc(1, 8), 1)
+        val buf = memDoubleBuffer(it.nmalloc(1, java.lang.Double.BYTES), 1)
         block(buf)
         buf[0]
     }
@@ -712,11 +712,11 @@ object stak {
     inline fun <R> pointerAddress(block: (Adr) -> R): Ptr = this {
         val adr = it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE)
         block(adr)
-        MemoryUtil.memGetAddress(adr)
+        memGetAddress(adr)
     }
 
     inline fun <R> pointerBuffer(block: (PointerBuffer) -> R): Ptr = this {
-        val buf = MemoryUtil.memPointerBuffer(it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE), 1)
+        val buf = memPointerBuffer(it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE), 1)
         block(buf)
         buf[0]
     }
@@ -725,67 +725,67 @@ object stak {
     // setters
 
     inline fun <R> byteAddress(byte: Byte, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(1, 1)
-        MemoryUtil.memPutByte(adr, byte)
+        val adr = it.nmalloc(1, java.lang.Byte.BYTES)
+        memPutByte(adr, byte)
         block(adr)
     }
 
     inline fun <R> byteBuffer(byte: Byte, block: (ByteBuffer) -> R): R = this {
-        val buf = MemoryUtil.memByteBuffer(it.nmalloc(1, 1), 1)
+        val buf = memByteBuffer(it.nmalloc(1, java.lang.Byte.BYTES), 1)
         buf.put(0, byte)
         block(buf)
     }
 
     inline fun <R> shortAddress(short: Short, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(1, 2)
-        MemoryUtil.memPutShort(adr, short)
+        val adr = it.nmalloc(1, java.lang.Short.BYTES)
+        memPutShort(adr, short)
         block(adr)
     }
 
     inline fun <R> shortBuffer(short: Short, block: (ShortBuffer) -> R): R = this {
-        val buf = MemoryUtil.memShortBuffer(it.nmalloc(1, 2), 1)
+        val buf = memShortBuffer(it.nmalloc(1, java.lang.Short.BYTES), 1)
         buf.put(0, short)
         block(buf)
     }
 
     inline fun <R> intAddress(int: Int, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(1, 4)
-        MemoryUtil.memPutInt(adr, int)
+        val adr = it.nmalloc(1, java.lang.Integer.BYTES)
+        memPutInt(adr, int)
         block(adr)
     }
 
     inline fun <R> intBuffer(int: Int, block: (IntBuffer) -> R): R = this {
-        val buf = MemoryUtil.memIntBuffer(it.nmalloc(1, 4), 1)
+        val buf = memIntBuffer(it.nmalloc(1, java.lang.Integer.BYTES), 1)
         buf.put(0, int)
         block(buf)
     }
 
     inline fun <R> longAddress(long: Long, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(1, 8)
-        MemoryUtil.memPutLong(adr, long)
+        val adr = it.nmalloc(1, java.lang.Long.BYTES)
+        memPutLong(adr, long)
         block(adr)
     }
 
     inline fun <R> longBuffer(long: Long, block: (LongBuffer) -> R): R = this {
-        val buf = MemoryUtil.memLongBuffer(it.nmalloc(1, 8), 1)
+        val buf = memLongBuffer(it.nmalloc(1, java.lang.Long.BYTES), 1)
         buf.put(0, long)
         block(buf)
     }
 
     inline fun <R> pointerAddress(pointer: Pointer, block: (Ptr) -> R): R = this {
         val adr = it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE)
-        MemoryUtil.memPutAddress(adr, pointer.address())
+        memPutAddress(adr, pointer.address())
         block(adr)
     }
 
     inline fun <R> pointerBuffer(pointer: Pointer, block: (PointerBuffer) -> R): R = this {
-        val buf = MemoryUtil.memPointerBuffer(it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE), 1)
+        val buf = memPointerBuffer(it.nmalloc(Pointer.POINTER_SIZE, Pointer.POINTER_SIZE), 1)
         buf.put(0, pointer)
         block(buf)
     }
 
 
-//    fun next() = MemoryUtil.memGetByte(ptr.get())
+//    fun next() = memGetByte(ptr.get())
 //    fun printNext() = println("@${ptr.get() - address}: ${next()}")
 //    val remaining get() = SIZE - consumed
 //    val consumed get() = ptr.get() - address
