@@ -3,6 +3,7 @@ package kool
 
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryUtil
+import org.lwjgl.system.Pointer
 import java.nio.*
 
 /**
@@ -27,7 +28,7 @@ fun pointerBufferBig(capacity: IntArray): PointerBuffer = MemoryUtil.memCallocPo
 
 fun Buffer.free() = MemoryUtil.memFree(this)
 
-inline val Buffer.adr: Ptr
+inline val Buffer.adr: Adr
     get() = when (this) {
         is ByteBuffer -> MemoryUtil.memAddress(this)
         is ShortBuffer -> MemoryUtil.memAddress(this)
@@ -63,31 +64,5 @@ inline val Buffer.remSize: Int
         else -> throw Error("unsupported buffer type")
     }
 
-
-inline val PointerBuffer.adr: Ptr
-    get() = MemoryUtil.memAddress(this)
-
-inline var PointerBuffer.pos: Int
-    get() = position()
-    set(value) {
-        position(value)
-    }
-
-inline val PointerBuffer.cap: Int
-    get() = capacity()
-
-inline val PointerBuffer.rem: Int
-    get() = remaining()
-
-inline val PointerBuffer.remSize: Int
-    get() = remaining() * org.lwjgl.system.Pointer.POINTER_SIZE
-
 typealias Ptr = Long // TODO -> inline class
 typealias Adr = Long // TODO -> inline class
-
-
-class A
-
-fun main(args: Array<String>) {
-
-}
