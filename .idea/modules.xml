@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.github.kotlin-graphics-kool.iml" filepath="$PROJECT_DIR$/.idea/modules/com.github.kotlin-graphics-kool.iml" />
       <module fileurl="file://$PROJECT_DIR$/kool.iml" filepath="$PROJECT_DIR$/kool.iml" />
     </modules>
   </component>

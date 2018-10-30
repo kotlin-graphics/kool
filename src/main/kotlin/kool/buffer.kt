@@ -28,8 +28,10 @@ fun pointerBufferBig(capacity: IntArray): PointerBuffer = MemoryUtil.memCallocPo
 
 fun Buffer.free() = MemoryUtil.memFree(this)
 
+fun a(ptr: Ptr) = Unit
+
 // TODO specific
-inline val Buffer.adr: Ptr
+inline val Buffer.adr: Adr
     get() = MemoryUtil.memAddress0(this) + (pos shl when (this) {
         is ByteBuffer -> 0
         is ShortBuffer -> 1
