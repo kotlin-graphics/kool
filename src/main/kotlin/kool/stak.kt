@@ -638,49 +638,49 @@ object stak {
     // getters
 
     inline fun <R> byteAddress(block: (Adr) -> R): Byte = this {
-        val adr = it.nmalloc(1, java.lang.Byte.BYTES)
+        val adr = it.nmalloc(1, Byte.SIZE_BYTES)
         block(adr)
         memGetByte(adr)
     }
 
     inline fun <R> byteBuffer(block: (ByteBuffer) -> R): Byte = this {
-        val buf = memByteBuffer(it.nmalloc(1, java.lang.Byte.BYTES), 1)
+        val buf = memByteBuffer(it.nmalloc(1, Byte.SIZE_BYTES), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> shortAddress(block: (Adr) -> R): Short = this {
-        val adr = it.nmalloc(1, java.lang.Short.BYTES)
+        val adr = it.nmalloc(1, Short.SIZE_BYTES)
         block(adr)
         memGetShort(adr)
     }
 
     inline fun <R> shortBuffer(block: (ShortBuffer) -> R): Short = this {
-        val buf = memShortBuffer(it.nmalloc(1, java.lang.Short.BYTES), 1)
+        val buf = memShortBuffer(it.nmalloc(1, Short.SIZE_BYTES), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> intAddress(block: (Adr) -> R): Int = this {
-        val adr = it.nmalloc(1, java.lang.Integer.BYTES)
+        val adr = it.nmalloc(1, Int.SIZE_BYTES)
         block(adr)
         memGetInt(adr)
     }
 
     inline fun <R> intBuffer(block: (IntBuffer) -> R): Int = this {
-        val buf = memIntBuffer(it.nmalloc(1, java.lang.Integer.BYTES), 1)
+        val buf = memIntBuffer(it.nmalloc(1, Int.SIZE_BYTES), 1)
         block(buf)
         buf[0]
     }
 
     inline fun <R> longAddress(block: (Adr) -> R): Long = this {
-        val adr = it.nmalloc(1, java.lang.Long.BYTES)
+        val adr = it.nmalloc(1, Long.SIZE_BYTES)
         block(adr)
         memGetLong(adr)
     }
 
     inline fun <R> longBuffer(block: (LongBuffer) -> R): Long = this {
-        val buf = memLongBuffer(it.nmalloc(1, java.lang.Long.BYTES), 1)
+        val buf = memLongBuffer(it.nmalloc(1, Long.SIZE_BYTES), 1)
         block(buf)
         buf[0]
     }
@@ -725,50 +725,74 @@ object stak {
     // setters
 
     inline fun <R> byteAddress(byte: Byte, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(1, java.lang.Byte.BYTES)
+        val adr = it.nmalloc(1, Byte.SIZE_BYTES)
         memPutByte(adr, byte)
         block(adr)
     }
 
     inline fun <R> byteBuffer(byte: Byte, block: (ByteBuffer) -> R): R = this {
-        val buf = memByteBuffer(it.nmalloc(1, java.lang.Byte.BYTES), 1)
+        val buf = memByteBuffer(it.nmalloc(1, Byte.SIZE_BYTES), 1)
         buf.put(0, byte)
         block(buf)
     }
 
     inline fun <R> shortAddress(short: Short, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(1, java.lang.Short.BYTES)
+        val adr = it.nmalloc(1, Short.SIZE_BYTES)
         memPutShort(adr, short)
         block(adr)
     }
 
     inline fun <R> shortBuffer(short: Short, block: (ShortBuffer) -> R): R = this {
-        val buf = memShortBuffer(it.nmalloc(1, java.lang.Short.BYTES), 1)
+        val buf = memShortBuffer(it.nmalloc(1, Short.SIZE_BYTES), 1)
         buf.put(0, short)
         block(buf)
     }
 
     inline fun <R> intAddress(int: Int, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(1, java.lang.Integer.BYTES)
+        val adr = it.nmalloc(1, Int.SIZE_BYTES)
         memPutInt(adr, int)
         block(adr)
     }
 
     inline fun <R> intBuffer(int: Int, block: (IntBuffer) -> R): R = this {
-        val buf = memIntBuffer(it.nmalloc(1, java.lang.Integer.BYTES), 1)
+        val buf = memIntBuffer(it.nmalloc(1, Int.SIZE_BYTES), 1)
         buf.put(0, int)
         block(buf)
     }
 
     inline fun <R> longAddress(long: Long, block: (Ptr) -> R): R = this {
-        val adr = it.nmalloc(1, java.lang.Long.BYTES)
+        val adr = it.nmalloc(1, Long.SIZE_BYTES)
         memPutLong(adr, long)
         block(adr)
     }
 
     inline fun <R> longBuffer(long: Long, block: (LongBuffer) -> R): R = this {
-        val buf = memLongBuffer(it.nmalloc(1, java.lang.Long.BYTES), 1)
+        val buf = memLongBuffer(it.nmalloc(1, Long.SIZE_BYTES), 1)
         buf.put(0, long)
+        block(buf)
+    }
+
+    inline fun <R> floatAddress(float: Float, block: (Ptr) -> R): R = this {
+        val adr = it.nmalloc(1, Int.SIZE_BYTES) // TODO
+        memPutFloat(adr, float)
+        block(adr)
+    }
+
+    inline fun <R> floatBuffer(float: Float, block: (FloatBuffer) -> R): R = this {
+        val buf = memFloatBuffer(it.nmalloc(1, Int.SIZE_BYTES), 1)
+        buf.put(0, float)
+        block(buf)
+    }
+
+    inline fun <R> doubleAddress(double: Double, block: (Ptr) -> R): R = this {
+        val adr = it.nmalloc(1, Long.SIZE_BYTES)
+        memPutDouble(adr, double)
+        block(adr)
+    }
+
+    inline fun <R> doubleBuffer(double: Double, block: (DoubleBuffer) -> R): R = this {
+        val buf = memDoubleBuffer(it.nmalloc(1, Long.SIZE_BYTES), 1)
+        buf.put(0, double)
         block(buf)
     }
 

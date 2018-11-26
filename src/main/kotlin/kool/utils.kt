@@ -40,6 +40,15 @@ inline val <SELF : CustomBuffer<SELF>>CustomBuffer<SELF>.lastIndex: Int
 
 
 
+fun Buffer(size: Int): ByteBuffer = memCalloc(size)
+
+inline fun Buffer(size: Int, init: (Int) -> Byte): ByteBuffer {
+    val res = Buffer(size)
+    for (i in 0 until size)
+        res.put(i, init(i))
+    return res
+}
+
 fun ByteBuffer(size: Int): ByteBuffer = memCalloc(size)
 
 inline fun ByteBuffer(size: Int, init: (Int) -> Byte): ByteBuffer {
@@ -104,10 +113,10 @@ inline fun LongBuffer(size: Int, init: (Int) -> Long): LongBuffer {
 }
 
 
-fun MemoryStack.ByteBuffer(size: Int): ByteBuffer = memCalloc(size)
+fun MemoryStack.Buffer(size: Int): ByteBuffer = memCalloc(size)
 
-inline fun MemoryStack.ByteBuffer(size: Int, init: (Int) -> Byte): ByteBuffer {
-    val res = ByteBuffer(size)
+inline fun MemoryStack.Buffer(size: Int, init: (Int) -> Byte): ByteBuffer {
+    val res = Buffer(size)
     for (i in 0 until size)
         res.put(i, init(i))
     return res
