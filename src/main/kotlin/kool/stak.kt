@@ -721,6 +721,17 @@ object stak {
         buf[0]
     }
 
+//    inline fun <R> stringAddress(block: (Adr) -> R): Double = this {
+//        val adr = it.nmalloc(1, java.lang.Double.BYTES)
+//        block(adr)
+//        memGetDouble(adr)
+//    }
+//
+//    inline fun <R> doubleBuffer(block: (DoubleBuffer) -> R): Double = this {
+//        val buf = memDoubleBuffer(it.nmalloc(1, java.lang.Double.BYTES), 1)
+//        block(buf)
+//        buf[0]
+//    }
 
     // setters
 
