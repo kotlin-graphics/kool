@@ -1,9 +1,7 @@
 package kool
 
 
-import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryUtil
-import org.lwjgl.system.Pointer
 import java.nio.*
 
 /**
@@ -36,5 +34,8 @@ inline val Buffer.remSize: Int
         else -> throw Error("unsupported buffer type")
     }
 
-typealias Ptr = Long // TODO inline class?
-typealias Adr = Long // TODO inline class?
+inline var Buffer.lim: Int
+    get() = limit()
+    set(value) {
+        limit(value)
+    }

@@ -119,3 +119,6 @@ fun DoubleArray.toBuffer(stack: MemoryStack): ByteBuffer {
 }
 
 fun DoubleArray.toDoubleBuffer(stack: MemoryStack): DoubleBuffer = stack.DoubleBuffer(size) { get(it) }
+
+
+fun IntBuffer.toList() = List(rem) { get(it) }
