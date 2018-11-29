@@ -22,8 +22,7 @@ dependencies {
 
     ["", "-jemalloc"].each {
         implementation "org.lwjgl:lwjgl$it:$lwjgl_version"
-        if (it != "-vulkan")
-            runtime "org.lwjgl:lwjgl$it:$lwjgl_version:natives-$lwjgl_natives"
+        runtime "org.lwjgl:lwjgl$it:$lwjgl_version:natives-$lwjgl_natives"
     }
 }
 
