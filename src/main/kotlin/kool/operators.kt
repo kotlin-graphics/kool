@@ -1,5 +1,7 @@
 package kool
 
+import org.lwjgl.PointerBuffer
+import org.lwjgl.system.Pointer
 import java.nio.*
 
 operator fun IntBuffer.get(e: Enum<*>) = get(e.ordinal)
@@ -41,4 +43,14 @@ operator fun DoubleBuffer.set(index: Int, double: Double){
     put(index, double)
 }
 
+operator fun PointerBuffer.set(index: Int, long: Long) {
+    put(index, long)
+}
 
+operator fun PointerBuffer.set(index: Int, pointer: Pointer) {
+    put(index, pointer)
+}
+
+operator fun PointerBuffer.set(index: Int, buffer: Buffer) {
+    put(index, buffer.adr)
+}
