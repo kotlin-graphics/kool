@@ -1,6 +1,8 @@
 package kool
 
 import org.lwjgl.PointerBuffer
+import org.lwjgl.system.Configuration
+import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
 import java.nio.*
@@ -26,3 +28,7 @@ fun <R> FloatBuffer.use(block: (FloatBuffer) -> R) = block(this).also { free() }
 fun <R> DoubleBuffer.use(block: (DoubleBuffer) -> R) = block(this).also { free() }
 fun <R> CharBuffer.use(block: (CharBuffer) -> R) = block(this).also { free() }
 fun <R> PointerBuffer.use(block: (PointerBuffer) -> R) = block(this).also { free() }
+
+fun MemoryStack.reset() {
+    pointer = Configuration.STACK_SIZE.get(64) * 1024
+}
