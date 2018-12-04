@@ -1,11 +1,17 @@
 package kool
 
 import org.lwjgl.PointerBuffer
+import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
 import java.nio.*
 
 inline val Pointer.adr: Adr
     get() = address()
+
+val Pointer.isInvalid: Boolean
+    get() = adr == MemoryUtil.NULL
+val Pointer.isValid: Boolean
+    get() = adr != MemoryUtil.NULL
 
 
 typealias Ptr = Long // TODO inline class?

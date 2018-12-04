@@ -2,6 +2,8 @@ package kool
 
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.Pointer
+import org.lwjgl.system.Struct
+import org.lwjgl.system.StructBuffer
 import java.nio.*
 
 operator fun IntBuffer.get(e: Enum<*>) = get(e.ordinal)
@@ -15,6 +17,12 @@ inline fun <reified E : Enum<E>> IntBuffer() = IntBuffer(enumValues<E>().size)
 
 /** glGenTextures(textureName[Tex.Color]) */
 operator fun <E : Enum<E>, T> Array<T>.get(enum: Enum<E>): T = get(enum.ordinal)
+
+
+operator fun <T : Struct, SELF : StructBuffer<T, SELF>> StructBuffer<T, SELF>.set(index: Int, value: T) {
+    put(index, value)
+}
+
 
 operator fun ByteBuffer.set(index: Int, byte: Byte): ByteBuffer = put(index, byte)
 operator fun ByteBuffer.set(index: Int, int: Int): ByteBuffer = put(index, int.toByte())
