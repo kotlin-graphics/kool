@@ -4,6 +4,7 @@ import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil.*
 import org.lwjgl.system.Pointer
+import org.lwjgl.system.libc.LibCStdlib.nmalloc
 import java.nio.*
 
 
@@ -734,6 +735,16 @@ object stak {
 //    }
 
     // setters
+
+    inline fun <R> asciiAddress(chars: CharSequence, block: (Ptr) -> R): R = this {
+        it.nASCII(chars, true)
+        block(it.pointerAddress)
+    }
+
+    inline fun <R> asciiBuffer(chars: CharSequence, block: (ByteBuffer) -> R): R = this {
+        val buf = it.ASCII(chars, true)
+        block(buf)
+    }
 
     inline fun <R> byteAddress(byte: Byte, block: (Ptr) -> R): R = this {
         val adr = it.nmalloc(1, Byte.SIZE_BYTES)
