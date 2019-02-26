@@ -15,8 +15,7 @@ inline fun <reified T : Enum<T>> IntArray() = IntArray(enumValues<T>().size)
 /** for opengl  */
 inline fun <reified E : Enum<E>> IntBuffer() = IntBuffer(enumValues<E>().size)
 
-/** glGenTextures(textureName[Tex.Color]) */
-operator fun <E : Enum<E>, T> Array<T>.get(enum: Enum<E>): T = get(enum.ordinal)
+//operator fun <E : Enum<E>, T> Array<T>.get(enum: Enum<E>): T = get(enum.ordinal)
 
 
 operator fun <T : Struct, SELF : StructBuffer<T, SELF>> StructBuffer<T, SELF>.set(index: Int, value: T) {
