@@ -841,17 +841,17 @@ object Stack {
     inline operator fun <R> invoke(block: (MemoryStack) -> R): R = with(block)
 }
 
-@UseExperimental(ExperimentalContracts::class)
 /**
  * same as [Stack.invoke] but with a callsInPlace contract
  */
+@UseExperimental(ExperimentalContracts::class)
 inline fun <R>Stack.with(block: (MemoryStack) -> R): R {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     val stack = MemoryStack.stackGet()
-    val ptr = stack.pointer
+    stack.push()
     return block(stack).also {
-        stack.pointer = ptr
+        stack.pop()
     }
 }
