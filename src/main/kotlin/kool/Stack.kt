@@ -4,11 +4,10 @@ import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil.*
 import org.lwjgl.system.Pointer
-import org.lwjgl.system.libc.LibCStdlib.nmalloc
 import java.nio.*
 
 
-object stak {
+object Stack {
 
     // one-slot buffers
 

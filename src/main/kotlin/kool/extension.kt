@@ -7,7 +7,7 @@ import java.nio.*
 fun ByteArray.toBuffer(): ByteBuffer = Buffer(size) { get(it) }
 
 //fun ByteArray.toShortBuffer(): ShortBuffer {
-//    val buf = stak.shortBuffer(size)
+//    val buf = Stack.shortBuffer(size)
 //    for(i in indices)
 //        buf.put(i, get(i))
 //    return buf
@@ -68,7 +68,7 @@ fun ByteArray.toBuffer(stack: MemoryStack): ByteBuffer {
 }
 
 //fun ByteArray.toShortBuffer(): ShortBuffer {
-//    val buf = stak.shortBuffer(size)
+//    val buf = Stack.shortBuffer(size)
 //    for(i in indices)
 //        buf.put(i, get(i))
 //    return buf
