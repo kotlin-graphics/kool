@@ -850,8 +850,8 @@ inline fun <R>Stack.with(block: (MemoryStack) -> R): R {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
     }
     val stack = MemoryStack.stackGet()
-    stack.push()
+    val ptr = stack.pointer
     return block(stack).also {
-        stack.pop()
+        stack.pointer = ptr
     }
 }
