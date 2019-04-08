@@ -6,6 +6,8 @@ import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
 import java.nio.*
+import kotlin.reflect.KMutableProperty0
+import kotlin.reflect.KProperty
 
 inline val Pointer.adr: Adr
     get() = address()
@@ -32,3 +34,6 @@ fun <R> PointerBuffer.use(block: (PointerBuffer) -> R) = block(this).also { free
 fun MemoryStack.reset() {
     pointer = Configuration.STACK_SIZE.get(64) * 1024
 }
+
+operator fun <R> KMutableProperty0<R>.setValue(host: Any?, property: KProperty<*>, value: R) = set(value)
+operator fun <R> KMutableProperty0<R>.getValue(host: Any?, property: KProperty<*>): R = get()
