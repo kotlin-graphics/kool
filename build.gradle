@@ -47,7 +47,6 @@ artifacts {
 }
 
 compileKotlin {
-
     kotlinOptions {
         freeCompilerArgs = [
                 "-Xuse-experimental=kotlin.Experimental"
