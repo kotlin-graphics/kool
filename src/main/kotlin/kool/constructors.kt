@@ -27,6 +27,7 @@ inline fun ByteBuffer(size: Int, init: (Int) -> Byte): ByteBuffer {
 fun ByteBuffer(bytes: ByteArray): ByteBuffer {
     val res = ByteBuffer(bytes.size)
     res.put(bytes)
+    res.pos = 0
     return res
 }
 
@@ -42,6 +43,7 @@ inline fun ShortBuffer(size: Int, init: (Int) -> Short): ShortBuffer {
 fun ShortBuffer(shorts: ShortArray): ShortBuffer {
     val res = ShortBuffer(shorts.size)
     res.put(shorts)
+    res.pos = 0
     return res
 }
 
@@ -57,6 +59,7 @@ inline fun IntBuffer(size: Int, init: (Int) -> Int): IntBuffer {
 fun IntBuffer(ints: IntArray): IntBuffer {
     val res = IntBuffer(ints.size)
     res.put(ints)
+    res.pos = 0
     return res
 }
 
@@ -72,6 +75,7 @@ inline fun FloatBuffer(size: Int, init: (Int) -> Float): FloatBuffer {
 fun FloatBuffer(floats: FloatArray): FloatBuffer {
     val res = FloatBuffer(floats.size)
     res.put(floats)
+    res.pos = 0
     return res
 }
 
@@ -87,6 +91,7 @@ inline fun DoubleBuffer(size: Int, init: (Int) -> Double): DoubleBuffer {
 fun DoubleBuffer(doubles: DoubleArray): DoubleBuffer {
     val res = DoubleBuffer(doubles.size)
     res.put(doubles)
+    res.pos = 0
     return res
 }
 
@@ -111,6 +116,7 @@ inline fun LongBuffer(size: Int, init: (Int) -> Long): LongBuffer {
 fun LongBuffer(longs: LongArray): LongBuffer {
     val res = LongBuffer(longs.size)
     res.put(longs)
+    res.pos = 0
     return res
 }
 
