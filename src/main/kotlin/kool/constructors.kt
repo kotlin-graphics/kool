@@ -1,6 +1,6 @@
 package kool
 
-import org.lwjgl.PointerBuffer
+import org.lwjgl.*
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
@@ -24,12 +24,24 @@ inline fun ByteBuffer(size: Int, init: (Int) -> Byte): ByteBuffer {
     return res
 }
 
+fun ByteBuffer(bytes: ByteArray): ByteBuffer {
+    val res = ByteBuffer(bytes.size)
+    res.put(bytes)
+    return res
+}
+
 fun ShortBuffer(size: Int): ShortBuffer = MemoryUtil.memCallocShort(size)
 
 inline fun ShortBuffer(size: Int, init: (Int) -> Short): ShortBuffer {
     val res = ShortBuffer(size)
     for (i in 0 until size)
         res.put(i, init(i))
+    return res
+}
+
+fun ShortBuffer(shorts: ShortArray): ShortBuffer {
+    val res = ShortBuffer(shorts.size)
+    res.put(shorts)
     return res
 }
 
@@ -42,6 +54,12 @@ inline fun IntBuffer(size: Int, init: (Int) -> Int): IntBuffer {
     return res
 }
 
+fun IntBuffer(ints: IntArray): IntBuffer {
+    val res = IntBuffer(ints.size)
+    res.put(ints)
+    return res
+}
+
 fun FloatBuffer(size: Int): FloatBuffer = MemoryUtil.memCallocFloat(size)
 
 inline fun FloatBuffer(size: Int, init: (Int) -> Float): FloatBuffer {
@@ -51,12 +69,24 @@ inline fun FloatBuffer(size: Int, init: (Int) -> Float): FloatBuffer {
     return res
 }
 
+fun FloatBuffer(floats: FloatArray): FloatBuffer {
+    val res = FloatBuffer(floats.size)
+    res.put(floats)
+    return res
+}
+
 fun DoubleBuffer(size: Int): DoubleBuffer = MemoryUtil.memCallocDouble(size)
 
 inline fun DoubleBuffer(size: Int, init: (Int) -> Double): DoubleBuffer {
     val res = DoubleBuffer(size)
     for (i in 0 until size)
         res.put(i, init(i))
+    return res
+}
+
+fun DoubleBuffer(doubles: DoubleArray): DoubleBuffer {
+    val res = DoubleBuffer(doubles.size)
+    res.put(doubles)
     return res
 }
 
@@ -75,6 +105,12 @@ inline fun LongBuffer(size: Int, init: (Int) -> Long): LongBuffer {
     val res = LongBuffer(size)
     for (i in 0 until size)
         res.put(i, init(i))
+    return res
+}
+
+fun LongBuffer(longs: LongArray): LongBuffer {
+    val res = LongBuffer(longs.size)
+    res.put(longs)
     return res
 }
 
