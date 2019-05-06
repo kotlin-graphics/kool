@@ -22,7 +22,7 @@ fun main(args: Array<String>) {
 
     var memory = 0
     val max = Configuration.STACK_SIZE.get(64) * 1024
-    stak {
+    Stack {
         assert(max == it.size)
         println(it.pointer)
         while (memory < max) {
@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
 //    block()
 //    var total = 0.0
 //    for (i in 0 until iterations) {
-//        stak.reset()
+//        Stack.reset()
 //        total += measureNanoTime { block() }
 //    }
 //    return total / iterations / times
@@ -47,7 +47,7 @@ fun main(args: Array<String>) {
 //
 //fun koolUnsafe() {
 //    for (i in 0 until times)
-//        MemoryUtil.memPutInt(stak.int, 1)
+//        MemoryUtil.memPutInt(Stack.int, 1)
 //}
 //
 //fun stackUnsafeMultiple() {
@@ -72,7 +72,7 @@ fun main(args: Array<String>) {
 //
 //fun koolSafe() {
 //    for (i in 0 until times)
-//        stak.intBuffer.put(0, 1)
+//        Stack.intBuffer.put(0, 1)
 //}
 //
 //fun stackSafeMultiple() {
