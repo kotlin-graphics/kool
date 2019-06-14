@@ -10,7 +10,6 @@ operator fun IntBuffer.get(e: Enum<*>) = get(e.ordinal)
 operator fun IntBuffer.set(e: Enum<*>, value: Int): IntBuffer = put(e.ordinal, value)
 operator fun IntArray.get(e: Enum<*>) = get(e.ordinal)
 operator fun IntArray.set(e: Enum<*>, int: Int) = set(e.ordinal, int)
-inline fun <reified T : Enum<T>> IntArray() = IntArray(enumValues<T>().size)
 
 /** for opengl  */
 inline fun <reified E : Enum<E>> IntBuffer() = IntBuffer(enumValues<E>().size)
