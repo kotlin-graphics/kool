@@ -3,80 +3,38 @@ package kool
 import org.lwjgl.system.MemoryUtil
 import java.nio.*
 
-fun floatBufferOf(vararg floats: Float): FloatBuffer {
-    val res = MemoryUtil.memAllocFloat(floats.size)
-    for (i in 0 until floats.size) res.put(i, floats[i])
-    return res
-}
 
-fun floatBufferOf(vararg numbers: Number): FloatBuffer {
-    val res = MemoryUtil.memAllocFloat(numbers.size)
-    for (i in 0 until numbers.size) res.put(i, numbers[i].toFloat())
-    return res
-}
+fun bufferOf(vararg bytes: Byte) = Buffer(bytes.size) { bytes[it] }
+//fun bufferOf(vararg bytes: Number): ByteBuffer TODO?
 
-fun doubleBufferOf(vararg doubles: Double): DoubleBuffer {
-    val res = MemoryUtil.memAllocDouble(doubles.size)
-    for (i in 0 until doubles.size) res.put(i, doubles[i])
-    return res
-}
+fun bufferOf(vararg shorts: Short) = Buffer(shorts.size * 2).apply { for (i in 0 until shorts.size) putShort(i * 2, shorts[i]) }
+fun bufferOf(vararg ints: Int) = Buffer(ints.size * 4).apply { for (i in 0 until ints.size) putInt(i * 4, ints[i]) }
+fun bufferOf(vararg longs: Long) = Buffer(longs.size * 8).apply { for (i in 0 until longs.size) putLong(i * 8, longs[i]) }
+fun bufferOf(vararg floats: Float) = Buffer(floats.size * 4).apply { for (i in 0 until floats.size) putFloat(i * 4, floats[i]) }
+fun bufferOf(vararg doubles: Double) = Buffer(doubles.size * 8).apply { for (i in 0 until doubles.size) putDouble(i * 8, doubles[i]) }
 
-fun doubleBufferOf(vararg numbers: Number): DoubleBuffer {
-    val res = MemoryUtil.memAllocDouble(numbers.size)
-    for (i in 0 until numbers.size) res.put(i, numbers[i].toDouble())
-    return res
-}
 
-fun bufferOf(vararg bytes: Byte): ByteBuffer {
-    val res = MemoryUtil.memAlloc(bytes.size)
-    for (i in 0 until bytes.size) res.put(i, bytes[i])
-    return res
-}
+fun byteBufferOf(vararg bytes: Byte) = ByteBuffer(bytes.size) { bytes[it] }
+//fun bufferOf(vararg bytes: Number): ByteBuffer TODO?
 
-fun bufferOf(vararg bytes: Number): ByteBuffer {
-    val res = MemoryUtil.memAlloc(bytes.size)
-    for (i in 0 until bytes.size) res.put(i, bytes[i].toByte())
-    return res
-}
+fun byteBufferOf(vararg shorts: Short) = ByteBuffer(shorts.size * 2).apply { for (i in 0 until shorts.size) putShort(i * 2, shorts[i]) }
+fun byteBufferOf(vararg ints: Int) = ByteBuffer(ints.size * 4).apply { for (i in 0 until ints.size) putInt(i * 4, ints[i]) }
+fun byteBufferOf(vararg longs: Long) = ByteBuffer(longs.size * 8).apply { for (i in 0 until longs.size) putLong(i * 8, longs[i]) }
+fun byteBufferOf(vararg floats: Float) = ByteBuffer(floats.size * 4).apply { for (i in 0 until floats.size) putFloat(i * 4, floats[i]) }
+fun byteBufferOf(vararg doubles: Double) = ByteBuffer(doubles.size * 8).apply { for (i in 0 until doubles.size) putDouble(i * 8, doubles[i]) }
 
-fun bufferOf(vararg floats: Float): ByteBuffer {
-    val res = MemoryUtil.memAlloc(floats.size * 4)
-    for (i in 0 until floats.size) res.putFloat(i * 4, floats[i])
-    return res
-}
 
-fun shortBufferOf(vararg shorts: Short): ShortBuffer {
-    val res = MemoryUtil.memAllocShort(shorts.size)
-    for (i in 0 until shorts.size) res.put(i, shorts[i])
-    return res
-}
+fun shortBufferOf(vararg shorts: Short) = ShortBuffer(shorts.size) { shorts[it] }
+//fun shortBufferOf(vararg numbers: Number): ShortBuffer TODO?
 
-fun shortBufferOf(vararg numbers: Number): ShortBuffer {
-    val res = MemoryUtil.memAllocShort(numbers.size)
-    for (i in 0 until numbers.size) res.put(i, numbers[i].toShort())
-    return res
-}
+fun intBufferOf(vararg ints: Int) = IntBuffer(ints.size) { ints[it] }
+//fun intBufferOf(vararg numbers: Number): IntBuffer TODO?
 
-fun intBufferOf(vararg ints: Int): IntBuffer {
-    val res = MemoryUtil.memAllocInt(ints.size)
-    for (i in 0 until ints.size) res.put(i, ints[i])
-    return res
-}
+fun longBufferOf(vararg longs: Long) = LongBuffer(longs.size) { longs[it] }
+//fun longBufferOf(vararg numbers: Number): LongBuffer TODO?
 
-fun intBufferOf(vararg numbers: Number): IntBuffer {
-    val res = MemoryUtil.memAllocInt(numbers.size)
-    for (i in 0 until numbers.size) res.put(i, numbers[i].toInt())
-    return res
-}
+fun floatBufferOf(vararg floats: Float) = FloatBuffer(floats.size) { floats[it] }
+//fun floatBufferOf(vararg numbers: Number): FloatBuffer TODO?
 
-fun longBufferOf(vararg longs: Long): LongBuffer {
-    val res = MemoryUtil.memAllocLong(longs.size)
-    for (i in 0 until longs.size) res.put(i, longs[i])
-    return res
-}
-
-fun longBufferOf(vararg numbers: Number): LongBuffer {
-    val res = MemoryUtil.memAllocLong(numbers.size)
-    for (i in 0 until numbers.size) res.put(i, numbers[i].toLong())
-    return res
-}
+fun doubleBufferOf(vararg doubles: Double) = DoubleBuffer(doubles.size) { doubles[it] }
+//fun doubleBufferOf(vararg numbers: Number): DoubleBuffer TODO?
