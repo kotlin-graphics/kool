@@ -31,7 +31,7 @@ inline val Buffer.remSize: Int
         this is ShortBuffer || this is CharBuffer -> 2
         this is IntBuffer || this is FloatBuffer -> 4
         this is LongBuffer || this is DoubleBuffer -> 8
-        else -> throw Error("unsupported buffer type")
+        else -> throw Error("Invalid buffer type")
     }
 
 inline var Buffer.lim: Int
