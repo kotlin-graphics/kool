@@ -5,7 +5,7 @@ plugins {
     id 'maven'
     id "org.jetbrains.kotlin.jvm" version "1.3.41"
     id "com.github.johnrengelman.shadow" version '5.1.0'
-    id 'org.kordamp.gradle.jdeps' version '0.7.0'
+//    id 'org.kordamp.gradle.jdeps' version '0.7.1-SNAPSHOT'
 }
 
 // jitpack
@@ -13,7 +13,7 @@ group = 'com.github.kotlin-graphics'
 
 ext{
     moduleName = 'com.github.kotlin_graphics.kool'
-    lwjgl_version = "3.2.3-SNAPSHOT"
+    lwjgl_version = "3.2.2"
     lwjgl_natives = current() == WINDOWS ? "windows" : current() == LINUX ? "linux" : "macos"
 }
 
@@ -79,8 +79,10 @@ jar {
     )
 }
 
-jdepsReport {
-    multiReleaseJars = [
-            'lwjgl*': 12
-    ]
-}
+//jdepsReport {
+//    multiReleaseJars = [
+//            'lwjgl-3.2.2.jar': 12,
+//////            'lwjgl-*': 12,
+//////            'lwjgl-3.2.2.jar': 12
+//    ]
+//}

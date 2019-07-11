@@ -1,1 +1,9 @@
+//pluginManagement {
+//    repositories {
+//        jcenter()
+//        gradlePluginPortal()
+//        mavenLocal()
+//    }
+//}
+
 rootProject.buildFileName = 'build.gradle'
