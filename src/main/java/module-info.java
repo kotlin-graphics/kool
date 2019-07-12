@@ -4,4 +4,5 @@ module com.github.kotlin_graphics.kool {
     requires org.lwjgl;
 
     exports kool;
+    exports kool.lib;
 }
