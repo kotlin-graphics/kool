@@ -29,7 +29,7 @@ dependencies {
 
 repositories {
     mavenCentral()
-    maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots/") }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
