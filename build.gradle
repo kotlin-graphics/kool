@@ -9,10 +9,10 @@ plugins {
 }
 
 // jitpack
-group = 'com.github.kotlin-graphics'
+group = 'com.github.kotlin_graphics'
 
 ext{
-    moduleName = 'com.github.kotlin_graphics.kool'
+    moduleName = "${group}.kool"
     lwjgl_version = "3.2.2"
     lwjgl_natives = current() == WINDOWS ? "windows" : current() == LINUX ? "linux" : "macos"
 }
@@ -73,10 +73,10 @@ compileJava {
 
 jar {
     inputs.property("moduleName", moduleName)
-    manifest.attributes(
+//    manifest.attributes(
 //            'Automatic-Module-Name': moduleName
-            'Multi-Release': 'true'
-    )
+//            'Multi-Release': 'true'
+//    )
 }
 
 //jdepsReport {
