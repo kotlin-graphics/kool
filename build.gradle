@@ -11,7 +11,7 @@ plugins {
 // jitpack
 group = 'com.github.kotlin_graphics'
 
-ext{
+ext {
     moduleName = "${group}.kool"
     lwjgl_version = "3.2.2"
     lwjgl_natives = current() == WINDOWS ? "windows" : current() == LINUX ? "linux" : "macos"
@@ -57,7 +57,7 @@ compileKotlin {
 }
 
 compileTestKotlin {
-    kotlinOptions{
+    kotlinOptions {
         jvmTarget = "1.8"
 //        javaParameters = true
     }
