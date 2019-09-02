@@ -836,7 +836,7 @@ object Stack {
 //    val remaining get() = SIZE - consumed
 //    val consumed get() = ptr.get() - address
 
-    val VERSION = "0.8.2"
+    val VERSION = "0.8.3"
 
     inline operator fun <R> invoke(block: (MemoryStack) -> R): R = with(block)
 }
