@@ -51,14 +51,14 @@ compileKotlin {
 
     kotlinOptions {
         freeCompilerArgs = ["-Xuse-experimental=kotlin.Experimental"]
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
     destinationDir = compileJava.destinationDir
 }
 
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
 //        javaParameters = true
     }
 }
