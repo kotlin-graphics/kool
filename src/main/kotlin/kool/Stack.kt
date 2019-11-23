@@ -2,10 +2,12 @@ package kool
 
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryStack
-import org.lwjgl.system.MemoryUtil.*
+import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
 import java.nio.*
-import kotlin.contracts.*
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 
 
 object Stack {
@@ -726,13 +728,13 @@ object Stack {
 
     // --------------------------------------------- setters ---------------------------------------------
 
-    inline fun <R> asciiAdr(chars: CharSequence, block: (Adr) -> R): R = with {
-        it.nASCII(chars, true)
+    inline fun <R> asciiAdr(chars: CharSequence, nullTerminated: Boolean = true, block: (Adr) -> R): R = with {
+        it.nASCII(chars, nullTerminated)
         block(it.pointerAddress)
     }
 
-    inline fun <R> asciiBuffer(chars: CharSequence, block: (ByteBuffer) -> R): R =
-            with { block(it.ASCII(chars, true)) }
+    inline fun <R> asciiBuffer(chars: CharSequence, nullTerminated: Boolean = true, block: (ByteBuffer) -> R): R =
+            with { block(it.ASCII(chars, nullTerminated)) }
 
     inline fun <R> byteAdr(byte: Byte, block: (Adr) -> R): R =
             with { block(it.ptrOf(byte).adr) }
@@ -776,11 +778,14 @@ object Stack {
     inline fun <R> pointerBuffer(pointer: Pointer, block: (PointerBuffer) -> R): R =
             with { block(it.pointers(pointer)) }
 
+    inline fun <R> utf8Adr(chars: CharSequence, nullTerminated: Boolean = true, block: (Adr) -> R): R = with {
+        val adr = it.nmalloc(1, MemoryUtil.memLengthASCII(chars, nullTerminated))
+        encodeUTF8(chars, nullTerminated, adr)
+        block(adr)
+    }
 
-//    fun next() = memGetByte(ptr.get())
-//    fun printNext() = println("@${ptr.get() - address}: ${next()}")
-//    val remaining get() = SIZE - consumed
-//    val consumed get() = ptr.get() - address
+    inline fun <R> utf8Buffer(chars: CharSequence, block: (ByteBuffer) -> R): R =
+            with { block(it.UTF8(chars, true)) }
 
     val VERSION = "0.8.3"
 

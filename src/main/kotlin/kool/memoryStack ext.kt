@@ -1,8 +1,11 @@
 package kool
 
+import org.lwjgl.PointerBuffer
 import org.lwjgl.system.Configuration
 import org.lwjgl.system.MemoryStack
+import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
+import java.nio.*
 
 
 inline fun MemoryStack.mByte(count: Int = 1) = BytePtr(nmalloc(Byte.SIZE_BYTES, Byte.SIZE_BYTES * count))
@@ -66,3 +69,153 @@ fun MemoryStack.ptrOf(p: Pointer): PointerPtr = mPointer(1).also { it[0] = p }
 //fun MemoryStack.ptrOf(d0: Double, d1: Double, d2: Double): DoublePtr = mDouble(3).also { it[0] = d0; it[1] = d1; it[2] = d2 }
 //fun MemoryStack.ptrOf(d0: Double, d1: Double, d2: Double, d3: Double): DoublePtr = mDouble(4).also { it[0] = d0; it[1] = d1; it[2] = d2; it[3] = d3 }
 //fun MemoryStack.ptrOf(vararg doubles: Double): DoublePtr = mDouble(doubles.size).also { for(i in doubles.indices) it[i] = doubles[i] }
+
+
+// --------------------------------------------- getters ---------------------------------------------
+
+inline fun <R> MemoryStack.byteAdr(block: (Adr) -> R): Byte {
+    val pByte = mByte()
+    block(pByte.adr)
+    return pByte()
+}
+
+inline fun <R> MemoryStack.byteBuffer(block: (ByteBuffer) -> R): Byte {
+    val buf = malloc(1)
+    block(buf)
+    return buf[0]
+}
+
+inline fun <R> MemoryStack.shortAdr(block: (Adr) -> R): Short {
+    val pShort = mShort()
+    block(pShort.adr)
+    return pShort()
+}
+
+inline fun <R> MemoryStack.shortBuffer(block: (ShortBuffer) -> R): Short {
+    val buf = mallocShort(1)
+    block(buf)
+    return buf[0]
+}
+
+inline fun <R> MemoryStack.intAdr(block: (Adr) -> R): Int {
+    val pInt = mInt()
+    block(pInt.adr)
+    return pInt()
+}
+
+inline fun <R> MemoryStack.intBuffer(block: (IntBuffer) -> R): Int {
+    val buf = mallocInt(1)
+    block(buf)
+    return buf[0]
+}
+
+inline fun <R> MemoryStack.longAdr(block: (Adr) -> R): Long {
+    val pLong = mLong()
+    block(pLong.adr)
+    return pLong()
+}
+
+inline fun <R> MemoryStack.longBuffer(block: (LongBuffer) -> R): Long {
+    val buf = mallocLong(1)
+    block(buf)
+    return buf[0]
+}
+
+inline fun <R> MemoryStack.floatAdr(block: (Adr) -> R): Float {
+    val pFloat = mFloat()
+    block(pFloat.adr)
+    return pFloat()
+}
+
+inline fun <R> MemoryStack.floatBuffer(block: (FloatBuffer) -> R): Float {
+    val buf = mallocFloat(1)
+    block(buf)
+    return buf[0]
+}
+
+inline fun <R> MemoryStack.doubleAdr(block: (Adr) -> R): Double {
+    val pDouble = mDouble()
+    block(pDouble.adr)
+    return pDouble()
+}
+
+inline fun <R> MemoryStack.doubleBuffer(block: (DoubleBuffer) -> R): Double {
+    val buf = mallocDouble(1)
+    block(buf)
+    return buf[0]
+}
+
+inline fun <R> MemoryStack.pointerAdr(block: (Adr) -> R): Ptr {
+    val pointer = mPointer()
+    block(pointer.adr)
+    return pointer()
+}
+
+inline fun <R> MemoryStack.pointerBuffer(block: (PointerBuffer) -> R): Ptr {
+    val buf = mallocPointer(1)
+    block(buf)
+    return buf[0]
+}
+
+// No String
+
+// --------------------------------------------- setters ---------------------------------------------
+
+inline fun <R> MemoryStack.asciiAdr(chars: CharSequence, nullTerminated: Boolean = true, block: (Adr) -> R): R {
+    nASCII(chars, nullTerminated)
+    return block(pointerAddress)
+}
+
+inline fun <R> MemoryStack.asciiBuffer(chars: CharSequence, nullTerminated: Boolean = true, block: (ByteBuffer) -> R): R =
+        block(ASCII(chars, nullTerminated))
+
+inline fun <R> MemoryStack.byteAdr(byte: Byte, block: (Adr) -> R): R =
+        block(ptrOf(byte).adr)
+
+inline fun <R> MemoryStack.byteBuffer(byte: Byte, block: (ByteBuffer) -> R): R =
+        block(bytes(byte))
+
+inline fun <R> MemoryStack.shortAdr(short: Short, block: (Adr) -> R): R =
+        block(ptrOf(short).adr)
+
+inline fun <R> MemoryStack.shortBuffer(short: Short, block: (ShortBuffer) -> R): R =
+        block(shorts(short))
+
+inline fun <R> MemoryStack.intAdr(int: Int, block: (Adr) -> R): R =
+        block(ptrOf(int).adr)
+
+inline fun <R> MemoryStack.intBuffer(int: Int, block: (IntBuffer) -> R): R =
+        block(ints(int))
+
+inline fun <R> MemoryStack.longAdr(long: Long, block: (Adr) -> R): R =
+        block(ptrOf(long).adr)
+
+inline fun <R> MemoryStack.longBuffer(long: Long, block: (LongBuffer) -> R): R =
+        block(longs(long))
+
+inline fun <R> MemoryStack.floatAdr(float: Float, block: (Adr) -> R): R =
+        block(ptrOf(float).adr)
+
+inline fun <R> MemoryStack.floatBuffer(float: Float, block: (FloatBuffer) -> R): R =
+        block(floats(float))
+
+inline fun <R> MemoryStack.doubleAdr(double: Double, block: (Adr) -> R): R =
+        block(ptrOf(double).adr)
+
+inline fun <R> MemoryStack.doubleBuffer(double: Double, block: (DoubleBuffer) -> R): R =
+        block(doubles(double))
+
+inline fun <R> MemoryStack.pointerAdr(pointer: Pointer, block: (Adr) -> R): R =
+        block(ptrOf(pointer).adr)
+
+inline fun <R> MemoryStack.pointerBuffer(pointer: Pointer, block: (PointerBuffer) -> R): R =
+        block(pointers(pointer))
+
+inline fun <R> MemoryStack.utf8Adr(chars: CharSequence, nullTerminated: Boolean = true, block: (Adr) -> R): R {
+    val adr = nmalloc(1, MemoryUtil.memLengthASCII(chars, nullTerminated))
+    encodeUTF8(chars, nullTerminated, adr)
+    return block(adr)
+}
+
+inline fun <R> MemoryStack.utf8Buffer(chars: CharSequence, block: (ByteBuffer) -> R): R =
+        block(UTF8(chars, true))

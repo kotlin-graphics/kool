@@ -57,6 +57,8 @@ inline fun MemoryStack.DoubleBuffer(size: Int, init: (Int) -> Double)= DoubleBuf
 
 fun MemoryStack.PointerBuffer(size: Int): PointerBuffer = callocPointer(size)
 inline fun MemoryStack.PointerBuffer(size: Int, init: (Int) -> Adr)= PointerBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
+inline fun MemoryStack.PointerBufferP(size: Int, init: (Int) -> Pointer)= PointerBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
+inline fun MemoryStack.PointerBufferB(size: Int, init: (Int) -> Buffer)= PointerBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
 
 @JvmName("PointerBufferSafe")
 fun MemoryStack.PointerBuffer(strings: Collection<String>?): PointerBuffer? =
@@ -69,17 +71,17 @@ fun MemoryStack.PointerBuffer(strings: Collection<String>): PointerBuffer =
             nmalloc(1, length).also { encodeUTF8(string, true, it) }
         }
 
-@JvmName("PointerAddressSafe")
-fun MemoryStack.PointerAddress(strings: Collection<String>?): Adr = strings?.let { PointerAddress(it) } ?: MemoryUtil.NULL
+@JvmName("PointerAdrSafe")
+fun MemoryStack.PointerAdr(strings: Collection<String>?): Adr = strings?.let { PointerAdr(it) } ?: MemoryUtil.NULL
 
-fun MemoryStack.PointerAddress(strings: Collection<String>): Adr =
-        PointerAddress(strings.size) { i ->
+fun MemoryStack.PointerAdr(strings: Collection<String>): Adr =
+        PointerAdr(strings.size) { i ->
             val string = strings.elementAt(i)
             val length = MemoryUtil.memLengthUTF8(string, true)
             nmalloc(1, length).also { encodeUTF8(string, true, it) }
         }
 
-inline fun MemoryStack.PointerAddress(size: Int, init: (Int) -> Adr): Adr {
+inline fun MemoryStack.PointerAdr(size: Int, init: (Int) -> Adr): Adr {
     val bytes = size * Pointer.POINTER_SIZE
     val address = nmalloc(Pointer.POINTER_SIZE, bytes)
     MemoryUtil.memSet(address, 0, bytes.toLong())
