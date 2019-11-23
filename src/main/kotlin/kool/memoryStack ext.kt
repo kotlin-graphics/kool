@@ -32,37 +32,37 @@ fun MemoryStack.ptrOf(b: Byte): BytePtr = mByte(1).also { it[0] = b }
 fun MemoryStack.ptrOf(b0: Byte, b1: Byte): BytePtr = mByte(2).also { it[0] = b0; it[1] = b1 }
 fun MemoryStack.ptrOf(b0: Byte, b1: Byte, b2: Byte): BytePtr = mByte(3).also { it[0] = b0; it[1] = b1; it[2] = b2 }
 fun MemoryStack.ptrOf(b0: Byte, b1: Byte, b2: Byte, b3: Byte): BytePtr = mByte(4).also { it[0] = b0; it[1] = b1; it[2] = b2; it[3] = b3 }
-fun MemoryStack.ptrOf(vararg bytes: Byte): BytePtr = mByte(bytes.size).also { for(i in bytes.indices) it[i] = bytes[i] }
+fun MemoryStack.ptrOf(vararg bytes: Byte): BytePtr = mByte(bytes.size).also { for (i in bytes.indices) it[i] = bytes[i] }
 
 fun MemoryStack.ptrOf(s: Short): ShortPtr = mShort(1).also { it[0] = s }
 fun MemoryStack.ptrOf(s0: Short, s1: Short): ShortPtr = mShort(2).also { it[0] = s0; it[1] = s1 }
 fun MemoryStack.ptrOf(s0: Short, s1: Short, s2: Short): ShortPtr = mShort(3).also { it[0] = s0; it[1] = s1; it[2] = s2 }
 fun MemoryStack.ptrOf(s0: Short, s1: Short, s2: Short, s3: Short): ShortPtr = mShort(4).also { it[0] = s0; it[1] = s1; it[2] = s2; it[3] = s3 }
-fun MemoryStack.ptrOf(vararg shorts: Short): ShortPtr = mShort(shorts.size).also { for(i in shorts.indices) it[i] = shorts[i] }
+fun MemoryStack.ptrOf(vararg shorts: Short): ShortPtr = mShort(shorts.size).also { for (i in shorts.indices) it[i] = shorts[i] }
 
 fun MemoryStack.ptrOf(i: Int): IntPtr = mInt(1).also { it[0] = i }
 fun MemoryStack.ptrOf(i0: Int, i1: Int): IntPtr = mInt(2).also { it[0] = i0; it[1] = i1 }
 fun MemoryStack.ptrOf(i0: Int, i1: Int, i2: Int): IntPtr = mInt(3).also { it[0] = i0; it[1] = i1; it[2] = i2 }
 fun MemoryStack.ptrOf(i0: Int, i1: Int, i2: Int, i3: Int): IntPtr = mInt(4).also { it[0] = i0; it[1] = i1; it[2] = i2; it[3] = i3 }
-fun MemoryStack.ptrOf(vararg ints: Int): IntPtr = mInt(ints.size).also { for(i in ints.indices) it[i] = ints[i] }
+fun MemoryStack.ptrOf(vararg ints: Int): IntPtr = mInt(ints.size).also { for (i in ints.indices) it[i] = ints[i] }
 
 fun MemoryStack.ptrOf(L: Long): LongPtr = mLong(1).also { it[0] = L }
 fun MemoryStack.ptrOf(L0: Long, L1: Long): LongPtr = mLong(2).also { it[0] = L0; it[1] = L1 }
 fun MemoryStack.ptrOf(L0: Long, L1: Long, L2: Long): LongPtr = mLong(3).also { it[0] = L0; it[1] = L1; it[2] = L2 }
 fun MemoryStack.ptrOf(L0: Long, L1: Long, L2: Long, L3: Long): LongPtr = mLong(4).also { it[0] = L0; it[1] = L1; it[2] = L2; it[3] = L3 }
-fun MemoryStack.ptrOf(vararg longs: Long): LongPtr = mLong(longs.size).also { for(i in longs.indices) it[i] = longs[i] }
+fun MemoryStack.ptrOf(vararg longs: Long): LongPtr = mLong(longs.size).also { for (i in longs.indices) it[i] = longs[i] }
 
 fun MemoryStack.ptrOf(f: Float): FloatPtr = mFloat(1).also { it[0] = f }
 fun MemoryStack.ptrOf(f0: Float, f1: Float): FloatPtr = mFloat(2).also { it[0] = f0; it[1] = f1 }
 fun MemoryStack.ptrOf(f0: Float, f1: Float, f2: Float): FloatPtr = mFloat(3).also { it[0] = f0; it[1] = f1; it[2] = f2 }
 fun MemoryStack.ptrOf(f0: Float, f1: Float, f2: Float, f3: Float): FloatPtr = mFloat(4).also { it[0] = f0; it[1] = f1; it[2] = f2; it[3] = f3 }
-fun MemoryStack.ptrOf(vararg floats: Float): FloatPtr = mFloat(floats.size).also { for(i in floats.indices) it[i] = floats[i] }
+fun MemoryStack.ptrOf(vararg floats: Float): FloatPtr = mFloat(floats.size).also { for (i in floats.indices) it[i] = floats[i] }
 
 fun MemoryStack.ptrOf(d: Double): DoublePtr = mDouble(1).also { it[0] = d }
 fun MemoryStack.ptrOf(d0: Double, d1: Double): DoublePtr = mDouble(2).also { it[0] = d0; it[1] = d1 }
 fun MemoryStack.ptrOf(d0: Double, d1: Double, d2: Double): DoublePtr = mDouble(3).also { it[0] = d0; it[1] = d1; it[2] = d2 }
 fun MemoryStack.ptrOf(d0: Double, d1: Double, d2: Double, d3: Double): DoublePtr = mDouble(4).also { it[0] = d0; it[1] = d1; it[2] = d2; it[3] = d3 }
-fun MemoryStack.ptrOf(vararg doubles: Double): DoublePtr = mDouble(doubles.size).also { for(i in doubles.indices) it[i] = doubles[i] }
+fun MemoryStack.ptrOf(vararg doubles: Double): DoublePtr = mDouble(doubles.size).also { for (i in doubles.indices) it[i] = doubles[i] }
 
 fun MemoryStack.ptrOf(p: Pointer): PointerPtr = mPointer(1).also { it[0] = p }
 //fun MemoryStack.ptrOf(d0: Double, d1: Double): DoublePtr = mDouble(2).also { it[0] = d0; it[1] = d1 }
@@ -160,62 +160,30 @@ inline fun <R> MemoryStack.pointerBuffer(block: (PointerBuffer) -> R): Ptr {
 // No String
 
 // --------------------------------------------- setters ---------------------------------------------
+// mainly for syntax consistence
+inline fun MemoryStack.asciiAdr(chars: CharSequence, nullTerminated: Boolean = true): Adr = nASCII(chars, nullTerminated).let { pointerAddress }
+inline fun MemoryStack.asciiBuffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = ASCII(chars, nullTerminated)
 
-inline fun <R> MemoryStack.asciiAdr(chars: CharSequence, nullTerminated: Boolean = true, block: (Adr) -> R): R {
-    nASCII(chars, nullTerminated)
-    return block(pointerAddress)
-}
+inline fun MemoryStack.byteAdr(byte: Byte)= ptrOf(byte).adr
+inline fun MemoryStack.byteBuffer(byte: Byte)= bytes(byte)
 
-inline fun <R> MemoryStack.asciiBuffer(chars: CharSequence, nullTerminated: Boolean = true, block: (ByteBuffer) -> R): R =
-        block(ASCII(chars, nullTerminated))
+inline fun MemoryStack.shortAdr(short: Short)= ptrOf(short).adr
+inline fun MemoryStack.shortBuffer(short: Short)= shorts(short)
 
-inline fun <R> MemoryStack.byteAdr(byte: Byte, block: (Adr) -> R): R =
-        block(ptrOf(byte).adr)
+inline fun MemoryStack.intAdr(int: Int)= ptrOf(int).adr
+inline fun MemoryStack.intBuffer(int: Int)= ints(int)
 
-inline fun <R> MemoryStack.byteBuffer(byte: Byte, block: (ByteBuffer) -> R): R =
-        block(bytes(byte))
+inline fun MemoryStack.longAdr(long: Long)= ptrOf(long).adr
+inline fun MemoryStack.longBuffer(long: Long)= longs(long)
 
-inline fun <R> MemoryStack.shortAdr(short: Short, block: (Adr) -> R): R =
-        block(ptrOf(short).adr)
+inline fun MemoryStack.floatAdr(float: Float)= ptrOf(float).adr
+inline fun MemoryStack.floatBuffer(float: Float)= floats(float)
 
-inline fun <R> MemoryStack.shortBuffer(short: Short, block: (ShortBuffer) -> R): R =
-        block(shorts(short))
+inline fun MemoryStack.doubleAdr(double: Double)= ptrOf(double).adr
+inline fun MemoryStack.doubleBuffer(double: Double)= doubles(double)
 
-inline fun <R> MemoryStack.intAdr(int: Int, block: (Adr) -> R): R =
-        block(ptrOf(int).adr)
+inline fun MemoryStack.pointerAdr(pointer: Pointer)= ptrOf(pointer).adr
+inline fun MemoryStack.pointerBuffer(pointer: Pointer)= pointers(pointer)
 
-inline fun <R> MemoryStack.intBuffer(int: Int, block: (IntBuffer) -> R): R =
-        block(ints(int))
-
-inline fun <R> MemoryStack.longAdr(long: Long, block: (Adr) -> R): R =
-        block(ptrOf(long).adr)
-
-inline fun <R> MemoryStack.longBuffer(long: Long, block: (LongBuffer) -> R): R =
-        block(longs(long))
-
-inline fun <R> MemoryStack.floatAdr(float: Float, block: (Adr) -> R): R =
-        block(ptrOf(float).adr)
-
-inline fun <R> MemoryStack.floatBuffer(float: Float, block: (FloatBuffer) -> R): R =
-        block(floats(float))
-
-inline fun <R> MemoryStack.doubleAdr(double: Double, block: (Adr) -> R): R =
-        block(ptrOf(double).adr)
-
-inline fun <R> MemoryStack.doubleBuffer(double: Double, block: (DoubleBuffer) -> R): R =
-        block(doubles(double))
-
-inline fun <R> MemoryStack.pointerAdr(pointer: Pointer, block: (Adr) -> R): R =
-        block(ptrOf(pointer).adr)
-
-inline fun <R> MemoryStack.pointerBuffer(pointer: Pointer, block: (PointerBuffer) -> R): R =
-        block(pointers(pointer))
-
-inline fun <R> MemoryStack.utf8Adr(chars: CharSequence, nullTerminated: Boolean = true, block: (Adr) -> R): R {
-    val adr = nmalloc(1, MemoryUtil.memLengthASCII(chars, nullTerminated))
-    encodeUTF8(chars, nullTerminated, adr)
-    return block(adr)
-}
-
-inline fun <R> MemoryStack.utf8Buffer(chars: CharSequence, block: (ByteBuffer) -> R): R =
-        block(UTF8(chars, true))
+inline fun MemoryStack.utf8Adr(chars: CharSequence, nullTerminated: Boolean = true): Adr = nmalloc(1, MemoryUtil.memLengthASCII(chars, nullTerminated)).also { encodeUTF8(chars, nullTerminated, it) }
+inline fun MemoryStack.utf8Buffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = UTF8(chars, true)
