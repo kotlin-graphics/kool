@@ -165,8 +165,8 @@ inline fun <R> MemoryStack.pointerBuffer(block: (PointerBuffer) -> R): Ptr {
 inline fun MemoryStack.asciiAdr(chars: CharSequence, nullTerminated: Boolean = true): Adr = nASCII(chars, nullTerminated).let { pointerAddress }
 inline fun MemoryStack.asciiBuffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = ASCII(chars, nullTerminated)
 
-@JvmName("asciiAdrSafe")
-inline fun MemoryStack.asciiAdr(chars: CharSequence?, nullTerminated: Boolean = true): Adr = chars?.let { asciiAdr(it, nullTerminated) } ?: NULL
+//@JvmName("asciiAdrSafe")
+//inline fun MemoryStack.asciiAdr(chars: CharSequence?, nullTerminated: Boolean = true): Adr = chars?.let { asciiAdr(it, nullTerminated) } ?: NULL
 
 inline fun MemoryStack.byteAdr(byte: Byte)= ptrOf(byte).adr
 inline fun MemoryStack.byteBuffer(byte: Byte)= bytes(byte)
@@ -192,5 +192,5 @@ inline fun MemoryStack.pointerBuffer(pointer: Pointer)= pointers(pointer)
 inline fun MemoryStack.utf8Adr(chars: CharSequence, nullTerminated: Boolean = true): Adr = nmalloc(1, MemoryUtil.memLengthASCII(chars, nullTerminated)).also { encodeUTF8(chars, nullTerminated, it) }
 inline fun MemoryStack.utf8Buffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = UTF8(chars, true)
 
-@JvmName("utf8AdrSafe")
-inline fun MemoryStack.utf8Adr(chars: CharSequence?, nullTerminated: Boolean = true): Adr = chars?.let { utf8Adr(it, nullTerminated) } ?: NULL
+//@JvmName("utf8AdrSafe")
+//inline fun MemoryStack.utf8Adr(chars: CharSequence?, nullTerminated: Boolean = true): Adr = chars?.let { utf8Adr(it, nullTerminated) } ?: NULL
