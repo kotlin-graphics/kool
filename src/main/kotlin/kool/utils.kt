@@ -101,9 +101,9 @@ fun encodeASCII(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
 val Byte.Companion.BYTES: Int
     get() = java.lang.Byte.BYTES
 val Float.Companion.BYTES: Int
-    get() = Float.BYTES
+    get() = java.lang.Float.BYTES
 val Double.Companion.BYTES: Int
-    get() = Double.BYTES
+    get() = java.lang.Double.BYTES
 val Int.Companion.BYTES: Int
     get() = Integer.BYTES
 val Long.Companion.BYTES: Int
