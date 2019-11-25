@@ -96,3 +96,19 @@ fun encodeASCII(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
         UNSAFE.putByte(target + len++, 0.toByte())
     return len
 }
+
+// Unfortunately Jetbrain went its own way: https://youtrack.jetbrains.com/issue/KT-8247 , let's keep it coherent with Java
+val Byte.Companion.BYTES: Int
+    get() = java.lang.Byte.BYTES
+val Float.Companion.BYTES: Int
+    get() = Float.BYTES
+val Double.Companion.BYTES: Int
+    get() = Double.BYTES
+val Int.Companion.BYTES: Int
+    get() = Integer.BYTES
+val Long.Companion.BYTES: Int
+    get() = java.lang.Long.BYTES
+val Short.Companion.BYTES: Int
+    get() = java.lang.Short.BYTES
+val Char.Companion.BYTES: Int
+    get() = Character.BYTES

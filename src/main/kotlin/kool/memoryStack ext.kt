@@ -4,26 +4,25 @@ import org.lwjgl.PointerBuffer
 import org.lwjgl.system.Configuration
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
-import org.lwjgl.system.MemoryUtil.NULL
 import org.lwjgl.system.Pointer
 import java.nio.*
 
 
-inline fun MemoryStack.mByte(count: Int = 1) = BytePtr(nmalloc(Byte.SIZE_BYTES, Byte.SIZE_BYTES * count))
-inline fun MemoryStack.mShort(count: Int = 1) = ShortPtr(nmalloc(Short.SIZE_BYTES, Short.SIZE_BYTES * count))
-inline fun MemoryStack.mInt(count: Int = 1) = IntPtr(nmalloc(Int.SIZE_BYTES, Int.SIZE_BYTES * count))
-inline fun MemoryStack.mLong(count: Int = 1) = LongPtr(nmalloc(Long.SIZE_BYTES, Long.SIZE_BYTES * count))
-inline fun MemoryStack.mFloat(count: Int = 1) = FloatPtr(nmalloc(java.lang.Float.BYTES, java.lang.Float.BYTES * count))
-inline fun MemoryStack.mDouble(count: Int = 1) = DoublePtr(nmalloc(java.lang.Double.BYTES, java.lang.Double.BYTES * count))
-inline fun MemoryStack.mPointer(count: Int = 1) = PointerPtr(nmalloc(Long.SIZE_BYTES, Long.SIZE_BYTES * count))
+inline fun MemoryStack.mByte(count: Int = 1) = BytePtr(nmalloc(Byte.BYTES, Byte.BYTES * count))
+inline fun MemoryStack.mShort(count: Int = 1) = ShortPtr(nmalloc(Short.BYTES, Short.BYTES * count))
+inline fun MemoryStack.mInt(count: Int = 1) = IntPtr(nmalloc(Int.BYTES, Int.BYTES * count))
+inline fun MemoryStack.mLong(count: Int = 1) = LongPtr(nmalloc(Long.BYTES, Long.BYTES * count))
+inline fun MemoryStack.mFloat(count: Int = 1) = FloatPtr(nmalloc(Float.BYTES, Float.BYTES * count))
+inline fun MemoryStack.mDouble(count: Int = 1) = DoublePtr(nmalloc(Double.BYTES, Double.BYTES * count))
+inline fun MemoryStack.mPointer(count: Int = 1) = PointerPtr(nmalloc(Long.BYTES, Long.BYTES * count))
 
-inline fun MemoryStack.cByte(count: Int = 1) = BytePtr(ncalloc(Byte.SIZE_BYTES, count, Byte.SIZE_BYTES))
-inline fun MemoryStack.cShort(count: Int = 1) = ShortPtr(ncalloc(Short.SIZE_BYTES, count, Short.SIZE_BYTES))
-inline fun MemoryStack.cInt(count: Int = 1) = IntPtr(ncalloc(Int.SIZE_BYTES, count, Int.SIZE_BYTES))
-inline fun MemoryStack.cLong(count: Int = 1) = LongPtr(ncalloc(Long.SIZE_BYTES, count, Long.SIZE_BYTES))
-inline fun MemoryStack.cFloat(count: Int = 1) = FloatPtr(ncalloc(java.lang.Float.BYTES, count, java.lang.Float.BYTES))
-inline fun MemoryStack.cDouble(count: Int = 1) = DoublePtr(ncalloc(java.lang.Double.BYTES, count, java.lang.Double.BYTES))
-inline fun MemoryStack.cPointer(count: Int = 1) = PointerPtr(ncalloc(Long.SIZE_BYTES, count, Long.SIZE_BYTES))
+inline fun MemoryStack.cByte(count: Int = 1) = BytePtr(ncalloc(Byte.BYTES, count, Byte.BYTES))
+inline fun MemoryStack.cShort(count: Int = 1) = ShortPtr(ncalloc(Short.BYTES, count, Short.BYTES))
+inline fun MemoryStack.cInt(count: Int = 1) = IntPtr(ncalloc(Int.BYTES, count, Int.BYTES))
+inline fun MemoryStack.cLong(count: Int = 1) = LongPtr(ncalloc(Long.BYTES, count, Long.BYTES))
+inline fun MemoryStack.cFloat(count: Int = 1) = FloatPtr(ncalloc(Float.BYTES, count, Float.BYTES))
+inline fun MemoryStack.cDouble(count: Int = 1) = DoublePtr(ncalloc(Double.BYTES, count, Double.BYTES))
+inline fun MemoryStack.cPointer(count: Int = 1) = PointerPtr(ncalloc(Long.BYTES, count, Long.BYTES))
 
 fun MemoryStack.reset() {
     pointer = Configuration.STACK_SIZE.get(64) * 1024
