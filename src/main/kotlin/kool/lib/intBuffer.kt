@@ -1,5 +1,6 @@
 package kool.lib
 
+import kool.BYTES
 import kool.lim
 import kool.set
 import org.lwjgl.system.MemoryUtil.*

@@ -1,5 +1,6 @@
 package kool.lib
 
+import kool.BYTES
 import kool.IntBuffer
 import kool.cap
 import kool.set
