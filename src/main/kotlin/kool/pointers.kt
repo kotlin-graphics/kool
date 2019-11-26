@@ -31,6 +31,9 @@ inline class BytePtr(val adr: Adr) {
     inline operator fun get(index: Int): Byte = UNSAFE.getByte(null, adr + index * Byte.BYTES)
     inline operator fun set(index: Int, byte: Byte) = UNSAFE.putByte(null, adr + index * Byte.BYTES, byte)
     inline operator fun invoke(): Byte = UNSAFE.getByte(null, adr)
+
+    inline operator fun plus(offset: Int): BytePtr = BytePtr(adr + offset * Byte.BYTES)
+//    inline operator fun plus(pByte: BytePtr): BytePtr = BytePtr(adr + pByte.adr)
 }
 
 inline fun BytePtr(intPtr: IntPtr) = BytePtr(intPtr.adr)
@@ -56,6 +59,8 @@ inline class ShortPtr(val adr: Adr) {
     inline operator fun get(index: Int): Short = UNSAFE.getShort(null, adr + index * Short.BYTES)
     inline operator fun set(index: Int, short: Short) = UNSAFE.putShort(null, adr + index * Short.BYTES, short)
     inline operator fun invoke(): Short = UNSAFE.getShort(null, adr)
+
+    inline operator fun plus(offset: Int): ShortPtr = ShortPtr(adr + offset * Short.BYTES)
 }
 
 inline fun ShortPtr(bytePtr: BytePtr) = ShortPtr(bytePtr.adr)
@@ -77,6 +82,7 @@ inline class IntPtr(val adr: Adr) {
     inline operator fun set(index: Int, int: Int) = UNSAFE.putInt(null, adr + index * Int.BYTES, int)
     inline operator fun invoke(): Int = UNSAFE.getInt(null, adr)
 
+    inline operator fun plus(offset: Int): IntPtr = IntPtr(adr + offset * Int.BYTES)
 }
 
 inline fun IntPtr(bytePtr: BytePtr) = IntPtr(bytePtr.adr)
@@ -98,6 +104,8 @@ inline class LongPtr(val adr: Adr) {
     inline operator fun get(index: Int): Long = UNSAFE.getLong(null, adr + index * Long.BYTES)
     inline operator fun set(index: Int, long: Long) = UNSAFE.putLong(null, adr + index * Long.BYTES, long)
     inline operator fun invoke(): Long = UNSAFE.getLong(null, adr)
+
+    inline operator fun plus(offset: Int): LongPtr = LongPtr(adr + offset * Long.BYTES)
 }
 
 inline fun LongPtr(bytePtr: BytePtr) = LongPtr(bytePtr.adr)
@@ -119,6 +127,8 @@ inline class FloatPtr(val adr: Adr) {
     inline operator fun get(index: Int): Float = UNSAFE.getFloat(null, adr + index * Float.BYTES)
     inline operator fun set(index: Int, float: Float) = UNSAFE.putFloat(null, adr + index * Float.BYTES, float)
     inline operator fun invoke(): Float = UNSAFE.getFloat(null, adr)
+
+    inline operator fun plus(offset: Int): FloatPtr = FloatPtr(adr + offset * Float.BYTES)
 }
 
 inline fun FloatPtr(bytePtr: BytePtr) = FloatPtr(bytePtr.adr)
@@ -140,6 +150,8 @@ inline class DoublePtr(val adr: Adr) {
     inline operator fun get(index: Int): Double = UNSAFE.getDouble(null, adr + index * Double.BYTES)
     inline operator fun set(index: Int, double: Double) = UNSAFE.putDouble(null, adr + index * Double.BYTES, double)
     inline operator fun invoke(): Double = UNSAFE.getDouble(null, adr)
+
+    inline operator fun plus(offset: Int): DoublePtr = DoublePtr(adr + offset * Double.BYTES)
 }
 
 inline fun DoublePtr(bytePtr: BytePtr) = DoublePtr(bytePtr.adr)
@@ -163,6 +175,8 @@ inline class PointerPtr(val adr: Adr) {
     inline operator fun set(index: Int, pointer: Pointer) = UNSAFE.putLong(null, adr + index * Long.BYTES, pointer.adr)
     inline operator fun set(index: Int, buffer: Buffer) = UNSAFE.putLong(null, adr + index * Long.BYTES, buffer.adr)
     inline operator fun invoke(): Ptr = UNSAFE.getLong(null, adr)
+
+    inline operator fun plus(offset: Int): PointerPtr = PointerPtr(adr + offset * Long.BYTES)
 }
 
 inline fun PointerPtr(bytePtr: BytePtr) = PointerPtr(bytePtr.adr)
