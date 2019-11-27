@@ -34,6 +34,10 @@ inline class BytePtr(val adr: Adr) {
 
     inline operator fun plus(offset: Int): BytePtr = BytePtr(adr + offset * Byte.BYTES)
 //    inline operator fun plus(pByte: BytePtr): BytePtr = BytePtr(adr + pByte.adr)
+
+    companion object {
+        val NULL get() = BytePtr(MemoryUtil.NULL)
+    }
 }
 
 inline fun BytePtr(intPtr: IntPtr) = BytePtr(intPtr.adr)
@@ -61,6 +65,10 @@ inline class ShortPtr(val adr: Adr) {
     inline operator fun invoke(): Short = UNSAFE.getShort(null, adr)
 
     inline operator fun plus(offset: Int): ShortPtr = ShortPtr(adr + offset * Short.BYTES)
+
+    companion object {
+        val NULL get() = ShortPtr(MemoryUtil.NULL)
+    }
 }
 
 inline fun ShortPtr(bytePtr: BytePtr) = ShortPtr(bytePtr.adr)
@@ -83,6 +91,10 @@ inline class IntPtr(val adr: Adr) {
     inline operator fun invoke(): Int = UNSAFE.getInt(null, adr)
 
     inline operator fun plus(offset: Int): IntPtr = IntPtr(adr + offset * Int.BYTES)
+
+    companion object {
+        val NULL get() = IntPtr(MemoryUtil.NULL)
+    }
 }
 
 inline fun IntPtr(bytePtr: BytePtr) = IntPtr(bytePtr.adr)
@@ -106,6 +118,10 @@ inline class LongPtr(val adr: Adr) {
     inline operator fun invoke(): Long = UNSAFE.getLong(null, adr)
 
     inline operator fun plus(offset: Int): LongPtr = LongPtr(adr + offset * Long.BYTES)
+
+    companion object {
+        val NULL get() = LongPtr(MemoryUtil.NULL)
+    }
 }
 
 inline fun LongPtr(bytePtr: BytePtr) = LongPtr(bytePtr.adr)
@@ -129,6 +145,10 @@ inline class FloatPtr(val adr: Adr) {
     inline operator fun invoke(): Float = UNSAFE.getFloat(null, adr)
 
     inline operator fun plus(offset: Int): FloatPtr = FloatPtr(adr + offset * Float.BYTES)
+
+    companion object {
+        val NULL get() = FloatPtr(MemoryUtil.NULL)
+    }
 }
 
 inline fun FloatPtr(bytePtr: BytePtr) = FloatPtr(bytePtr.adr)
@@ -152,6 +172,10 @@ inline class DoublePtr(val adr: Adr) {
     inline operator fun invoke(): Double = UNSAFE.getDouble(null, adr)
 
     inline operator fun plus(offset: Int): DoublePtr = DoublePtr(adr + offset * Double.BYTES)
+
+    companion object {
+        val NULL get() = DoublePtr(MemoryUtil.NULL)
+    }
 }
 
 inline fun DoublePtr(bytePtr: BytePtr) = DoublePtr(bytePtr.adr)
@@ -177,6 +201,10 @@ inline class PointerPtr(val adr: Adr) {
     inline operator fun invoke(): Ptr = UNSAFE.getLong(null, adr)
 
     inline operator fun plus(offset: Int): PointerPtr = PointerPtr(adr + offset * Long.BYTES)
+
+    companion object {
+        val NULL get() = PointerPtr(MemoryUtil.NULL)
+    }
 }
 
 inline fun PointerPtr(bytePtr: BytePtr) = PointerPtr(bytePtr.adr)
