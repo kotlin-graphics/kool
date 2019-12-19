@@ -157,7 +157,19 @@ inline fun <R> MemoryStack.pointerBuffer(block: (PointerBuffer) -> R): Ptr {
     return buf[0]
 }
 
-// No String
+/** It mallocs, passes the address and reads the null terminated string */
+inline fun <R> MemoryStack.asciiAdr(maxSize: Int, block: (Adr) -> R): String {
+    val adr = nmalloc(1, maxSize)
+    block(adr)
+    return MemoryUtil.memASCII(adr, strlen64NT1(adr, maxSize))
+}
+
+/** It malloc the buffer, passes it and reads the null terminated string */
+inline fun <R> MemoryStack.asciiBuffer(maxSize: Int, block: (ByteBuffer) -> R): String {
+    val buf = malloc(1, maxSize)
+    block(buf)
+    return MemoryUtil.memASCII(buf.adr, maxSize)
+}
 
 // --------------------------------------------- setters ---------------------------------------------
 // mainly for syntax consistence

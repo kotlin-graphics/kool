@@ -1,8 +1,7 @@
 package kool
 
 import org.lwjgl.PointerBuffer
-import org.lwjgl.system.Configuration
-import org.lwjgl.system.MemoryStack
+import org.lwjgl.system.MathUtil
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
 import java.nio.*
@@ -95,6 +94,34 @@ fun encodeASCII(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
     if (nullTerminated)
         UNSAFE.putByte(target + len++, 0.toByte())
     return len
+}
+
+fun strlen64NT1(address: Long, maxLength: Int): Int {
+    var i = 0
+    if (8 <= maxLength) {
+        val misalignment = address.toInt() and 7
+        if (misalignment != 0) { // Align to 8 bytes
+            val len = 8 - misalignment
+            while (i < len) {
+                if (UNSAFE.getByte(null, address + i).toInt() == 0)
+                    return i
+                i++
+            }
+        }
+        // Aligned longs for performance
+        while (i <= maxLength - 8) {
+            if (MathUtil.mathHasZeroByte(UNSAFE.getLong(null, address + i)))
+                break
+            i += 8
+        }
+    }
+    // Tail
+    while (i < maxLength) {
+        if (UNSAFE.getByte(null, address + i).toInt() == 0)
+            break
+        i++
+    }
+    return i
 }
 
 // Unfortunately Jetbrain went its own way: https://youtrack.jetbrains.com/issue/KT-8247 , let's keep it coherent with Java

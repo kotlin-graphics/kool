@@ -3,6 +3,7 @@ package kool
 import org.lwjgl.PointerBuffer
 import org.lwjgl.system.MemoryStack
 import org.lwjgl.system.MemoryUtil
+import org.lwjgl.system.MemoryUtil.memASCII
 import org.lwjgl.system.Pointer
 import java.nio.*
 import kotlin.contracts.ExperimentalContracts
@@ -724,7 +725,20 @@ object Stack {
         buf[0]
     }
 
-    // No String
+    /** It mallocs, passes the address and reads the null terminated string */
+    inline fun <R> asciiAdr(maxSize: Int, block: (Adr) -> R): String = with {
+        val adr = it.nmalloc(1, maxSize)
+        block(adr)
+        memASCII(adr, strlen64NT1(adr, maxSize))
+    }
+
+    /** It malloc the buffer, passes it and reads the null terminated string */
+    inline fun <R> asciiBuffer(maxSize: Int, block: (ByteBuffer) -> R): String = with {
+        val buf = it.malloc(1, maxSize)
+        block(buf)
+        memASCII(buf.adr, maxSize)
+    }
+
 
     // --------------------------------------------- setters ---------------------------------------------
 
