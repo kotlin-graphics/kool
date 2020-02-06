@@ -1,5 +1,6 @@
 package kool.lib
 
+import kool.BYTES
 import kool.lim
 import kool.set
 import org.lwjgl.system.MemoryUtil.*
@@ -481,7 +482,7 @@ fun IntBuffer.copyOf(newSize: Int): IntBuffer {
 fun IntBuffer.copyOfRange(fromIndex: Int, toIndex: Int): IntBuffer {
     val count = toIndex - fromIndex
     val dst = memAllocInt(count)
-    memCopy(memAddress(this), memAddress(dst), count.toLong() * Int.SIZE_BYTES)
+    memCopy(memAddress(this), memAddress(dst), count.toLong() * Int.BYTES)
     return dst
 }
 
