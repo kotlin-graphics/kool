@@ -40,7 +40,64 @@ inline var Buffer.lim: Int
         limit(value)
     }
 
+
+// sliceAt
+
 fun ByteBuffer.sliceAt(offset: Int, size: Int = lim - offset): ByteBuffer {
+    val backupPos = pos
+    pos = offset
+    val res = slice()
+    res.lim = size
+    pos = backupPos
+    return res
+}
+
+fun ShortBuffer.sliceAt(offset: Int, size: Int = lim - offset): ShortBuffer {
+    val backupPos = pos
+    pos = offset
+    val res = slice()
+    res.lim = size
+    pos = backupPos
+    return res
+}
+
+fun IntBuffer.sliceAt(offset: Int, size: Int = lim - offset): IntBuffer {
+    val backupPos = pos
+    pos = offset
+    val res = slice()
+    res.lim = size
+    pos = backupPos
+    return res
+}
+
+fun LongBuffer.sliceAt(offset: Int, size: Int = lim - offset): LongBuffer {
+    val backupPos = pos
+    pos = offset
+    val res = slice()
+    res.lim = size
+    pos = backupPos
+    return res
+}
+
+fun FloatBuffer.sliceAt(offset: Int, size: Int = lim - offset): FloatBuffer {
+    val backupPos = pos
+    pos = offset
+    val res = slice()
+    res.lim = size
+    pos = backupPos
+    return res
+}
+
+fun DoubleBuffer.sliceAt(offset: Int, size: Int = lim - offset): DoubleBuffer {
+    val backupPos = pos
+    pos = offset
+    val res = slice()
+    res.lim = size
+    pos = backupPos
+    return res
+}
+
+fun CharBuffer.sliceAt(offset: Int, size: Int = lim - offset): CharBuffer {
     val backupPos = pos
     pos = offset
     val res = slice()
