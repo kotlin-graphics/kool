@@ -801,7 +801,7 @@ object Stack {
     inline fun <R> utf8Buffer(chars: CharSequence, block: (ByteBuffer) -> R): R =
             with { block(it.UTF8(chars, true)) }
 
-    val VERSION = "0.8.4"
+    val VERSION = "0.8.5"
 
     inline operator fun <R> invoke(block: (MemoryStack) -> R): R = with(block)
 }
@@ -809,7 +809,7 @@ object Stack {
 /**
  * same as [Stack.invoke] but with a callsInPlace contract
  */
-@UseExperimental(ExperimentalContracts::class)
+@OptIn(ExperimentalContracts::class)
 inline fun <R> Stack.with(block: (MemoryStack) -> R): R {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
