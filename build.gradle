@@ -52,7 +52,7 @@ compileKotlin {
         freeCompilerArgs = ["-Xuse-experimental=kotlin.Experimental"]
         jvmTarget = "11"
     }
-    destinationDir = compileJava.destinationDir
+//    destinationDir = compileJava.destinationDir
 }
 
 compileTestKotlin {
@@ -65,7 +65,9 @@ compileTestKotlin {
 compileJava {
     dependsOn(':compileKotlin')
     doFirst {
-        options.compilerArgs = ['--module-path', classpath.asPath,]
+        options.compilerArgs = [
+                '--module-path', classpath.asPath,
+                "--patch-module", "$moduleName=${sourceSets["main"].output.asPath}"]
         classpath = files()
     }
 }
