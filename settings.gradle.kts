@@ -6,4 +6,4 @@
 //    }
 //}
 
-rootProject.buildFileName = 'build.gradle'
+rootProject.name = "kool"
