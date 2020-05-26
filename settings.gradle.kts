@@ -6,4 +6,4 @@
 //    }
 //}
 
-rootProject.name = "kool"
+rootProject.name = "kool-jdk8"
