@@ -809,7 +809,7 @@ object Stack {
 /**
  * same as [Stack.invoke] but with a callsInPlace contract
  */
-@UseExperimental(ExperimentalContracts::class)
+@OptIn(ExperimentalContracts::class)
 inline fun <R> Stack.with(block: (MemoryStack) -> R): R {
     contract {
         callsInPlace(block, InvocationKind.EXACTLY_ONCE)
