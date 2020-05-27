@@ -1,5 +1,7 @@
-import org.jetbrains.dokka.gradle.DokkaTask
+import org.gradle.api.attributes.LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE
+import org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE
 import org.gradle.internal.os.OperatingSystem.*
+import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
     java
@@ -13,7 +15,7 @@ val moduleName = "$group.kool"
 
 val kotestVersion = "4.0.5"
 val lwjglVersion = "3.2.3"
-val lwjglNatives = when(current()) {
+val lwjglNatives = when (current()) {
     WINDOWS -> "windows"
     LINUX -> "linux"
     else -> "macos"
@@ -29,7 +31,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("stdlib-jdk8"))
 
-    attributesSchema.attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE).compatibilityRules.add(ModularJarCompatibilityRule::class)
+    attributesSchema.attribute(LIBRARY_ELEMENTS_ATTRIBUTE).compatibilityRules.add(ModularJarCompatibilityRule::class)
     components { withModule<ModularKotlinRule>(kotlin("stdlib")) }
     components { withModule<ModularKotlinRule>(kotlin("stdlib-jdk8")) }
 
@@ -94,9 +96,10 @@ artifacts {
 
 // == Add access to the 'modular' variant of kotlin("stdlib"): Put this into a buildSrc plugin and reuse it in all your subprojects
 configurations.all {
+    attributes.attribute(TARGET_JVM_VERSION_ATTRIBUTE, 11)
     val n = name.toLowerCase()
     if (n.endsWith("compileclasspath") || n.endsWith("runtimeclasspath"))
-        attributes.attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named("modular-jar"))
+        attributes.attribute(LIBRARY_ELEMENTS_ATTRIBUTE, objects.named("modular-jar"))
     if (n.endsWith("compile") || n.endsWith("runtime"))
         isCanBeConsumed = false
 }
@@ -118,7 +121,7 @@ abstract class ModularKotlinRule : ComponentMetadataRule {
         listOf("compile", "runtime").forEach { baseVariant ->
             ctx.details.addVariant("${baseVariant}Modular", baseVariant) {
                 attributes {
-                    attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, getObjects().named("modular-jar"))
+                    attribute(LIBRARY_ELEMENTS_ATTRIBUTE, getObjects().named("modular-jar"))
                 }
                 withFiles {
                     removeAllFiles()
