@@ -1,3 +1,4 @@
+import org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.gradle.internal.os.OperatingSystem.*
 
@@ -58,6 +59,10 @@ tasks {
     }
 
     withType<Test> { useJUnitPlatform() }
+}
+
+configurations.all {
+    attributes.attribute(TARGET_JVM_VERSION_ATTRIBUTE, 8)
 }
 
 val dokkaJar by tasks.creating(Jar::class) {
