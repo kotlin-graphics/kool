@@ -809,6 +809,7 @@ object Stack {
 /**
  * same as [Stack.invoke] but with a callsInPlace contract
  */
+
 @OptIn(ExperimentalContracts::class)
 inline fun <R> Stack.with(block: (MemoryStack) -> R): R {
     contract {

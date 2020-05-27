@@ -5,6 +5,7 @@ import org.gradle.internal.os.OperatingSystem.*
 plugins {
     java
     kotlin("jvm") version "1.3.72"
+    maven
     id("org.jetbrains.dokka") version "0.10.1"
     id("com.github.johnrengelman.shadow").version("5.2.0")
 }
@@ -14,7 +15,7 @@ val moduleName = "$group.kool"
 
 val kotestVersion = "4.0.5"
 val lwjglVersion = "3.2.3"
-val lwjglNatives = when(current()) {
+val lwjglNatives = when (current()) {
     WINDOWS -> "windows"
     LINUX -> "linux"
     else -> "macos"
