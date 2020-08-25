@@ -7,40 +7,6 @@ import org.lwjgl.system.MemoryUtil.*
 import java.nio.IntBuffer
 
 
-fun IntBuffer.single(): Int {
-    return when (lim) {
-        0 -> throw NoSuchElementException("Array is empty.")
-        1 -> this[0]
-        else -> throw IllegalArgumentException("Array has more than one element.")
-    }
-}
-
-inline fun IntBuffer.single(predicate: (Int) -> Boolean): Int {
-    var single: Int? = null
-    var found = false
-    for (element in this)
-        if (predicate(element)) {
-            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-            single = element
-            found = true
-        }
-    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-    return single as Int
-}
-
-fun IntBuffer.singleOrNull() = if (lim == 1) this[0] else null
-inline fun IntBuffer.singleOrNull(predicate: (Int) -> Boolean): Int? {
-    var single: Int? = null
-    var found = false
-    for (element in this)
-        if (predicate(element)) {
-            if (found) return null
-            single = element
-            found = true
-        }
-    if (!found) return null
-    return single
-}
 
 
 fun IntBuffer.dropLast(n: Int): List<Int> {
@@ -48,49 +14,7 @@ fun IntBuffer.dropLast(n: Int): List<Int> {
     return take((lim - n).coerceAtLeast(0))
 }
 
-inline fun IntBuffer.dropLastWhile(predicate: (Int) -> Boolean): List<Int> {
-    for (index in lastIndex downTo 0)
-        if (!predicate(this[index]))
-            return take(index + 1)
-    return emptyList()
-}
-
-inline fun IntBuffer.dropWhile(predicate: (Int) -> Boolean): List<Int> {
-    var yielding = false
-    val list = ArrayList<Int>()
-    for (item in this)
-        if (yielding) list += item
-        else if (!predicate(item)) {
-            list += item
-            yielding = true
-        }
-    return list
-}
-
-inline fun IntBuffer.filter(predicate: (Int) -> Boolean) = filterTo(ArrayList(), predicate)
-inline fun IntBuffer.filterIndexed(predicate: (index: Int, Int) -> Boolean) = filterIndexedTo(ArrayList(), predicate)
-inline fun <C : MutableCollection<in Int>> IntBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Int) -> Boolean): C {
-    forEachIndexed { index, element ->
-        if (predicate(index, element)) destination += element
-    }
-    return destination
-}
-
 inline fun IntBuffer.filterNot(predicate: (Int) -> Boolean) = filterNotTo(ArrayList<Int>(), predicate)
-inline fun <C : MutableCollection<in Int>> IntBuffer.filterNotTo(destination: C, predicate: (Int) -> Boolean): C {
-    for (element in this) if (!predicate(element)) destination += element
-    return destination
-}
-
-inline fun <C : MutableCollection<in Int>> IntBuffer.filterTo(destination: C, predicate: (Int) -> Boolean): C {
-    for (element in this) if (predicate(element)) destination += element
-    return destination
-}
-
-fun IntBuffer.slice(indices: IntRange): List<Int> {
-    if (indices.isEmpty()) return listOf()
-    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-}
 
 fun IntBuffer.slice(indices: Iterable<Int>): List<Int> {
     val size = indices.collectionSizeOrDefault(10)

@@ -1,22 +1,21 @@
 import org.gradle.api.attributes.LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE
 import org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE
 import org.gradle.internal.os.OperatingSystem.*
-import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
     java
-    kotlin("jvm") version "1.3.72"
-    maven
-    id("org.jetbrains.dokka") version "0.10.1"
-    id("com.github.johnrengelman.shadow").version("5.2.0")
+    kotlin("jvm") version "1.4.0"
+//    maven
+    id("org.jetbrains.dokka") version "1.4.0-rc"
+    id("com.github.johnrengelman.shadow").version("6.0.0")
 }
 
 group = "com.github.kotlin_graphics"
 val moduleName = "$group.kool"
 
-val kotestVersion = "4.0.5"
+val kotestVersion = "4.2.0"
 val lwjglVersion = "3.2.3"
-val lwjglNatives = when (current()) {
+val lwjglNatives = "natives-" + when (current()) {
     WINDOWS -> "windows"
     LINUX -> "linux"
     else -> "macos"
@@ -36,14 +35,14 @@ dependencies {
     components { withModule<ModularKotlinRule>(kotlin("stdlib")) }
     components { withModule<ModularKotlinRule>(kotlin("stdlib-jdk8")) }
 
+    implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
     listOf("", "-jemalloc").forEach {
-        implementation("org.lwjgl:lwjgl$it:$lwjglVersion")
-        runtimeOnly("org.lwjgl:lwjgl$it:$lwjglVersion:natives-$lwjglNatives")
+        implementation("org.lwjgl", "lwjgl$it", classifier = lwjglNatives)
+        runtimeOnly("org.lwjgl", "lwjgl$it", classifier = lwjglNatives)
     }
 
-    listOf("runner-junit5", "assertions-core", "runner-console"/*, "property"*/).forEach {
-        testImplementation("io.kotest:kotest-$it-jvm:$kotestVersion")
-    }
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
 }
 
 java {
@@ -51,9 +50,20 @@ java {
 }
 
 tasks {
-    val dokka by getting(DokkaTask::class) {
-        outputFormat = "html"
-        outputDirectory = "$buildDir/dokka"
+
+    dokkaHtml {
+        dokkaSourceSets {
+            configureEach {
+                sourceLink {
+                    // Unix based directory relative path to the root of the project (where you execute gradle respectively).
+                    path = "src/main/kotlin"
+                    // URL showing where the source code can be accessed through the web browser
+                    url = "https://github.com/kotlin-graphics/kool/tree/master/src/main/kotlin"
+                    // Suffix which is used to append the line number to the URL. Use #L for GitHub
+                    lineSuffix = "#L"
+                }
+            }
+        }
     }
 
     compileKotlin {
@@ -81,7 +91,7 @@ val dokkaJar by tasks.creating(Jar::class) {
     group = JavaBasePlugin.DOCUMENTATION_GROUP
     description = "Assembles Kotlin docs with Dokka"
     archiveClassifier.set("javadoc")
-    from(tasks.dokka)
+    from(tasks.dokkaHtml)
 }
 
 val sourceJar = task("sourceJar", Jar::class) {

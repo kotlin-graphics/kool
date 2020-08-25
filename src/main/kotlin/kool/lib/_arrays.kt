@@ -1,302 +1,281 @@
 package kool.lib
 
-import kool.get
 import kool.lim
 import kool.pos
 import kool.set
 import org.lwjgl.system.MemoryUtil.*
 import java.nio.*
+import kotlin.random.Random
 
 /** Returns 1st *element* from the collection. */
-operator fun ByteBuffer.component1() = get(0)
+operator fun ByteBuffer.component1(): Byte = get(0)
 
 /** Returns 1st *element* from the collection. */
-operator fun ShortBuffer.component1() = get(0)
+operator fun ShortBuffer.component1(): Short = get(0)
 
 /** Returns 1st *element* from the collection. */
-operator fun IntBuffer.component1() = get(0)
+operator fun IntBuffer.component1(): Int = get(0)
 
 /** Returns 1st *element* from the collection. */
-operator fun LongBuffer.component1() = get(0)
+operator fun LongBuffer.component1(): Long = get(0)
 
 /** Returns 1st *element* from the collection. */
-operator fun FloatBuffer.component1() = get(0)
+operator fun FloatBuffer.component1(): Float = get(0)
 
 /** Returns 1st *element* from the collection. */
-operator fun DoubleBuffer.component1() = get(0)
+operator fun DoubleBuffer.component1(): Double = get(0)
 
 /** Returns 1st *element* from the collection. */
-operator fun CharBuffer.component1() = get(0)
+operator fun CharBuffer.component1(): Char = get(0)
 
 
 /** Returns 2nd *element* from the collection. */
-operator fun ByteBuffer.component2() = get(1)
+operator fun ByteBuffer.component2(): Byte = get(1)
 
 /** Returns 2nd *element* from the collection. */
-operator fun ShortBuffer.component2() = get(1)
+operator fun ShortBuffer.component2(): Short = get(1)
 
 /** Returns 2nd *element* from the collection. */
-operator fun IntBuffer.component2() = get(1)
+operator fun IntBuffer.component2(): Int = get(1)
 
 /** Returns 2nd *element* from the collection. */
-operator fun LongBuffer.component2() = get(1)
+operator fun LongBuffer.component2(): Long = get(1)
 
 /** Returns 2nd *element* from the collection. */
-operator fun FloatBuffer.component2() = get(1)
+operator fun FloatBuffer.component2(): Float = get(1)
 
 /** Returns 2nd *element* from the collection. */
-operator fun DoubleBuffer.component2() = get(1)
+operator fun DoubleBuffer.component2(): Double = get(1)
 
 /** Returns 2nd *element* from the collection. */
-operator fun CharBuffer.component2() = get(1)
+operator fun CharBuffer.component2(): Char = get(1)
 
 
 /** Returns 3rd *element* from the collection. */
-operator fun ByteBuffer.component3() = get(2)
+operator fun ByteBuffer.component3(): Byte = get(2)
 
 /** Returns 3rd *element* from the collection. */
-operator fun ShortBuffer.component3() = get(2)
+operator fun ShortBuffer.component3(): Short = get(2)
 
 /** Returns 3rd *element* from the collection. */
-operator fun IntBuffer.component3() = get(2)
+operator fun IntBuffer.component3(): Int = get(2)
 
 /** Returns 3rd *element* from the collection. */
-operator fun LongBuffer.component3() = get(2)
+operator fun LongBuffer.component3(): Long = get(2)
 
 /** Returns 3rd *element* from the collection. */
-operator fun FloatBuffer.component3() = get(2)
+operator fun FloatBuffer.component3(): Float = get(2)
 
 /** Returns 3rd *element* from the collection. */
-operator fun DoubleBuffer.component3() = get(2)
+operator fun DoubleBuffer.component3(): Double = get(2)
 
 /** Returns 3rd *element* from the collection. */
-operator fun CharBuffer.component3() = get(2)
+operator fun CharBuffer.component3(): Char = get(2)
 
 
 /** Returns 4th *element* from the collection. */
-operator fun ByteBuffer.component4() = get(3)
+operator fun ByteBuffer.component4(): Byte = get(3)
 
 /** Returns 4th *element* from the collection. */
-operator fun ShortBuffer.component4() = get(3)
+operator fun ShortBuffer.component4(): Short = get(3)
 
 /** Returns 4th *element* from the collection. */
-operator fun IntBuffer.component4() = get(3)
+operator fun IntBuffer.component4(): Int = get(3)
 
 /** Returns 4th *element* from the collection. */
-operator fun LongBuffer.component4() = get(3)
+operator fun LongBuffer.component4(): Long = get(3)
 
 /** Returns 4th *element* from the collection. */
-operator fun FloatBuffer.component4() = get(3)
+operator fun FloatBuffer.component4(): Float = get(3)
 
 /** Returns 4th *element* from the collection. */
-operator fun DoubleBuffer.component4() = get(3)
+operator fun DoubleBuffer.component4(): Double = get(3)
 
 /** Returns 4th *element* from the collection. */
-operator fun CharBuffer.component4() = get(3)
+operator fun CharBuffer.component4(): Char = get(3)
 
 
 /** Returns 5th *element* from the collection. */
-operator fun ByteBuffer.component5() = get(4)
+operator fun ByteBuffer.component5(): Byte = get(4)
 
 /** Returns 5th *element* from the collection. */
-operator fun ShortBuffer.component5() = get(4)
+operator fun ShortBuffer.component5(): Short = get(4)
 
 /** Returns 5th *element* from the collection. */
-operator fun IntBuffer.component5() = get(4)
+operator fun IntBuffer.component5(): Int = get(4)
 
 /** Returns 5th *element* from the collection. */
-operator fun LongBuffer.component5() = get(4)
+operator fun LongBuffer.component5(): Long = get(4)
 
 /** Returns 5th *element* from the collection. */
-operator fun FloatBuffer.component5() = get(4)
+operator fun FloatBuffer.component5(): Float = get(4)
 
 /** Returns 5th *element* from the collection. */
-operator fun DoubleBuffer.component5() = get(4)
+operator fun DoubleBuffer.component5(): Double = get(4)
 
 /** Returns 5th *element* from the collection. */
-operator fun CharBuffer.component5() = get(4)
+operator fun CharBuffer.component5(): Char = get(4)
 
 
 /** Returns `true` if [element] is found in the buffer. */
-operator fun ByteBuffer.contains(element: Byte) = indexOf(element) >= 0
+operator fun ByteBuffer.contains(element: Byte): Boolean = indexOf(element) >= 0
 
 /** Returns `true` if [element] is found in the buffer. */
-operator fun ShortBuffer.contains(element: Short) = indexOf(element) >= 0
+operator fun ShortBuffer.contains(element: Short): Boolean = indexOf(element) >= 0
 
 /** Returns `true` if [element] is found in the buffer. */
-operator fun IntBuffer.contains(element: Int) = indexOf(element) >= 0
+operator fun IntBuffer.contains(element: Int): Boolean = indexOf(element) >= 0
 
 /** Returns `true` if [element] is found in the buffer. */
-operator fun LongBuffer.contains(element: Long) = indexOf(element) >= 0
+operator fun LongBuffer.contains(element: Long): Boolean = indexOf(element) >= 0
 
 /** Returns `true` if [element] is found in the buffer. */
-operator fun FloatBuffer.contains(element: Float) = indexOf(element) >= 0
+operator fun FloatBuffer.contains(element: Float): Boolean = indexOf(element) >= 0
 
 /** Returns `true` if [element] is found in the buffer. */
-operator fun DoubleBuffer.contains(element: Double) = indexOf(element) >= 0
+operator fun DoubleBuffer.contains(element: Double): Boolean = indexOf(element) >= 0
 
 /** Returns `true` if [element] is found in the buffer. */
-operator fun CharBuffer.contains(element: Char) = indexOf(element) >= 0
+operator fun CharBuffer.contains(element: Char): Boolean = indexOf(element) >= 0
 
 
 /** Returns an element at the given [index] or throws an [IndexOutOfBoundsException] if the [index] is out of bounds of this buffer. */
-fun ByteBuffer.elementAt(index: Int) = get(index)
+fun ByteBuffer.elementAt(index: Int): Byte = get(index)
 
 /** Returns an element at the given [index] or throws an [IndexOutOfBoundsException] if the [index] is out of bounds of this buffer. */
-fun ShortBuffer.elementAt(index: Int) = get(index)
+fun ShortBuffer.elementAt(index: Int): Short = get(index)
 
 /** Returns an element at the given [index] or throws an [IndexOutOfBoundsException] if the [index] is out of bounds of this buffer. */
-fun IntBuffer.elementAt(index: Int) = get(index)
+fun IntBuffer.elementAt(index: Int): Int = get(index)
 
 /** Returns an element at the given [index] or throws an [IndexOutOfBoundsException] if the [index] is out of bounds of this buffer. */
-fun LongBuffer.elementAt(index: Int) = get(index)
+fun LongBuffer.elementAt(index: Int): Long = get(index)
 
 /** Returns an element at the given [index] or throws an [IndexOutOfBoundsException] if the [index] is out of bounds of this buffer. */
-fun FloatBuffer.elementAt(index: Int) = get(index)
+fun FloatBuffer.elementAt(index: Int): Float = get(index)
 
 /** Returns an element at the given [index] or throws an [IndexOutOfBoundsException] if the [index] is out of bounds of this buffer. */
-fun DoubleBuffer.elementAt(index: Int) = get(index)
+fun DoubleBuffer.elementAt(index: Int): Double = get(index)
 
 /** Returns an element at the given [index] or throws an [IndexOutOfBoundsException] if the [index] is out of bounds of this buffer. */
-fun CharBuffer.elementAt(index: Int) = get(index)
+fun CharBuffer.elementAt(index: Int): Char = get(index)
 
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun ByteBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Byte) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun ByteBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Byte): Byte = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun ShortBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Short) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun ShortBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Short): Short = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun IntBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Int) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun IntBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Int): Int = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun LongBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Long) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun LongBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Long): Long = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun FloatBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Float) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun FloatBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Float): Float = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun DoubleBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Double) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun DoubleBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Double): Double = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun CharBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Char) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun CharBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> Char): Char = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
- fun ByteBuffer.elementAtOrNull(index: Int) = getOrNull(index)
+fun ByteBuffer.elementAtOrNull(index: Int): Byte? = getOrNull(index)
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
- fun ShortBuffer.elementAtOrNull(index: Int) = getOrNull(index)
+fun ShortBuffer.elementAtOrNull(index: Int): Short? = getOrNull(index)
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
- fun IntBuffer.elementAtOrNull(index: Int) = getOrNull(index)
+fun IntBuffer.elementAtOrNull(index: Int): Int? = getOrNull(index)
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
- fun LongBuffer.elementAtOrNull(index: Int) = getOrNull(index)
+fun LongBuffer.elementAtOrNull(index: Int): Long? = getOrNull(index)
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
- fun FloatBuffer.elementAtOrNull(index: Int) = getOrNull(index)
+fun FloatBuffer.elementAtOrNull(index: Int): Float? = getOrNull(index)
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
- fun DoubleBuffer.elementAtOrNull(index: Int) = getOrNull(index)
+fun DoubleBuffer.elementAtOrNull(index: Int): Double? = getOrNull(index)
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
- fun CharBuffer.elementAtOrNull(index: Int) = getOrNull(index)
+fun CharBuffer.elementAtOrNull(index: Int): Char? = getOrNull(index)
 
 
 /** Returns the first element matching the given [predicate], or `null` if no such element was found. */
-inline fun ByteBuffer.find(predicate: (Byte) -> Boolean) = firstOrNull(predicate)
+inline fun ByteBuffer.find(predicate: (Byte) -> Boolean): Byte? = firstOrNull(predicate)
 
 /** Returns the first element matching the given [predicate], or `null` if no such element was found. */
-inline fun ShortBuffer.find(predicate: (Short) -> Boolean) = firstOrNull(predicate)
+inline fun ShortBuffer.find(predicate: (Short) -> Boolean): Short? = firstOrNull(predicate)
 
 /** Returns the first element matching the given [predicate], or `null` if no such element was found. */
-inline fun IntBuffer.find(predicate: (Int) -> Boolean) = firstOrNull(predicate)
+inline fun IntBuffer.find(predicate: (Int) -> Boolean): Int? = firstOrNull(predicate)
 
 /** Returns the first element matching the given [predicate], or `null` if no such element was found. */
-inline fun LongBuffer.find(predicate: (Long) -> Boolean) = firstOrNull(predicate)
+inline fun LongBuffer.find(predicate: (Long) -> Boolean): Long? = firstOrNull(predicate)
 
 /** Returns the first element matching the given [predicate], or `null` if no such element was found. */
-inline fun FloatBuffer.find(predicate: (Float) -> Boolean) = firstOrNull(predicate)
+inline fun FloatBuffer.find(predicate: (Float) -> Boolean): Float? = firstOrNull(predicate)
 
 /** Returns the first element matching the given [predicate], or `null` if no such element was found. */
-inline fun DoubleBuffer.find(predicate: (Double) -> Boolean) = firstOrNull(predicate)
+inline fun DoubleBuffer.find(predicate: (Double) -> Boolean): Double? = firstOrNull(predicate)
 
 /** Returns the first element matching the given [predicate], or `null` if no such element was found. */
-inline fun CharBuffer.find(predicate: (Char) -> Boolean) = firstOrNull(predicate)
+inline fun CharBuffer.find(predicate: (Char) -> Boolean): Char? = firstOrNull(predicate)
 
 
 /** Returns the last element matching the given [predicate], or `null` if no such element was found. */
-inline fun ByteBuffer.findLast(predicate: (Byte) -> Boolean) = lastOrNull(predicate)
+inline fun ByteBuffer.findLast(predicate: (Byte) -> Boolean): Byte? = lastOrNull(predicate)
 
 /** Returns the last element matching the given [predicate], or `null` if no such element was found. */
-inline fun ShortBuffer.findLast(predicate: (Short) -> Boolean) = lastOrNull(predicate)
+inline fun ShortBuffer.findLast(predicate: (Short) -> Boolean): Short? = lastOrNull(predicate)
 
 /** Returns the last element matching the given [predicate], or `null` if no such element was found. */
-inline fun IntBuffer.findLast(predicate: (Int) -> Boolean) = lastOrNull(predicate)
+inline fun IntBuffer.findLast(predicate: (Int) -> Boolean): Int? = lastOrNull(predicate)
 
 /** Returns the last element matching the given [predicate], or `null` if no such element was found. */
-inline fun LongBuffer.findLast(predicate: (Long) -> Boolean) = lastOrNull(predicate)
+inline fun LongBuffer.findLast(predicate: (Long) -> Boolean): Long? = lastOrNull(predicate)
 
 /** Returns the last element matching the given [predicate], or `null` if no such element was found. */
-inline fun FloatBuffer.findLast(predicate: (Float) -> Boolean) = lastOrNull(predicate)
+inline fun FloatBuffer.findLast(predicate: (Float) -> Boolean): Float? = lastOrNull(predicate)
 
 /** Returns the last element matching the given [predicate], or `null` if no such element was found. */
-inline fun DoubleBuffer.findLast(predicate: (Double) -> Boolean) = lastOrNull(predicate)
+inline fun DoubleBuffer.findLast(predicate: (Double) -> Boolean): Double? = lastOrNull(predicate)
 
 /** Returns the last element matching the given [predicate], or `null` if no such element was found. */
-inline fun CharBuffer.findLast(predicate: (Char) -> Boolean) = lastOrNull(predicate)
+inline fun CharBuffer.findLast(predicate: (Char) -> Boolean): Char? = lastOrNull(predicate)
 
 
 /** Returns first element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun ByteBuffer.first(): Byte {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[0]
-}
+fun ByteBuffer.first(): Byte = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[0]
 
 /** Returns first element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun ShortBuffer.first(): Short {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[0]
-}
+fun ShortBuffer.first(): Short = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[0]
 
 /** Returns first element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun IntBuffer.first(): Int {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[0]
-}
+fun IntBuffer.first(): Int = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[0]
 
 /** Returns first element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun LongBuffer.first(): Long {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[0]
-}
+fun LongBuffer.first(): Long = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[0]
 
 /** Returns first element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun FloatBuffer.first(): Float {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[0]
-}
+fun FloatBuffer.first(): Float = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[0]
 
 /** Returns first element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun DoubleBuffer.first(): Double {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[0]
-}
+fun DoubleBuffer.first(): Double = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[0]
 
 /** Returns first element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun CharBuffer.first(): Char {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[0]
-}
+fun CharBuffer.first(): Char = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[0]
 
 
 /** Returns the first element matching the given [predicate].
@@ -350,25 +329,25 @@ inline fun CharBuffer.first(predicate: (Char) -> Boolean): Char {
 
 
 /** Returns the first element, or `null` if the buffer is empty. */
-fun ByteBuffer.firstOrNull() = if (isEmpty()) null else this[0]
+fun ByteBuffer.firstOrNull(): Byte? = if (isEmpty()) null else this[0]
 
 /** Returns the first element, or `null` if the buffer is empty. */
-fun ShortBuffer.firstOrNull() = if (isEmpty()) null else this[0]
+fun ShortBuffer.firstOrNull(): Short? = if (isEmpty()) null else this[0]
 
 /** Returns the first element, or `null` if the buffer is empty. */
-fun IntBuffer.firstOrNull() = if (isEmpty()) null else this[0]
+fun IntBuffer.firstOrNull(): Int? = if (isEmpty()) null else this[0]
 
 /** Returns the first element, or `null` if the buffer is empty. */
-fun LongBuffer.firstOrNull() = if (isEmpty()) null else this[0]
+fun LongBuffer.firstOrNull(): Long? = if (isEmpty()) null else this[0]
 
 /** Returns the first element, or `null` if the buffer is empty. */
-fun FloatBuffer.firstOrNull() = if (isEmpty()) null else this[0]
+fun FloatBuffer.firstOrNull(): Float? = if (isEmpty()) null else this[0]
 
 /** Returns the first element, or `null` if the buffer is empty. */
-fun DoubleBuffer.firstOrNull() = if (isEmpty()) null else this[0]
+fun DoubleBuffer.firstOrNull(): Double? = if (isEmpty()) null else this[0]
 
 /** Returns the first element, or `null` if the buffer is empty. */
-fun CharBuffer.firstOrNull() = if (isEmpty()) null else this[0]
+fun CharBuffer.firstOrNull(): Char? = if (isEmpty()) null else this[0]
 
 
 /** Returns the first element matching the given [predicate], or `null` if element was not found. */
@@ -415,47 +394,47 @@ inline fun CharBuffer.firstOrNull(predicate: (Char) -> Boolean): Char? {
 
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun ByteBuffer.getOrElse(index: Int, defaultValue: (Int) -> Byte) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun ByteBuffer.getOrElse(index: Int, defaultValue: (Int) -> Byte): Byte = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun ShortBuffer.getOrElse(index: Int, defaultValue: (Int) -> Short) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun ShortBuffer.getOrElse(index: Int, defaultValue: (Int) -> Short): Short = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun IntBuffer.getOrElse(index: Int, defaultValue: (Int) -> Int) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun IntBuffer.getOrElse(index: Int, defaultValue: (Int) -> Int): Int = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun LongBuffer.getOrElse(index: Int, defaultValue: (Int) -> Long) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun LongBuffer.getOrElse(index: Int, defaultValue: (Int) -> Long): Long = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun FloatBuffer.getOrElse(index: Int, defaultValue: (Int) -> Float) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun FloatBuffer.getOrElse(index: Int, defaultValue: (Int) -> Float): Float = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun DoubleBuffer.getOrElse(index: Int, defaultValue: (Int) -> Double) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun DoubleBuffer.getOrElse(index: Int, defaultValue: (Int) -> Double): Double = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 /** Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this buffer. */
-inline fun CharBuffer.getOrElse(index: Int, defaultValue: (Int) -> Char) = if (index in 0..lastIndex) get(index) else defaultValue(index)
+inline fun CharBuffer.getOrElse(index: Int, defaultValue: (Int) -> Char): Char = if (index in 0..lastIndex) get(index) else defaultValue(index)
 
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
-fun ByteBuffer.getOrNull(index: Int) = if (index in 0..lastIndex) get(index) else null
+fun ByteBuffer.getOrNull(index: Int): Byte? = if (index in 0..lastIndex) get(index) else null
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
-fun ShortBuffer.getOrNull(index: Int) = if (index in 0..lastIndex) get(index) else null
+fun ShortBuffer.getOrNull(index: Int): Short? = if (index in 0..lastIndex) get(index) else null
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
-fun IntBuffer.getOrNull(index: Int) = if (index in 0..lastIndex) get(index) else null
+fun IntBuffer.getOrNull(index: Int): Int? = if (index in 0..lastIndex) get(index) else null
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
-fun LongBuffer.getOrNull(index: Int) = if (index in 0..lastIndex) get(index) else null
+fun LongBuffer.getOrNull(index: Int): Long? = if (index in 0..lastIndex) get(index) else null
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
-fun FloatBuffer.getOrNull(index: Int) = if (index in 0..lastIndex) get(index) else null
+fun FloatBuffer.getOrNull(index: Int): Float? = if (index in 0..lastIndex) get(index) else null
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
-fun DoubleBuffer.getOrNull(index: Int) = if (index in 0..lastIndex) get(index) else null
+fun DoubleBuffer.getOrNull(index: Int): Double? = if (index in 0..lastIndex) get(index) else null
 
 /** Returns an element at the given [index] or `null` if the [index] is out of bounds of this buffer. */
-fun CharBuffer.getOrNull(index: Int) = if (index in 0..lastIndex) get(index) else null
+fun CharBuffer.getOrNull(index: Int): Char? = if (index in 0..lastIndex) get(index) else null
 
 
 /** Returns first index of [element], or -1 if the buffer does not contain element. */
@@ -631,64 +610,32 @@ inline fun CharBuffer.indexOfLast(predicate: (Char) -> Boolean): Int {
 
 /** Returns the last element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun ByteBuffer.last(): Byte {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[lastIndex]
-}
+fun ByteBuffer.last(): Byte = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[lastIndex]
 
 /** Returns the last element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun ShortBuffer.last(): Short {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[lastIndex]
-}
+fun ShortBuffer.last(): Short = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[lastIndex]
 
 /** Returns the last element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun IntBuffer.last(): Int {
-    if (isEmpty())
-        throw NoSuchElementException("Array is empty.")
-    return this[lastIndex]
-}
+fun IntBuffer.last(): Int = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[lastIndex]
 
 /** Returns the last element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun LongBuffer.last(): Long {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[lastIndex]
-}
+fun LongBuffer.last(): Long = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[lastIndex]
 
 /** Returns the last element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun FloatBuffer.last(): Float {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[lastIndex]
-}
+fun FloatBuffer.last(): Float = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[lastIndex]
 
 /** Returns the last element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun DoubleBuffer.last(): Double {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[lastIndex]
-}
+fun DoubleBuffer.last(): Double = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[lastIndex]
 
 /** Returns the last element.
  *  @throws [NoSuchElementException] if the buffer is empty. */
-fun CharBuffer.last(): Char {
-    if (isEmpty()) throw NoSuchElementException("Array is empty.")
-    return this[lastIndex]
-}
+fun CharBuffer.last(): Char = if (isEmpty()) throw NoSuchElementException("Array is empty.") else this[lastIndex]
 
-
-/** Returns the last element matching the given [predicate].
- *  @throws [NoSuchElementException] if no such element is found. */
-inline fun <T> Array<out T>.last(predicate: (T) -> Boolean): T {
-    for (index in this.indices.reversed()) {
-        val element = this[index]
-        if (predicate(element)) return element
-    }
-    throw NoSuchElementException("Array contains no element matching the predicate.")
-}
 
 /** Returns the last element matching the given [predicate].
  *  @throws [NoSuchElementException] if no such element is found. */
@@ -819,25 +766,25 @@ fun CharBuffer.lastIndexOf(element: Char): Int {
 
 
 /** Returns the last element, or `null` if the buffer is empty. */
-fun ByteBuffer.lastOrNull() = if (isEmpty()) null else this[lim - 1]
+fun ByteBuffer.lastOrNull(): Byte? = if (isEmpty()) null else this[lim - 1]
 
 /** Returns the last element, or `null` if the buffer is empty. */
-fun ShortBuffer.lastOrNull() = if (isEmpty()) null else this[lim - 1]
+fun ShortBuffer.lastOrNull(): Short? = if (isEmpty()) null else this[lim - 1]
 
 /** Returns the last element, or `null` if the buffer is empty. */
-fun IntBuffer.lastOrNull() = if (isEmpty()) null else this[lim - 1]
+fun IntBuffer.lastOrNull(): Int? = if (isEmpty()) null else this[lim - 1]
 
 /** Returns the last element, or `null` if the buffer is empty. */
-fun LongBuffer.lastOrNull() = if (isEmpty()) null else this[lim - 1]
+fun LongBuffer.lastOrNull(): Long? = if (isEmpty()) null else this[lim - 1]
 
 /** Returns the last element, or `null` if the buffer is empty. */
-fun FloatBuffer.lastOrNull() = if (isEmpty()) null else this[lim - 1]
+fun FloatBuffer.lastOrNull(): Float? = if (isEmpty()) null else this[lim - 1]
 
 /** Returns the last element, or `null` if the buffer is empty. */
-fun DoubleBuffer.lastOrNull() = if (isEmpty()) null else this[lim - 1]
+fun DoubleBuffer.lastOrNull(): Double? = if (isEmpty()) null else this[lim - 1]
 
 /** Returns the last element, or `null` if the buffer is empty. */
-fun CharBuffer.lastOrNull() = if (isEmpty()) null else this[lim - 1]
+fun CharBuffer.lastOrNull(): Char? = if (isEmpty()) null else this[lim - 1]
 
 
 /** Returns the last element matching the given [predicate], or `null` if no such element was found. */
@@ -903,482 +850,395 @@ inline fun CharBuffer.lastOrNull(predicate: (Char) -> Boolean): Char? {
     return null
 }
 
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun <T> Array<out T>.single(): T {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun ByteBuffer.single(): Byte {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun ShortBuffer.single(): Short {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun IntBuffer.single(): Int {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun LongBuffer.single(): Long {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun FloatBuffer.single(): Float {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun DoubleBuffer.single(): Double {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun DELETE.single(): Boolean {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element, or throws an exception if the buffer is empty or has more than one element.
-// */
-//fun CharBuffer.single(): Char {
-//    return when (size) {
-//        0 -> throw NoSuchElementException("Array is empty.")
-//        1 -> this[0]
-//        else -> throw IllegalArgumentException("Array has more than one element.")
-//    }
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun <T> Array<out T>.single(predicate: (T) -> Boolean): T {
-//    var single: T? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as T
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun ByteBuffer.single(predicate: (Byte) -> Boolean): Byte {
-//    var single: Byte? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as Byte
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun ShortBuffer.single(predicate: (Short) -> Boolean): Short {
-//    var single: Short? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as Short
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun IntBuffer.single(predicate: (Int) -> Boolean): Int {
-//    var single: Int? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as Int
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun LongBuffer.single(predicate: (Long) -> Boolean): Long {
-//    var single: Long? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as Long
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun FloatBuffer.single(predicate: (Float) -> Boolean): Float {
-//    var single: Float? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as Float
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun DoubleBuffer.single(predicate: (Double) -> Boolean): Double {
-//    var single: Double? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as Double
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun DELETE.single(predicate: (Boolean) -> Boolean): Boolean {
-//    var single: Boolean? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as Boolean
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.
-// */
-//inline fun CharBuffer.single(predicate: (Char) -> Boolean): Char {
-//    var single: Char? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
-//    @Suppress("UNCHECKED_CAST")
-//    return single as Char
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun <T> Array<out T>.singleOrNull(): T? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun ByteBuffer.singleOrNull(): Byte? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun ShortBuffer.singleOrNull(): Short? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun IntBuffer.singleOrNull(): Int? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun LongBuffer.singleOrNull(): Long? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun FloatBuffer.singleOrNull(): Float? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun DoubleBuffer.singleOrNull(): Double? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun DELETE.singleOrNull(): Boolean? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns single element, or `null` if the buffer is empty or has more than one element.
-// */
-//fun CharBuffer.singleOrNull(): Char? {
-//    return if (size == 1) this[0] else null
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun <T> Array<out T>.singleOrNull(predicate: (T) -> Boolean): T? {
-//    var single: T? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun ByteBuffer.singleOrNull(predicate: (Byte) -> Boolean): Byte? {
-//    var single: Byte? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun ShortBuffer.singleOrNull(predicate: (Short) -> Boolean): Short? {
-//    var single: Short? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun IntBuffer.singleOrNull(predicate: (Int) -> Boolean): Int? {
-//    var single: Int? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun LongBuffer.singleOrNull(predicate: (Long) -> Boolean): Long? {
-//    var single: Long? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun FloatBuffer.singleOrNull(predicate: (Float) -> Boolean): Float? {
-//    var single: Float? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun DoubleBuffer.singleOrNull(predicate: (Double) -> Boolean): Double? {
-//    var single: Double? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun DELETE.singleOrNull(predicate: (Boolean) -> Boolean): Boolean? {
-//    var single: Boolean? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
-//
-///**
-// * Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.
-// */
-//inline fun CharBuffer.singleOrNull(predicate: (Char) -> Boolean): Char? {
-//    var single: Char? = null
-//    var found = false
-//    for (element in this) {
-//        if (predicate(element)) {
-//            if (found) return null
-//            single = element
-//            found = true
-//        }
-//    }
-//    if (!found) return null
-//    return single
-//}
+/** Returns a random element from this array.
+ *  @throws NoSuchElementException if this array is empty. */
+inline fun ByteBuffer.random(): Byte = random(Random)
+
+/** Returns a random element from this array.
+ *  @throws NoSuchElementException if this array is empty. */
+inline fun ShortBuffer.random(): Short = random(Random)
+
+/** Returns a random element from this array.
+ *  @throws NoSuchElementException if this array is empty. */
+inline fun IntBuffer.random(): Int = random(Random)
+
+/** Returns a random element from this array.
+ *  @throws NoSuchElementException if this array is empty. */
+inline fun LongBuffer.random(): Long = random(Random)
+
+/** Returns a random element from this array.
+ *  @throws NoSuchElementException if this array is empty. */
+inline fun FloatBuffer.random(): Float = random(Random)
+
+/** Returns a random element from this array.
+ *  @throws NoSuchElementException if this array is empty. */
+inline fun DoubleBuffer.random(): Double = random(Random)
+
+/** Returns a random element from this array.
+ *  @throws NoSuchElementException if this array is empty. */
+inline fun CharBuffer.random(): Char = random(Random)
+
+
+/** Returns a random element from this array using the specified source of randomness.
+ *  @throws NoSuchElementException if this array is empty. */
+fun ByteBuffer.random(random: Random): Byte = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness.
+ *  @throws NoSuchElementException if this array is empty. */
+fun ShortBuffer.random(random: Random): Short = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness.
+ *  @throws NoSuchElementException if this array is empty. */
+fun IntBuffer.random(random: Random): Int = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness.
+ *  @throws NoSuchElementException if this array is empty. */
+fun LongBuffer.random(random: Random): Long = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness.
+ *  @throws NoSuchElementException if this array is empty. */
+fun FloatBuffer.random(random: Random): Float = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness.
+ *  @throws NoSuchElementException if this array is empty. */
+fun DoubleBuffer.random(random: Random): Double = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness.
+ *  @throws NoSuchElementException if this array is empty. */
+fun CharBuffer.random(random: Random): Char = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+
+/** Returns a random element from this array, or `null` if this array is empty. */
+inline fun ByteBuffer.randomOrNull(): Byte? = randomOrNull(Random)
+
+/** Returns a random element from this array, or `null` if this array is empty. */
+inline fun ShortBuffer.randomOrNull(): Short? = randomOrNull(Random)
+
+/** Returns a random element from this array, or `null` if this array is empty. */
+inline fun IntBuffer.randomOrNull(): Int? = randomOrNull(Random)
+
+/** Returns a random element from this array, or `null` if this array is empty. */
+inline fun LongBuffer.randomOrNull(): Long? = randomOrNull(Random)
+
+/** Returns a random element from this array, or `null` if this array is empty. */
+inline fun FloatBuffer.randomOrNull(): Float? = randomOrNull(Random)
+
+/** Returns a random element from this array, or `null` if this array is empty. */
+inline fun DoubleBuffer.randomOrNull(): Double? = randomOrNull(Random)
+
+/** Returns a random element from this array, or `null` if this array is empty. */
+inline fun CharBuffer.randomOrNull(): Char? = randomOrNull(Random)
+
+
+/** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
+fun ByteBuffer.randomOrNull(random: Random): Byte? = if (isEmpty()) null else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
+fun ShortBuffer.randomOrNull(random: Random): Short? = if (isEmpty()) null else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
+fun IntBuffer.randomOrNull(random: Random): Int? = if (isEmpty()) null else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
+fun LongBuffer.randomOrNull(random: Random): Long? = if (isEmpty()) null else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
+fun FloatBuffer.randomOrNull(random: Random): Float? = if (isEmpty()) null else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
+fun DoubleBuffer.randomOrNull(random: Random): Double? = if (isEmpty()) null else get(random.nextInt(size))
+
+/** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
+fun CharBuffer.randomOrNull(random: Random): Char? = if (isEmpty()) null else get(random.nextInt(size))
+
+
+/** Returns the single element, or throws an exception if the array is empty or has more than one element. */
+fun ByteBuffer.single(): Byte = when (size) {
+    0 -> throw NoSuchElementException("Array is empty.")
+    1 -> this[0]
+    else -> throw IllegalArgumentException("Array has more than one element.")
+}
+
+/** Returns the single element, or throws an exception if the array is empty or has more than one element. */
+fun ShortBuffer.single(): Short = when (size) {
+    0 -> throw NoSuchElementException("Array is empty.")
+    1 -> this[0]
+    else -> throw IllegalArgumentException("Array has more than one element.")
+}
+
+/** Returns the single element, or throws an exception if the array is empty or has more than one element. */
+fun IntBuffer.single(): Int = when (size) {
+    0 -> throw NoSuchElementException("Array is empty.")
+    1 -> this[0]
+    else -> throw IllegalArgumentException("Array has more than one element.")
+}
+
+/** Returns the single element, or throws an exception if the array is empty or has more than one element. */
+fun LongBuffer.single(): Long = when (size) {
+    0 -> throw NoSuchElementException("Array is empty.")
+    1 -> this[0]
+    else -> throw IllegalArgumentException("Array has more than one element.")
+}
+
+/** Returns the single element, or throws an exception if the array is empty or has more than one element. */
+fun FloatBuffer.single(): Float = when (size) {
+    0 -> throw NoSuchElementException("Array is empty.")
+    1 -> this[0]
+    else -> throw IllegalArgumentException("Array has more than one element.")
+}
+
+/** Returns the single element, or throws an exception if the array is empty or has more than one element. */
+fun DoubleBuffer.single(): Double = when (size) {
+    0 -> throw NoSuchElementException("Array is empty.")
+    1 -> this[0]
+    else -> throw IllegalArgumentException("Array has more than one element.")
+}
+
+/** Returns the single element, or throws an exception if the array is empty or has more than one element. */
+fun CharBuffer.single(): Char = when (size) {
+    0 -> throw NoSuchElementException("Array is empty.")
+    1 -> this[0]
+    else -> throw IllegalArgumentException("Array has more than one element.")
+}
+
+
+/** Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element. */
+inline fun ByteBuffer.single(predicate: (Byte) -> Boolean): Byte {
+    var single: Byte? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
+            single = element
+            found = true
+        }
+    }
+    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
+    @Suppress("UNCHECKED_CAST")
+    return single as Byte
+}
+
+/** Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element. */
+inline fun ShortBuffer.single(predicate: (Short) -> Boolean): Short {
+    var single: Short? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
+            single = element
+            found = true
+        }
+    }
+    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
+    @Suppress("UNCHECKED_CAST")
+    return single as Short
+}
+
+/** Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element. */
+inline fun IntBuffer.single(predicate: (Int) -> Boolean): Int {
+    var single: Int? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
+            single = element
+            found = true
+        }
+    }
+    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
+    @Suppress("UNCHECKED_CAST")
+    return single as Int
+}
+
+/** Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element. */
+inline fun LongBuffer.single(predicate: (Long) -> Boolean): Long {
+    var single: Long? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
+            single = element
+            found = true
+        }
+    }
+    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
+    @Suppress("UNCHECKED_CAST")
+    return single as Long
+}
+
+/** Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element. */
+inline fun FloatBuffer.single(predicate: (Float) -> Boolean): Float {
+    var single: Float? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
+            single = element
+            found = true
+        }
+    }
+    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
+    @Suppress("UNCHECKED_CAST")
+    return single as Float
+}
+
+/** Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element. */
+inline fun DoubleBuffer.single(predicate: (Double) -> Boolean): Double {
+    var single: Double? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
+            single = element
+            found = true
+        }
+    }
+    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
+    @Suppress("UNCHECKED_CAST")
+    return single as Double
+}
+
+/** Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element. */
+inline fun CharBuffer.single(predicate: (Char) -> Boolean): Char {
+    var single: Char? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) throw IllegalArgumentException("Array contains more than one matching element.")
+            single = element
+            found = true
+        }
+    }
+    if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
+    @Suppress("UNCHECKED_CAST")
+    return single as Char
+}
+
+/** Returns single element, or `null` if the array is empty or has more than one element. */
+fun ByteArray.singleOrNull(): Byte? =  if (size == 1) this[0] else null
+
+/** Returns single element, or `null` if the array is empty or has more than one element. */
+fun ShortArray.singleOrNull(): Short? =  if (size == 1) this[0] else null
+
+/** Returns single element, or `null` if the array is empty or has more than one element. */
+fun IntArray.singleOrNull(): Int? =  if (size == 1) this[0] else null
+
+/** Returns single element, or `null` if the array is empty or has more than one element. */
+fun LongArray.singleOrNull(): Long? =  if (size == 1) this[0] else null
+
+/** Returns single element, or `null` if the array is empty or has more than one element. */
+fun FloatArray.singleOrNull(): Float? =  if (size == 1) this[0] else null
+
+/** Returns single element, or `null` if the array is empty or has more than one element. */
+fun DoubleArray.singleOrNull(): Double? =  if (size == 1) this[0] else null
+
+/** Returns single element, or `null` if the array is empty or has more than one element. */
+fun CharArray.singleOrNull(): Char? =  if (size == 1) this[0] else null
+
+
+/** Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found. */
+inline fun ByteArray.singleOrNull(predicate: (Byte) -> Boolean): Byte? {
+    var single: Byte? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) return null
+            single = element
+            found = true
+        }
+    }
+    if (!found) return null
+    return single
+}
+
+/** Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found. */
+inline fun ShortArray.singleOrNull(predicate: (Short) -> Boolean): Short? {
+    var single: Short? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) return null
+            single = element
+            found = true
+        }
+    }
+    if (!found) return null
+    return single
+}
+
+/** Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found. */
+inline fun IntArray.singleOrNull(predicate: (Int) -> Boolean): Int? {
+    var single: Int? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) return null
+            single = element
+            found = true
+        }
+    }
+    if (!found) return null
+    return single
+}
+
+/** Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found. */
+inline fun LongArray.singleOrNull(predicate: (Long) -> Boolean): Long? {
+    var single: Long? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) return null
+            single = element
+            found = true
+        }
+    }
+    if (!found) return null
+    return single
+}
+
+/** Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found. */
+inline fun FloatArray.singleOrNull(predicate: (Float) -> Boolean): Float? {
+    var single: Float? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) return null
+            single = element
+            found = true
+        }
+    }
+    if (!found) return null
+    return single
+}
+
+/** Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found. */
+inline fun DoubleArray.singleOrNull(predicate: (Double) -> Boolean): Double? {
+    var single: Double? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) return null
+            single = element
+            found = true
+        }
+    }
+    if (!found) return null
+    return single
+}
+
+/** Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found. */
+inline fun CharArray.singleOrNull(predicate: (Char) -> Boolean): Char? {
+    var single: Char? = null
+    var found = false
+    for (element in this) {
+        if (predicate(element)) {
+            if (found) return null
+            single = element
+            found = true
+        }
+    }
+    if (!found) return null
+    return single
+}
 
 
 /** Returns a list containing all elements except first [n] elements. */
@@ -1424,907 +1284,663 @@ fun CharBuffer.drop(n: Int): List<Char> {
 }
 
 
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun <T> Array<out T>.dropLast(n: Int): List<T> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun ByteBuffer.dropLast(n: Int): List<Byte> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun ShortBuffer.dropLast(n: Int): List<Short> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun IntBuffer.dropLast(n: Int): List<Int> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun LongBuffer.dropLast(n: Int): List<Long> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun FloatBuffer.dropLast(n: Int): List<Float> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun DoubleBuffer.dropLast(n: Int): List<Double> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun DELETE.dropLast(n: Int): List<Boolean> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last [n] elements.
-// */
-//fun CharBuffer.dropLast(n: Int): List<Char> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    return take((size - n).coerceAtLeast(0))
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun <T> Array<out T>.dropLastWhile(predicate: (T) -> Boolean): List<T> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun ByteBuffer.dropLastWhile(predicate: (Byte) -> Boolean): List<Byte> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun ShortBuffer.dropLastWhile(predicate: (Short) -> Boolean): List<Short> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun IntBuffer.dropLastWhile(predicate: (Int) -> Boolean): List<Int> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun LongBuffer.dropLastWhile(predicate: (Long) -> Boolean): List<Long> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun FloatBuffer.dropLastWhile(predicate: (Float) -> Boolean): List<Float> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun DoubleBuffer.dropLastWhile(predicate: (Double) -> Boolean): List<Double> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun DELETE.dropLastWhile(predicate: (Boolean) -> Boolean): List<Boolean> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except last elements that satisfy the given [predicate].
-// */
-//inline fun CharBuffer.dropLastWhile(predicate: (Char) -> Boolean): List<Char> {
-//    for (index in lastIndex downTo 0) {
-//        if (!predicate(this[index])) {
-//            return take(index + 1)
-//        }
-//    }
-//    return emptyList()
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun <T> Array<out T>.dropWhile(predicate: (T) -> Boolean): List<T> {
-//    var yielding = false
-//    val list = ArrayList<T>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun ByteBuffer.dropWhile(predicate: (Byte) -> Boolean): List<Byte> {
-//    var yielding = false
-//    val list = ArrayList<Byte>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun ShortBuffer.dropWhile(predicate: (Short) -> Boolean): List<Short> {
-//    var yielding = false
-//    val list = ArrayList<Short>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun IntBuffer.dropWhile(predicate: (Int) -> Boolean): List<Int> {
-//    var yielding = false
-//    val list = ArrayList<Int>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun LongBuffer.dropWhile(predicate: (Long) -> Boolean): List<Long> {
-//    var yielding = false
-//    val list = ArrayList<Long>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun FloatBuffer.dropWhile(predicate: (Float) -> Boolean): List<Float> {
-//    var yielding = false
-//    val list = ArrayList<Float>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun DoubleBuffer.dropWhile(predicate: (Double) -> Boolean): List<Double> {
-//    var yielding = false
-//    val list = ArrayList<Double>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun DELETE.dropWhile(predicate: (Boolean) -> Boolean): List<Boolean> {
-//    var yielding = false
-//    val list = ArrayList<Boolean>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing all elements except first elements that satisfy the given [predicate].
-// */
-//inline fun CharBuffer.dropWhile(predicate: (Char) -> Boolean): List<Char> {
-//    var yielding = false
-//    val list = ArrayList<Char>()
-//    for (item in this)
-//        if (yielding)
-//            list.add(item)
-//        else if (!predicate(item)) {
-//            list.add(item)
-//            yielding = true
-//        }
-//    return list
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun <T> Array<out T>.filter(predicate: (T) -> Boolean): List<T> {
-//    return filterTo(ArrayList<T>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun ByteBuffer.filter(predicate: (Byte) -> Boolean): List<Byte> {
-//    return filterTo(ArrayList<Byte>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun ShortBuffer.filter(predicate: (Short) -> Boolean): List<Short> {
-//    return filterTo(ArrayList<Short>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun IntBuffer.filter(predicate: (Int) -> Boolean): List<Int> {
-//    return filterTo(ArrayList<Int>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun LongBuffer.filter(predicate: (Long) -> Boolean): List<Long> {
-//    return filterTo(ArrayList<Long>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun FloatBuffer.filter(predicate: (Float) -> Boolean): List<Float> {
-//    return filterTo(ArrayList<Float>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun DoubleBuffer.filter(predicate: (Double) -> Boolean): List<Double> {
-//    return filterTo(ArrayList<Double>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun DELETE.filter(predicate: (Boolean) -> Boolean): List<Boolean> {
-//    return filterTo(ArrayList<Boolean>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// */
-//inline fun CharBuffer.filter(predicate: (Char) -> Boolean): List<Char> {
-//    return filterTo(ArrayList<Char>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <T> Array<out T>.filterIndexed(predicate: (index: Int, T) -> Boolean): List<T> {
-//    return filterIndexedTo(ArrayList<T>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun ByteBuffer.filterIndexed(predicate: (index: Int, Byte) -> Boolean): List<Byte> {
-//    return filterIndexedTo(ArrayList<Byte>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun ShortBuffer.filterIndexed(predicate: (index: Int, Short) -> Boolean): List<Short> {
-//    return filterIndexedTo(ArrayList<Short>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun IntBuffer.filterIndexed(predicate: (index: Int, Int) -> Boolean): List<Int> {
-//    return filterIndexedTo(ArrayList<Int>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun LongBuffer.filterIndexed(predicate: (index: Int, Long) -> Boolean): List<Long> {
-//    return filterIndexedTo(ArrayList<Long>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun FloatBuffer.filterIndexed(predicate: (index: Int, Float) -> Boolean): List<Float> {
-//    return filterIndexedTo(ArrayList<Float>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun DoubleBuffer.filterIndexed(predicate: (index: Int, Double) -> Boolean): List<Double> {
-//    return filterIndexedTo(ArrayList<Double>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun DELETE.filterIndexed(predicate: (index: Int, Boolean) -> Boolean): List<Boolean> {
-//    return filterIndexedTo(ArrayList<Boolean>(), predicate)
-//}
-//
-///**
-// * Returns a list containing only elements matching the given [predicate].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun CharBuffer.filterIndexed(predicate: (index: Int, Char) -> Boolean): List<Char> {
-//    return filterIndexedTo(ArrayList<Char>(), predicate)
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <T, C : MutableCollection<in T>> Array<out T>.filterIndexedTo(destination: C, predicate: (index: Int, T) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Byte) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <C : MutableCollection<in Short>> ShortBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Short) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <C : MutableCollection<in Int>> IntBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Int) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <C : MutableCollection<in Long>> LongBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Long) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <C : MutableCollection<in Float>> FloatBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Float) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Double) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <C : MutableCollection<in Boolean>> DELETE.filterIndexedTo(destination: C, predicate: (index: Int, Boolean) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// * @param [predicate] function that takes the index of an element and the element itself
-// * and returns the result of predicate evaluation on the element.
-// */
-//inline fun <C : MutableCollection<in Char>> CharBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Char) -> Boolean): C {
-//    forEachIndexed { index, element ->
-//        if (predicate(index, element)) destination.add(element)
-//    }
-//    return destination
-//}
-//
-///**
-// * Returns a list containing all elements that are instances of specified type parameter R.
-// */
-//inline fun <reified R> Array<*>.filterIsInstance(): List<@kotlin.internal.NoInfer R> {
-//    return filterIsInstanceTo(ArrayList<R>())
-//}
-//
-///**
-// * Returns a list containing all elements that are instances of specified class.
-// */
-//fun <R> Array<*>.filterIsInstance(klass: Class<R>): List<R> {
-//    return filterIsInstanceTo(ArrayList<R>(), klass)
-//}
-//
-///**
-// * Appends all elements that are instances of specified type parameter R to the given [destination].
-// */
-//inline fun <reified R, C : MutableCollection<in R>> Array<*>.filterIsInstanceTo(destination: C): C {
-//    for (element in this) if (element is R) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements that are instances of specified class to the given [destination].
-// */
-//fun <C : MutableCollection<in R>, R> Array<*>.filterIsInstanceTo(destination: C, klass: Class<R>): C {
-//    @Suppress("UNCHECKED_CAST")
-//    for (element in this) if (klass.isInstance(element)) destination.add(element as R)
-//    return destination
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun <T> Array<out T>.filterNot(predicate: (T) -> Boolean): List<T> {
-//    return filterNotTo(ArrayList<T>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun ByteBuffer.filterNot(predicate: (Byte) -> Boolean): List<Byte> {
-//    return filterNotTo(ArrayList<Byte>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun ShortBuffer.filterNot(predicate: (Short) -> Boolean): List<Short> {
-//    return filterNotTo(ArrayList<Short>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun IntBuffer.filterNot(predicate: (Int) -> Boolean): List<Int> {
-//    return filterNotTo(ArrayList<Int>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun LongBuffer.filterNot(predicate: (Long) -> Boolean): List<Long> {
-//    return filterNotTo(ArrayList<Long>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun FloatBuffer.filterNot(predicate: (Float) -> Boolean): List<Float> {
-//    return filterNotTo(ArrayList<Float>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun DoubleBuffer.filterNot(predicate: (Double) -> Boolean): List<Double> {
-//    return filterNotTo(ArrayList<Double>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun DELETE.filterNot(predicate: (Boolean) -> Boolean): List<Boolean> {
-//    return filterNotTo(ArrayList<Boolean>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements not matching the given [predicate].
-// */
-//inline fun CharBuffer.filterNot(predicate: (Char) -> Boolean): List<Char> {
-//    return filterNotTo(ArrayList<Char>(), predicate)
-//}
-//
-///**
-// * Returns a list containing all elements that are not `null`.
-// */
-//fun <T : Any> Array<out T?>.filterNotNull(): List<T> {
-//    return filterNotNullTo(ArrayList<T>())
-//}
-//
-///**
-// * Appends all elements that are not `null` to the given [destination].
-// */
-//fun <C : MutableCollection<in T>, T : Any> Array<out T?>.filterNotNullTo(destination: C): C {
-//    for (element in this) if (element != null) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <T, C : MutableCollection<in T>> Array<out T>.filterNotTo(destination: C, predicate: (T) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterNotTo(destination: C, predicate: (Byte) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Short>> ShortBuffer.filterNotTo(destination: C, predicate: (Short) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Int>> IntBuffer.filterNotTo(destination: C, predicate: (Int) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Long>> LongBuffer.filterNotTo(destination: C, predicate: (Long) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Float>> FloatBuffer.filterNotTo(destination: C, predicate: (Float) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterNotTo(destination: C, predicate: (Double) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Boolean>> DELETE.filterNotTo(destination: C, predicate: (Boolean) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements not matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Char>> CharBuffer.filterNotTo(destination: C, predicate: (Char) -> Boolean): C {
-//    for (element in this) if (!predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <T, C : MutableCollection<in T>> Array<out T>.filterTo(destination: C, predicate: (T) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterTo(destination: C, predicate: (Byte) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Short>> ShortBuffer.filterTo(destination: C, predicate: (Short) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Int>> IntBuffer.filterTo(destination: C, predicate: (Int) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Long>> LongBuffer.filterTo(destination: C, predicate: (Long) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Float>> FloatBuffer.filterTo(destination: C, predicate: (Float) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterTo(destination: C, predicate: (Double) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Boolean>> DELETE.filterTo(destination: C, predicate: (Boolean) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Appends all elements matching the given [predicate] to the given [destination].
-// */
-//inline fun <C : MutableCollection<in Char>> CharBuffer.filterTo(destination: C, predicate: (Char) -> Boolean): C {
-//    for (element in this) if (predicate(element)) destination.add(element)
-//    return destination
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun <T> Array<out T>.slice(indices: IntRange): List<T> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun ByteBuffer.slice(indices: IntRange): List<Byte> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun ShortBuffer.slice(indices: IntRange): List<Short> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun IntBuffer.slice(indices: IntRange): List<Int> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun LongBuffer.slice(indices: IntRange): List<Long> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun FloatBuffer.slice(indices: IntRange): List<Float> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun DoubleBuffer.slice(indices: IntRange): List<Double> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun DELETE.slice(indices: IntRange): List<Boolean> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun CharBuffer.slice(indices: IntRange): List<Char> {
-//    if (indices.isEmpty()) return listOf()
-//    return copyOfRange(indices.start, indices.endInclusive + 1).asList()
-//}
-//
+/** Returns a list containing all elements except last [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.drop */
+fun ByteArray.dropLast(n: Int): List<Byte> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    return take((size - n).coerceAtLeast(0))
+}
+
+/** Returns a list containing all elements except last [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.drop */
+fun ShortArray.dropLast(n: Int): List<Short> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    return take((size - n).coerceAtLeast(0))
+}
+
+/** Returns a list containing all elements except last [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.drop */
+fun IntArray.dropLast(n: Int): List<Int> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    return take((size - n).coerceAtLeast(0))
+}
+
+/** Returns a list containing all elements except last [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.drop */
+fun LongArray.dropLast(n: Int): List<Long> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    return take((size - n).coerceAtLeast(0))
+}
+
+/** Returns a list containing all elements except last [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.drop */
+fun FloatArray.dropLast(n: Int): List<Float> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    return take((size - n).coerceAtLeast(0))
+}
+
+/** Returns a list containing all elements except last [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.drop */
+fun DoubleArray.dropLast(n: Int): List<Double> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    return take((size - n).coerceAtLeast(0))
+}
+
+/** Returns a list containing all elements except last [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.drop */
+fun CharArray.dropLast(n: Int): List<Char> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    return take((size - n).coerceAtLeast(0))
+}
+
+
+/** Returns a list containing all elements except last elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun ByteBuffer.dropLastWhile(predicate: (Byte) -> Boolean): List<Byte> {
+    for (index in lastIndex downTo 0)
+        if (!predicate(this[index]))
+            return take(index + 1)
+    return emptyList()
+}
+
+/** Returns a list containing all elements except last elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun ShortBuffer.dropLastWhile(predicate: (Short) -> Boolean): List<Short> {
+    for (index in lastIndex downTo 0)
+        if (!predicate(this[index]))
+            return take(index + 1)
+    return emptyList()
+}
+
+/** Returns a list containing all elements except last elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun IntBuffer.dropLastWhile(predicate: (Int) -> Boolean): List<Int> {
+    for (index in lastIndex downTo 0)
+        if (!predicate(this[index]))
+            return take(index + 1)
+    return emptyList()
+}
+
+/** Returns a list containing all elements except last elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun LongBuffer.dropLastWhile(predicate: (Long) -> Boolean): List<Long> {
+    for (index in lastIndex downTo 0)
+        if (!predicate(this[index]))
+            return take(index + 1)
+    return emptyList()
+}
+
+/** Returns a list containing all elements except last elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun FloatBuffer.dropLastWhile(predicate: (Float) -> Boolean): List<Float> {
+    for (index in lastIndex downTo 0)
+        if (!predicate(this[index]))
+            return take(index + 1)
+    return emptyList()
+}
+
+/** Returns a list containing all elements except last elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun DoubleBuffer.dropLastWhile(predicate: (Double) -> Boolean): List<Double> {
+    for (index in lastIndex downTo 0)
+        if (!predicate(this[index]))
+            return take(index + 1)
+    return emptyList()
+}
+
+/** Returns a list containing all elements except last elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun CharBuffer.dropLastWhile(predicate: (Char) -> Boolean): List<Char> {
+    for (index in lastIndex downTo 0)
+        if (!predicate(this[index]))
+            return take(index + 1)
+    return emptyList()
+}
+
+
+/** Returns a list containing all elements except first elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun ByteBuffer.dropWhile(predicate: (Byte) -> Boolean): List<Byte> {
+    var yielding = false
+    val list = ArrayList<Byte>()
+    for (item in this)
+        if (yielding)
+            list.add(item)
+        else if (!predicate(item)) {
+            list.add(item)
+            yielding = true
+        }
+    return list
+}
+
+/** Returns a list containing all elements except first elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun ShortBuffer.dropWhile(predicate: (Short) -> Boolean): List<Short> {
+    var yielding = false
+    val list = ArrayList<Short>()
+    for (item in this)
+        if (yielding)
+            list.add(item)
+        else if (!predicate(item)) {
+            list.add(item)
+            yielding = true
+        }
+    return list
+}
+
+/** Returns a list containing all elements except first elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun IntBuffer.dropWhile(predicate: (Int) -> Boolean): List<Int> {
+    var yielding = false
+    val list = ArrayList<Int>()
+    for (item in this)
+        if (yielding)
+            list.add(item)
+        else if (!predicate(item)) {
+            list.add(item)
+            yielding = true
+        }
+    return list
+}
+
+/** Returns a list containing all elements except first elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun LongBuffer.dropWhile(predicate: (Long) -> Boolean): List<Long> {
+    var yielding = false
+    val list = ArrayList<Long>()
+    for (item in this)
+        if (yielding)
+            list.add(item)
+        else if (!predicate(item)) {
+            list.add(item)
+            yielding = true
+        }
+    return list
+}
+
+/** Returns a list containing all elements except first elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun FloatBuffer.dropWhile(predicate: (Float) -> Boolean): List<Float> {
+    var yielding = false
+    val list = ArrayList<Float>()
+    for (item in this)
+        if (yielding)
+            list.add(item)
+        else if (!predicate(item)) {
+            list.add(item)
+            yielding = true
+        }
+    return list
+}
+
+/** Returns a list containing all elements except first elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun DoubleBuffer.dropWhile(predicate: (Double) -> Boolean): List<Double> {
+    var yielding = false
+    val list = ArrayList<Double>()
+    for (item in this)
+        if (yielding)
+            list.add(item)
+        else if (!predicate(item)) {
+            list.add(item)
+            yielding = true
+        }
+    return list
+}
+
+/** Returns a list containing all elements except first elements that satisfy the given [predicate].
+ *  @sample samples.collections.Collections.Transformations.drop */
+inline fun CharBuffer.dropWhile(predicate: (Char) -> Boolean): List<Char> {
+    var yielding = false
+    val list = ArrayList<Char>()
+    for (item in this)
+        if (yielding)
+            list.add(item)
+        else if (!predicate(item)) {
+            list.add(item)
+            yielding = true
+        }
+    return list
+}
+
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun ByteBuffer.filter(predicate: (Byte) -> Boolean): List<Byte> = filterTo(ArrayList<Byte>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun ShortBuffer.filter(predicate: (Short) -> Boolean): List<Short> = filterTo(ArrayList<Short>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun IntBuffer.filter(predicate: (Int) -> Boolean): List<Int> = filterTo(ArrayList<Int>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun LongBuffer.filter(predicate: (Long) -> Boolean): List<Long> = filterTo(ArrayList<Long>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun FloatBuffer.filter(predicate: (Float) -> Boolean): List<Float> = filterTo(ArrayList<Float>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun DoubleBuffer.filter(predicate: (Double) -> Boolean): List<Double> = filterTo(ArrayList<Double>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun CharBuffer.filter(predicate: (Char) -> Boolean): List<Char> = filterTo(ArrayList<Char>(), predicate)
+
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexed */
+inline fun ByteBuffer.filterIndexed(predicate: (index: Int, Byte) -> Boolean): List<Byte> = filterIndexedTo(ArrayList<Byte>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexed */
+inline fun ShortBuffer.filterIndexed(predicate: (index: Int, Short) -> Boolean): List<Short> = filterIndexedTo(ArrayList<Short>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexed */
+inline fun IntBuffer.filterIndexed(predicate: (index: Int, Int) -> Boolean): List<Int> = filterIndexedTo(ArrayList<Int>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexed */
+inline fun LongBuffer.filterIndexed(predicate: (index: Int, Long) -> Boolean): List<Long> = filterIndexedTo(ArrayList<Long>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexed */
+inline fun FloatBuffer.filterIndexed(predicate: (index: Int, Float) -> Boolean): List<Float> = filterIndexedTo(ArrayList<Float>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexed */
+inline fun DoubleBuffer.filterIndexed(predicate: (index: Int, Double) -> Boolean): List<Double> = filterIndexedTo(ArrayList<Double>(), predicate)
+
+/** Returns a list containing only elements matching the given [predicate].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexed */
+inline fun CharBuffer.filterIndexed(predicate: (index: Int, Char) -> Boolean): List<Char> = filterIndexedTo(ArrayList<Char>(), predicate)
+
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Byte) -> Boolean): C {
+    forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+inline fun <C : MutableCollection<in Short>> ShortBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Short) -> Boolean): C {
+    forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+inline fun <C : MutableCollection<in Int>> IntBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Int) -> Boolean): C {
+    forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+inline fun <C : MutableCollection<in Long>> LongBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Long) -> Boolean): C {
+    forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+inline fun <C : MutableCollection<in Float>> FloatBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Float) -> Boolean): C {
+    forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Double) -> Boolean): C {
+    forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @param [predicate] function that takes the index of an element and the element itself
+ *  and returns the result of predicate evaluation on the element.
+ *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+inline fun <C : MutableCollection<in Char>> CharBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Char) -> Boolean): C {
+    forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
+    return destination
+}
+
+
+/** Returns a list containing all elements not matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun ByteArray.filterNot(predicate: (Byte) -> Boolean): List<Byte> = filterNotTo(ArrayList<Byte>(), predicate)
+
+/** Returns a list containing all elements not matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun ShortArray.filterNot(predicate: (Short) -> Boolean): List<Short> = filterNotTo(ArrayList<Short>(), predicate)
+
+/** Returns a list containing all elements not matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun IntArray.filterNot(predicate: (Int) -> Boolean): List<Int> = filterNotTo(ArrayList<Int>(), predicate)
+
+/** Returns a list containing all elements not matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun LongArray.filterNot(predicate: (Long) -> Boolean): List<Long> = filterNotTo(ArrayList<Long>(), predicate)
+
+/** Returns a list containing all elements not matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun FloatArray.filterNot(predicate: (Float) -> Boolean): List<Float> = filterNotTo(ArrayList<Float>(), predicate)
+
+/** Returns a list containing all elements not matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun DoubleArray.filterNot(predicate: (Double) -> Boolean): List<Double> = filterNotTo(ArrayList<Double>(), predicate)
+
+/** Returns a list containing all elements not matching the given [predicate].
+ *  @sample samples.collections.Collections.Filtering.filter */
+inline fun CharArray.filterNot(predicate: (Char) -> Boolean): List<Char> = filterNotTo(ArrayList<Char>(), predicate)
+
+// [Kool] custom
+
+/** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
+ *  @sample samples.collections.Collections.Filtering.filterNotNull */
+fun ByteBuffer.filterNotZero(): List<Byte> = filterNotZeroTo(ArrayList<Byte>())
+
+/** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
+ *  @sample samples.collections.Collections.Filtering.filterNotNull */
+fun ShortBuffer.filterNotZero(): List<Short> = filterNotZeroTo(ArrayList<Short>())
+
+/** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
+ *  @sample samples.collections.Collections.Filtering.filterNotNull */
+fun IntBuffer.filterNotZero(): List<Int> = filterNotZeroTo(ArrayList<Int>())
+
+/** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
+ *  @sample samples.collections.Collections.Filtering.filterNotNull */
+fun LongBuffer.filterNotZero(): List<Long> = filterNotZeroTo(ArrayList<Long>())
+
+/** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
+ *  @sample samples.collections.Collections.Filtering.filterNotNull */
+fun FloatBuffer.filterNotZero(): List<Float> = filterNotZeroTo(ArrayList<Float>())
+
+/** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
+ *  @sample samples.collections.Collections.Filtering.filterNotNull */
+fun DoubleBuffer.filterNotZero(): List<Double> = filterNotZeroTo(ArrayList<Double>())
+
+/** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
+ *  @sample samples.collections.Collections.Filtering.filterNotNull */
+fun CharBuffer.filterNotZero(): List<Char> = filterNotZeroTo(ArrayList<Char>())
+
+
+/** Appends all elements that are not `null` to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+fun <C : MutableCollection<Byte>> ByteBuffer.filterNotZeroTo(destination: C): C {
+    for (element in this) if (element != 0.toByte()) destination.add(element)
+    return destination
+}
+
+/** Appends all elements that are not `null` to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+fun <C : MutableCollection<Short>> ShortBuffer.filterNotZeroTo(destination: C): C {
+    for (element in this) if (element != 0.toShort()) destination.add(element)
+    return destination
+}
+
+/** Appends all elements that are not `null` to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+fun <C : MutableCollection<Int>> IntBuffer.filterNotZeroTo(destination: C): C {
+    for (element in this) if (element != 0) destination.add(element)
+    return destination
+}
+
+/** Appends all elements that are not `null` to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+fun <C : MutableCollection<Long>> LongBuffer.filterNotZeroTo(destination: C): C {
+    for (element in this) if (element != 0L) destination.add(element)
+    return destination
+}
+
+/** Appends all elements that are not `null` to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+fun <C : MutableCollection<Float>> FloatBuffer.filterNotZeroTo(destination: C): C {
+    for (element in this) if (element != 0f) destination.add(element)
+    return destination
+}
+
+/** Appends all elements that are not `null` to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+fun <C : MutableCollection<Double>> DoubleBuffer.filterNotZeroTo(destination: C): C {
+    for (element in this) if (element != 0.0) destination.add(element)
+    return destination
+}
+
+/** Appends all elements that are not `null` to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+fun <C : MutableCollection<Char>> CharBuffer.filterNotZeroTo(destination: C): C {
+    for (element in this) if (element != '\u0000') destination.add(element)
+    return destination
+}
+
+
+/** Appends all elements not matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterNotTo(destination: C, predicate: (Byte) -> Boolean): C {
+    for (element in this) if (!predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements not matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Short>> ShortBuffer.filterNotTo(destination: C, predicate: (Short) -> Boolean): C {
+    for (element in this) if (!predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements not matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Int>> IntBuffer.filterNotTo(destination: C, predicate: (Int) -> Boolean): C {
+    for (element in this) if (!predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements not matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Long>> LongBuffer.filterNotTo(destination: C, predicate: (Long) -> Boolean): C {
+    for (element in this) if (!predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements not matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Float>> FloatBuffer.filterNotTo(destination: C, predicate: (Float) -> Boolean): C {
+    for (element in this) if (!predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements not matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterNotTo(destination: C, predicate: (Double) -> Boolean): C {
+    for (element in this) if (!predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements not matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Char>> CharBuffer.filterNotTo(destination: C, predicate: (Char) -> Boolean): C {
+    for (element in this) if (!predicate(element)) destination.add(element)
+    return destination
+}
+
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterTo(destination: C, predicate: (Byte) -> Boolean): C {
+    for (element in this) if (predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Short>> ShortBuffer.filterTo(destination: C, predicate: (Short) -> Boolean): C {
+    for (element in this) if (predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Int>> IntBuffer.filterTo(destination: C, predicate: (Int) -> Boolean): C {
+    for (element in this) if (predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Long>> LongBuffer.filterTo(destination: C, predicate: (Long) -> Boolean): C {
+    for (element in this) if (predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Float>> FloatBuffer.filterTo(destination: C, predicate: (Float) -> Boolean): C {
+    for (element in this) if (predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterTo(destination: C, predicate: (Double) -> Boolean): C {
+    for (element in this) if (predicate(element)) destination.add(element)
+    return destination
+}
+
+/** Appends all elements matching the given [predicate] to the given [destination].
+ *  @sample samples.collections.Collections.Filtering.filterTo */
+inline fun <C : MutableCollection<in Char>> CharBuffer.filterTo(destination: C, predicate: (Char) -> Boolean): C {
+    for (element in this) if (predicate(element)) destination.add(element)
+    return destination
+}
+
+
+/** Returns a list containing elements at indices in the specified [indices] range. */
+fun ByteBuffer.slice(indices: IntRange): ByteBuffer {
+    val backupPos = pos
+    val backupLim = lim
+    pos = indices.first
+    lim = indices.last
+    val res = slice()
+    pos = backupPos
+    lim = backupLim
+    return res
+}
+
+/** Returns a list containing elements at indices in the specified [indices] range. */
+fun ShortBuffer.slice(indices: IntRange): ShortBuffer {
+    val backupPos = pos
+    val backupLim = lim
+    pos = indices.first
+    lim = indices.last
+    val res = slice()
+    pos = backupPos
+    lim = backupLim
+    return res
+}
+
+/** Returns a list containing elements at indices in the specified [indices] range. */
+fun IntBuffer.slice(indices: IntRange): IntBuffer {
+    val backupPos = pos
+    val backupLim = lim
+    pos = indices.first
+    lim = indices.last
+    val res = slice()
+    pos = backupPos
+    lim = backupLim
+    return res
+}
+
+/** Returns a list containing elements at indices in the specified [indices] range. */
+fun LongBuffer.slice(indices: IntRange): LongBuffer {
+    val backupPos = pos
+    val backupLim = lim
+    pos = indices.first
+    lim = indices.last
+    val res = slice()
+    pos = backupPos
+    lim = backupLim
+    return res
+}
+
+/** Returns a list containing elements at indices in the specified [indices] range. */
+fun FloatBuffer.slice(indices: IntRange): FloatBuffer {
+    val backupPos = pos
+    val backupLim = lim
+    pos = indices.first
+    lim = indices.last
+    val res = slice()
+    pos = backupPos
+    lim = backupLim
+    return res
+}
+
+/** Returns a list containing elements at indices in the specified [indices] range. */
+fun DoubleBuffer.slice(indices: IntRange): DoubleBuffer {
+    val backupPos = pos
+    val backupLim = lim
+    pos = indices.first
+    lim = indices.last
+    val res = slice()
+    pos = backupPos
+    lim = backupLim
+    return res
+}
+
+/** Returns a list containing elements at indices in the specified [indices] range. */
+fun CharBuffer.slice(indices: IntRange): CharBuffer {
+    val backupPos = pos
+    val backupLim = lim
+    pos = indices.first
+    lim = indices.last
+    val res = slice()
+    pos = backupPos
+    lim = backupLim
+    return res
+}
+
+
 ///**
 // * Returns a list containing elements at specified [indices].
 // */
@@ -4594,47 +4210,47 @@ val CharBuffer.indices get() = IntRange(0, lastIndex)
 
 
 /** Returns `true` if the buffer is empty. */
- fun ByteBuffer.isEmpty() = lim == 0
+fun ByteBuffer.isEmpty() = lim == 0
 
 /** Returns `true` if the buffer is empty. */
- fun ShortBuffer.isEmpty() = lim == 0
+fun ShortBuffer.isEmpty() = lim == 0
 
 /** Returns `true` if the buffer is empty. */
- fun IntBuffer.isEmpty() = lim == 0
+fun IntBuffer.isEmpty() = lim == 0
 
 /** Returns `true` if the buffer is empty. */
- fun LongBuffer.isEmpty() = lim == 0
+fun LongBuffer.isEmpty() = lim == 0
 
 /** Returns `true` if the buffer is empty. */
- fun FloatBuffer.isEmpty() = lim == 0
+fun FloatBuffer.isEmpty() = lim == 0
 
 /** Returns `true` if the buffer is empty. */
- fun DoubleBuffer.isEmpty() = lim == 0
+fun DoubleBuffer.isEmpty() = lim == 0
 
 /** Returns `true` if the buffer is empty. */
- fun CharBuffer.isEmpty() = lim == 0
+fun CharBuffer.isEmpty() = lim == 0
 
 
 /** Returns `true` if the buffer is not empty. */
- fun ByteBuffer.isNotEmpty() = !isEmpty()
+fun ByteBuffer.isNotEmpty() = !isEmpty()
 
 /** Returns `true` if the buffer is not empty. */
- fun ShortBuffer.isNotEmpty() = !isEmpty()
+fun ShortBuffer.isNotEmpty() = !isEmpty()
 
 /** Returns `true` if the buffer is not empty. */
- fun IntBuffer.isNotEmpty() = !isEmpty()
+fun IntBuffer.isNotEmpty() = !isEmpty()
 
 /** Returns `true` if the buffer is not empty. */
- fun LongBuffer.isNotEmpty() = !isEmpty()
+fun LongBuffer.isNotEmpty() = !isEmpty()
 
 /** Returns `true` if the buffer is not empty. */
- fun FloatBuffer.isNotEmpty() = !isEmpty()
+fun FloatBuffer.isNotEmpty() = !isEmpty()
 
 /** Returns `true` if the buffer is not empty. */
- fun DoubleBuffer.isNotEmpty() = !isEmpty()
+fun DoubleBuffer.isNotEmpty() = !isEmpty()
 
 /** Returns `true` if the buffer is not empty. */
- fun CharBuffer.isNotEmpty() = !isEmpty()
+fun CharBuffer.isNotEmpty() = !isEmpty()
 
 
 /** Returns the last valid index for the buffer. */
@@ -6763,14 +6379,6 @@ inline fun <R> CharBuffer.mapIndexed(transform: (index: Int, Char) -> R): List<R
 
 /** Applies the given [transform] function to each element and its index in the original buffer and appends the results to the given [destination].
  *  @param [transform] function that takes the index of an element and the element itself and returns the result of the transform applied to the element. */
-inline fun <T, R, C : MutableCollection<in R>> Array<out T>.mapIndexedTo(destination: C, transform: (index: Int, T) -> R): C {
-    var index = 0
-    for (item in this) destination += transform(index++, item)
-    return destination
-}
-
-/** Applies the given [transform] function to each element and its index in the original buffer and appends the results to the given [destination].
- *  @param [transform] function that takes the index of an element and the element itself and returns the result of the transform applied to the element. */
 inline fun <R, C : MutableCollection<in R>> ByteBuffer.mapIndexedTo(destination: C, transform: (index: Int, Byte) -> R): C {
     var index = 0
     for (item in this) destination += transform(index++, item)
@@ -7648,25 +7256,25 @@ inline fun CharBuffer.any(predicate: (Char) -> Boolean): Boolean {
 
 
 /** Returns the number of elements in this buffer. */
- fun ByteBuffer.count() = lim
+fun ByteBuffer.count() = lim
 
 /** Returns the number of elements in this buffer. */
- fun ShortBuffer.count() = lim
+fun ShortBuffer.count() = lim
 
 /** Returns the number of elements in this buffer. */
- fun IntBuffer.count() = lim
+fun IntBuffer.count() = lim
 
 /** Returns the number of elements in this buffer. */
- fun LongBuffer.count() = lim
+fun LongBuffer.count() = lim
 
 /** Returns the number of elements in this buffer. */
- fun FloatBuffer.count() = lim
+fun FloatBuffer.count() = lim
 
 /** Returns the number of elements in this buffer. */
- fun DoubleBuffer.count() = lim
+fun DoubleBuffer.count() = lim
 
 /** Returns the number of elements in this buffer. */
- fun CharBuffer.count() = lim
+fun CharBuffer.count() = lim
 
 
 /** Returns the number of elements matching the given [predicate]. */
@@ -8205,13 +7813,6 @@ inline fun CharBuffer.forEach(action: (Char) -> Unit) {
     for (element in this) action(element)
 }
 
-
-/** Performs the given [action] on each element, providing sequential index with the element.
- *  @param [action] function that takes the index of an element and the element itself and performs the desired action on the element. */
-inline fun <T> Array<out T>.forEachIndexed(action: (index: Int, T) -> Unit) {
-    var index = 0
-    for (item in this) action(index++, item)
-}
 
 /** Performs the given [action] on each element, providing sequential index with the element.
  *  @param [action] function that takes the index of an element and the element itself and performs the desired action on the element. */
