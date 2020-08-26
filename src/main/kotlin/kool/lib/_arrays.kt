@@ -1649,33 +1649,34 @@ inline fun <C : MutableCollection<in Char>> CharBuffer.filterIndexedTo(destinati
 
 /** Returns a list containing all elements not matching the given [predicate].
  *  @sample samples.collections.Collections.Filtering.filter */
-inline fun ByteArray.filterNot(predicate: (Byte) -> Boolean): List<Byte> = filterNotTo(ArrayList<Byte>(), predicate)
+inline fun ByteBuffer.filterNot(predicate: (Byte) -> Boolean): List<Byte> = filterNotTo(ArrayList<Byte>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
  *  @sample samples.collections.Collections.Filtering.filter */
-inline fun ShortArray.filterNot(predicate: (Short) -> Boolean): List<Short> = filterNotTo(ArrayList<Short>(), predicate)
+inline fun ShortBuffer.filterNot(predicate: (Short) -> Boolean): List<Short> = filterNotTo(ArrayList<Short>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
  *  @sample samples.collections.Collections.Filtering.filter */
-inline fun IntArray.filterNot(predicate: (Int) -> Boolean): List<Int> = filterNotTo(ArrayList<Int>(), predicate)
+inline fun IntBuffer.filterNot(predicate: (Int) -> Boolean): List<Int> = filterNotTo(ArrayList<Int>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
  *  @sample samples.collections.Collections.Filtering.filter */
-inline fun LongArray.filterNot(predicate: (Long) -> Boolean): List<Long> = filterNotTo(ArrayList<Long>(), predicate)
+inline fun LongBuffer.filterNot(predicate: (Long) -> Boolean): List<Long> = filterNotTo(ArrayList<Long>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
  *  @sample samples.collections.Collections.Filtering.filter */
-inline fun FloatArray.filterNot(predicate: (Float) -> Boolean): List<Float> = filterNotTo(ArrayList<Float>(), predicate)
+inline fun FloatBuffer.filterNot(predicate: (Float) -> Boolean): List<Float> = filterNotTo(ArrayList<Float>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
  *  @sample samples.collections.Collections.Filtering.filter */
-inline fun DoubleArray.filterNot(predicate: (Double) -> Boolean): List<Double> = filterNotTo(ArrayList<Double>(), predicate)
+inline fun DoubleBuffer.filterNot(predicate: (Double) -> Boolean): List<Double> = filterNotTo(ArrayList<Double>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
  *  @sample samples.collections.Collections.Filtering.filter */
-inline fun CharArray.filterNot(predicate: (Char) -> Boolean): List<Char> = filterNotTo(ArrayList<Char>(), predicate)
+inline fun CharBuffer.filterNot(predicate: (Char) -> Boolean): List<Char> = filterNotTo(ArrayList<Char>(), predicate)
 
-// [Kool] custom
+
+// [Kool] custom, it was filterNotNull
 
 /** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
  *  @sample samples.collections.Collections.Filtering.filterNotNull */
@@ -1941,465 +1942,239 @@ fun CharBuffer.slice(indices: IntRange): CharBuffer {
 }
 
 
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun <T> Array<out T>.slice(indices: Iterable<Int>): List<T> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<T>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun ByteBuffer.slice(indices: Iterable<Int>): List<Byte> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<Byte>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun ShortBuffer.slice(indices: Iterable<Int>): List<Short> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<Short>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun IntBuffer.slice(indices: Iterable<Int>): List<Int> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<Int>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun LongBuffer.slice(indices: Iterable<Int>): List<Long> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<Long>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun FloatBuffer.slice(indices: Iterable<Int>): List<Float> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<Float>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun DoubleBuffer.slice(indices: Iterable<Int>): List<Double> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<Double>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun DELETE.slice(indices: Iterable<Int>): List<Boolean> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<Boolean>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing elements at specified [indices].
-// */
-//fun CharBuffer.slice(indices: Iterable<Int>): List<Char> {
-//    val size = indices.collectionSizeOrDefault(10)
-//    if (size == 0) return emptyList()
-//    val list = ArrayList<Char>(size)
-//    for (index in indices) {
-//        list.add(get(index))
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun <T> Array<T>.sliceArray(indices: Collection<Int>): Array<T> {
-//    val result = bufferOfNulls(this, indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun ByteBuffer.sliceArray(indices: Collection<Int>): ByteBuffer {
-//    val result = ByteBuffer(indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun ShortBuffer.sliceArray(indices: Collection<Int>): ShortBuffer {
-//    val result = ShortBuffer(indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun IntBuffer.sliceArray(indices: Collection<Int>): IntBuffer {
-//    val result = IntBuffer(indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun LongBuffer.sliceArray(indices: Collection<Int>): LongBuffer {
-//    val result = LongBuffer(indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun FloatBuffer.sliceArray(indices: Collection<Int>): FloatBuffer {
-//    val result = FloatBuffer(indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun DoubleBuffer.sliceArray(indices: Collection<Int>): DoubleBuffer {
-//    val result = DoubleBuffer(indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun DELETE.sliceArray(indices: Collection<Int>): DELETE {
-//    val result = DELETE(indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a buffer containing elements of this buffer at specified [indices].
-// */
-//fun CharBuffer.sliceArray(indices: Collection<Int>): CharBuffer {
-//    val result = CharBuffer(indices.size)
-//    var targetIndex = 0
-//    for (sourceIndex in indices) {
-//        result[targetIndex++] = this[sourceIndex]
-//    }
-//    return result
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun <T> Array<T>.sliceArray(indices: IntRange): Array<T> {
-//    if (indices.isEmpty()) return copyOfRange(0, 0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun ByteBuffer.sliceArray(indices: IntRange): ByteBuffer {
-//    if (indices.isEmpty()) return ByteBuffer(0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun ShortBuffer.sliceArray(indices: IntRange): ShortBuffer {
-//    if (indices.isEmpty()) return ShortBuffer(0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun IntBuffer.sliceArray(indices: IntRange): IntBuffer {
-//    if (indices.isEmpty()) return IntBuffer(0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun LongBuffer.sliceArray(indices: IntRange): LongBuffer {
-//    if (indices.isEmpty()) return LongBuffer(0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun FloatBuffer.sliceArray(indices: IntRange): FloatBuffer {
-//    if (indices.isEmpty()) return FloatBuffer(0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun DoubleBuffer.sliceArray(indices: IntRange): DoubleBuffer {
-//    if (indices.isEmpty()) return DoubleBuffer(0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun DELETE.sliceArray(indices: IntRange): DELETE {
-//    if (indices.isEmpty()) return DELETE(0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing elements at indices in the specified [indices] range.
-// */
-//fun CharBuffer.sliceArray(indices: IntRange): CharBuffer {
-//    if (indices.isEmpty()) return CharBuffer(0)
-//    return copyOfRange(indices.start, indices.endInclusive + 1)
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun <T> Array<out T>.take(n: Int): List<T> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<T>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun ByteBuffer.take(n: Int): List<Byte> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<Byte>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun ShortBuffer.take(n: Int): List<Short> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<Short>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun IntBuffer.take(n: Int): List<Int> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<Int>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun LongBuffer.take(n: Int): List<Long> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<Long>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun FloatBuffer.take(n: Int): List<Float> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<Float>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun DoubleBuffer.take(n: Int): List<Double> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<Double>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun DELETE.take(n: Int): List<Boolean> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<Boolean>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
-///**
-// * Returns a list containing first [n] elements.
-// */
-//fun CharBuffer.take(n: Int): List<Char> {
-//    require(n >= 0) { "Requested element count $n is less than zero." }
-//    if (n == 0) return emptyList()
-//    if (n >= size) return toList()
-//    if (n == 1) return listOf(this[0])
-//    var count = 0
-//    val list = ArrayList<Char>(n)
-//    for (item in this) {
-//        if (count++ == n)
-//            break
-//        list.add(item)
-//    }
-//    return list
-//}
-//
+
+/** rray containing elements of this array at specified [indices]. */
+public fun ByteBuffer.sliceArray(indices: Collection<Int>): ByteArray {
+    val result = ByteArray(indices.size)
+    var targetIndex = 0
+    for (sourceIndex in indices)
+        result[targetIndex++] = this[sourceIndex]
+    return result
+}
+
+/** Returns an array containing elements of this array at specified [indices]. */
+public fun ShortBuffer.sliceArray(indices: Collection<Int>): ShortArray {
+    val result = ShortArray(indices.size)
+    var targetIndex = 0
+    for (sourceIndex in indices)
+        result[targetIndex++] = this[sourceIndex]
+    return result
+}
+
+/** Returns an array containing elements of this array at specified [indices]. */
+public fun IntBuffer.sliceArray(indices: Collection<Int>): IntArray {
+    val result = IntArray(indices.size)
+    var targetIndex = 0
+    for (sourceIndex in indices)
+        result[targetIndex++] = this[sourceIndex]
+    return result
+}
+
+/** Returns an array containing elements of this array at specified [indices]. */
+public fun LongBuffer.sliceArray(indices: Collection<Int>): LongArray {
+    val result = LongArray(indices.size)
+    var targetIndex = 0
+    for (sourceIndex in indices)
+        result[targetIndex++] = this[sourceIndex]
+    return result
+}
+
+/** Returns an array containing elements of this array at specified [indices]. */
+public fun FloatBuffer.sliceArray(indices: Collection<Int>): FloatArray {
+    val result = FloatArray(indices.size)
+    var targetIndex = 0
+    for (sourceIndex in indices)
+        result[targetIndex++] = this[sourceIndex]
+    return result
+}
+
+/** Returns an array containing elements of this array at specified [indices]. */
+public fun DoubleBuffer.sliceArray(indices: Collection<Int>): DoubleArray {
+    val result = DoubleArray(indices.size)
+    var targetIndex = 0
+    for (sourceIndex in indices)
+        result[targetIndex++] = this[sourceIndex]
+    return result
+}
+
+/** Returns an array containing elements of this array at specified [indices]. */
+public fun CharBuffer.sliceArray(indices: Collection<Int>): CharArray {
+    val result = CharArray(indices.size)
+    var targetIndex = 0
+    for (sourceIndex in indices)
+        result[targetIndex++] = this[sourceIndex]
+    return result
+}
+
+
+/** Returns an array containing elements at indices in the specified [indices] range. */
+public fun ByteBuffer.sliceArray(indices: IntRange): ByteArray {
+    if (indices.isEmpty()) return ByteArray(0)
+    return copyOfRange(indices.start, indices.endInclusive + 1)
+}
+
+/** Returns an array containing elements at indices in the specified [indices] range. */
+public fun ShortBuffer.sliceArray(indices: IntRange): ShortArray {
+    if (indices.isEmpty()) return ShortArray(0)
+    return copyOfRange(indices.start, indices.endInclusive + 1)
+}
+
+/** Returns an array containing elements at indices in the specified [indices] range. */
+public fun IntBuffer.sliceArray(indices: IntRange): IntArray {
+    if (indices.isEmpty()) return IntArray(0)
+    return copyOfRange(indices.start, indices.endInclusive + 1)
+}
+
+/** Returns an array containing elements at indices in the specified [indices] range. */
+public fun LongBuffer.sliceArray(indices: IntRange): LongArray {
+    if (indices.isEmpty()) return LongArray(0)
+    return copyOfRange(indices.start, indices.endInclusive + 1)
+}
+
+/** Returns an array containing elements at indices in the specified [indices] range. */
+public fun FloatBuffer.sliceArray(indices: IntRange): FloatArray {
+    if (indices.isEmpty()) return FloatArray(0)
+    return copyOfRange(indices.start, indices.endInclusive + 1)
+}
+
+/** Returns an array containing elements at indices in the specified [indices] range. */
+public fun DoubleBuffer.sliceArray(indices: IntRange): DoubleArray {
+    if (indices.isEmpty()) return DoubleArray(0)
+    return copyOfRange(indices.start, indices.endInclusive + 1)
+}
+
+/** Returns an array containing elements at indices in the specified [indices] range. */
+public fun CharBuffer.sliceArray(indices: IntRange): CharArray {
+    if (indices.isEmpty()) return CharArray(0)
+    return copyOfRange(indices.start, indices.endInclusive + 1)
+}
+
+
+/** Returns a list containing first [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.take */
+public fun ByteBuffer.take(n: Int): List<Byte> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    if (n == 0) return emptyList()
+    if (n >= size) return toList()
+    if (n == 1) return listOf(this[0])
+    var count = 0
+    val list = ArrayList<Byte>(n)
+    for (item in this) {
+        list.add(item)
+        if (++count == n)
+            break
+    }
+    return list
+}
+
+/** Returns a list containing first [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.take */
+public fun ShortBuffer.take(n: Int): List<Short> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    if (n == 0) return emptyList()
+    if (n >= size) return toList()
+    if (n == 1) return listOf(this[0])
+    var count = 0
+    val list = ArrayList<Short>(n)
+    for (item in this) {
+        list.add(item)
+        if (++count == n)
+            break
+    }
+    return list
+}
+
+/** Returns a list containing first [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.take */
+public fun IntBuffer.take(n: Int): List<Int> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    if (n == 0) return emptyList()
+    if (n >= size) return toList()
+    if (n == 1) return listOf(this[0])
+    var count = 0
+    val list = ArrayList<Int>(n)
+    for (item in this) {
+        list.add(item)
+        if (++count == n)
+            break
+    }
+    return list
+}
+
+/** Returns a list containing first [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.take */
+public fun LongBuffer.take(n: Int): List<Long> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    if (n == 0) return emptyList()
+    if (n >= size) return toList()
+    if (n == 1) return listOf(this[0])
+    var count = 0
+    val list = ArrayList<Long>(n)
+    for (item in this) {
+        list.add(item)
+        if (++count == n)
+            break
+    }
+    return list
+}
+
+/** Returns a list containing first [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.take */
+public fun FloatBuffer.take(n: Int): List<Float> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    if (n == 0) return emptyList()
+    if (n >= size) return toList()
+    if (n == 1) return listOf(this[0])
+    var count = 0
+    val list = ArrayList<Float>(n)
+    for (item in this) {
+        list.add(item)
+        if (++count == n)
+            break
+    }
+    return list
+}
+
+/** Returns a list containing first [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.take */
+public fun DoubleBuffer.take(n: Int): List<Double> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    if (n == 0) return emptyList()
+    if (n >= size) return toList()
+    if (n == 1) return listOf(this[0])
+    var count = 0
+    val list = ArrayList<Double>(n)
+    for (item in this) {
+        list.add(item)
+        if (++count == n)
+            break
+    }
+    return list
+}
+
+/** Returns a list containing first [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample samples.collections.Collections.Transformations.take */
+public fun CharBuffer.take(n: Int): List<Char> {
+    require(n >= 0) { "Requested element count $n is less than zero." }
+    if (n == 0) return emptyList()
+    if (n >= size) return toList()
+    if (n == 1) return listOf(this[0])
+    var count = 0
+    val list = ArrayList<Char>(n)
+    for (item in this) {
+        list.add(item)
+        if (++count == n)
+            break
+    }
+    return list
+}
 
 
 /** Returns a list containing last [n] elements. */
@@ -2715,6 +2490,133 @@ fun CharBuffer.reverse() {
 }
 
 
+/** Reverses elements of the array in the specified range in-place.
+ *  @param fromIndex the start of the range (inclusive) to reverse.
+ *  @param toIndex the end of the range (exclusive) to reverse.
+ *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
+ *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
+public fun ByteBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
+    checkRangeIndexes(fromIndex, toIndex, size)
+    val midPoint = (fromIndex + toIndex) / 2
+    if (fromIndex == midPoint) return
+    var reverseIndex = toIndex - 1
+    for (index in fromIndex until midPoint) {
+        val tmp = this[index]
+        this[index] = this[reverseIndex]
+        this[reverseIndex] = tmp
+        reverseIndex--
+    }
+}
+
+/** Reverses elements of the array in the specified range in-place.
+ *  @param fromIndex the start of the range (inclusive) to reverse.
+ *  @param toIndex the end of the range (exclusive) to reverse.
+ *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
+ *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
+public fun ShortBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
+    checkRangeIndexes(fromIndex, toIndex, size)
+    val midPoint = (fromIndex + toIndex) / 2
+    if (fromIndex == midPoint) return
+    var reverseIndex = toIndex - 1
+    for (index in fromIndex until midPoint) {
+        val tmp = this[index]
+        this[index] = this[reverseIndex]
+        this[reverseIndex] = tmp
+        reverseIndex--
+    }
+}
+
+/** Reverses elements of the array in the specified range in-place.
+ *  @param fromIndex the start of the range (inclusive) to reverse.
+ *  @param toIndex the end of the range (exclusive) to reverse.
+ *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
+ *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
+public fun IntBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
+    checkRangeIndexes(fromIndex, toIndex, size)
+    val midPoint = (fromIndex + toIndex) / 2
+    if (fromIndex == midPoint) return
+    var reverseIndex = toIndex - 1
+    for (index in fromIndex until midPoint) {
+        val tmp = this[index]
+        this[index] = this[reverseIndex]
+        this[reverseIndex] = tmp
+        reverseIndex--
+    }
+}
+
+/** Reverses elements of the array in the specified range in-place.
+ *  @param fromIndex the start of the range (inclusive) to reverse.
+ *  @param toIndex the end of the range (exclusive) to reverse.
+ *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
+ *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
+public fun LongBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
+    checkRangeIndexes(fromIndex, toIndex, size)
+    val midPoint = (fromIndex + toIndex) / 2
+    if (fromIndex == midPoint) return
+    var reverseIndex = toIndex - 1
+    for (index in fromIndex until midPoint) {
+        val tmp = this[index]
+        this[index] = this[reverseIndex]
+        this[reverseIndex] = tmp
+        reverseIndex--
+    }
+}
+
+/** Reverses elements of the array in the specified range in-place.
+ *  @param fromIndex the start of the range (inclusive) to reverse.
+ *  @param toIndex the end of the range (exclusive) to reverse.
+ *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
+ *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
+public fun FloatBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
+    checkRangeIndexes(fromIndex, toIndex, size)
+    val midPoint = (fromIndex + toIndex) / 2
+    if (fromIndex == midPoint) return
+    var reverseIndex = toIndex - 1
+    for (index in fromIndex until midPoint) {
+        val tmp = this[index]
+        this[index] = this[reverseIndex]
+        this[reverseIndex] = tmp
+        reverseIndex--
+    }
+}
+
+/** Reverses elements of the array in the specified range in-place.
+ *  @param fromIndex the start of the range (inclusive) to reverse.
+ *  @param toIndex the end of the range (exclusive) to reverse.
+ *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
+ *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
+public fun DoubleBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
+    RangeIndexes(fromIndex, toIndex, size)
+    val midPoint = (fromIndex + toIndex) / 2
+    if (fromIndex == midPoint) return
+    var reverseIndex = toIndex - 1
+    for (index in fromIndex until midPoint) {
+        val tmp = this[index]
+        this[index] = this[reverseIndex]
+        this[reverseIndex] = tmp
+        reverseIndex--
+    }
+}
+
+/** Reverses elements of the array in the specified range in-place.
+ *  @param fromIndex the start of the range (inclusive) to reverse.
+ *  @param toIndex the end of the range (exclusive) to reverse.
+ *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
+ *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
+public fun CharBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
+    checkRangeIndexes(fromIndex, toIndex, size)
+    val midPoint = (fromIndex + toIndex) / 2
+    if (fromIndex == midPoint) return
+    var reverseIndex = toIndex - 1
+    for (index in fromIndex until midPoint) {
+        val tmp = this[index]
+        this[index] = this[reverseIndex]
+        this[reverseIndex] = tmp
+        reverseIndex--
+    }
+}
+
+
 /** Returns a list with elements in reversed order. */
 fun ByteBuffer.reversed(): List<Byte> {
     if (isEmpty()) return emptyList()
@@ -2772,114 +2674,172 @@ fun CharBuffer.reversed(): List<Char> {
 }
 
 
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun <T> Array<T>.reversedArray(): Array<T> {
-//    if (isEmpty()) return this
-//    val result = bufferOfNulls(this, size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun ByteBuffer.reversedArray(): ByteBuffer {
-//    if (isEmpty()) return this
-//    val result = ByteBuffer(size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun ShortBuffer.reversedArray(): ShortBuffer {
-//    if (isEmpty()) return this
-//    val result = ShortBuffer(size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun IntBuffer.reversedArray(): IntBuffer {
-//    if (isEmpty()) return this
-//    val result = IntBuffer(size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun LongBuffer.reversedArray(): LongBuffer {
-//    if (isEmpty()) return this
-//    val result = LongBuffer(size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun FloatBuffer.reversedArray(): FloatBuffer {
-//    if (isEmpty()) return this
-//    val result = FloatBuffer(size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun DoubleBuffer.reversedArray(): DoubleBuffer {
-//    if (isEmpty()) return this
-//    val result = DoubleBuffer(size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun DELETE.reversedArray(): DELETE {
-//    if (isEmpty()) return this
-//    val result = DELETE(size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
-///**
-// * Returns a buffer with elements of this buffer in reversed order.
-// */
-//fun CharBuffer.reversedArray(): CharBuffer {
-//    if (isEmpty()) return this
-//    val result = CharBuffer(size)
-//    val lastIndex = lastIndex
-//    for (i in 0..lastIndex)
-//        result[lastIndex - i] = this[i]
-//    return result
-//}
-//
+
+/** Returns an array with elements of this array in reversed order. */
+fun ByteBuffer.reversedArray(): ByteArray {
+    val result = ByteArray(size)
+    val lastIndex = lastIndex
+    for (i in 0..lastIndex)
+        result[lastIndex - i] = this[i]
+    return result
+}
+
+/** Returns an array with elements of this array in reversed order. */
+fun ShortBuffer.reversedArray(): ShortArray {
+    val result = ShortArray(size)
+    val lastIndex = lastIndex
+    for (i in 0..lastIndex)
+        result[lastIndex - i] = this[i]
+    return result
+}
+
+/** Returns an array with elements of this array in reversed order. */
+fun IntBuffer.reversedArray(): IntArray {
+    val result = IntArray(size)
+    val lastIndex = lastIndex
+    for (i in 0..lastIndex)
+        result[lastIndex - i] = this[i]
+    return result
+}
+
+/** Returns an array with elements of this array in reversed order. */
+fun LongBuffer.reversedArray(): LongArray {
+    val result = LongArray(size)
+    val lastIndex = lastIndex
+    for (i in 0..lastIndex)
+        result[lastIndex - i] = this[i]
+    return result
+}
+
+/** Returns an array with elements of this array in reversed order. */
+fun FloatBuffer.reversedArray(): FloatArray {
+    val result = FloatArray(size)
+    val lastIndex = lastIndex
+    for (i in 0..lastIndex)
+        result[lastIndex - i] = this[i]
+    return result
+}
+
+/** Returns an array with elements of this array in reversed order. */
+fun DoubleBuffer.reversedArray(): DoubleArray {
+    val result = DoubleArray(size)
+    val lastIndex = lastIndex
+    for (i in 0..lastIndex)
+        result[lastIndex - i] = this[i]
+    return result
+}
+
+
+/** Returns an array with elements of this array in reversed order. */
+fun CharBuffer.reversedArray(): CharArray {
+    val result = CharArray(size)
+    val lastIndex = lastIndex
+    for (i in 0..lastIndex)
+        result[lastIndex - i] = this[i]
+    return result
+}
+
+
+/** Randomly shuffles elements in this array in-place. */
+fun ByteBuffer.shuffle(): Unit = shuffle(Random)
+
+/** Randomly shuffles elements in this array in-place. */
+fun ShortBuffer.shuffle(): Unit = shuffle(Random)
+
+/** Randomly shuffles elements in this array in-place. */
+fun IntBuffer.shuffle(): Unit = shuffle(Random)
+
+/** Randomly shuffles elements in this array in-place. */
+fun LongBuffer.shuffle(): Unit = shuffle(Random)
+
+/** Randomly shuffles elements in this array in-place. */
+fun FloatBuffer.shuffle(): Unit = shuffle(Random)
+
+/** Randomly shuffles elements in this array in-place. */
+fun DoubleBuffer.shuffle(): Unit = shuffle(Random)
+
+/** Randomly shuffles elements in this array in-place. */
+fun CharBuffer.shuffle(): Unit = shuffle(Random)
+
+
+/** Randomly shuffles elements in this array in-place using the specified [random] instance as the source of randomness.
+ *  See: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm */
+fun ByteBuffer.shuffle(random: Random): Unit {
+    for (i in lastIndex downTo 1) {
+        val j = random.nextInt(i + 1)
+        val copy = this[i]
+        this[i] = this[j]
+        this[j] = copy
+    }
+}
+
+/** Randomly shuffles elements in this array in-place using the specified [random] instance as the source of randomness.
+ *  See: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm */
+fun ShortBuffer.shuffle(random: Random): Unit {
+    for (i in lastIndex downTo 1) {
+        val j = random.nextInt(i + 1)
+        val copy = this[i]
+        this[i] = this[j]
+        this[j] = copy
+    }
+}
+
+/** Randomly shuffles elements in this array in-place using the specified [random] instance as the source of randomness.
+ *  See: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm */
+fun IntBuffer.shuffle(random: Random): Unit {
+    for (i in lastIndex downTo 1) {
+        val j = random.nextInt(i + 1)
+        val copy = this[i]
+        this[i] = this[j]
+        this[j] = copy
+    }
+}
+
+/** Randomly shuffles elements in this array in-place using the specified [random] instance as the source of randomness.
+ *  See: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm */
+fun LongBuffer.shuffle(random: Random): Unit {
+    for (i in lastIndex downTo 1) {
+        val j = random.nextInt(i + 1)
+        val copy = this[i]
+        this[i] = this[j]
+        this[j] = copy
+    }
+}
+
+/** Randomly shuffles elements in this array in-place using the specified [random] instance as the source of randomness.
+ *  See: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm */
+fun FloatBuffer.shuffle(random: Random): Unit {
+    for (i in lastIndex downTo 1) {
+        val j = random.nextInt(i + 1)
+        val copy = this[i]
+        this[i] = this[j]
+        this[j] = copy
+    }
+}
+
+/** Randomly shuffles elements in this array in-place using the specified [random] instance as the source of randomness.
+ *  See: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm */
+fun DoubleBuffer.shuffle(random: Random): Unit {
+    for (i in lastIndex downTo 1) {
+        val j = random.nextInt(i + 1)
+        val copy = this[i]
+        this[i] = this[j]
+        this[j] = copy
+    }
+}
+
+/** Randomly shuffles elements in this array in-place using the specified [random] instance as the source of randomness.
+ *  See: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm */
+fun CharBuffer.shuffle(random: Random): Unit {
+    for (i in lastIndex downTo 1) {
+        val j = random.nextInt(i + 1)
+        val copy = this[i]
+        this[i] = this[j]
+        this[j] = copy
+    }
+}
+
+
 ///**
 // * Sorts elements in the buffer in-place according to natural sort order of the value returned by specified [selector] function.
 // */

@@ -74,13 +74,13 @@ inline class ShortPtr(val adr: Adr) {
 inline fun ShortPtr(bytePtr: BytePtr) = ShortPtr(bytePtr.adr)
 
 inline fun ShortPtr(size: Int, init: (Int) -> Short): ShortPtr {
-    val adr = MemoryUtil.nmemAlloc(size.toLong()  * Short.BYTES)
+    val adr = MemoryUtil.nmemAlloc(size.toLong() * Short.BYTES)
     for (i in 0 until size) MemoryUtil.memPutShort(adr + i * Short.BYTES, init(i))
     return ShortPtr(adr)
 }
 
 inline fun MemoryStack.ShortPtr(size: Int, init: (Int) -> Short): ShortPtr {
-    val adr = nmalloc(size  * Short.BYTES)
+    val adr = nmalloc(size * Short.BYTES)
     for (i in 0 until size) MemoryUtil.memPutShort(adr + i * Short.BYTES, init(i))
     return ShortPtr(adr)
 }
