@@ -34,6 +34,11 @@ inline val Buffer.remSize: Int
         else -> throw Error("Invalid buffer type")
     }
 
+fun main() {
+    val a: ByteArray
+    a.rev
+}
+
 inline var Buffer.lim: Int
     get() = limit()
     set(value) {

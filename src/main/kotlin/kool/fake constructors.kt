@@ -29,6 +29,9 @@ inline fun FloatBuffer(size: Int, init: (Int) -> Float) = FloatBuffer(size).also
 fun DoubleBuffer(size: Int): DoubleBuffer = MemoryUtil.memCallocDouble(size)
 inline fun DoubleBuffer(size: Int, init: (Int) -> Double) = DoubleBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
 
+fun CharBuffer(size: Int): CharBuffer = MemoryUtil.memCalloc(size * Char.BYTES).asCharBuffer()
+inline fun CharBuffer(size: Int, init: (Int) -> Char) = CharBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
+
 fun PointerBuffer(size: Int): PointerBuffer = MemoryUtil.memCallocPointer(size)
 inline fun PointerBuffer(size: Int, init: (Int) -> Adr)  = PointerBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
 
@@ -54,6 +57,9 @@ inline fun MemoryStack.FloatBuffer(size: Int, init: (Int) -> Float) = FloatBuffe
 
 fun MemoryStack.DoubleBuffer(size: Int): DoubleBuffer = callocDouble(size)
 inline fun MemoryStack.DoubleBuffer(size: Int, init: (Int) -> Double)= DoubleBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
+
+fun MemoryStack.CharBuffer(size: Int): CharBuffer = calloc(size * Char.BYTES).asCharBuffer()
+inline fun MemoryStack.CharBuffer(size: Int, init: (Int) -> Char) = CharBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
 
 fun MemoryStack.PointerBuffer(size: Int): PointerBuffer = callocPointer(size)
 inline fun MemoryStack.PointerBuffer(size: Int, init: (Int) -> Adr)= PointerBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
