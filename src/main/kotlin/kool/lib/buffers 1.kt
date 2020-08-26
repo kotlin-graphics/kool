@@ -3,6 +3,7 @@ package kool.lib
 import kool.*
 import org.lwjgl.system.MemoryUtil.*
 import java.nio.*
+import kotlin.math.min
 import kotlin.random.Random
 
 /** Returns 1st *element* from the collection. */
@@ -879,31 +880,31 @@ inline fun CharBuffer.random(): Char = random(Random)
 
 /** Returns a random element from this array using the specified source of randomness.
  *  @throws NoSuchElementException if this array is empty. */
-fun ByteBuffer.random(random: Random): Byte = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+fun ByteBuffer.random(random: Random): Byte = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness.
  *  @throws NoSuchElementException if this array is empty. */
-fun ShortBuffer.random(random: Random): Short = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+fun ShortBuffer.random(random: Random): Short = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness.
  *  @throws NoSuchElementException if this array is empty. */
-fun IntBuffer.random(random: Random): Int = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+fun IntBuffer.random(random: Random): Int = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness.
  *  @throws NoSuchElementException if this array is empty. */
-fun LongBuffer.random(random: Random): Long = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+fun LongBuffer.random(random: Random): Long = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness.
  *  @throws NoSuchElementException if this array is empty. */
-fun FloatBuffer.random(random: Random): Float = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+fun FloatBuffer.random(random: Random): Float = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness.
  *  @throws NoSuchElementException if this array is empty. */
-fun DoubleBuffer.random(random: Random): Double = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+fun DoubleBuffer.random(random: Random): Double = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness.
  *  @throws NoSuchElementException if this array is empty. */
-fun CharBuffer.random(random: Random): Char = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(size))
+fun CharBuffer.random(random: Random): Char = if (isEmpty()) throw NoSuchElementException("Array is empty.") else get(random.nextInt(lim))
 
 /** Returns a random element from this array, or `null` if this array is empty. */
 inline fun ByteBuffer.randomOrNull(): Byte? = randomOrNull(Random)
@@ -928,71 +929,71 @@ inline fun CharBuffer.randomOrNull(): Char? = randomOrNull(Random)
 
 
 /** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
-fun ByteBuffer.randomOrNull(random: Random): Byte? = if (isEmpty()) null else get(random.nextInt(size))
+fun ByteBuffer.randomOrNull(random: Random): Byte? = if (isEmpty()) null else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
-fun ShortBuffer.randomOrNull(random: Random): Short? = if (isEmpty()) null else get(random.nextInt(size))
+fun ShortBuffer.randomOrNull(random: Random): Short? = if (isEmpty()) null else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
-fun IntBuffer.randomOrNull(random: Random): Int? = if (isEmpty()) null else get(random.nextInt(size))
+fun IntBuffer.randomOrNull(random: Random): Int? = if (isEmpty()) null else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
-fun LongBuffer.randomOrNull(random: Random): Long? = if (isEmpty()) null else get(random.nextInt(size))
+fun LongBuffer.randomOrNull(random: Random): Long? = if (isEmpty()) null else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
-fun FloatBuffer.randomOrNull(random: Random): Float? = if (isEmpty()) null else get(random.nextInt(size))
+fun FloatBuffer.randomOrNull(random: Random): Float? = if (isEmpty()) null else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
-fun DoubleBuffer.randomOrNull(random: Random): Double? = if (isEmpty()) null else get(random.nextInt(size))
+fun DoubleBuffer.randomOrNull(random: Random): Double? = if (isEmpty()) null else get(random.nextInt(lim))
 
 /** Returns a random element from this array using the specified source of randomness, or `null` if this array is empty. */
-fun CharBuffer.randomOrNull(random: Random): Char? = if (isEmpty()) null else get(random.nextInt(size))
+fun CharBuffer.randomOrNull(random: Random): Char? = if (isEmpty()) null else get(random.nextInt(lim))
 
 
 /** Returns the single element, or throws an exception if the array is empty or has more than one element. */
-fun ByteBuffer.single(): Byte = when (size) {
+fun ByteBuffer.single(): Byte = when (lim) {
     0 -> throw NoSuchElementException("Array is empty.")
     1 -> this[0]
     else -> throw IllegalArgumentException("Array has more than one element.")
 }
 
 /** Returns the single element, or throws an exception if the array is empty or has more than one element. */
-fun ShortBuffer.single(): Short = when (size) {
+fun ShortBuffer.single(): Short = when (lim) {
     0 -> throw NoSuchElementException("Array is empty.")
     1 -> this[0]
     else -> throw IllegalArgumentException("Array has more than one element.")
 }
 
 /** Returns the single element, or throws an exception if the array is empty or has more than one element. */
-fun IntBuffer.single(): Int = when (size) {
+fun IntBuffer.single(): Int = when (lim) {
     0 -> throw NoSuchElementException("Array is empty.")
     1 -> this[0]
     else -> throw IllegalArgumentException("Array has more than one element.")
 }
 
 /** Returns the single element, or throws an exception if the array is empty or has more than one element. */
-fun LongBuffer.single(): Long = when (size) {
+fun LongBuffer.single(): Long = when (lim) {
     0 -> throw NoSuchElementException("Array is empty.")
     1 -> this[0]
     else -> throw IllegalArgumentException("Array has more than one element.")
 }
 
 /** Returns the single element, or throws an exception if the array is empty or has more than one element. */
-fun FloatBuffer.single(): Float = when (size) {
+fun FloatBuffer.single(): Float = when (lim) {
     0 -> throw NoSuchElementException("Array is empty.")
     1 -> this[0]
     else -> throw IllegalArgumentException("Array has more than one element.")
 }
 
 /** Returns the single element, or throws an exception if the array is empty or has more than one element. */
-fun DoubleBuffer.single(): Double = when (size) {
+fun DoubleBuffer.single(): Double = when (lim) {
     0 -> throw NoSuchElementException("Array is empty.")
     1 -> this[0]
     else -> throw IllegalArgumentException("Array has more than one element.")
 }
 
 /** Returns the single element, or throws an exception if the array is empty or has more than one element. */
-fun CharBuffer.single(): Char = when (size) {
+fun CharBuffer.single(): Char = when (lim) {
     0 -> throw NoSuchElementException("Array is empty.")
     1 -> this[0]
     else -> throw IllegalArgumentException("Array has more than one element.")
@@ -1112,25 +1113,25 @@ inline fun CharBuffer.single(predicate: (Char) -> Boolean): Char {
 }
 
 /** Returns single element, or `null` if the array is empty or has more than one element. */
-fun ByteBuffer.singleOrNull(): Byte? = if (size == 1) this[0] else null
+fun ByteBuffer.singleOrNull(): Byte? = if (lim == 1) this[0] else null
 
 /** Returns single element, or `null` if the array is empty or has more than one element. */
-fun ShortBuffer.singleOrNull(): Short? = if (size == 1) this[0] else null
+fun ShortBuffer.singleOrNull(): Short? = if (lim == 1) this[0] else null
 
 /** Returns single element, or `null` if the array is empty or has more than one element. */
-fun IntBuffer.singleOrNull(): Int? = if (size == 1) this[0] else null
+fun IntBuffer.singleOrNull(): Int? = if (lim == 1) this[0] else null
 
 /** Returns single element, or `null` if the array is empty or has more than one element. */
-fun LongBuffer.singleOrNull(): Long? = if (size == 1) this[0] else null
+fun LongBuffer.singleOrNull(): Long? = if (lim == 1) this[0] else null
 
 /** Returns single element, or `null` if the array is empty or has more than one element. */
-fun FloatBuffer.singleOrNull(): Float? = if (size == 1) this[0] else null
+fun FloatBuffer.singleOrNull(): Float? = if (lim == 1) this[0] else null
 
 /** Returns single element, or `null` if the array is empty or has more than one element. */
-fun DoubleBuffer.singleOrNull(): Double? = if (size == 1) this[0] else null
+fun DoubleBuffer.singleOrNull(): Double? = if (lim == 1) this[0] else null
 
 /** Returns single element, or `null` if the array is empty or has more than one element. */
-fun CharBuffer.singleOrNull(): Char? = if (size == 1) this[0] else null
+fun CharBuffer.singleOrNull(): Char? = if (lim == 1) this[0] else null
 
 
 /** Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found. */
@@ -1287,7 +1288,7 @@ fun CharBuffer.drop(n: Int): List<Char> {
  *  @sample samples.collections.Collections.Transformations.drop */
 fun ByteBuffer.dropLast(n: Int): List<Byte> {
     require(n >= 0) { "Requested element count $n is less than zero." }
-    return take((size - n).coerceAtLeast(0))
+    return take((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except last [n] elements.
@@ -1295,7 +1296,7 @@ fun ByteBuffer.dropLast(n: Int): List<Byte> {
  *  @sample samples.collections.Collections.Transformations.drop */
 fun ShortBuffer.dropLast(n: Int): List<Short> {
     require(n >= 0) { "Requested element count $n is less than zero." }
-    return take((size - n).coerceAtLeast(0))
+    return take((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except last [n] elements.
@@ -1303,7 +1304,7 @@ fun ShortBuffer.dropLast(n: Int): List<Short> {
  *  @sample samples.collections.Collections.Transformations.drop */
 fun IntBuffer.dropLast(n: Int): List<Int> {
     require(n >= 0) { "Requested element count $n is less than zero." }
-    return take((size - n).coerceAtLeast(0))
+    return take((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except last [n] elements.
@@ -1311,7 +1312,7 @@ fun IntBuffer.dropLast(n: Int): List<Int> {
  *  @sample samples.collections.Collections.Transformations.drop */
 fun LongBuffer.dropLast(n: Int): List<Long> {
     require(n >= 0) { "Requested element count $n is less than zero." }
-    return take((size - n).coerceAtLeast(0))
+    return take((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except last [n] elements.
@@ -1319,7 +1320,7 @@ fun LongBuffer.dropLast(n: Int): List<Long> {
  *  @sample samples.collections.Collections.Transformations.drop */
 fun FloatBuffer.dropLast(n: Int): List<Float> {
     require(n >= 0) { "Requested element count $n is less than zero." }
-    return take((size - n).coerceAtLeast(0))
+    return take((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except last [n] elements.
@@ -1327,7 +1328,7 @@ fun FloatBuffer.dropLast(n: Int): List<Float> {
  *  @sample samples.collections.Collections.Transformations.drop */
 fun DoubleBuffer.dropLast(n: Int): List<Double> {
     require(n >= 0) { "Requested element count $n is less than zero." }
-    return take((size - n).coerceAtLeast(0))
+    return take((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except last [n] elements.
@@ -1335,7 +1336,7 @@ fun DoubleBuffer.dropLast(n: Int): List<Double> {
  *  @sample samples.collections.Collections.Transformations.drop */
 fun CharBuffer.dropLast(n: Int): List<Char> {
     require(n >= 0) { "Requested element count $n is less than zero." }
-    return take((size - n).coerceAtLeast(0))
+    return take((lim - n).coerceAtLeast(0))
 }
 
 
@@ -2006,43 +2007,43 @@ fun CharBuffer.sliceArray(indices: Collection<Int>): CharArray {
 
 /** Returns an array containing elements at indices in the specified [indices] range. */
 fun ByteBuffer.sliceArray(indices: IntRange): ByteBuffer {
-    if (indices.isEmpty()) return ByteArray(0)
+    if (indices.isEmpty()) return ByteBuffer(0)
     return copyOfRange(indices.start, indices.endInclusive + 1)
 }
 
 /** Returns an array containing elements at indices in the specified [indices] range. */
 fun ShortBuffer.sliceArray(indices: IntRange): ShortBuffer {
-    if (indices.isEmpty()) return ShortArray(0)
+    if (indices.isEmpty()) return ShortBuffer(0)
     return copyOfRange(indices.start, indices.endInclusive + 1)
 }
 
 /** Returns an array containing elements at indices in the specified [indices] range. */
 fun IntBuffer.sliceArray(indices: IntRange): IntBuffer {
-    if (indices.isEmpty()) return IntArray(0)
+    if (indices.isEmpty()) return IntBuffer(0)
     return copyOfRange(indices.start, indices.endInclusive + 1)
 }
 
 /** Returns an array containing elements at indices in the specified [indices] range. */
 fun LongBuffer.sliceArray(indices: IntRange): LongBuffer {
-    if (indices.isEmpty()) return LongArray(0)
+    if (indices.isEmpty()) return LongBuffer(0)
     return copyOfRange(indices.start, indices.endInclusive + 1)
 }
 
 /** Returns an array containing elements at indices in the specified [indices] range. */
 fun FloatBuffer.sliceArray(indices: IntRange): FloatBuffer {
-    if (indices.isEmpty()) return FloatArray(0)
+    if (indices.isEmpty()) return FloatBuffer(0)
     return copyOfRange(indices.start, indices.endInclusive + 1)
 }
 
 /** Returns an array containing elements at indices in the specified [indices] range. */
 fun DoubleBuffer.sliceArray(indices: IntRange): DoubleBuffer {
-    if (indices.isEmpty()) return DoubleArray(0)
+    if (indices.isEmpty()) return DoubleBuffer(0)
     return copyOfRange(indices.start, indices.endInclusive + 1)
 }
 
 /** Returns an array containing elements at indices in the specified [indices] range. */
 fun CharBuffer.sliceArray(indices: IntRange): CharBuffer {
-    if (indices.isEmpty()) return CharArray(0)
+    if (indices.isEmpty()) return CharBuffer(0)
     return copyOfRange(indices.start, indices.endInclusive + 1)
 }
 
@@ -2053,7 +2054,7 @@ fun CharBuffer.sliceArray(indices: IntRange): CharBuffer {
 fun ByteBuffer.take(n: Int): List<Byte> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
-    if (n >= size) return toList()
+    if (n >= lim) return toList()
     if (n == 1) return listOf(this[0])
     var count = 0
     val list = ArrayList<Byte>(n)
@@ -2071,7 +2072,7 @@ fun ByteBuffer.take(n: Int): List<Byte> {
 fun ShortBuffer.take(n: Int): List<Short> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
-    if (n >= size) return toList()
+    if (n >= lim) return toList()
     if (n == 1) return listOf(this[0])
     var count = 0
     val list = ArrayList<Short>(n)
@@ -2089,7 +2090,7 @@ fun ShortBuffer.take(n: Int): List<Short> {
 fun IntBuffer.take(n: Int): List<Int> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
-    if (n >= size) return toList()
+    if (n >= lim) return toList()
     if (n == 1) return listOf(this[0])
     var count = 0
     val list = ArrayList<Int>(n)
@@ -2107,7 +2108,7 @@ fun IntBuffer.take(n: Int): List<Int> {
 fun LongBuffer.take(n: Int): List<Long> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
-    if (n >= size) return toList()
+    if (n >= lim) return toList()
     if (n == 1) return listOf(this[0])
     var count = 0
     val list = ArrayList<Long>(n)
@@ -2125,7 +2126,7 @@ fun LongBuffer.take(n: Int): List<Long> {
 fun FloatBuffer.take(n: Int): List<Float> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
-    if (n >= size) return toList()
+    if (n >= lim) return toList()
     if (n == 1) return listOf(this[0])
     var count = 0
     val list = ArrayList<Float>(n)
@@ -2143,7 +2144,7 @@ fun FloatBuffer.take(n: Int): List<Float> {
 fun DoubleBuffer.take(n: Int): List<Double> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
-    if (n >= size) return toList()
+    if (n >= lim) return toList()
     if (n == 1) return listOf(this[0])
     var count = 0
     val list = ArrayList<Double>(n)
@@ -2161,7 +2162,7 @@ fun DoubleBuffer.take(n: Int): List<Double> {
 fun CharBuffer.take(n: Int): List<Char> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
-    if (n >= size) return toList()
+    if (n >= lim) return toList()
     if (n == 1) return listOf(this[0])
     var count = 0
     val list = ArrayList<Char>(n)
@@ -2493,7 +2494,7 @@ fun CharBuffer.reverse() {
  *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
 fun ByteBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
-    checkRangeIndexes(fromIndex, toIndex, size)
+    checkRangeIndexes(fromIndex, toIndex, lim)
     val midPoint = (fromIndex + toIndex) / 2
     if (fromIndex == midPoint) return
     var reverseIndex = toIndex - 1
@@ -2511,7 +2512,7 @@ fun ByteBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
  *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
 fun ShortBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
-    checkRangeIndexes(fromIndex, toIndex, size)
+    checkRangeIndexes(fromIndex, toIndex, lim)
     val midPoint = (fromIndex + toIndex) / 2
     if (fromIndex == midPoint) return
     var reverseIndex = toIndex - 1
@@ -2529,7 +2530,7 @@ fun ShortBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
  *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
 fun IntBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
-    checkRangeIndexes(fromIndex, toIndex, size)
+    checkRangeIndexes(fromIndex, toIndex, lim)
     val midPoint = (fromIndex + toIndex) / 2
     if (fromIndex == midPoint) return
     var reverseIndex = toIndex - 1
@@ -2547,7 +2548,7 @@ fun IntBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
  *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
 fun LongBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
-    checkRangeIndexes(fromIndex, toIndex, size)
+    checkRangeIndexes(fromIndex, toIndex, lim)
     val midPoint = (fromIndex + toIndex) / 2
     if (fromIndex == midPoint) return
     var reverseIndex = toIndex - 1
@@ -2562,10 +2563,10 @@ fun LongBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
 /** Reverses elements of the array in the specified range in-place.
  *  @param fromIndex the start of the range (inclusive) to reverse.
  *  @param toIndex the end of the range (exclusive) to reverse.
- *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
+ *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the lim of this array.
  *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
 fun FloatBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
-    checkRangeIndexes(fromIndex, toIndex, size)
+    checkRangeIndexes(fromIndex, toIndex, lim)
     val midPoint = (fromIndex + toIndex) / 2
     if (fromIndex == midPoint) return
     var reverseIndex = toIndex - 1
@@ -2583,7 +2584,7 @@ fun FloatBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
  *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
 fun DoubleBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
-    checkRangeIndexes(fromIndex, toIndex, size)
+    checkRangeIndexes(fromIndex, toIndex, lim)
     val midPoint = (fromIndex + toIndex) / 2
     if (fromIndex == midPoint) return
     var reverseIndex = toIndex - 1
@@ -2601,7 +2602,7 @@ fun DoubleBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
  *  @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  *  @throws IllegalArgumentException if [fromIndex] is greater than [toIndex]. */
 fun CharBuffer.reverse(fromIndex: Int, toIndex: Int): Unit {
-    checkRangeIndexes(fromIndex, toIndex, size)
+    checkRangeIndexes(fromIndex, toIndex, lim)
     val midPoint = (fromIndex + toIndex) / 2
     if (fromIndex == midPoint) return
     var reverseIndex = toIndex - 1
@@ -2673,7 +2674,7 @@ fun CharBuffer.reversed(): List<Char> {
 
 /** Returns an array with elements of this array in reversed order. */
 fun ByteBuffer.reversedArray(): ByteArray {
-    val result = ByteArray(size)
+    val result = ByteArray(lim)
     val lastIndex = lastIndex
     for (i in 0..lastIndex)
         result[lastIndex - i] = this[i]
@@ -2682,7 +2683,7 @@ fun ByteBuffer.reversedArray(): ByteArray {
 
 /** Returns an array with elements of this array in reversed order. */
 fun ShortBuffer.reversedArray(): ShortArray {
-    val result = ShortArray(size)
+    val result = ShortArray(lim)
     val lastIndex = lastIndex
     for (i in 0..lastIndex)
         result[lastIndex - i] = this[i]
@@ -2691,7 +2692,7 @@ fun ShortBuffer.reversedArray(): ShortArray {
 
 /** Returns an array with elements of this array in reversed order. */
 fun IntBuffer.reversedArray(): IntArray {
-    val result = IntArray(size)
+    val result = IntArray(lim)
     val lastIndex = lastIndex
     for (i in 0..lastIndex)
         result[lastIndex - i] = this[i]
@@ -2700,7 +2701,7 @@ fun IntBuffer.reversedArray(): IntArray {
 
 /** Returns an array with elements of this array in reversed order. */
 fun LongBuffer.reversedArray(): LongArray {
-    val result = LongArray(size)
+    val result = LongArray(lim)
     val lastIndex = lastIndex
     for (i in 0..lastIndex)
         result[lastIndex - i] = this[i]
@@ -2709,7 +2710,7 @@ fun LongBuffer.reversedArray(): LongArray {
 
 /** Returns an array with elements of this array in reversed order. */
 fun FloatBuffer.reversedArray(): FloatArray {
-    val result = FloatArray(size)
+    val result = FloatArray(lim)
     val lastIndex = lastIndex
     for (i in 0..lastIndex)
         result[lastIndex - i] = this[i]
@@ -2718,7 +2719,7 @@ fun FloatBuffer.reversedArray(): FloatArray {
 
 /** Returns an array with elements of this array in reversed order. */
 fun DoubleBuffer.reversedArray(): DoubleArray {
-    val result = DoubleArray(size)
+    val result = DoubleArray(lim)
     val lastIndex = lastIndex
     for (i in 0..lastIndex)
         result[lastIndex - i] = this[i]
@@ -2728,7 +2729,7 @@ fun DoubleBuffer.reversedArray(): DoubleArray {
 
 /** Returns an array with elements of this array in reversed order. */
 fun CharBuffer.reversedArray(): CharArray {
-    val result = CharArray(size)
+    val result = CharArray(lim)
     val lastIndex = lastIndex
     for (i in 0..lastIndex)
         result[lastIndex - i] = this[i]
@@ -2839,7 +2840,7 @@ fun CharBuffer.shuffle(random: Random): Unit {
 
 /** Sorts elements in the array in-place descending according to their natural sort order. */
 fun ByteBuffer.sortDescending(): Unit {
-    if (size > 1) {
+    if (lim > 1) {
         sort()
         reverse()
     }
@@ -2847,7 +2848,7 @@ fun ByteBuffer.sortDescending(): Unit {
 
 /** Sorts elements in the array in-place descending according to their natural sort order. */
 fun ShortBuffer.sortDescending(): Unit {
-    if (size > 1) {
+    if (lim > 1) {
         sort()
         reverse()
     }
@@ -2855,7 +2856,7 @@ fun ShortBuffer.sortDescending(): Unit {
 
 /** Sorts elements in the array in-place descending according to their natural sort order. */
 fun IntBuffer.sortDescending(): Unit {
-    if (size > 1) {
+    if (lim > 1) {
         sort()
         reverse()
     }
@@ -2863,7 +2864,7 @@ fun IntBuffer.sortDescending(): Unit {
 
 /** Sorts elements in the array in-place descending according to their natural sort order. */
 fun LongBuffer.sortDescending(): Unit {
-    if (size > 1) {
+    if (lim > 1) {
         sort()
         reverse()
     }
@@ -2871,7 +2872,7 @@ fun LongBuffer.sortDescending(): Unit {
 
 /** Sorts elements in the array in-place descending according to their natural sort order. */
 fun FloatBuffer.sortDescending(): Unit {
-    if (size > 1) {
+    if (lim > 1) {
         sort()
         reverse()
     }
@@ -2879,7 +2880,7 @@ fun FloatBuffer.sortDescending(): Unit {
 
 /** Sorts elements in the array in-place descending according to their natural sort order. */
 fun DoubleBuffer.sortDescending(): Unit {
-    if (size > 1) {
+    if (lim > 1) {
         sort()
         reverse()
     }
@@ -2887,7 +2888,7 @@ fun DoubleBuffer.sortDescending(): Unit {
 
 /** Sorts elements in the array in-place descending according to their natural sort order. */
 fun CharBuffer.sortDescending(): Unit {
-    if (size > 1) {
+    if (lim > 1) {
         sort()
         reverse()
     }
@@ -3195,7 +3196,7 @@ fun CharArray?.contentHashCode(): Int = this?.hashCode() ?: 0
  *  @sample samples.collections.Arrays.ContentOperations.contentToString */
 fun ByteBuffer?.contentToString(): String {
     if (this == null) return "null"
-    val iMax = size - 1
+    val iMax = lim - 1
     if (iMax == -1) return "[]"
     val b = StringBuilder()
     b.append('[')
@@ -3212,7 +3213,7 @@ fun ByteBuffer?.contentToString(): String {
  *  @sample samples.collections.Arrays.ContentOperations.contentToString */
 fun ShortBuffer?.contentToString(): String {
     if (this == null) return "null"
-    val iMax = size - 1
+    val iMax = lim - 1
     if (iMax == -1) return "[]"
     val b = StringBuilder()
     b.append('[')
@@ -3229,7 +3230,7 @@ fun ShortBuffer?.contentToString(): String {
  *  @sample samples.collections.Arrays.ContentOperations.contentToString */
 fun IntBuffer?.contentToString(): String {
     if (this == null) return "null"
-    val iMax = size - 1
+    val iMax = lim - 1
     if (iMax == -1) return "[]"
     val b = StringBuilder()
     b.append('[')
@@ -3246,7 +3247,7 @@ fun IntBuffer?.contentToString(): String {
  *  @sample samples.collections.Arrays.ContentOperations.contentToString */
 fun LongBuffer?.contentToString(): String {
     if (this == null) return "null"
-    val iMax = size - 1
+    val iMax = lim - 1
     if (iMax == -1) return "[]"
     val b = StringBuilder()
     b.append('[')
@@ -3263,7 +3264,7 @@ fun LongBuffer?.contentToString(): String {
  *  @sample samples.collections.Arrays.ContentOperations.contentToString */
 fun FloatBuffer?.contentToString(): String {
     if (this == null) return "null"
-    val iMax = size - 1
+    val iMax = lim - 1
     if (iMax == -1) return "[]"
     val b = StringBuilder()
     b.append('[')
@@ -3280,7 +3281,7 @@ fun FloatBuffer?.contentToString(): String {
  *  @sample samples.collections.Arrays.ContentOperations.contentToString */
 fun DoubleBuffer?.contentToString(): String {
     if (this == null) return "null"
-    val iMax = size - 1
+    val iMax = lim - 1
     if (iMax == -1) return "[]"
     val b = StringBuilder()
     b.append('[')
@@ -3297,7 +3298,7 @@ fun DoubleBuffer?.contentToString(): String {
  *  @sample samples.collections.Arrays.ContentOperations.contentToString */
 fun CharBuffer?.contentToString(): String {
     if (this == null) return "null"
-    val iMax = size - 1
+    val iMax = lim - 1
     if (iMax == -1) return "[]"
     val b = StringBuilder()
     b.append('[')
@@ -3327,7 +3328,7 @@ fun CharBuffer?.contentToString(): String {
  *
  * @return the [destination] array.
  */
-fun ByteBuffer.copyInto(destination: ByteBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = size): ByteBuffer {
+fun ByteBuffer.copyInto(destination: ByteBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = lim): ByteBuffer {
     memCopy(adr + startIndex, destination.adr + destinationOffset, (endIndex - startIndex).toLong())
     return destination
 }
@@ -3348,7 +3349,7 @@ fun ByteBuffer.copyInto(destination: ByteBuffer, destinationOffset: Int = 0, sta
  *
  * @return the [destination] array.
  */
-fun ShortBuffer.copyInto(destination: ShortBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = size): ShortBuffer {
+fun ShortBuffer.copyInto(destination: ShortBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = lim): ShortBuffer {
     memCopy(adr + startIndex * Short.BYTES, destination.adr + destinationOffset * Short.BYTES, (endIndex - startIndex).toLong() * Short.BYTES)
     return destination
 }
@@ -3369,7 +3370,7 @@ fun ShortBuffer.copyInto(destination: ShortBuffer, destinationOffset: Int = 0, s
  *
  * @return the [destination] array.
  */
-fun IntBuffer.copyInto(destination: IntBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = size): IntBuffer {
+fun IntBuffer.copyInto(destination: IntBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = lim): IntBuffer {
     memCopy(adr + startIndex * Int.BYTES, destination.adr + destinationOffset * Int.BYTES, (endIndex - startIndex).toLong() * Int.BYTES)
     return destination
 }
@@ -3390,7 +3391,7 @@ fun IntBuffer.copyInto(destination: IntBuffer, destinationOffset: Int = 0, start
  *
  * @return the [destination] array.
  */
-fun LongBuffer.copyInto(destination: LongBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = size): LongBuffer {
+fun LongBuffer.copyInto(destination: LongBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = lim): LongBuffer {
     memCopy(adr + startIndex * Long.BYTES, destination.adr + destinationOffset * Long.BYTES, (endIndex - startIndex).toLong() * Long.BYTES)
     return destination
 }
@@ -3411,7 +3412,7 @@ fun LongBuffer.copyInto(destination: LongBuffer, destinationOffset: Int = 0, sta
  *
  * @return the [destination] array.
  */
-fun FloatBuffer.copyInto(destination: FloatBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = size): FloatBuffer {
+fun FloatBuffer.copyInto(destination: FloatBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = lim): FloatBuffer {
     memCopy(adr + startIndex * Float.BYTES, destination.adr + destinationOffset * Float.BYTES, (endIndex - startIndex).toLong() * Float.BYTES)
     return destination
 }
@@ -3432,7 +3433,7 @@ fun FloatBuffer.copyInto(destination: FloatBuffer, destinationOffset: Int = 0, s
  *
  * @return the [destination] array.
  */
-fun DoubleBuffer.copyInto(destination: DoubleBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = size): DoubleBuffer {
+fun DoubleBuffer.copyInto(destination: DoubleBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = lim): DoubleBuffer {
     memCopy(adr + startIndex * Double.BYTES, destination.adr + destinationOffset * Double.BYTES, (endIndex - startIndex).toLong() * Double.BYTES)
     return destination
 }
@@ -3453,7 +3454,7 @@ fun DoubleBuffer.copyInto(destination: DoubleBuffer, destinationOffset: Int = 0,
  *
  * @return the [destination] array.
  */
-fun CharBuffer.copyInto(destination: CharBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = size): CharBuffer {
+fun CharBuffer.copyInto(destination: CharBuffer, destinationOffset: Int = 0, startIndex: Int = 0, endIndex: Int = lim): CharBuffer {
     memCopy(adr + startIndex * Char.BYTES, destination.adr + destinationOffset * Char.BYTES, (endIndex - startIndex).toLong() * Char.BYTES)
     return destination
 }
@@ -3527,7 +3528,7 @@ fun CharBuffer.copyOf(): CharBuffer {
  */
 fun ByteBuffer.copyOf(newSize: Int): ByteBuffer {
     val dst = memAlloc(newSize)
-    memCopy(adr, dst.adr, size min newSize)
+    memCopy(adr, dst.adr, min(lim, newSize).toLong())
     return dst
 }
 
@@ -3542,7 +3543,7 @@ fun ByteBuffer.copyOf(newSize: Int): ByteBuffer {
  */
 fun ShortBuffer.copyOf(newSize: Int): ShortBuffer {
     val dst = memAllocShort(newSize)
-    memCopy(adr, dst.adr, (size min newSize).toLong() * Short.BYTES)
+    memCopy(adr, dst.adr, min(lim, newSize).toLong() * Short.BYTES)
     return dst
 }
 
@@ -3557,7 +3558,7 @@ fun ShortBuffer.copyOf(newSize: Int): ShortBuffer {
  */
 fun IntBuffer.copyOf(newSize: Int): IntBuffer {
     val dst = memAllocInt(newSize)
-    memCopy(adr, dst.adr, (size min newSize).toLong() * Int.BYTES)
+    memCopy(adr, dst.adr, min(lim, newSize).toLong() * Int.BYTES)
     return dst
 }
 
@@ -3572,7 +3573,7 @@ fun IntBuffer.copyOf(newSize: Int): IntBuffer {
  */
 fun LongBuffer.copyOf(newSize: Int): LongBuffer {
     val dst = memAllocLong(newSize)
-    memCopy(adr, dst.adr, (size min newSize).toLong() * Long.BYTES)
+    memCopy(adr, dst.adr, min(lim, newSize).toLong() * Long.BYTES)
     return dst
 }
 
@@ -3587,7 +3588,7 @@ fun LongBuffer.copyOf(newSize: Int): LongBuffer {
  */
 fun FloatBuffer.copyOf(newSize: Int): FloatBuffer {
     val dst = memAllocFloat(newSize)
-    memCopy(adr, dst.adr, (size min newSize).toLong() * Float.BYTES)
+    memCopy(adr, dst.adr, min(lim, newSize).toLong() * Float.BYTES)
     return dst
 }
 
@@ -3602,7 +3603,7 @@ fun FloatBuffer.copyOf(newSize: Int): FloatBuffer {
  */
 fun DoubleBuffer.copyOf(newSize: Int): DoubleBuffer {
     val dst = memAllocDouble(newSize)
-    memCopy(adr, dst.adr, (size min newSize).toLong() * Double.BYTES)
+    memCopy(adr, dst.adr, min(lim, newSize).toLong() * Double.BYTES)
     return dst
 }
 
@@ -3617,7 +3618,7 @@ fun DoubleBuffer.copyOf(newSize: Int): DoubleBuffer {
  */
 fun CharBuffer.copyOf(newSize: Int): CharBuffer {
     val dst = memAlloc(newSize * Char.BYTES)
-    memCopy(adr, dst.adr, (size min newSize).toLong() * Char.BYTES)
+    memCopy(adr, dst.adr, min(lim, newSize).toLong() * Char.BYTES)
     return dst.asCharBuffer()
 }
 
@@ -4099,7 +4100,7 @@ fun CharBuffer.sort() {
  *
  * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
  */
-fun ByteBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
+fun ByteBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = ByteArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
     for(i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
@@ -4116,7 +4117,7 @@ fun ByteBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
  *
  * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
  */
-fun ShortBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
+fun ShortBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = ShortArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
     for(i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
@@ -4133,7 +4134,7 @@ fun ShortBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
  *
  * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
  */
-fun IntBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
+fun IntBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = IntArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
     for(i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
@@ -4150,7 +4151,7 @@ fun IntBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
  *
  * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
  */
-fun LongBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
+fun LongBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = LongArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
     for(i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
@@ -4167,7 +4168,7 @@ fun LongBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
  *
  * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
  */
-fun FloatBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
+fun FloatBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = FloatArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
     for(i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
@@ -4184,7 +4185,7 @@ fun FloatBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
  *
  * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
  */
-fun DoubleBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
+fun DoubleBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = DoubleArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
     for(i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
@@ -4201,7 +4202,7 @@ fun DoubleBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
  *
  * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
  */
-fun CharBuffer.sort(fromIndex: Int = 0, toIndex: Int = size) {
+fun CharBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = CharArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
     for(i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
@@ -4474,7 +4475,7 @@ fun Array<out Char>.toCharBuffer(): CharBuffer = CharBuffer(size) { get(it) }
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> ByteBuffer.associate(transform: (Byte) -> Pair<K, V>): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateTo(LinkedHashMap<K, V>(capacity), transform)
 }
 
@@ -4489,7 +4490,7 @@ inline fun <K, V> ByteBuffer.associate(transform: (Byte) -> Pair<K, V>): Map<K, 
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> ShortBuffer.associate(transform: (Short) -> Pair<K, V>): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateTo(LinkedHashMap<K, V>(capacity), transform)
 }
 
@@ -4504,7 +4505,7 @@ inline fun <K, V> ShortBuffer.associate(transform: (Short) -> Pair<K, V>): Map<K
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> IntBuffer.associate(transform: (Int) -> Pair<K, V>): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateTo(LinkedHashMap<K, V>(capacity), transform)
 }
 
@@ -4519,7 +4520,7 @@ inline fun <K, V> IntBuffer.associate(transform: (Int) -> Pair<K, V>): Map<K, V>
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> LongBuffer.associate(transform: (Long) -> Pair<K, V>): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateTo(LinkedHashMap<K, V>(capacity), transform)
 }
 
@@ -4534,7 +4535,7 @@ inline fun <K, V> LongBuffer.associate(transform: (Long) -> Pair<K, V>): Map<K, 
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> FloatBuffer.associate(transform: (Float) -> Pair<K, V>): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateTo(LinkedHashMap<K, V>(capacity), transform)
 }
 
@@ -4549,7 +4550,7 @@ inline fun <K, V> FloatBuffer.associate(transform: (Float) -> Pair<K, V>): Map<K
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> DoubleBuffer.associate(transform: (Double) -> Pair<K, V>): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateTo(LinkedHashMap<K, V>(capacity), transform)
 }
 
@@ -4564,7 +4565,7 @@ inline fun <K, V> DoubleBuffer.associate(transform: (Double) -> Pair<K, V>): Map
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> CharBuffer.associate(transform: (Char) -> Pair<K, V>): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateTo(LinkedHashMap<K, V>(capacity), transform)
 }
 
@@ -4580,7 +4581,7 @@ inline fun <K, V> CharBuffer.associate(transform: (Char) -> Pair<K, V>): Map<K, 
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> ByteBuffer.associateBy(keySelector: (Byte) -> K): Map<K, Byte> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, Byte>(capacity), keySelector)
 }
 
@@ -4595,7 +4596,7 @@ inline fun <K> ByteBuffer.associateBy(keySelector: (Byte) -> K): Map<K, Byte> {
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> ShortBuffer.associateBy(keySelector: (Short) -> K): Map<K, Short> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, Short>(capacity), keySelector)
 }
 
@@ -4610,7 +4611,7 @@ inline fun <K> ShortBuffer.associateBy(keySelector: (Short) -> K): Map<K, Short>
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> IntBuffer.associateBy(keySelector: (Int) -> K): Map<K, Int> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, Int>(capacity), keySelector)
 }
 
@@ -4625,7 +4626,7 @@ inline fun <K> IntBuffer.associateBy(keySelector: (Int) -> K): Map<K, Int> {
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> LongBuffer.associateBy(keySelector: (Long) -> K): Map<K, Long> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, Long>(capacity), keySelector)
 }
 
@@ -4640,7 +4641,7 @@ inline fun <K> LongBuffer.associateBy(keySelector: (Long) -> K): Map<K, Long> {
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> FloatBuffer.associateBy(keySelector: (Float) -> K): Map<K, Float> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, Float>(capacity), keySelector)
 }
 
@@ -4655,7 +4656,7 @@ inline fun <K> FloatBuffer.associateBy(keySelector: (Float) -> K): Map<K, Float>
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> DoubleBuffer.associateBy(keySelector: (Double) -> K): Map<K, Double> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, Double>(capacity), keySelector)
 }
 
@@ -4670,7 +4671,7 @@ inline fun <K> DoubleBuffer.associateBy(keySelector: (Double) -> K): Map<K, Doub
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> CharBuffer.associateBy(keySelector: (Char) -> K): Map<K, Char> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, Char>(capacity), keySelector)
 }
 
@@ -4685,7 +4686,7 @@ inline fun <K> CharBuffer.associateBy(keySelector: (Char) -> K): Map<K, Char> {
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> ByteBuffer.associateBy(keySelector: (Byte) -> K, valueTransform: (Byte) -> V): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, V>(capacity), keySelector, valueTransform)
 }
 
@@ -4699,7 +4700,7 @@ inline fun <K, V> ByteBuffer.associateBy(keySelector: (Byte) -> K, valueTransfor
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> ShortBuffer.associateBy(keySelector: (Short) -> K, valueTransform: (Short) -> V): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, V>(capacity), keySelector, valueTransform)
 }
 
@@ -4713,7 +4714,7 @@ inline fun <K, V> ShortBuffer.associateBy(keySelector: (Short) -> K, valueTransf
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> IntBuffer.associateBy(keySelector: (Int) -> K, valueTransform: (Int) -> V): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, V>(capacity), keySelector, valueTransform)
 }
 
@@ -4727,7 +4728,7 @@ inline fun <K, V> IntBuffer.associateBy(keySelector: (Int) -> K, valueTransform:
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> LongBuffer.associateBy(keySelector: (Long) -> K, valueTransform: (Long) -> V): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, V>(capacity), keySelector, valueTransform)
 }
 
@@ -4741,7 +4742,7 @@ inline fun <K, V> LongBuffer.associateBy(keySelector: (Long) -> K, valueTransfor
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> FloatBuffer.associateBy(keySelector: (Float) -> K, valueTransform: (Float) -> V): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, V>(capacity), keySelector, valueTransform)
 }
 
@@ -4755,7 +4756,7 @@ inline fun <K, V> FloatBuffer.associateBy(keySelector: (Float) -> K, valueTransf
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> DoubleBuffer.associateBy(keySelector: (Double) -> K, valueTransform: (Double) -> V): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, V>(capacity), keySelector, valueTransform)
 }
 
@@ -4769,7 +4770,7 @@ inline fun <K, V> DoubleBuffer.associateBy(keySelector: (Double) -> K, valueTran
  * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> CharBuffer.associateBy(keySelector: (Char) -> K, valueTransform: (Char) -> V): Map<K, V> {
-    val capacity = mapCapacity(size).coerceAtLeast(16)
+    val capacity = mapCapacity(lim).coerceAtLeast(16)
     return associateByTo(LinkedHashMap<K, V>(capacity), keySelector, valueTransform)
 }
 
