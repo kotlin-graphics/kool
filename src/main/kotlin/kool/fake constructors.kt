@@ -95,3 +95,23 @@ inline fun MemoryStack.PointerAdr(size: Int, init: (Int) -> Adr): Adr {
         MemoryUtil.memPutAddress(address + i * Pointer.POINTER_SIZE, init(i))
     return address
 }
+
+// empty versions
+
+fun emptyBuffer(): ByteBuffer = MemoryUtil.memCalloc(0)
+
+fun emptyByteBuffer(): ByteBuffer = MemoryUtil.memCalloc(0)
+
+fun emptyShortBuffer(): ShortBuffer = MemoryUtil.memCallocShort(0)
+
+fun emptyIntBuffer(): IntBuffer = MemoryUtil.memCallocInt(0)
+
+fun emptyLongBuffer(): LongBuffer = MemoryUtil.memCallocLong(0)
+
+fun emptyFloatBuffer(): FloatBuffer = MemoryUtil.memCallocFloat(0)
+
+fun emptyDoubleBuffer(): DoubleBuffer = MemoryUtil.memCallocDouble(0)
+
+fun emptyCharBuffer(): CharBuffer = MemoryUtil.memCalloc(0).asCharBuffer()
+
+fun emptyPointerBuffer(): PointerBuffer = MemoryUtil.memCallocPointer(0)

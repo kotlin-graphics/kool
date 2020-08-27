@@ -87,17 +87,17 @@ tasks {
     withType<Test> { useJUnitPlatform() }
 }
 
-val dokkaJavadocJar by tasks.register<Jar>("dokkaJavadocJar") {
-    dependsOn(tasks.dokkaJavadoc)
-    from(tasks.dokkaJavadoc.get().getOutputDirectoryAsFile())
-    archiveClassifier.set("javadoc")
-}
-
-val dokkaHtmlJar by tasks.register<Jar>("dokkaHtmlJar") {
-    dependsOn(tasks.dokkaHtml)
-    from(tasks.dokkaHtml.get().getOutputDirectoryAsFile())
-    archiveClassifier.set("html-doc")
-}
+//val dokkaJavadocJar by tasks.register<Jar>("dokkaJavadocJar") {
+//    dependsOn(tasks.dokkaJavadoc)
+//    from(tasks.dokkaJavadoc.get().getOutputDirectoryAsFile())
+//    archiveClassifier.set("javadoc")
+//}
+//
+//val dokkaHtmlJar by tasks.register<Jar>("dokkaHtmlJar") {
+//    dependsOn(tasks.dokkaHtml)
+//    from(tasks.dokkaHtml.get().getOutputDirectoryAsFile())
+//    archiveClassifier.set("html-doc")
+//}
 
 val sourceJar = task("sourceJar", Jar::class) {
     dependsOn(tasks["classes"])
@@ -106,8 +106,8 @@ val sourceJar = task("sourceJar", Jar::class) {
 }
 
 artifacts {
-    archives(dokkaJavadocJar)
-    archives(dokkaHtmlJar)
+//    archives(dokkaJavadocJar)
+//    archives(dokkaHtmlJar)
     archives(sourceJar)
 }
 

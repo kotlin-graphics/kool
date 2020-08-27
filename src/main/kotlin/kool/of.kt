@@ -38,3 +38,6 @@ fun floatBufferOf(vararg floats: Float) = FloatBuffer(floats.size) { floats[it] 
 
 fun doubleBufferOf(vararg doubles: Double) = DoubleBuffer(doubles.size) { doubles[it] }
 //fun doubleBufferOf(vararg numbers: Number): DoubleBuffer TODO?
+
+fun charBufferOf(vararg chars: Char) = CharBuffer(chars.size) { chars[it] }
+//fun doubleBufferOf(vararg numbers: Number): DoubleBuffer TODO?
