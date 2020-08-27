@@ -1,6 +1,7 @@
 import org.gradle.api.attributes.LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE
 import org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE
 import org.gradle.internal.os.OperatingSystem.*
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
@@ -66,16 +67,11 @@ tasks {
         }
     }
 
-    compileKotlin {
+    withType<KotlinCompile>().all {
         kotlinOptions {
             jvmTarget = "11"
-            freeCompilerArgs += listOf("-Xinline-classes, -Xopt-in=kotlin.RequiresOptIn")
+            freeCompilerArgs = listOf("-Xinline-classes", "-Xopt-in=kotlin.RequiresOptIn")
         }
-        sourceCompatibility = "11"
-    }
-
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "11"
         sourceCompatibility = "11"
     }
 
