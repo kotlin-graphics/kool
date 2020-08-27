@@ -5,7 +5,7 @@ import org.gradle.internal.os.OperatingSystem.*
 plugins {
     java
     kotlin("jvm") version "1.4.0"
-//    maven
+    `maven-publish`
     id("org.jetbrains.dokka") version "1.4.0-rc"
     id("com.github.johnrengelman.shadow").version("6.0.0")
 }
