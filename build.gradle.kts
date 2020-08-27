@@ -69,7 +69,7 @@ tasks {
     compileKotlin {
         kotlinOptions {
             jvmTarget = "11"
-            freeCompilerArgs = listOf("-XXLanguage:+InlineClasses, -Xopt-in=kotlin.RequiresOptIn")
+            freeCompilerArgs += listOf("-Xinline-classes, -Xopt-in=kotlin.RequiresOptIn")
         }
         sourceCompatibility = "11"
     }
