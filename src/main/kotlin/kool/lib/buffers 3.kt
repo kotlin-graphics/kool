@@ -1207,7 +1207,7 @@ inline fun <R> CharBuffer.runningFold(initial: R, operation: (acc: R, Char) -> R
  */
 inline fun <R> ByteBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Byte) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
-    val result = ArrayList<R>(size + 1).apply { add(initial) }
+    val result = ArrayList<R>(lim + 1).apply { add(initial) }
     var accumulator = initial
     for (index in indices) {
         accumulator = operation(index, accumulator, this[index])
@@ -1230,7 +1230,7 @@ inline fun <R> ByteBuffer.runningFoldIndexed(initial: R, operation: (index: Int,
  */
 inline fun <R> ShortBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Short) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
-    val result = ArrayList<R>(size + 1).apply { add(initial) }
+    val result = ArrayList<R>(lim + 1).apply { add(initial) }
     var accumulator = initial
     for (index in indices) {
         accumulator = operation(index, accumulator, this[index])
@@ -1253,7 +1253,7 @@ inline fun <R> ShortBuffer.runningFoldIndexed(initial: R, operation: (index: Int
  */
 inline fun <R> IntBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Int) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
-    val result = ArrayList<R>(size + 1).apply { add(initial) }
+    val result = ArrayList<R>(lim + 1).apply { add(initial) }
     var accumulator = initial
     for (index in indices) {
         accumulator = operation(index, accumulator, this[index])
@@ -1276,7 +1276,7 @@ inline fun <R> IntBuffer.runningFoldIndexed(initial: R, operation: (index: Int, 
  */
 inline fun <R> LongBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Long) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
-    val result = ArrayList<R>(size + 1).apply { add(initial) }
+    val result = ArrayList<R>(lim + 1).apply { add(initial) }
     var accumulator = initial
     for (index in indices) {
         accumulator = operation(index, accumulator, this[index])
@@ -1299,7 +1299,7 @@ inline fun <R> LongBuffer.runningFoldIndexed(initial: R, operation: (index: Int,
  */
 inline fun <R> FloatBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Float) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
-    val result = ArrayList<R>(size + 1).apply { add(initial) }
+    val result = ArrayList<R>(lim + 1).apply { add(initial) }
     var accumulator = initial
     for (index in indices) {
         accumulator = operation(index, accumulator, this[index])
@@ -1322,7 +1322,7 @@ inline fun <R> FloatBuffer.runningFoldIndexed(initial: R, operation: (index: Int
  */
 inline fun <R> DoubleBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Double) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
-    val result = ArrayList<R>(size + 1).apply { add(initial) }
+    val result = ArrayList<R>(lim + 1).apply { add(initial) }
     var accumulator = initial
     for (index in indices) {
         accumulator = operation(index, accumulator, this[index])
@@ -1345,7 +1345,7 @@ inline fun <R> DoubleBuffer.runningFoldIndexed(initial: R, operation: (index: In
  */
 inline fun <R> CharBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Char) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
-    val result = ArrayList<R>(size + 1).apply { add(initial) }
+    val result = ArrayList<R>(lim + 1).apply { add(initial) }
     var accumulator = initial
     for (index in indices) {
         accumulator = operation(index, accumulator, this[index])
@@ -1366,8 +1366,8 @@ inline fun <R> CharBuffer.runningFoldIndexed(initial: R, operation: (index: Int,
 inline fun ByteBuffer.runningReduce(operation: (acc: Byte, Byte) -> Byte): List<Byte> {
     if (isEmpty()) return emptyList()
     var accumulator = this[0]
-    val result = ArrayList<Byte>(size).apply { add(accumulator) }
-    for (index in 1 until size) {
+    val result = ArrayList<Byte>(lim).apply { add(accumulator) }
+    for (index in 1 until lim) {
         accumulator = operation(accumulator, this[index])
         result.add(accumulator)
     }
@@ -1385,8 +1385,8 @@ inline fun ByteBuffer.runningReduce(operation: (acc: Byte, Byte) -> Byte): List<
 inline fun ShortBuffer.runningReduce(operation: (acc: Short, Short) -> Short): List<Short> {
     if (isEmpty()) return emptyList()
     var accumulator = this[0]
-    val result = ArrayList<Short>(size).apply { add(accumulator) }
-    for (index in 1 until size) {
+    val result = ArrayList<Short>(lim).apply { add(accumulator) }
+    for (index in 1 until lim) {
         accumulator = operation(accumulator, this[index])
         result.add(accumulator)
     }
@@ -1404,8 +1404,8 @@ inline fun ShortBuffer.runningReduce(operation: (acc: Short, Short) -> Short): L
 inline fun IntBuffer.runningReduce(operation: (acc: Int, Int) -> Int): List<Int> {
     if (isEmpty()) return emptyList()
     var accumulator = this[0]
-    val result = ArrayList<Int>(size).apply { add(accumulator) }
-    for (index in 1 until size) {
+    val result = ArrayList<Int>(lim).apply { add(accumulator) }
+    for (index in 1 until lim) {
         accumulator = operation(accumulator, this[index])
         result.add(accumulator)
     }
@@ -1423,8 +1423,8 @@ inline fun IntBuffer.runningReduce(operation: (acc: Int, Int) -> Int): List<Int>
 inline fun LongBuffer.runningReduce(operation: (acc: Long, Long) -> Long): List<Long> {
     if (isEmpty()) return emptyList()
     var accumulator = this[0]
-    val result = ArrayList<Long>(size).apply { add(accumulator) }
-    for (index in 1 until size) {
+    val result = ArrayList<Long>(lim).apply { add(accumulator) }
+    for (index in 1 until lim) {
         accumulator = operation(accumulator, this[index])
         result.add(accumulator)
     }
@@ -1442,8 +1442,8 @@ inline fun LongBuffer.runningReduce(operation: (acc: Long, Long) -> Long): List<
 inline fun FloatBuffer.runningReduce(operation: (acc: Float, Float) -> Float): List<Float> {
     if (isEmpty()) return emptyList()
     var accumulator = this[0]
-    val result = ArrayList<Float>(size).apply { add(accumulator) }
-    for (index in 1 until size) {
+    val result = ArrayList<Float>(lim).apply { add(accumulator) }
+    for (index in 1 until lim) {
         accumulator = operation(accumulator, this[index])
         result.add(accumulator)
     }
@@ -1461,8 +1461,8 @@ inline fun FloatBuffer.runningReduce(operation: (acc: Float, Float) -> Float): L
 inline fun DoubleBuffer.runningReduce(operation: (acc: Double, Double) -> Double): List<Double> {
     if (isEmpty()) return emptyList()
     var accumulator = this[0]
-    val result = ArrayList<Double>(size).apply { add(accumulator) }
-    for (index in 1 until size) {
+    val result = ArrayList<Double>(lim).apply { add(accumulator) }
+    for (index in 1 until lim) {
         accumulator = operation(accumulator, this[index])
         result.add(accumulator)
     }
@@ -1480,8 +1480,8 @@ inline fun DoubleBuffer.runningReduce(operation: (acc: Double, Double) -> Double
 inline fun CharBuffer.runningReduce(operation: (acc: Char, Char) -> Char): List<Char> {
     if (isEmpty()) return emptyList()
     var accumulator = this[0]
-    val result = ArrayList<Char>(size).apply { add(accumulator) }
-    for (index in 1 until size) {
+    val result = ArrayList<Char>(lim).apply { add(accumulator) }
+    for (index in 1 until lim) {
         accumulator = operation(accumulator, this[index])
         result.add(accumulator)
     }
@@ -2458,66 +2458,43 @@ inline fun CharBuffer.partition(predicate: (Char) -> Boolean): Pair<List<Char>, 
 }
 
 
-// [Kool] slightly modified, R is resolved accordingly to the receiver
-
-/**
- * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
- * The returned list has length of the shortest collection.
- *
- * @sample samples.collections.Iterables.Operations.zipIterable
- */
-infix fun ByteBuffer.zip(other: ByteBuffer): List<Pair<Byte, Byte>> = zip(other) { t1, t2 -> t1 to t2 }
-
-/**
- * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
- * The returned list has length of the shortest collection.
- *
- * @sample samples.collections.Iterables.Operations.zipIterable
- */
-infix fun ShortBuffer.zip(other: ShortBuffer): List<Pair<Short, Short>> = zip(other) { t1, t2 -> t1 to t2 }
-
-/**
- * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
- * The returned list has length of the shortest collection.
- *
- * @sample samples.collections.Iterables.Operations.zipIterable
- */
-infix fun IntBuffer.zip(other: IntBuffer): List<Pair<Int, Int>> = zip(other) { t1, t2 -> t1 to t2 }
-
-/**
- * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
- * The returned list has length of the shortest collection.
- *
- * @sample samples.collections.Iterables.Operations.zipIterable
- */
-infix fun LongBuffer.zip(other: LongBuffer): List<Pair<Long, Long>> = zip(other) { t1, t2 -> t1 to t2 }
-
-/**
- * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
- * The returned list has length of the shortest collection.
- *
- * @sample samples.collections.Iterables.Operations.zipIterable
- */
-infix fun FloatBuffer.zip(other: FloatBuffer): List<Pair<Float, Float>> = zip(other) { t1, t2 -> t1 to t2 }
-
-/**
- * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
- * The returned list has length of the shortest collection.
- *
- * @sample samples.collections.Iterables.Operations.zipIterable
- */
-infix fun DoubleBuffer.zip(other: DoubleBuffer): List<Pair<Double, Double>> = zip(other) { t1, t2 -> t1 to t2 }
-
-/**
- * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
- * The returned list has length of the shortest collection.
- *
- * @sample samples.collections.Iterables.Operations.zipIterable
- */
-infix fun CharBuffer.zip(other: CharBuffer): List<Pair<Char, Char>> = zip(other) { t1, t2 -> t1 to t2 }
 
 
-// [Kool] slightly changed, R and V are resolved accordingly to the reciver
+/** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ *  The returned list has length of the shortest collection.
+ *  @sample samples.collections.Iterables.Operations.zipIterable */
+infix fun <R> ByteBuffer.zip(other: Array<out R>): List<Pair<Byte, R>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ *  The returned list has length of the shortest collection.
+ *  @sample samples.collections.Iterables.Operations.zipIterable */
+infix fun <R> ShortBuffer.zip(other: Array<out R>): List<Pair<Short, R>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ *  The returned list has length of the shortest collection.
+ *  @sample samples.collections.Iterables.Operations.zipIterable */
+infix fun <R> IntBuffer.zip(other: Array<out R>): List<Pair<Int, R>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ *  The returned list has length of the shortest collection.
+ *  @sample samples.collections.Iterables.Operations.zipIterable */
+infix fun <R> LongBuffer.zip(other: Array<out R>): List<Pair<Long, R>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ *  The returned list has length of the shortest collection.
+ *  @sample samples.collections.Iterables.Operations.zipIterable */
+infix fun <R> FloatBuffer.zip(other: Array<out R>): List<Pair<Float, R>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ *  The returned list has length of the shortest collection.
+ *  @sample samples.collections.Iterables.Operations.zipIterable */
+infix fun <R> DoubleBuffer.zip(other: Array<out R>): List<Pair<Double, R>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ *  The returned list has length of the shortest collection.
+ *  @sample samples.collections.Iterables.Operations.zipIterable */
+infix fun <R> CharBuffer.zip(other: Array<out R>): List<Pair<Char, R>> = zip(other) { t1, t2 -> t1 to t2 }
+
 
 /**
  * Returns a list of values built from the elements of `this` array and the [other] array with the same index
@@ -2526,9 +2503,9 @@ infix fun CharBuffer.zip(other: CharBuffer): List<Pair<Char, Char>> = zip(other)
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun ByteBuffer.zip(other: ByteBuffer, transform: (a: Byte, b: Byte) -> Byte): List<Byte> {
-    val size = minOf(lim, other.lim)
-    val list = ArrayList<Byte>(size)
+inline fun <R, V> ByteBuffer.zip(other: Array<out R>, transform: (a: Byte, b: R) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
     for (i in 0 until size) {
         list.add(transform(this[i], other[i]))
     }
@@ -2542,9 +2519,9 @@ inline fun ByteBuffer.zip(other: ByteBuffer, transform: (a: Byte, b: Byte) -> By
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun ShortBuffer.zip(other: ShortBuffer, transform: (a: Short, b: Short) -> Short): List<Short> {
-    val size = minOf(lim, other.lim)
-    val list = ArrayList<Short>(size)
+inline fun <R, V> ShortBuffer.zip(other: Array<out R>, transform: (a: Short, b: R) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
     for (i in 0 until size) {
         list.add(transform(this[i], other[i]))
     }
@@ -2558,9 +2535,9 @@ inline fun ShortBuffer.zip(other: ShortBuffer, transform: (a: Short, b: Short) -
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun IntBuffer.zip(other: IntBuffer, transform: (a: Int, b: Int) -> Int): List<Int> {
-    val size = minOf(lim, other.lim)
-    val list = ArrayList<Int>(size)
+inline fun <R, V> IntBuffer.zip(other: Array<out R>, transform: (a: Int, b: R) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
     for (i in 0 until size) {
         list.add(transform(this[i], other[i]))
     }
@@ -2574,9 +2551,9 @@ inline fun IntBuffer.zip(other: IntBuffer, transform: (a: Int, b: Int) -> Int): 
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun LongBuffer.zip(other: LongBuffer, transform: (a: Long, b: Long) -> Long): List<Long> {
-    val size = minOf(lim, other.lim)
-    val list = ArrayList<Long>(size)
+inline fun <R, V> LongBuffer.zip(other: Array<out R>, transform: (a: Long, b: R) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
     for (i in 0 until size) {
         list.add(transform(this[i], other[i]))
     }
@@ -2590,9 +2567,9 @@ inline fun LongBuffer.zip(other: LongBuffer, transform: (a: Long, b: Long) -> Lo
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun FloatBuffer.zip(other: FloatBuffer, transform: (a: Float, b: Float) -> Float): List<Float> {
-    val size = minOf(lim, other.lim)
-    val list = ArrayList<Float>(size)
+inline fun <R, V> FloatBuffer.zip(other: Array<out R>, transform: (a: Float, b: R) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
     for (i in 0 until size) {
         list.add(transform(this[i], other[i]))
     }
@@ -2606,9 +2583,9 @@ inline fun FloatBuffer.zip(other: FloatBuffer, transform: (a: Float, b: Float) -
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun DoubleBuffer.zip(other: DoubleBuffer, transform: (a: Double, b: Double) -> Double): List<Double> {
-    val size = minOf(lim, other.lim)
-    val list = ArrayList<Double>(size)
+inline fun <R, V> DoubleBuffer.zip(other: Array<out R>, transform: (a: Double, b: R) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
     for (i in 0 until size) {
         list.add(transform(this[i], other[i]))
     }
@@ -2622,9 +2599,9 @@ inline fun DoubleBuffer.zip(other: DoubleBuffer, transform: (a: Double, b: Doubl
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun CharBuffer.zip(other: CharBuffer, transform: (a: Char, b: Char) -> Char): List<Char> {
-    val size = minOf(lim, other.lim)
-    val list = ArrayList<Char>(size)
+inline fun <R, V> CharBuffer.zip(other: Array<out R>, transform: (a: Char, b: R) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
     for (i in 0 until size) {
         list.add(transform(this[i], other[i]))
     }
@@ -2696,9 +2673,9 @@ infix fun <R> CharBuffer.zip(other: Iterable<R>): List<Pair<Char, R>> = zip(othe
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun ByteBuffer.zip(other: Iterable<Byte>, transform: (a: Byte, b: Byte) -> Byte): List<Byte> {
+inline fun <R, V> ByteBuffer.zip(other: Iterable<R>, transform: (a: Byte, b: R) -> V): List<V> {
     val arraySize = lim
-    val list = ArrayList<Byte>(minOf(other.collectionSizeOrDefault(10), arraySize))
+    val list = ArrayList<V>(minOf(other.collectionSizeOrDefault(10), arraySize))
     var i = 0
     for (element in other) {
         if (i >= arraySize) break
@@ -2714,9 +2691,9 @@ inline fun ByteBuffer.zip(other: Iterable<Byte>, transform: (a: Byte, b: Byte) -
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun ShortBuffer.zip(other: Iterable<Short>, transform: (a: Short, b: Short) -> Short): List<Short> {
+inline fun <R, V> ShortBuffer.zip(other: Iterable<R>, transform: (a: Short, b: R) -> V): List<V> {
     val arraySize = lim
-    val list = ArrayList<Short>(minOf(other.collectionSizeOrDefault(10), arraySize))
+    val list = ArrayList<V>(minOf(other.collectionSizeOrDefault(10), arraySize))
     var i = 0
     for (element in other) {
         if (i >= arraySize) break
@@ -2732,9 +2709,9 @@ inline fun ShortBuffer.zip(other: Iterable<Short>, transform: (a: Short, b: Shor
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun IntBuffer.zip(other: Iterable<Int>, transform: (a: Int, b: Int) -> Int): List<Int> {
+inline fun <R, V> IntBuffer.zip(other: Iterable<R>, transform: (a: Int, b: R) -> V): List<V> {
     val arraySize = lim
-    val list = ArrayList<Int>(minOf(other.collectionSizeOrDefault(10), arraySize))
+    val list = ArrayList<V>(minOf(other.collectionSizeOrDefault(10), arraySize))
     var i = 0
     for (element in other) {
         if (i >= arraySize) break
@@ -2750,9 +2727,9 @@ inline fun IntBuffer.zip(other: Iterable<Int>, transform: (a: Int, b: Int) -> In
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun LongBuffer.zip(other: Iterable<Long>, transform: (a: Long, b: Long) -> Long): List<Long> {
+inline fun <R, V> LongBuffer.zip(other: Iterable<R>, transform: (a: Long, b: R) -> V): List<V> {
     val arraySize = lim
-    val list = ArrayList<Long>(minOf(other.collectionSizeOrDefault(10), arraySize))
+    val list = ArrayList<V>(minOf(other.collectionSizeOrDefault(10), arraySize))
     var i = 0
     for (element in other) {
         if (i >= arraySize) break
@@ -2768,9 +2745,9 @@ inline fun LongBuffer.zip(other: Iterable<Long>, transform: (a: Long, b: Long) -
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun FloatBuffer.zip(other: Iterable<Float>, transform: (a: Float, b: Float) -> Float): List<Float> {
+inline fun <R, V> FloatBuffer.zip(other: Iterable<R>, transform: (a: Float, b: R) -> V): List<V> {
     val arraySize = lim
-    val list = ArrayList<Float>(minOf(other.collectionSizeOrDefault(10), arraySize))
+    val list = ArrayList<V>(minOf(other.collectionSizeOrDefault(10), arraySize))
     var i = 0
     for (element in other) {
         if (i >= arraySize) break
@@ -2786,9 +2763,9 @@ inline fun FloatBuffer.zip(other: Iterable<Float>, transform: (a: Float, b: Floa
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun DoubleBuffer.zip(other: Iterable<Double>, transform: (a: Double, b: Double) -> Double): List<Double> {
+inline fun <R, V> DoubleBuffer.zip(other: Iterable<R>, transform: (a: Double, b: R) -> V): List<V> {
     val arraySize = lim
-    val list = ArrayList<Double>(minOf(other.collectionSizeOrDefault(10), arraySize))
+    val list = ArrayList<V>(minOf(other.collectionSizeOrDefault(10), arraySize))
     var i = 0
     for (element in other) {
         if (i >= arraySize) break
@@ -2804,9 +2781,9 @@ inline fun DoubleBuffer.zip(other: Iterable<Double>, transform: (a: Double, b: D
  *
  * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
  */
-inline fun CharBuffer.zip(other: Iterable<Char>, transform: (a: Char, b: Char) -> Char): List<Char> {
+inline fun <R, V> CharBuffer.zip(other: Iterable<R>, transform: (a: Char, b: R) -> V): List<V> {
     val arraySize = lim
-    val list = ArrayList<Char>(minOf(other.collectionSizeOrDefault(10), arraySize))
+    val list = ArrayList<V>(minOf(other.collectionSizeOrDefault(10), arraySize))
     var i = 0
     for (element in other) {
         if (i >= arraySize) break
@@ -2815,299 +2792,586 @@ inline fun CharBuffer.zip(other: Iterable<Char>, transform: (a: Char, b: Char) -
     return list
 }
 
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <T, A : Appendable> Array<out T>.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((T) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            buffer.appendElement(element, transform)
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <A : Appendable> ByteBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Byte) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            if (transform != null)
-//                buffer.append(transform(element))
-//            else
-//                buffer.append(element.toString())
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <A : Appendable> ShortBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Short) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            if (transform != null)
-//                buffer.append(transform(element))
-//            else
-//                buffer.append(element.toString())
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <A : Appendable> IntBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Int) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            if (transform != null)
-//                buffer.append(transform(element))
-//            else
-//                buffer.append(element.toString())
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <A : Appendable> LongBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Long) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            if (transform != null)
-//                buffer.append(transform(element))
-//            else
-//                buffer.append(element.toString())
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <A : Appendable> FloatBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Float) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            if (transform != null)
-//                buffer.append(transform(element))
-//            else
-//                buffer.append(element.toString())
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <A : Appendable> DoubleBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Double) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            if (transform != null)
-//                buffer.append(transform(element))
-//            else
-//                buffer.append(element.toString())
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <A : Appendable> DELETE.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Boolean) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            if (transform != null)
-//                buffer.append(transform(element))
-//            else
-//                buffer.append(element.toString())
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <A : Appendable> CharBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Char) -> CharSequence)? = null): A {
-//    buffer.append(prefix)
-//    var count = 0
-//    for (element in this) {
-//        if (++count > 1) buffer.append(separator)
-//        if (limit < 0 || count <= limit) {
-//            if (transform != null)
-//                buffer.append(transform(element))
-//            else
-//                buffer.append(element)
-//        } else break
-//    }
-//    if (limit >= 0 && count > limit) buffer.append(truncated)
-//    buffer.append(postfix)
-//    return buffer
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun <T> Array<out T>.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((T) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun ByteBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Byte) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun ShortBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Short) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun IntBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Int) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun LongBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Long) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun FloatBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Float) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun DoubleBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Double) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun DELETE.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Boolean) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
-//
-///**
-// * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
-// *
-// * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
-// * elements will be appended, followed by the [truncated] string (which defaults to "...").
-// */
-//fun CharBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Char) -> CharSequence)? = null): String {
-//    return joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-//}
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun ByteBuffer.zip(other: ByteArray): List<Pair<Byte, Byte>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun ShortBuffer.zip(other: ShortArray): List<Pair<Short, Short>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun IntBuffer.zip(other: IntArray): List<Pair<Int, Int>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun LongBuffer.zip(other: LongArray): List<Pair<Long, Long>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun FloatBuffer.zip(other: FloatArray): List<Pair<Float, Float>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun DoubleBuffer.zip(other: DoubleArray): List<Pair<Double, Double>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun CharBuffer.zip(other: CharArray): List<Pair<Char, Char>> = zip(other) { t1, t2 -> t1 to t2 }
+
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> ByteBuffer.zip(other: ByteArray, transform: (a: Byte, b: Byte) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> ShortBuffer.zip(other: ShortArray, transform: (a: Short, b: Short) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> IntBuffer.zip(other: IntArray, transform: (a: Int, b: Int) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> LongBuffer.zip(other: LongArray, transform: (a: Long, b: Long) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> FloatBuffer.zip(other: FloatArray, transform: (a: Float, b: Float) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> DoubleBuffer.zip(other: DoubleArray, transform: (a: Double, b: Double) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> CharBuffer.zip(other: CharArray, transform: (a: Char, b: Char) -> V): List<V> {
+    val size = minOf(lim, other.size)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun ByteBuffer.zip(other: ByteBuffer): List<Pair<Byte, Byte>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun ShortBuffer.zip(other: ShortBuffer): List<Pair<Short, Short>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun IntBuffer.zip(other: IntBuffer): List<Pair<Int, Int>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun LongBuffer.zip(other: LongBuffer): List<Pair<Long, Long>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun FloatBuffer.zip(other: FloatBuffer): List<Pair<Float, Float>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun DoubleBuffer.zip(other: DoubleBuffer): List<Pair<Double, Double>> = zip(other) { t1, t2 -> t1 to t2 }
+
+/**
+ * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+ * The returned list has length of the shortest collection.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterable
+ */
+infix fun CharBuffer.zip(other: CharBuffer): List<Pair<Char, Char>> = zip(other) { t1, t2 -> t1 to t2 }
+
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> ByteBuffer.zip(other: ByteBuffer, transform: (a: Byte, b: Byte) -> V): List<V> {
+    val size = minOf(lim, other.lim)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> ShortBuffer.zip(other: ShortBuffer, transform: (a: Short, b: Short) -> V): List<V> {
+    val size = minOf(lim, other.lim)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> IntBuffer.zip(other: IntBuffer, transform: (a: Int, b: Int) -> V): List<V> {
+    val size = minOf(lim, other.lim)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> LongBuffer.zip(other: LongBuffer, transform: (a: Long, b: Long) -> V): List<V> {
+    val size = minOf(lim, other.lim)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> FloatBuffer.zip(other: FloatBuffer, transform: (a: Float, b: Float) -> V): List<V> {
+    val size = minOf(lim, other.lim)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> DoubleBuffer.zip(other: DoubleBuffer, transform: (a: Double, b: Double) -> V): List<V> {
+    val size = minOf(lim, other.lim)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+/**
+ * Returns a list of values built from the elements of `this` array and the [other] array with the same index
+ * using the provided [transform] function applied to each pair of elements.
+ * The returned list has length of the shortest array.
+ *
+ * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ */
+inline fun <V> CharBuffer.zip(other: CharBuffer, transform: (a: Char, b: Char) -> V): List<V> {
+    val size = minOf(lim, other.lim)
+    val list = ArrayList<V>(size)
+    for (i in 0 until size)
+        list.add(transform(this[i], other[i]))
+    return list
+}
+
+
+/**
+ * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinTo
+ */
+fun <A : Appendable> ByteBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Byte) -> CharSequence)? = null): A {
+    buffer.append(prefix)
+    var count = 0
+    for (element in this) {
+        if (++count > 1) buffer.append(separator)
+        if (limit < 0 || count <= limit)
+            if (transform != null)
+                buffer.append(transform(element))
+            else
+                buffer.append(element.toString())
+        else break
+    }
+    if (limit >= 0 && count > limit) buffer.append(truncated)
+    buffer.append(postfix)
+    return buffer
+}
+
+/**
+ * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinTo
+ */
+fun <A : Appendable> ShortBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Short) -> CharSequence)? = null): A {
+    buffer.append(prefix)
+    var count = 0
+    for (element in this) {
+        if (++count > 1) buffer.append(separator)
+        if (limit < 0 || count <= limit)
+            if (transform != null)
+                buffer.append(transform(element))
+            else
+                buffer.append(element.toString())
+        else break
+    }
+    if (limit >= 0 && count > limit) buffer.append(truncated)
+    buffer.append(postfix)
+    return buffer
+}
+
+/**
+ * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinTo
+ */
+fun <A : Appendable> IntBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Int) -> CharSequence)? = null): A {
+    buffer.append(prefix)
+    var count = 0
+    for (element in this) {
+        if (++count > 1) buffer.append(separator)
+        if (limit < 0 || count <= limit)
+            if (transform != null)
+                buffer.append(transform(element))
+            else
+                buffer.append(element.toString())
+        else break
+    }
+    if (limit >= 0 && count > limit) buffer.append(truncated)
+    buffer.append(postfix)
+    return buffer
+}
+
+/**
+ * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinTo
+ */
+fun <A : Appendable> LongBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Long) -> CharSequence)? = null): A {
+    buffer.append(prefix)
+    var count = 0
+    for (element in this) {
+        if (++count > 1) buffer.append(separator)
+        if (limit < 0 || count <= limit)
+            if (transform != null)
+                buffer.append(transform(element))
+            else
+                buffer.append(element.toString())
+        else break
+    }
+    if (limit >= 0 && count > limit) buffer.append(truncated)
+    buffer.append(postfix)
+    return buffer
+}
+
+/**
+ * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinTo
+ */
+fun <A : Appendable> FloatBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Float) -> CharSequence)? = null): A {
+    buffer.append(prefix)
+    var count = 0
+    for (element in this) {
+        if (++count > 1) buffer.append(separator)
+        if (limit < 0 || count <= limit)
+            if (transform != null)
+                buffer.append(transform(element))
+            else
+                buffer.append(element.toString())
+        else break
+    }
+    if (limit >= 0 && count > limit) buffer.append(truncated)
+    buffer.append(postfix)
+    return buffer
+}
+
+/**
+ * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinTo
+ */
+fun <A : Appendable> DoubleBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Double) -> CharSequence)? = null): A {
+    buffer.append(prefix)
+    var count = 0
+    for (element in this) {
+        if (++count > 1) buffer.append(separator)
+        if (limit < 0 || count <= limit)
+            if (transform != null)
+                buffer.append(transform(element))
+            else
+                buffer.append(element.toString())
+        else break
+    }
+    if (limit >= 0 && count > limit) buffer.append(truncated)
+    buffer.append(postfix)
+    return buffer
+}
+
+/**
+ * Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinTo
+ */
+fun <A : Appendable> CharBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Char) -> CharSequence)? = null): A {
+    buffer.append(prefix)
+    var count = 0
+    for (element in this) {
+        if (++count > 1) buffer.append(separator)
+        if (limit < 0 || count <= limit)
+            if (transform != null)
+                buffer.append(transform(element))
+            else
+                buffer.append(element)
+        else break
+    }
+    if (limit >= 0 && count > limit) buffer.append(truncated)
+    buffer.append(postfix)
+    return buffer
+}
+
+
+/**
+ * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinToString
+ */
+fun ByteBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Byte) -> CharSequence)? = null): String =
+        joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
+
+/**
+ * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinToString
+ */
+fun ShortBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Short) -> CharSequence)? = null): String =
+        joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
+
+/**
+ * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinToString
+ */
+fun IntBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Int) -> CharSequence)? = null): String =
+        joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
+
+/**
+ * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinToString
+ */
+fun LongBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Long) -> CharSequence)? = null): String =
+        joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
+
+/**
+ * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinToString
+ */
+fun FloatBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Float) -> CharSequence)? = null): String =
+        joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
+
+/**
+ * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinToString
+ */
+fun DoubleBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Double) -> CharSequence)? = null): String =
+        joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
+
+/**
+ * Creates a string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
+ *
+ * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
+ * elements will be appended, followed by the [truncated] string (which defaults to "...").
+ *
+ * @sample samples.collections.Collections.Transformations.joinToString
+ */
+fun CharBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Char) -> CharSequence)? = null): String =
+        joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
+
 
 
 /** Creates an [Iterable] instance that wraps the original buffer returning its elements when being iterated. */

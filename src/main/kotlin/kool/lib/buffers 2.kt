@@ -66,7 +66,7 @@ inline fun <V> IntBuffer.associateWith(valueSelector: (Int) -> V): Map<Int, V> {
  * @sample samples.collections.Collections.Transformations.associateWith
  */
 inline fun <V> LongBuffer.associateWith(valueSelector: (Long) -> V): Map<Long, V> {
-    val result = LinkedHashMap<Long, V>(mapCapacity(size).coerceAtLeast(16))
+    val result = LinkedHashMap<Long, V>(mapCapacity(lim).coerceAtLeast(16))
     return associateWithTo(result, valueSelector)
 }
 
@@ -81,7 +81,7 @@ inline fun <V> LongBuffer.associateWith(valueSelector: (Long) -> V): Map<Long, V
  * @sample samples.collections.Collections.Transformations.associateWith
  */
 inline fun <V> FloatBuffer.associateWith(valueSelector: (Float) -> V): Map<Float, V> {
-    val result = LinkedHashMap<Float, V>(mapCapacity(size).coerceAtLeast(16))
+    val result = LinkedHashMap<Float, V>(mapCapacity(lim).coerceAtLeast(16))
     return associateWithTo(result, valueSelector)
 }
 
@@ -96,7 +96,7 @@ inline fun <V> FloatBuffer.associateWith(valueSelector: (Float) -> V): Map<Float
  * @sample samples.collections.Collections.Transformations.associateWith
  */
 inline fun <V> DoubleBuffer.associateWith(valueSelector: (Double) -> V): Map<Double, V> {
-    val result = LinkedHashMap<Double, V>(mapCapacity(size).coerceAtLeast(16))
+    val result = LinkedHashMap<Double, V>(mapCapacity(lim).coerceAtLeast(16))
     return associateWithTo(result, valueSelector)
 }
 
@@ -2641,8 +2641,6 @@ inline fun LongBuffer.maxOf(selector: (Long) -> Double): Double {
     return maxValue
 }
 
-@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
-@OverloadResolutionByLambdaReturnType
 /**
  * Returns the largest value among all values produced by [selector] function
  * applied to each element in the array.
@@ -3327,26 +3325,6 @@ inline fun <R> DoubleBuffer.maxOfWithOrNull(comparator: Comparator<in R>, select
         val v = selector(this[i])
         if (comparator.compare(maxValue, v) < 0)
             maxValue = v
-    }
-    return maxValue
-}
-
-/**
- * Returns the largest value according to the provided [comparator]
- * among all values produced by [selector] function applied to each element in the array or `null` if there are no elements.
- */
-@SinceKotlin("1.4")
-@OptIn(kotlin.experimental.ExperimentalTypeInference::class)
-@OverloadResolutionByLambdaReturnType
-@kotlin.internal.InlineOnly
-public inline fun <R> BooleanArray.maxOfWithOrNull(comparator: Comparator<in R>, selector: (Boolean) -> R): R? {
-    if (isEmpty()) return null
-    var maxValue = selector(this[0])
-    for (i in 1..lastIndex) {
-        val v = selector(this[i])
-        if (comparator.compare(maxValue, v) < 0) {
-            maxValue = v
-        }
     }
     return maxValue
 }
@@ -4838,35 +4816,26 @@ inline fun CharBuffer.none(predicate: (Char) -> Boolean): Boolean {
 }
 
 
-/**
- * Performs the given [action] on each element and returns the array itself afterwards.
- */
-@SinceKotlin("1.4")
-@kotlin.internal.InlineOnly
-public inline fun ByteArray.onEach(action: (Byte) -> Unit): ByteArray {
-    return apply { for (element in this) action(element) }
-}
+/** Performs the given [action] on each element and returns the array itself afterwards. */
+inline fun ByteBuffer.onEach(action: (Byte) -> Unit): ByteBuffer = apply { for (element in this) action(element) }
 
 /** Performs the given [action] on each element and returns the array itself afterwards. */
-inline fun ShortArray.onEach(action: (Short) -> Unit): ShortArray = apply { for (element in this) action(element) }
+inline fun ShortBuffer.onEach(action: (Short) -> Unit): ShortBuffer = apply { for (element in this) action(element) }
 
 /** Performs the given [action] on each element and returns the array itself afterwards. */
-inline fun IntArray.onEach(action: (Int) -> Unit): IntArray = apply { for (element in this) action(element) }
+inline fun IntBuffer.onEach(action: (Int) -> Unit): IntBuffer = apply { for (element in this) action(element) }
 
 /** Performs the given [action] on each element and returns the array itself afterwards. */
-inline fun LongArray.onEach(action: (Long) -> Unit): LongArray = apply { for (element in this) action(element) }
+inline fun LongBuffer.onEach(action: (Long) -> Unit): LongBuffer = apply { for (element in this) action(element) }
 
 /** Performs the given [action] on each element and returns the array itself afterwards. */
-inline fun FloatArray.onEach(action: (Float) -> Unit): FloatArray = apply { for (element in this) action(element) }
+inline fun FloatBuffer.onEach(action: (Float) -> Unit): FloatBuffer = apply { for (element in this) action(element) }
 
 /** Performs the given [action] on each element and returns the array itself afterwards. */
-inline fun DoubleArray.onEach(action: (Double) -> Unit): DoubleArray = apply { for (element in this) action(element) }
+inline fun DoubleBuffer.onEach(action: (Double) -> Unit): DoubleBuffer = apply { for (element in this) action(element) }
 
 /** Performs the given [action] on each element and returns the array itself afterwards. */
-inline fun BooleanArray.onEach(action: (Boolean) -> Unit): BooleanArray = apply { for (element in this) action(element) }
-
-/** Performs the given [action] on each element and returns the array itself afterwards. */
-inline fun CharArray.onEach(action: (Char) -> Unit): CharArray = apply { for (element in this) action(element) }
+inline fun CharBuffer.onEach(action: (Char) -> Unit): CharBuffer = apply { for (element in this) action(element) }
 
 
 /** Performs the given [action] on each element, providing sequential index with the element,
