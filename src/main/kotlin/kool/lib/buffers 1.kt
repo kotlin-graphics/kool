@@ -6,7 +6,9 @@ import java.nio.*
 import kotlin.math.min
 import kotlin.random.Random
 
-/** Returns 1st *element* from the collection. */
+/**
+ * Returns 1st *element* from the collection.
+ */
 operator fun ByteBuffer.component1(): Byte = get(0)
 
 /** Returns 1st *element* from the collection. */
