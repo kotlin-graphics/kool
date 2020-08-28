@@ -5,26 +5,28 @@ import io.kotest.matchers.shouldBe
 import kool.lib.indices
 import kool.lib.isNotEmpty
 import kool.lib.toTypedArray
+import kotlin.test.Test
 
 // as https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/samples/test/samples/collections/collections.kt
 
-class buffers : StringSpec() {
 
-    init {
-        "indicesOfCollection" {
+class Buffers {
+
+//    @Test
+    fun indicesOfCollection() {
             val empty = emptyBuffer()
             empty.indices.isEmpty() shouldBe true
             val collection = charBufferOf('a', 'b', 'c')
             collection.indices.toString() shouldBe "0..2"
         }
 
-        "collectionIsNotEmpty" {
-            val empty = emptyBuffer()
-            empty.isNotEmpty() shouldBe false
-
-            val collection = charBufferOf('a', 'b', 'c')
-            collection.isNotEmpty() shouldBe true
-        }
+//        "collectionIsNotEmpty" {
+//            val empty = emptyBuffer()
+//            empty.isNotEmpty() shouldBe false
+//
+//            val collection = charBufferOf('a', 'b', 'c')
+//            collection.isNotEmpty() shouldBe true
+//        }
 
 //        @Sample
 //        fun collectionOrEmpty() {
@@ -72,10 +74,10 @@ class buffers : StringSpec() {
 //            assertTrue(collection.containsAll(test))
 //        }
 
-        "collectionToTypedArray" {
-            val collection = intBufferOf(1, 2, 3)
-            val array = collection.toTypedArray()
-            array.contentToString() shouldBe "[1, 2, 3]"
-        }
-    }
+//        "collectionToTypedArray" {
+//            val collection = intBufferOf(1, 2, 3)
+//            val array = collection.toTypedArray()
+//            array.contentToString() shouldBe "[1, 2, 3]"
+//        }
+//    }
 }

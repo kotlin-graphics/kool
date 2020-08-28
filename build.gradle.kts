@@ -44,6 +44,11 @@ dependencies {
 
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
+
+    testImplementation(kotlin("test-junit5"))
+    listOf("engine", "api", "params").forEach {
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-$it:5.6.2")
+    }
 }
 
 java.modularity.inferModulePath.set(true)
@@ -61,6 +66,7 @@ tasks {
                     // Suffix which is used to append the line number to the URL. Use #L for GitHub
                     lineSuffix = "#L"
                 }
+                samples += "$rootDir/src/test/kotlin/kool/buffers.kt"
             }
         }
     }
@@ -100,7 +106,7 @@ val sourceJar = task("sourceJar", Jar::class) {
 }
 
 artifacts {
-    archives(dokkaJavadocJar)
+//    archives(dokkaJavadocJar)
     archives(dokkaHtmlJar)
     archives(sourceJar)
 }
