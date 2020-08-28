@@ -100,7 +100,7 @@ val sourceJar = task("sourceJar", Jar::class) {
 }
 
 artifacts {
-    archives(dokkaJavadocJar)
+//    archives(dokkaJavadocJar)
     archives(dokkaHtmlJar)
     archives(sourceJar)
 }
