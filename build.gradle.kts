@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     java
     kotlin("jvm") version "1.4.0"
-    maven
+    `maven-publish`
     id("org.jetbrains.dokka") version "1.4.0-rc"
     id("com.github.johnrengelman.shadow").version("6.0.0")
 }
@@ -46,9 +46,7 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
 }
 
-java {
-    modularity.inferModulePath.set(true)
-}
+java.modularity.inferModulePath.set(true)
 
 tasks {
 
@@ -83,17 +81,17 @@ tasks {
     withType<Test> { useJUnitPlatform() }
 }
 
-//val dokkaJavadocJar by tasks.register<Jar>("dokkaJavadocJar") {
-//    dependsOn(tasks.dokkaJavadoc)
-//    from(tasks.dokkaJavadoc.get().getOutputDirectoryAsFile())
-//    archiveClassifier.set("javadoc")
-//}
-//
-//val dokkaHtmlJar by tasks.register<Jar>("dokkaHtmlJar") {
-//    dependsOn(tasks.dokkaHtml)
-//    from(tasks.dokkaHtml.get().getOutputDirectoryAsFile())
-//    archiveClassifier.set("html-doc")
-//}
+val dokkaJavadocJar by tasks.register<Jar>("dokkaJavadocJar") {
+    dependsOn(tasks.dokkaJavadoc)
+    from(tasks.dokkaJavadoc.get().getOutputDirectoryAsFile())
+    archiveClassifier.set("javadoc")
+}
+
+val dokkaHtmlJar by tasks.register<Jar>("dokkaHtmlJar") {
+    dependsOn(tasks.dokkaHtml)
+    from(tasks.dokkaHtml.get().getOutputDirectoryAsFile())
+    archiveClassifier.set("html-doc")
+}
 
 val sourceJar = task("sourceJar", Jar::class) {
     dependsOn(tasks["classes"])
@@ -102,9 +100,14 @@ val sourceJar = task("sourceJar", Jar::class) {
 }
 
 artifacts {
-//    archives(dokkaJavadocJar)
-//    archives(dokkaHtmlJar)
+    archives(dokkaJavadocJar)
+    archives(dokkaHtmlJar)
     archives(sourceJar)
+}
+
+publishing.publications.register("mavenJava", MavenPublication::class) {
+    from(components["java"])
+    artifact(sourceJar)
 }
 
 // == Add access to the 'modular' variant of kotlin("stdlib"): Put this into a buildSrc plugin and reuse it in all your subprojects
