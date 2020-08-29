@@ -1287,15 +1287,19 @@ fun CharBuffer.drop(n: Int): List<Char> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.indicesOfCollection */
 fun ByteBuffer.dropLast(n: Int): List<Byte> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
 }
 
-/** Returns a list containing all elements except last [n] elements.
- *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.drop */
+///** Returns a list containing all elements except last [n] elements.
+// *  @throws IllegalArgumentException if [n] is negative.
+// *  @sample kool.encodeASCII
+// */
+/**
+ * @sample kool.encodeASCII
+ */
 fun ShortBuffer.dropLast(n: Int): List<Short> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
