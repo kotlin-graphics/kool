@@ -66,7 +66,8 @@ tasks {
                     // Suffix which is used to append the line number to the URL. Use #L for GitHub
                     lineSuffix = "#L"
                 }
-                samples += "$rootDir/src/test/kotlin/kool/buffers.kt"
+                samples += listOf("$rootDir/src/test/kotlin/kool/buffers.kt",
+                        "$rootDir/src/main/kotlin/kool/utils.kt")
             }
         }
     }
