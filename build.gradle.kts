@@ -27,6 +27,7 @@ repositories {
     mavenCentral()
     jcenter()
     maven(url = "https://jitpack.io")
+    maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
 }
 
 dependencies {
