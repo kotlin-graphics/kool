@@ -2,12 +2,13 @@ import org.gradle.api.attributes.LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE
 import org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE
 import org.gradle.internal.os.OperatingSystem.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.net.URL
 
 plugins {
     java
     kotlin("jvm") version "1.4.0"
     `maven-publish`
-    id("org.jetbrains.dokka") version "1.4.0-rc"
+    id("org.jetbrains.dokka") version "1.4.0-dev-62"
     id("com.github.johnrengelman.shadow").version("6.0.0")
 }
 
@@ -25,7 +26,8 @@ val lwjglNatives = "natives-" + when (current()) {
 repositories {
     mavenCentral()
     jcenter()
-    maven { url = uri("https://jitpack.io") }
+    maven(url = "https://jitpack.io")
+    maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
 }
 
 dependencies {
@@ -60,13 +62,13 @@ tasks {
             configureEach {
                 sourceLink {
                     // Unix based directory relative path to the root of the project (where you execute gradle respectively).
-                    path = "src/main/kotlin"
+                    localDirectory.set(file("src/main/kotlin"))
                     // URL showing where the source code can be accessed through the web browser
-                    url = "https://github.com/kotlin-graphics/kool/tree/master/src/main/kotlin"
+                    remoteUrl.set(URL("https://github.com/kotlin-graphics/kool/tree/master/src/main/kotlin"))
                     // Suffix which is used to append the line number to the URL. Use #L for GitHub
-                    lineSuffix = "#L"
+                    remoteLineSuffix.set("#L")
                 }
-                samples += listOf("$rootDir/src/test/kotlin/kool/buffers.kt",
+                samples.from("$rootDir/src/test/kotlin/kool/buffers.kt",
                         "$rootDir/src/main/kotlin/kool/utils.kt")
             }
         }
@@ -90,13 +92,13 @@ tasks {
 
 val dokkaJavadocJar by tasks.register<Jar>("dokkaJavadocJar") {
     dependsOn(tasks.dokkaJavadoc)
-    from(tasks.dokkaJavadoc.get().getOutputDirectoryAsFile())
+    from(tasks.dokkaJavadoc.get().outputDirectory.get())
     archiveClassifier.set("javadoc")
 }
 
 val dokkaHtmlJar by tasks.register<Jar>("dokkaHtmlJar") {
     dependsOn(tasks.dokkaHtml)
-    from(tasks.dokkaHtml.get().getOutputDirectoryAsFile())
+    from(tasks.dokkaHtml.get().outputDirectory.get())
     archiveClassifier.set("html-doc")
 }
 
@@ -107,7 +109,7 @@ val sourceJar = task("sourceJar", Jar::class) {
 }
 
 artifacts {
-//    archives(dokkaJavadocJar)
+    archives(dokkaJavadocJar)
     archives(dokkaHtmlJar)
     archives(sourceJar)
 }
