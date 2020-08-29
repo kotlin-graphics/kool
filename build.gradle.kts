@@ -27,7 +27,6 @@ repositories {
     mavenCentral()
     jcenter()
     maven(url = "https://jitpack.io")
-    maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
 }
 
 dependencies {
@@ -68,8 +67,7 @@ tasks {
                     // Suffix which is used to append the line number to the URL. Use #L for GitHub
                     remoteLineSuffix.set("#L")
                 }
-                samples.from("$rootDir/src/test/kotlin/kool/buffers.kt",
-                        "$rootDir/src/main/kotlin/kool/utils.kt")
+                samples.from("$rootDir/src/test/kotlin/kool/buffers.kt")
             }
         }
     }

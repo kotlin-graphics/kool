@@ -1242,43 +1242,50 @@ inline fun CharBuffer.singleOrNull(predicate: (Char) -> Boolean): Char? {
 }
 
 
-/** Returns a list containing all elements except first [n] elements. */
+/** Returns a list containing all elements except first [n] elements.
+ *  @sample kool.Buffers.Transformations.drop */
 fun ByteBuffer.drop(n: Int): List<Byte> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
-/** Returns a list containing all elements except first [n] elements. */
+/** Returns a list containing all elements except first [n] elements.
+ *  @sample kool.Buffers.Transformations.drop */
 fun ShortBuffer.drop(n: Int): List<Short> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
-/** Returns a list containing all elements except first [n] elements. */
+/** Returns a list containing all elements except first [n] elements.
+ *  @sample kool.Buffers.Transformations.drop */
 fun IntBuffer.drop(n: Int): List<Int> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
-/** Returns a list containing all elements except first [n] elements. */
+/** Returns a list containing all elements except first [n] elements.
+ *  @sample kool.Buffers.Transformations.drop */
 fun LongBuffer.drop(n: Int): List<Long> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
-/** Returns a list containing all elements except first [n] elements. */
+/** Returns a list containing all elements except first [n] elements.
+ *  @sample kool.Buffers.Transformations.drop */
 fun FloatBuffer.drop(n: Int): List<Float> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
-/** Returns a list containing all elements except first [n] elements. */
+/** Returns a list containing all elements except first [n] elements.
+ *  @sample kool.Buffers.Transformations.drop */
 fun DoubleBuffer.drop(n: Int): List<Double> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
-/** Returns a list containing all elements except first [n] elements. */
+/** Returns a list containing all elements except first [n] elements.
+ *  @sample kool.Buffers.Transformations.drop */
 fun CharBuffer.drop(n: Int): List<Char> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
@@ -1287,19 +1294,15 @@ fun CharBuffer.drop(n: Int): List<Char> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample kool.Buffers.indicesOfCollection */
+ *  @sample kool.Buffers.Transformations.drop */
 fun ByteBuffer.dropLast(n: Int): List<Byte> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
 }
 
-///** Returns a list containing all elements except last [n] elements.
-// *  @throws IllegalArgumentException if [n] is negative.
-// *  @sample kool.encodeASCII
-// */
-/**
- * @sample kool.encodeASCII
- */
+/** Returns a list containing all elements except last [n] elements.
+ *  @throws IllegalArgumentException if [n] is negative.
+ *  @sample kool.Buffers.Transformations.drop */
 fun ShortBuffer.dropLast(n: Int): List<Short> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1307,7 +1310,7 @@ fun ShortBuffer.dropLast(n: Int): List<Short> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 fun IntBuffer.dropLast(n: Int): List<Int> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1315,7 +1318,7 @@ fun IntBuffer.dropLast(n: Int): List<Int> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 fun LongBuffer.dropLast(n: Int): List<Long> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1323,7 +1326,7 @@ fun LongBuffer.dropLast(n: Int): List<Long> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 fun FloatBuffer.dropLast(n: Int): List<Float> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1331,7 +1334,7 @@ fun FloatBuffer.dropLast(n: Int): List<Float> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 fun DoubleBuffer.dropLast(n: Int): List<Double> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1339,7 +1342,7 @@ fun DoubleBuffer.dropLast(n: Int): List<Double> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 fun CharBuffer.dropLast(n: Int): List<Char> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1347,7 +1350,7 @@ fun CharBuffer.dropLast(n: Int): List<Char> {
 
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun ByteBuffer.dropLastWhile(predicate: (Byte) -> Boolean): List<Byte> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1356,7 +1359,7 @@ inline fun ByteBuffer.dropLastWhile(predicate: (Byte) -> Boolean): List<Byte> {
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun ShortBuffer.dropLastWhile(predicate: (Short) -> Boolean): List<Short> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1365,7 +1368,7 @@ inline fun ShortBuffer.dropLastWhile(predicate: (Short) -> Boolean): List<Short>
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun IntBuffer.dropLastWhile(predicate: (Int) -> Boolean): List<Int> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1374,7 +1377,7 @@ inline fun IntBuffer.dropLastWhile(predicate: (Int) -> Boolean): List<Int> {
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun LongBuffer.dropLastWhile(predicate: (Long) -> Boolean): List<Long> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1383,7 +1386,7 @@ inline fun LongBuffer.dropLastWhile(predicate: (Long) -> Boolean): List<Long> {
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun FloatBuffer.dropLastWhile(predicate: (Float) -> Boolean): List<Float> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1392,7 +1395,7 @@ inline fun FloatBuffer.dropLastWhile(predicate: (Float) -> Boolean): List<Float>
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun DoubleBuffer.dropLastWhile(predicate: (Double) -> Boolean): List<Double> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1401,8 +1404,9 @@ inline fun DoubleBuffer.dropLastWhile(predicate: (Double) -> Boolean): List<Doub
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
-inline fun CharBuffer.dropLastWhile(predicate: (Char) -> Boolean): List<Char> {
+ *  [Kool] ending underscore to avoid shadowing from stdlib
+ *  @sample kool.Buffers.Transformations.drop */
+inline fun CharBuffer.dropLastWhile_(predicate: (Char) -> Boolean): List<Char> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
             return take(index + 1)
@@ -1411,7 +1415,7 @@ inline fun CharBuffer.dropLastWhile(predicate: (Char) -> Boolean): List<Char> {
 
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun ByteBuffer.dropWhile(predicate: (Byte) -> Boolean): List<Byte> {
     var yielding = false
     val list = ArrayList<Byte>()
@@ -1426,7 +1430,7 @@ inline fun ByteBuffer.dropWhile(predicate: (Byte) -> Boolean): List<Byte> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun ShortBuffer.dropWhile(predicate: (Short) -> Boolean): List<Short> {
     var yielding = false
     val list = ArrayList<Short>()
@@ -1441,7 +1445,7 @@ inline fun ShortBuffer.dropWhile(predicate: (Short) -> Boolean): List<Short> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun IntBuffer.dropWhile(predicate: (Int) -> Boolean): List<Int> {
     var yielding = false
     val list = ArrayList<Int>()
@@ -1456,7 +1460,7 @@ inline fun IntBuffer.dropWhile(predicate: (Int) -> Boolean): List<Int> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun LongBuffer.dropWhile(predicate: (Long) -> Boolean): List<Long> {
     var yielding = false
     val list = ArrayList<Long>()
@@ -1471,7 +1475,7 @@ inline fun LongBuffer.dropWhile(predicate: (Long) -> Boolean): List<Long> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun FloatBuffer.dropWhile(predicate: (Float) -> Boolean): List<Float> {
     var yielding = false
     val list = ArrayList<Float>()
@@ -1486,7 +1490,7 @@ inline fun FloatBuffer.dropWhile(predicate: (Float) -> Boolean): List<Float> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
+ *  @sample kool.Buffers.Transformations.drop */
 inline fun DoubleBuffer.dropWhile(predicate: (Double) -> Boolean): List<Double> {
     var yielding = false
     val list = ArrayList<Double>()
@@ -1501,8 +1505,9 @@ inline fun DoubleBuffer.dropWhile(predicate: (Double) -> Boolean): List<Double> 
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample samples.collections.Collections.Transformations.drop */
-inline fun CharBuffer.dropWhile(predicate: (Char) -> Boolean): List<Char> {
+ *  [Kool] ending underscore to avoid shadowing from stdlib
+ *  @sample kool.Buffers.Transformations.drop */
+inline fun CharBuffer.dropWhile_(predicate: (Char) -> Boolean): List<Char> {
     var yielding = false
     val list = ArrayList<Char>()
     for (item in this)
