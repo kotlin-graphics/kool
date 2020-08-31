@@ -18,7 +18,7 @@ import kotlin.experimental.ExperimentalTypeInference
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Collections.Transformations.associateWith
+ * @sample kool.buffers.Collections.Transformations.associateWith
  */
 inline fun <V> ByteBuffer.associateWith(valueSelector: (Byte) -> V): Map<Byte, V> {
     val result = LinkedHashMap<Byte, V>(mapCapacity(lim).coerceAtLeast(16))
@@ -33,7 +33,7 @@ inline fun <V> ByteBuffer.associateWith(valueSelector: (Byte) -> V): Map<Byte, V
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Collections.Transformations.associateWith
+ * @sample kool.buffers.Collections.Transformations.associateWith
  */
 inline fun <V> ShortBuffer.associateWith(valueSelector: (Short) -> V): Map<Short, V> {
     val result = LinkedHashMap<Short, V>(mapCapacity(lim).coerceAtLeast(16))
@@ -48,7 +48,7 @@ inline fun <V> ShortBuffer.associateWith(valueSelector: (Short) -> V): Map<Short
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Collections.Transformations.associateWith
+ * @sample kool.buffers.Collections.Transformations.associateWith
  */
 inline fun <V> IntBuffer.associateWith(valueSelector: (Int) -> V): Map<Int, V> {
     val result = LinkedHashMap<Int, V>(mapCapacity(lim).coerceAtLeast(16))
@@ -63,7 +63,7 @@ inline fun <V> IntBuffer.associateWith(valueSelector: (Int) -> V): Map<Int, V> {
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Collections.Transformations.associateWith
+ * @sample kool.buffers.Collections.Transformations.associateWith
  */
 inline fun <V> LongBuffer.associateWith(valueSelector: (Long) -> V): Map<Long, V> {
     val result = LinkedHashMap<Long, V>(mapCapacity(lim).coerceAtLeast(16))
@@ -78,7 +78,7 @@ inline fun <V> LongBuffer.associateWith(valueSelector: (Long) -> V): Map<Long, V
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Collections.Transformations.associateWith
+ * @sample kool.buffers.Collections.Transformations.associateWith
  */
 inline fun <V> FloatBuffer.associateWith(valueSelector: (Float) -> V): Map<Float, V> {
     val result = LinkedHashMap<Float, V>(mapCapacity(lim).coerceAtLeast(16))
@@ -93,7 +93,7 @@ inline fun <V> FloatBuffer.associateWith(valueSelector: (Float) -> V): Map<Float
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Collections.Transformations.associateWith
+ * @sample kool.buffers.Collections.Transformations.associateWith
  */
 inline fun <V> DoubleBuffer.associateWith(valueSelector: (Double) -> V): Map<Double, V> {
     val result = LinkedHashMap<Double, V>(mapCapacity(lim).coerceAtLeast(16))
@@ -108,7 +108,7 @@ inline fun <V> DoubleBuffer.associateWith(valueSelector: (Double) -> V): Map<Dou
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Collections.Transformations.associateWith
+ * @sample kool.buffers.Collections.Transformations.associateWith
  */
 inline fun <V> CharBuffer.associateWith(valueSelector: (Char) -> V): Map<Char, V> {
     val result = LinkedHashMap<Char, V>(mapCapacity(lim.coerceAtMost(128)).coerceAtLeast(16))
@@ -122,7 +122,7 @@ inline fun <V> CharBuffer.associateWith(valueSelector: (Char) -> V): Map<Char, V
  *
  * If any two elements are equal, the last one overwrites the former value in the map.
  *
- * @sample samples.collections.Collections.Transformations.associateWithTo
+ * @sample kool.buffers.Collections.Transformations.associateWithTo
  */
 inline fun <V, M : MutableMap<in Byte, in V>> ByteBuffer.associateWithTo(destination: M, valueSelector: (Byte) -> V): M {
     for (element in this) destination.put(element, valueSelector(element))
@@ -135,7 +135,7 @@ inline fun <V, M : MutableMap<in Byte, in V>> ByteBuffer.associateWithTo(destina
  *
  * If any two elements are equal, the last one overwrites the former value in the map.
  *
- * @sample samples.collections.Collections.Transformations.associateWithTo
+ * @sample kool.buffers.Collections.Transformations.associateWithTo
  */
 inline fun <V, M : MutableMap<in Short, in V>> ShortBuffer.associateWithTo(destination: M, valueSelector: (Short) -> V): M {
     for (element in this) destination.put(element, valueSelector(element))
@@ -148,7 +148,7 @@ inline fun <V, M : MutableMap<in Short, in V>> ShortBuffer.associateWithTo(desti
  *
  * If any two elements are equal, the last one overwrites the former value in the map.
  *
- * @sample samples.collections.Collections.Transformations.associateWithTo
+ * @sample kool.buffers.Collections.Transformations.associateWithTo
  */
 inline fun <V, M : MutableMap<in Int, in V>> IntBuffer.associateWithTo(destination: M, valueSelector: (Int) -> V): M {
     for (element in this) destination.put(element, valueSelector(element))
@@ -161,7 +161,7 @@ inline fun <V, M : MutableMap<in Int, in V>> IntBuffer.associateWithTo(destinati
  *
  * If any two elements are equal, the last one overwrites the former value in the map.
  *
- * @sample samples.collections.Collections.Transformations.associateWithTo
+ * @sample kool.buffers.Collections.Transformations.associateWithTo
  */
 inline fun <V, M : MutableMap<in Long, in V>> LongBuffer.associateWithTo(destination: M, valueSelector: (Long) -> V): M {
     for (element in this) destination.put(element, valueSelector(element))
@@ -174,7 +174,7 @@ inline fun <V, M : MutableMap<in Long, in V>> LongBuffer.associateWithTo(destina
  *
  * If any two elements are equal, the last one overwrites the former value in the map.
  *
- * @sample samples.collections.Collections.Transformations.associateWithTo
+ * @sample kool.buffers.Collections.Transformations.associateWithTo
  */
 inline fun <V, M : MutableMap<in Float, in V>> FloatBuffer.associateWithTo(destination: M, valueSelector: (Float) -> V): M {
     for (element in this) destination.put(element, valueSelector(element))
@@ -187,7 +187,7 @@ inline fun <V, M : MutableMap<in Float, in V>> FloatBuffer.associateWithTo(desti
  *
  * If any two elements are equal, the last one overwrites the former value in the map.
  *
- * @sample samples.collections.Collections.Transformations.associateWithTo
+ * @sample kool.buffers.Collections.Transformations.associateWithTo
  */
 inline fun <V, M : MutableMap<in Double, in V>> DoubleBuffer.associateWithTo(destination: M, valueSelector: (Double) -> V): M {
     for (element in this) destination.put(element, valueSelector(element))
@@ -198,7 +198,7 @@ inline fun <V, M : MutableMap<in Double, in V>> DoubleBuffer.associateWithTo(des
  * Populates and returns the [destination] mutable map with key-value pairs for eachBuffer of the given array,
  * where key is the element itself and value is provided by the [valueSelector] function  applied to that key.
  *
- * @sample samples.collections.Collections.Transformations.associateWithTo
+ * @sample kool.buffers.Collections.Transformations.associateWithTo
  */
 inline fun <V, M : MutableMap<in Char, in V>> CharBuffer.associateWithTo(destination: M, valueSelector: (Char) -> V): M {
     for (element in this) destination.put(element, valueSelector(element))
@@ -453,37 +453,37 @@ fun CharBuffer.toSortedSet(): SortedSet<Char> = toCollection(sortedSetOf())
 
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element of original array.
- *  @sample samples.collections.Collections.Transformations.flatMap */
+ *  @sample kool.buffers.Collections.Transformations.flatMap */
 inline fun <R> ByteBuffer.flatMap(transform: (Byte) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element of original array.
- *  @sample samples.collections.Collections.Transformations.flatMap */
+ *  @sample kool.buffers.Collections.Transformations.flatMap */
 inline fun <R> ShortBuffer.flatMap(transform: (Short) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element of original array.
- *  @sample samples.collections.Collections.Transformations.flatMap */
+ *  @sample kool.buffers.Collections.Transformations.flatMap */
 inline fun <R> IntBuffer.flatMap(transform: (Int) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element of original array.
- *  @sample samples.collections.Collections.Transformations.flatMap */
+ *  @sample kool.buffers.Collections.Transformations.flatMap */
 inline fun <R> LongBuffer.flatMap(transform: (Long) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element of original array.
- *  @sample samples.collections.Collections.Transformations.flatMap */
+ *  @sample kool.buffers.Collections.Transformations.flatMap */
 inline fun <R> FloatBuffer.flatMap(transform: (Float) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element of original array.
- *  @sample samples.collections.Collections.Transformations.flatMap */
+ *  @sample kool.buffers.Collections.Transformations.flatMap */
 inline fun <R> DoubleBuffer.flatMap(transform: (Double) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element of original array.
- *  @sample samples.collections.Collections.Transformations.flatMap */
+ *  @sample kool.buffers.Collections.Transformations.flatMap */
 inline fun <R> CharBuffer.flatMap(transform: (Char) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)
 
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element
  *  and its index in the original array.
- *  @sample samples.collections.Collections.Transformations.flatMapIndexed */
+ *  @sample kool.buffers.Collections.Transformations.flatMapIndexed */
 @OptIn(ExperimentalTypeInference::class)
 @OverloadResolutionByLambdaReturnType
 @kotlin.jvm.JvmName("flatMapIndexedIterable")
@@ -491,7 +491,7 @@ inline fun <R> ByteBuffer.flatMapIndexed(transform: (index: Int, Byte) -> Iterab
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element
  *  and its index in the original array.
- *  @sample samples.collections.Collections.Transformations.flatMapIndexed */
+ *  @sample kool.buffers.Collections.Transformations.flatMapIndexed */
 @OptIn(ExperimentalTypeInference::class)
 @OverloadResolutionByLambdaReturnType
 @kotlin.jvm.JvmName("flatMapIndexedIterable")
@@ -499,7 +499,7 @@ inline fun <R> ShortBuffer.flatMapIndexed(transform: (index: Int, Short) -> Iter
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element
  *  and its index in the original array.
- *  @sample samples.collections.Collections.Transformations.flatMapIndexed */
+ *  @sample kool.buffers.Collections.Transformations.flatMapIndexed */
 @OptIn(ExperimentalTypeInference::class)
 @OverloadResolutionByLambdaReturnType
 @kotlin.jvm.JvmName("flatMapIndexedIterable")
@@ -507,7 +507,7 @@ inline fun <R> IntBuffer.flatMapIndexed(transform: (index: Int, Int) -> Iterable
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element
  *  and its index in the original array.
- *  @sample samples.collections.Collections.Transformations.flatMapIndexed */
+ *  @sample kool.buffers.Collections.Transformations.flatMapIndexed */
 @OptIn(ExperimentalTypeInference::class)
 @OverloadResolutionByLambdaReturnType
 @kotlin.jvm.JvmName("flatMapIndexedIterable")
@@ -515,7 +515,7 @@ inline fun <R> LongBuffer.flatMapIndexed(transform: (index: Int, Long) -> Iterab
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element
  *  and its index in the original array.
- *  @sample samples.collections.Collections.Transformations.flatMapIndexed */
+ *  @sample kool.buffers.Collections.Transformations.flatMapIndexed */
 @OptIn(ExperimentalTypeInference::class)
 @OverloadResolutionByLambdaReturnType
 @kotlin.jvm.JvmName("flatMapIndexedIterable")
@@ -523,7 +523,7 @@ inline fun <R> FloatBuffer.flatMapIndexed(transform: (index: Int, Float) -> Iter
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element
  *  and its index in the original array.
- *  @sample samples.collections.Collections.Transformations.flatMapIndexed */
+ *  @sample kool.buffers.Collections.Transformations.flatMapIndexed */
 @OptIn(ExperimentalTypeInference::class)
 @OverloadResolutionByLambdaReturnType
 @kotlin.jvm.JvmName("flatMapIndexedIterable")
@@ -531,7 +531,7 @@ inline fun <R> DoubleBuffer.flatMapIndexed(transform: (index: Int, Double) -> It
 
 /** Returns a single list of all elements yielded from results of [transform] function being invoked on each element
  *  and its index in the original array.
- *  @sample samples.collections.Collections.Transformations.flatMapIndexed */
+ *  @sample kool.buffers.Collections.Transformations.flatMapIndexed */
 @OptIn(ExperimentalTypeInference::class)
 @OverloadResolutionByLambdaReturnType
 @kotlin.jvm.JvmName("flatMapIndexedIterable")
@@ -707,7 +707,7 @@ inline fun <R, C : MutableCollection<in R>> CharBuffer.flatMapTo(destination: C,
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K> ByteBuffer.groupBy(keySelector: (Byte) -> K): Map<K, List<Byte>> = groupByTo(LinkedHashMap<K, MutableList<Byte>>(), keySelector)
 
@@ -717,7 +717,7 @@ inline fun <K> ByteBuffer.groupBy(keySelector: (Byte) -> K): Map<K, List<Byte>> 
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K> ShortBuffer.groupBy(keySelector: (Short) -> K): Map<K, List<Short>> = groupByTo(LinkedHashMap<K, MutableList<Short>>(), keySelector)
 
@@ -727,7 +727,7 @@ inline fun <K> ShortBuffer.groupBy(keySelector: (Short) -> K): Map<K, List<Short
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K> IntBuffer.groupBy(keySelector: (Int) -> K): Map<K, List<Int>> = groupByTo(LinkedHashMap<K, MutableList<Int>>(), keySelector)
 
@@ -737,7 +737,7 @@ inline fun <K> IntBuffer.groupBy(keySelector: (Int) -> K): Map<K, List<Int>> = g
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K> LongBuffer.groupBy(keySelector: (Long) -> K): Map<K, List<Long>> = groupByTo(LinkedHashMap<K, MutableList<Long>>(), keySelector)
 
@@ -747,7 +747,7 @@ inline fun <K> LongBuffer.groupBy(keySelector: (Long) -> K): Map<K, List<Long>> 
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K> FloatBuffer.groupBy(keySelector: (Float) -> K): Map<K, List<Float>> = groupByTo(LinkedHashMap<K, MutableList<Float>>(), keySelector)
 
@@ -757,7 +757,7 @@ inline fun <K> FloatBuffer.groupBy(keySelector: (Float) -> K): Map<K, List<Float
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K> DoubleBuffer.groupBy(keySelector: (Double) -> K): Map<K, List<Double>> = groupByTo(LinkedHashMap<K, MutableList<Double>>(), keySelector)
 
@@ -767,7 +767,7 @@ inline fun <K> DoubleBuffer.groupBy(keySelector: (Double) -> K): Map<K, List<Dou
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K> CharBuffer.groupBy(keySelector: (Char) -> K): Map<K, List<Char>> = groupByTo(LinkedHashMap<K, MutableList<Char>>(), keySelector)
 

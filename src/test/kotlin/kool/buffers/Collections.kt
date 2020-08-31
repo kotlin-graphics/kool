@@ -1,14 +1,16 @@
-package kool
+package kool.buffers
 
 import io.kotest.matchers.shouldBe
+import kool.charBufferOf
+import kool.emptyBuffer
+import kool.intBufferOf
 import kool.lib.*
 import kotlin.test.Test
-import kotlin.text.dropLastWhile
 
 // as https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/samples/test/samples/collections/collections.kt
 
 
-class Buffers {
+class Collections {
 
     class Collections {
 
@@ -170,65 +172,62 @@ class Buffers {
 //            // Jacob Bernoulli does not occur in the map because only the last pair with the same key gets added
 //            assertPrints(byLastName, "{Hopper=Grace, Bernoulli=Johann}")
 //        }
-//
-//        @Sample
-//        fun associateWith() {
-//            val words = listOf("a", "abc", "ab", "def", "abcd")
-//            val withLength = words.associateWith { it.length }
-//            assertPrints(withLength.keys, "[a, abc, ab, def, abcd]")
-//            assertPrints(withLength.values, "[1, 3, 2, 3, 4]")
-//        }
-//
-//        @Sample
-//        fun associateWithTo() {
-//            data class Person(val firstName: String, val lastName: String) {
-//                override fun toString(): String = "$firstName $lastName"
-//            }
-//
-//            val scientists = listOf(Person("Grace", "Hopper"), Person("Jacob", "Bernoulli"), Person("Jacob", "Bernoulli"))
-//            val withLengthOfNames = mutableMapOf<Person, Int>()
-//            assertTrue(withLengthOfNames.isEmpty())
-//
-//            scientists.associateWithTo(withLengthOfNames) { it.firstName.length + it.lastName.length }
-//
-//            assertTrue(withLengthOfNames.isNotEmpty())
-//            // Jacob Bernoulli only occurs once in the map because only the last pair with the same key gets added
-//            assertPrints(withLengthOfNames, "{Grace Hopper=11, Jacob Bernoulli=14}")
-//        }
-//
+
+        @Test
+        fun associateWith() {
+            val words = intArrayOf(1, 1, 2, 3, 5)
+            val withLength = words.associateWith { "$it" }
+            withLength.keys shouldPrint "[1, 2, 3, 5]"
+            withLength.values shouldPrint "[1, 2, 3, 5]"
+        }
+
+        @Test
+        fun associateWithTo() {
+
+            val scientists = intBufferOf(0, 1, 2, 3, 4)
+            val withLengthOfNames = mutableMapOf<Int, Char>()
+            withLengthOfNames.isEmpty() shouldBe true
+
+            scientists.associateWithTo(withLengthOfNames) { 'a' + it }
+
+            withLengthOfNames.isNotEmpty() shouldBe true
+            // Jacob Bernoulli only occurs once in the map because only the last pair with the same key gets added
+            withLengthOfNames shouldPrint "{0=a, 1=b, 2=c, 3=d, 4=e}"
+        }
+
 //        @Sample
 //        fun distinctAndDistinctBy() {
 //            val list = listOf('a', 'A', 'b', 'B', 'A', 'a')
 //     +       assertPrints(list.distinct(), "[a, A, b, B]")
 //            assertPrints(list.distinctBy { it.toUpperCase() }, "[a, b]")
 //        }
-//
-//        @Sample
-//        fun groupBy() {
-//            val words = listOf("a", "abc", "ab", "def", "abcd")
-//            val byLength = words.groupBy { it.length }
-//
-//            assertPrints(byLength.keys, "[1, 3, 2, 4]")
-//            assertPrints(byLength.values, "[[a], [abc, def], [ab], [abcd]]")
-//
-//            val mutableByLength: MutableMap<Int, MutableList<String>> = words.groupByTo(mutableMapOf()) { it.length }
-//            // same content as in byLength map, but the map is mutable
-//            assertTrue(mutableByLength == byLength)
-//        }
-//
-//        @Sample
-//        fun groupByKeysAndValues() {
-//            val nameToTeam = listOf("Alice" to "Marketing", "Bob" to "Sales", "Carol" to "Marketing")
-//            val namesByTeam = nameToTeam.groupBy({ it.second }, { it.first })
-//            assertPrints(namesByTeam, "{Marketing=[Alice, Carol], Sales=[Bob]}")
-//
-//            val mutableNamesByTeam = nameToTeam.groupByTo(HashMap(), { it.second }, { it.first })
-//            // same content as in namesByTeam map, but the map is mutable
-//            assertTrue(mutableNamesByTeam == namesByTeam)
-//        }
-//
-//
-//
+
+        @Test
+        fun groupBy() {
+            val words = intBufferOf(1, 123, 12, 456, 1234)
+            val byLength = words.groupBy { "$it".length }
+
+            byLength.keys shouldPrint "[1, 3, 2, 4]"
+            byLength.values shouldPrint "[[1], [123, 456], [12], [1234]]"
+
+            val mutableByLength: MutableMap<Int, MutableList<Int>> = words.groupByTo(mutableMapOf()) { "$it".length }
+            // same content as in byLength map, but the map is mutable
+            mutableByLength shouldBe byLength
+        }
+
+        @Test
+        fun groupByKeysAndValues() {
+            val nameToTeam = listOf("Alice" to "Marketing", "Bob" to "Sales", "Carol" to "Marketing")
+            val namesByTeam = nameToTeam.groupBy({ it.second }, { it.first })
+            assertPrints(namesByTeam, "{Marketing=[Alice, Carol], Sales=[Bob]}")
+
+            val mutableNamesByTeam = nameToTeam.groupByTo(HashMap(), { it.second }, { it.first })
+            // same content as in namesByTeam map, but the map is mutable
+            assertTrue(mutableNamesByTeam == namesByTeam)
+        }
+
+
+
 //        @Sample
 //        fun joinTo() {
 //            val sb = StringBuilder("An existing string and a list: ")
@@ -265,30 +264,30 @@ class Buffers {
 //            assertPrints(ints, "[45, 3]")
 //            assertPrints(ints.sum(), "48")
 //        }
-//
-//        @Sample
-//        fun flatMap() {
-//            val list = listOf("123", "45")
-//            assertPrints(list.flatMap { it.toList() }, "[1, 2, 3, 4, 5]")
-//        }
-//
-//        @Sample
-//        fun flatMapIndexed() {
-//            val data: List<String> = listOf("Abcd", "efgh", "Klmn")
-//            val selected: List<Boolean> = data.map { it.any { c -> c.isUpperCase() } }
-//            val result = data.flatMapIndexed { index, s -> if (selected[index]) s.toList() else emptyList() }
-//            assertPrints(result, "[A, b, c, d, K, l, m, n]")
-//        }
-//
-//        @Sample
-//        fun take() {
-//            val chars = ('a'..'z').toList()
-//            assertPrints(chars.take(3), "[a, b, c]")
-//            assertPrints(chars.takeWhile { it < 'f' }, "[a, b, c, d, e]")
-//            assertPrints(chars.takeLast(2), "[y, z]")
-//            assertPrints(chars.takeLastWhile { it > 'w' }, "[x, y, z]")
-//        }
-//
+
+        @Test
+        fun flatMap() {
+            val list = intBufferOf(123, 4567)
+            list.flatMap { "$it".toList() }.toString() shouldBe "[1, 2, 3, 4, 5, 6, 7]"
+        }
+
+        @Test
+        fun flatMapIndexed() {
+            val data = charBufferOf('A', 'e', 'K')
+            val selected = data.map { it.isUpperCase() }
+            val result = data.flatMapIndexed { index, s -> if (selected[index]) listOf(s) else emptyList() }
+            result shouldPrint "[A, K]"
+        }
+
+        @Test
+        fun take() {
+            val chars = charBufferOf('a'..'z')
+            chars.take(3) shouldPrint "[a, b, c]"
+            chars.takeWhile { it < 'f' } shouldPrint "[a, b, c, d, e]"
+            chars.takeLast(2) shouldPrint "[y, z]"
+            chars.takeLastWhile { it > 'w' } shouldPrint "[x, y, z]"
+        }
+
 //        @Sample
 //        fun drop() {
 //            val chars = ('a'..'z').toList()
@@ -440,19 +439,6 @@ class Buffers {
 //        }
 //
 //        @Sample
-//        fun groupBy() {
-//            val words = listOf("a", "abc", "ab", "def", "abcd")
-//            val byLength = words.groupBy { it.length }
-//
-//            assertPrints(byLength.keys, "[1, 3, 2, 4]")
-//            assertPrints(byLength.values, "[[a], [abc, def], [ab], [abcd]]")
-//
-//            val mutableByLength: MutableMap<Int, MutableList<String>> = words.groupByTo(mutableMapOf()) { it.length }
-//            // same content as in byLength map, but the map is mutable
-//            assertTrue(mutableByLength == byLength)
-//        }
-//
-//        @Sample
 //        fun groupByKeysAndValues() {
 //            val nameToTeam = listOf("Alice" to "Marketing", "Bob" to "Sales", "Carol" to "Marketing")
 //            val namesByTeam = nameToTeam.groupBy({ it.second }, { it.first })
@@ -529,7 +515,7 @@ class Buffers {
         fun drop() {
             val chars = charBufferOf('a'..'z')
             chars.drop(23) shouldPrint "[x, y, z]"
-            chars.dropLast(23) shouldPrint  "[a, b, c]"
+            chars.dropLast(23) shouldPrint "[a, b, c]"
             chars.dropWhile_ { it < 'x' } shouldPrint "[x, y, z]"
             chars.dropLastWhile_ { it > 'c' } shouldPrint "[a, b, c]"
 
@@ -565,6 +551,190 @@ class Buffers {
 //            assertPrints(deltas, "[3, 5, 7, 9, 11]")
 //        }
     }
-}
 
-infix fun Any.shouldPrint(string: String) = toString() shouldBe string
+    class Sorting {
+
+//        @Sample
+//        fun sortMutableList() {
+//            val mutableList = mutableListOf(4, 3, 2, 1)
+//
+//            // before sorting
+//            assertPrints(mutableList.joinToString(), "4, 3, 2, 1")
+//
+//            mutableList.sort()
+//
+//            // after sorting
+//            assertPrints(mutableList.joinToString(), "1, 2, 3, 4")
+//        }
+//
+//        @Sample
+//        fun sortMutableListWith() {
+//            // non-comparable class
+//            class Person(val firstName: String, val lastName: String) {
+//                override fun toString(): String = "$firstName $lastName"
+//            }
+//
+//            val people = mutableListOf(
+//                    Person("Ragnar", "Lodbrok"),
+//                    Person("Bjorn", "Ironside"),
+//                    Person("Sweyn", "Forkbeard")
+//            )
+//
+//            people.sortWith(compareByDescending { it.firstName })
+//
+//            // after sorting
+//            assertPrints(people.joinToString(), "Sweyn Forkbeard, Ragnar Lodbrok, Bjorn Ironside")
+//        }
+
+        @Test
+        fun sortedBy() {
+            val list = intBufferOf(2, 3, 1)
+            val sorted = list.sortedBy { it }
+
+            list.contentToString() shouldBe "[2, 3, 1]"
+            sorted shouldPrint "[1, 2, 3]"
+        }
+    }
+
+    class Filtering {
+
+        @Test
+        fun filter() {
+            val numbers = intBufferOf(1, 2, 3, 4, 5, 6, 7)
+            val evenNumbers = numbers.filter { it % 2 == 0 }
+            val notMultiplesOf3 = numbers.filterNot { number -> number % 3 == 0 }
+
+            evenNumbers shouldPrint "[2, 4, 6]"
+            notMultiplesOf3 shouldPrint "[1, 2, 4, 5, 7]"
+        }
+
+        @Test
+        fun filterTo() {
+            val numbers = intBufferOf(1, 2, 3, 4, 5, 6, 7)
+            val evenNumbers = mutableListOf<Int>()
+            val notMultiplesOf3 = mutableListOf<Int>()
+
+            evenNumbers shouldPrint "[]"
+
+            numbers.filterTo(evenNumbers) { it % 2 == 0 }
+            numbers.filterNotTo(notMultiplesOf3) { number -> number % 3 == 0 }
+
+            evenNumbers shouldPrint "[2, 4, 6]"
+            notMultiplesOf3 shouldPrint "[1, 2, 4, 5, 7]"
+        }
+
+        // [Kool] it was filterNotNulla
+
+        @Test
+        fun filterNotZero() {
+            val numbers = intBufferOf(1, 2, 0, 4)
+            val nonNullNumbers = numbers.filterNotZero()
+
+            nonNullNumbers shouldPrint "[1, 2, 4]"
+        }
+
+        @Test
+        fun filterNotZeroTo() {
+            val numbers = intBufferOf(1, 2, 0, 4)
+            val nonNullNumbers = mutableListOf<Int>()
+
+            nonNullNumbers shouldPrint "[]"
+
+            numbers.filterNotZeroTo(nonNullNumbers)
+
+            nonNullNumbers shouldPrint "[1, 2, 4]"
+        }
+
+        @Test
+        fun filterIndexed() {
+            val numbers = intBufferOf(0, 1, 2, 3, 4, 8, 6)
+            val numbersOnSameIndexAsValue = numbers.filterIndexed { index, i -> index == i }
+
+            numbersOnSameIndexAsValue shouldPrint "[0, 1, 2, 3, 4, 6]"
+        }
+
+        @Test
+        fun filterIndexedTo() {
+            val numbers = intBufferOf(0, 1, 2, 3, 4, 8, 6)
+            val numbersOnSameIndexAsValue = mutableListOf<Int>()
+
+            numbersOnSameIndexAsValue shouldPrint "[]"
+
+            numbers.filterIndexedTo(numbersOnSameIndexAsValue) { index, i -> index == i }
+
+            numbersOnSameIndexAsValue shouldPrint "[0, 1, 2, 3, 4, 6]"
+        }
+
+//        @Sample
+//        fun filterIsInstance() {
+//            open class Animal(val name: String) {
+//                override fun toString(): String {
+//                    return name
+//                }
+//            }
+//            class Dog(name: String): Animal(name)
+//            class Cat(name: String): Animal(name)
+//
+//            val animals: List<Animal> = listOf(Cat("Scratchy"), Dog("Poochie"))
+//            val cats = animals.filterIsInstance<Cat>()
+//
+//            assertPrints(cats, "[Scratchy]")
+//        }
+//
+//        @Sample
+//        fun filterIsInstanceJVM() {
+//            open class Animal(val name: String) {
+//                override fun toString(): String {
+//                    return name
+//                }
+//            }
+//            class Dog(name: String): Animal(name)
+//            class Cat(name: String): Animal(name)
+//
+//            val animals: List<Animal> = listOf(Cat("Scratchy"), Dog("Poochie"))
+//            val cats = animals.filterIsInstance(Cat::class.java)
+//
+//            assertPrints(cats, "[Scratchy]")
+//        }
+//
+//        @Sample
+//        fun filterIsInstanceTo() {
+//            open class Animal(val name: String) {
+//                override fun toString(): String {
+//                    return name
+//                }
+//            }
+//            class Dog(name: String): Animal(name)
+//            class Cat(name: String): Animal(name)
+//
+//            val animals: List<Animal> = listOf(Cat("Scratchy"), Dog("Poochie"))
+//            val cats = mutableListOf<Cat>()
+//
+//            assertPrints(cats, "[]")
+//
+//            animals.filterIsInstanceTo<Cat, MutableList<Cat>>(cats)
+//
+//            assertPrints(cats, "[Scratchy]")
+//        }
+//
+//        @Sample
+//        fun filterIsInstanceToJVM() {
+//            open class Animal(val name: String) {
+//                override fun toString(): String {
+//                    return name
+//                }
+//            }
+//            class Dog(name: String): Animal(name)
+//            class Cat(name: String): Animal(name)
+//
+//            val animals: List<Animal> = listOf(Cat("Scratchy"), Dog("Poochie"))
+//            val cats = mutableListOf<Cat>()
+//
+//            assertPrints(cats, "[]")
+//
+//            animals.filterIsInstanceTo(cats, Cat::class.java)
+//
+//            assertPrints(cats, "[Scratchy]")
+//        }
+    }
+}

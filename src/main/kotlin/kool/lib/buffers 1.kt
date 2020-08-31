@@ -1243,49 +1243,49 @@ inline fun CharBuffer.singleOrNull(predicate: (Char) -> Boolean): Char? {
 
 
 /** Returns a list containing all elements except first [n] elements.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun ByteBuffer.drop(n: Int): List<Byte> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except first [n] elements.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun ShortBuffer.drop(n: Int): List<Short> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except first [n] elements.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun IntBuffer.drop(n: Int): List<Int> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except first [n] elements.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun LongBuffer.drop(n: Int): List<Long> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except first [n] elements.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun FloatBuffer.drop(n: Int): List<Float> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except first [n] elements.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun DoubleBuffer.drop(n: Int): List<Double> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
 }
 
 /** Returns a list containing all elements except first [n] elements.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun CharBuffer.drop(n: Int): List<Char> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return takeLast((lim - n).coerceAtLeast(0))
@@ -1294,7 +1294,7 @@ fun CharBuffer.drop(n: Int): List<Char> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun ByteBuffer.dropLast(n: Int): List<Byte> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1302,7 +1302,7 @@ fun ByteBuffer.dropLast(n: Int): List<Byte> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun ShortBuffer.dropLast(n: Int): List<Short> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1310,7 +1310,7 @@ fun ShortBuffer.dropLast(n: Int): List<Short> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun IntBuffer.dropLast(n: Int): List<Int> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1318,7 +1318,7 @@ fun IntBuffer.dropLast(n: Int): List<Int> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun LongBuffer.dropLast(n: Int): List<Long> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1326,7 +1326,7 @@ fun LongBuffer.dropLast(n: Int): List<Long> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun FloatBuffer.dropLast(n: Int): List<Float> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1334,7 +1334,7 @@ fun FloatBuffer.dropLast(n: Int): List<Float> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun DoubleBuffer.dropLast(n: Int): List<Double> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1342,7 +1342,7 @@ fun DoubleBuffer.dropLast(n: Int): List<Double> {
 
 /** Returns a list containing all elements except last [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 fun CharBuffer.dropLast(n: Int): List<Char> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     return take((lim - n).coerceAtLeast(0))
@@ -1350,7 +1350,7 @@ fun CharBuffer.dropLast(n: Int): List<Char> {
 
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun ByteBuffer.dropLastWhile(predicate: (Byte) -> Boolean): List<Byte> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1359,7 +1359,7 @@ inline fun ByteBuffer.dropLastWhile(predicate: (Byte) -> Boolean): List<Byte> {
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun ShortBuffer.dropLastWhile(predicate: (Short) -> Boolean): List<Short> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1368,7 +1368,7 @@ inline fun ShortBuffer.dropLastWhile(predicate: (Short) -> Boolean): List<Short>
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun IntBuffer.dropLastWhile(predicate: (Int) -> Boolean): List<Int> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1377,7 +1377,7 @@ inline fun IntBuffer.dropLastWhile(predicate: (Int) -> Boolean): List<Int> {
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun LongBuffer.dropLastWhile(predicate: (Long) -> Boolean): List<Long> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1386,7 +1386,7 @@ inline fun LongBuffer.dropLastWhile(predicate: (Long) -> Boolean): List<Long> {
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun FloatBuffer.dropLastWhile(predicate: (Float) -> Boolean): List<Float> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1395,7 +1395,7 @@ inline fun FloatBuffer.dropLastWhile(predicate: (Float) -> Boolean): List<Float>
 }
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun DoubleBuffer.dropLastWhile(predicate: (Double) -> Boolean): List<Double> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1405,7 +1405,7 @@ inline fun DoubleBuffer.dropLastWhile(predicate: (Double) -> Boolean): List<Doub
 
 /** Returns a list containing all elements except last elements that satisfy the given [predicate].
  *  [Kool] ending underscore to avoid shadowing from stdlib
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun CharBuffer.dropLastWhile_(predicate: (Char) -> Boolean): List<Char> {
     for (index in lastIndex downTo 0)
         if (!predicate(this[index]))
@@ -1415,7 +1415,7 @@ inline fun CharBuffer.dropLastWhile_(predicate: (Char) -> Boolean): List<Char> {
 
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun ByteBuffer.dropWhile(predicate: (Byte) -> Boolean): List<Byte> {
     var yielding = false
     val list = ArrayList<Byte>()
@@ -1430,7 +1430,7 @@ inline fun ByteBuffer.dropWhile(predicate: (Byte) -> Boolean): List<Byte> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun ShortBuffer.dropWhile(predicate: (Short) -> Boolean): List<Short> {
     var yielding = false
     val list = ArrayList<Short>()
@@ -1445,7 +1445,7 @@ inline fun ShortBuffer.dropWhile(predicate: (Short) -> Boolean): List<Short> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun IntBuffer.dropWhile(predicate: (Int) -> Boolean): List<Int> {
     var yielding = false
     val list = ArrayList<Int>()
@@ -1460,7 +1460,7 @@ inline fun IntBuffer.dropWhile(predicate: (Int) -> Boolean): List<Int> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun LongBuffer.dropWhile(predicate: (Long) -> Boolean): List<Long> {
     var yielding = false
     val list = ArrayList<Long>()
@@ -1475,7 +1475,7 @@ inline fun LongBuffer.dropWhile(predicate: (Long) -> Boolean): List<Long> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun FloatBuffer.dropWhile(predicate: (Float) -> Boolean): List<Float> {
     var yielding = false
     val list = ArrayList<Float>()
@@ -1490,7 +1490,7 @@ inline fun FloatBuffer.dropWhile(predicate: (Float) -> Boolean): List<Float> {
 }
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun DoubleBuffer.dropWhile(predicate: (Double) -> Boolean): List<Double> {
     var yielding = false
     val list = ArrayList<Double>()
@@ -1506,7 +1506,7 @@ inline fun DoubleBuffer.dropWhile(predicate: (Double) -> Boolean): List<Double> 
 
 /** Returns a list containing all elements except first elements that satisfy the given [predicate].
  *  [Kool] ending underscore to avoid shadowing from stdlib
- *  @sample kool.Buffers.Transformations.drop */
+ *  @sample kool.buffers.Collections.Transformations.drop */
 inline fun CharBuffer.dropWhile_(predicate: (Char) -> Boolean): List<Char> {
     var yielding = false
     val list = ArrayList<Char>()
@@ -1522,81 +1522,81 @@ inline fun CharBuffer.dropWhile_(predicate: (Char) -> Boolean): List<Char> {
 
 
 /** Returns a list containing only elements matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun ByteBuffer.filter(predicate: (Byte) -> Boolean): List<Byte> = filterTo(ArrayList<Byte>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun ShortBuffer.filter(predicate: (Short) -> Boolean): List<Short> = filterTo(ArrayList<Short>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun IntBuffer.filter(predicate: (Int) -> Boolean): List<Int> = filterTo(ArrayList<Int>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun LongBuffer.filter(predicate: (Long) -> Boolean): List<Long> = filterTo(ArrayList<Long>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun FloatBuffer.filter(predicate: (Float) -> Boolean): List<Float> = filterTo(ArrayList<Float>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun DoubleBuffer.filter(predicate: (Double) -> Boolean): List<Double> = filterTo(ArrayList<Double>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun CharBuffer.filter(predicate: (Char) -> Boolean): List<Char> = filterTo(ArrayList<Char>(), predicate)
 
 
 /** Returns a list containing only elements matching the given [predicate].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexed */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexed */
 inline fun ByteBuffer.filterIndexed(predicate: (index: Int, Byte) -> Boolean): List<Byte> = filterIndexedTo(ArrayList<Byte>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexed */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexed */
 inline fun ShortBuffer.filterIndexed(predicate: (index: Int, Short) -> Boolean): List<Short> = filterIndexedTo(ArrayList<Short>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexed */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexed */
 inline fun IntBuffer.filterIndexed(predicate: (index: Int, Int) -> Boolean): List<Int> = filterIndexedTo(ArrayList<Int>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexed */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexed */
 inline fun LongBuffer.filterIndexed(predicate: (index: Int, Long) -> Boolean): List<Long> = filterIndexedTo(ArrayList<Long>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexed */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexed */
 inline fun FloatBuffer.filterIndexed(predicate: (index: Int, Float) -> Boolean): List<Float> = filterIndexedTo(ArrayList<Float>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexed */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexed */
 inline fun DoubleBuffer.filterIndexed(predicate: (index: Int, Double) -> Boolean): List<Double> = filterIndexedTo(ArrayList<Double>(), predicate)
 
 /** Returns a list containing only elements matching the given [predicate].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexed */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexed */
 inline fun CharBuffer.filterIndexed(predicate: (index: Int, Char) -> Boolean): List<Char> = filterIndexedTo(ArrayList<Char>(), predicate)
 
 
 /** Appends all elements matching the given [predicate] to the given [destination].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexedTo */
 inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Byte) -> Boolean): C {
     forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
     return destination
@@ -1605,7 +1605,7 @@ inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterIndexedTo(destinati
 /** Appends all elements matching the given [predicate] to the given [destination].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexedTo */
 inline fun <C : MutableCollection<in Short>> ShortBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Short) -> Boolean): C {
     forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
     return destination
@@ -1614,7 +1614,7 @@ inline fun <C : MutableCollection<in Short>> ShortBuffer.filterIndexedTo(destina
 /** Appends all elements matching the given [predicate] to the given [destination].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexedTo */
 inline fun <C : MutableCollection<in Int>> IntBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Int) -> Boolean): C {
     forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
     return destination
@@ -1623,7 +1623,7 @@ inline fun <C : MutableCollection<in Int>> IntBuffer.filterIndexedTo(destination
 /** Appends all elements matching the given [predicate] to the given [destination].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexedTo */
 inline fun <C : MutableCollection<in Long>> LongBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Long) -> Boolean): C {
     forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
     return destination
@@ -1632,7 +1632,7 @@ inline fun <C : MutableCollection<in Long>> LongBuffer.filterIndexedTo(destinati
 /** Appends all elements matching the given [predicate] to the given [destination].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexedTo */
 inline fun <C : MutableCollection<in Float>> FloatBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Float) -> Boolean): C {
     forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
     return destination
@@ -1641,7 +1641,7 @@ inline fun <C : MutableCollection<in Float>> FloatBuffer.filterIndexedTo(destina
 /** Appends all elements matching the given [predicate] to the given [destination].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexedTo */
 inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Double) -> Boolean): C {
     forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
     return destination
@@ -1650,7 +1650,7 @@ inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterIndexedTo(desti
 /** Appends all elements matching the given [predicate] to the given [destination].
  *  @param [predicate] function that takes the index of an element and the element itself
  *  and returns the result of predicate evaluation on the element.
- *  @sample samples.collections.Collections.Filtering.filterIndexedTo */
+ *  @sample kool.buffers.Collections.Filtering.filterIndexedTo */
 inline fun <C : MutableCollection<in Char>> CharBuffer.filterIndexedTo(destination: C, predicate: (index: Int, Char) -> Boolean): C {
     forEachIndexed { index, element -> if (predicate(index, element)) destination.add(element) }
     return destination
@@ -1658,109 +1658,109 @@ inline fun <C : MutableCollection<in Char>> CharBuffer.filterIndexedTo(destinati
 
 
 /** Returns a list containing all elements not matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun ByteBuffer.filterNot(predicate: (Byte) -> Boolean): List<Byte> = filterNotTo(ArrayList<Byte>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun ShortBuffer.filterNot(predicate: (Short) -> Boolean): List<Short> = filterNotTo(ArrayList<Short>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun IntBuffer.filterNot(predicate: (Int) -> Boolean): List<Int> = filterNotTo(ArrayList<Int>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun LongBuffer.filterNot(predicate: (Long) -> Boolean): List<Long> = filterNotTo(ArrayList<Long>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun FloatBuffer.filterNot(predicate: (Float) -> Boolean): List<Float> = filterNotTo(ArrayList<Float>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun DoubleBuffer.filterNot(predicate: (Double) -> Boolean): List<Double> = filterNotTo(ArrayList<Double>(), predicate)
 
 /** Returns a list containing all elements not matching the given [predicate].
- *  @sample samples.collections.Collections.Filtering.filter */
+ *  @sample kool.buffers.Collections.Filtering.filter */
 inline fun CharBuffer.filterNot(predicate: (Char) -> Boolean): List<Char> = filterNotTo(ArrayList<Char>(), predicate)
 
 
 // [Kool] custom, it was filterNotNull
 
 /** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
- *  @sample samples.collections.Collections.Filtering.filterNotNull */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZero */
 fun ByteBuffer.filterNotZero(): List<Byte> = filterNotZeroTo(ArrayList<Byte>())
 
 /** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
- *  @sample samples.collections.Collections.Filtering.filterNotNull */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZero */
 fun ShortBuffer.filterNotZero(): List<Short> = filterNotZeroTo(ArrayList<Short>())
 
 /** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
- *  @sample samples.collections.Collections.Filtering.filterNotNull */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZero */
 fun IntBuffer.filterNotZero(): List<Int> = filterNotZeroTo(ArrayList<Int>())
 
 /** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
- *  @sample samples.collections.Collections.Filtering.filterNotNull */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZero */
 fun LongBuffer.filterNotZero(): List<Long> = filterNotZeroTo(ArrayList<Long>())
 
 /** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
- *  @sample samples.collections.Collections.Filtering.filterNotNull */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZero */
 fun FloatBuffer.filterNotZero(): List<Float> = filterNotZeroTo(ArrayList<Float>())
 
 /** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
- *  @sample samples.collections.Collections.Filtering.filterNotNull */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZero */
 fun DoubleBuffer.filterNotZero(): List<Double> = filterNotZeroTo(ArrayList<Double>())
 
 /** Returns a list containing all elements that are not zero (aka "null" for GL and VK)
- *  @sample samples.collections.Collections.Filtering.filterNotNull */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZero */
 fun CharBuffer.filterNotZero(): List<Char> = filterNotZeroTo(ArrayList<Char>())
 
 
 /** Appends all elements that are not `null` to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZeroTo */
 fun <C : MutableCollection<Byte>> ByteBuffer.filterNotZeroTo(destination: C): C {
     for (element in this) if (element != 0.toByte()) destination.add(element)
     return destination
 }
 
 /** Appends all elements that are not `null` to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZeroTo */
 fun <C : MutableCollection<Short>> ShortBuffer.filterNotZeroTo(destination: C): C {
     for (element in this) if (element != 0.toShort()) destination.add(element)
     return destination
 }
 
 /** Appends all elements that are not `null` to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZeroTo */
 fun <C : MutableCollection<Int>> IntBuffer.filterNotZeroTo(destination: C): C {
     for (element in this) if (element != 0) destination.add(element)
     return destination
 }
 
 /** Appends all elements that are not `null` to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZeroTo */
 fun <C : MutableCollection<Long>> LongBuffer.filterNotZeroTo(destination: C): C {
     for (element in this) if (element != 0L) destination.add(element)
     return destination
 }
 
 /** Appends all elements that are not `null` to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZeroTo */
 fun <C : MutableCollection<Float>> FloatBuffer.filterNotZeroTo(destination: C): C {
     for (element in this) if (element != 0f) destination.add(element)
     return destination
 }
 
 /** Appends all elements that are not `null` to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZeroTo */
 fun <C : MutableCollection<Double>> DoubleBuffer.filterNotZeroTo(destination: C): C {
     for (element in this) if (element != 0.0) destination.add(element)
     return destination
 }
 
 /** Appends all elements that are not `null` to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterNotNullTo */
+ *  @sample kool.buffers.Collections.Filtering.filterNotZeroTo */
 fun <C : MutableCollection<Char>> CharBuffer.filterNotZeroTo(destination: C): C {
     for (element in this) if (element != '\u0000') destination.add(element)
     return destination
@@ -1768,49 +1768,49 @@ fun <C : MutableCollection<Char>> CharBuffer.filterNotZeroTo(destination: C): C 
 
 
 /** Appends all elements not matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterNotTo(destination: C, predicate: (Byte) -> Boolean): C {
     for (element in this) if (!predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements not matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Short>> ShortBuffer.filterNotTo(destination: C, predicate: (Short) -> Boolean): C {
     for (element in this) if (!predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements not matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Int>> IntBuffer.filterNotTo(destination: C, predicate: (Int) -> Boolean): C {
     for (element in this) if (!predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements not matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Long>> LongBuffer.filterNotTo(destination: C, predicate: (Long) -> Boolean): C {
     for (element in this) if (!predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements not matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Float>> FloatBuffer.filterNotTo(destination: C, predicate: (Float) -> Boolean): C {
     for (element in this) if (!predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements not matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterNotTo(destination: C, predicate: (Double) -> Boolean): C {
     for (element in this) if (!predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements not matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Char>> CharBuffer.filterNotTo(destination: C, predicate: (Char) -> Boolean): C {
     for (element in this) if (!predicate(element)) destination.add(element)
     return destination
@@ -1818,49 +1818,49 @@ inline fun <C : MutableCollection<in Char>> CharBuffer.filterNotTo(destination: 
 
 
 /** Appends all elements matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Byte>> ByteBuffer.filterTo(destination: C, predicate: (Byte) -> Boolean): C {
     for (element in this) if (predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Short>> ShortBuffer.filterTo(destination: C, predicate: (Short) -> Boolean): C {
     for (element in this) if (predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Int>> IntBuffer.filterTo(destination: C, predicate: (Int) -> Boolean): C {
     for (element in this) if (predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Long>> LongBuffer.filterTo(destination: C, predicate: (Long) -> Boolean): C {
     for (element in this) if (predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Float>> FloatBuffer.filterTo(destination: C, predicate: (Float) -> Boolean): C {
     for (element in this) if (predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Double>> DoubleBuffer.filterTo(destination: C, predicate: (Double) -> Boolean): C {
     for (element in this) if (predicate(element)) destination.add(element)
     return destination
 }
 
 /** Appends all elements matching the given [predicate] to the given [destination].
- *  @sample samples.collections.Collections.Filtering.filterTo */
+ *  @sample kool.buffers.Collections.Filtering.filterTo */
 inline fun <C : MutableCollection<in Char>> CharBuffer.filterTo(destination: C, predicate: (Char) -> Boolean): C {
     for (element in this) if (predicate(element)) destination.add(element)
     return destination
@@ -2061,7 +2061,7 @@ fun CharBuffer.sliceArray(indices: IntRange): CharBuffer {
 
 /** Returns a list containing first [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.take */
+ *  @sample kool.buffers.Collections.Transformations.take */
 fun ByteBuffer.take(n: Int): List<Byte> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
@@ -2079,7 +2079,7 @@ fun ByteBuffer.take(n: Int): List<Byte> {
 
 /** Returns a list containing first [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.take */
+ *  @sample kool.buffers.Collections.Transformations.take */
 fun ShortBuffer.take(n: Int): List<Short> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
@@ -2097,7 +2097,7 @@ fun ShortBuffer.take(n: Int): List<Short> {
 
 /** Returns a list containing first [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.take */
+ *  @sample kool.buffers.Collections.Transformations.take */
 fun IntBuffer.take(n: Int): List<Int> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
@@ -2115,7 +2115,7 @@ fun IntBuffer.take(n: Int): List<Int> {
 
 /** Returns a list containing first [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.take */
+ *  @sample kool.buffers.Collections.Transformations.take */
 fun LongBuffer.take(n: Int): List<Long> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
@@ -2133,7 +2133,7 @@ fun LongBuffer.take(n: Int): List<Long> {
 
 /** Returns a list containing first [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.take */
+ *  @sample kool.buffers.Collections.Transformations.take */
 fun FloatBuffer.take(n: Int): List<Float> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
@@ -2151,7 +2151,7 @@ fun FloatBuffer.take(n: Int): List<Float> {
 
 /** Returns a list containing first [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.take */
+ *  @sample kool.buffers.Collections.Transformations.take */
 fun DoubleBuffer.take(n: Int): List<Double> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
@@ -2169,7 +2169,7 @@ fun DoubleBuffer.take(n: Int): List<Double> {
 
 /** Returns a list containing first [n] elements.
  *  @throws IllegalArgumentException if [n] is negative.
- *  @sample samples.collections.Collections.Transformations.take */
+ *  @sample kool.buffers.Collections.Transformations.take */
 fun CharBuffer.take(n: Int): List<Char> {
     require(n >= 0) { "Requested element count $n is less than zero." }
     if (n == 0) return emptyList()
@@ -2973,31 +2973,31 @@ fun CharBuffer.sortedArrayDescending(): CharArray = toCharArray().apply { sortDe
 
 
 /** Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.
- *  @sample samples.collections.Collections.Sorting.sortedBy */
+ *  @sample kool.buffers.Collections.Sorting.sortedBy */
 inline fun <R : Comparable<R>> ByteBuffer.sortedBy(crossinline selector: (Byte) -> R?): List<Byte> = sortedWith(compareBy(selector))
 
 /** Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.
- *  @sample samples.collections.Collections.Sorting.sortedBy */
+ *  @sample kool.buffers.Collections.Sorting.sortedBy */
 inline fun <R : Comparable<R>> ShortBuffer.sortedBy(crossinline selector: (Short) -> R?): List<Short> = sortedWith(compareBy(selector))
 
 /** Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.
- *  @sample samples.collections.Collections.Sorting.sortedBy */
+ *  @sample kool.buffers.Collections.Sorting.sortedBy */
 inline fun <R : Comparable<R>> IntBuffer.sortedBy(crossinline selector: (Int) -> R?): List<Int> = sortedWith(compareBy(selector))
 
 /** Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.
- *  @sample samples.collections.Collections.Sorting.sortedBy */
+ *  @sample kool.buffers.Collections.Sorting.sortedBy */
 inline fun <R : Comparable<R>> LongBuffer.sortedBy(crossinline selector: (Long) -> R?): List<Long> = sortedWith(compareBy(selector))
 
 /** Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.
- *  @sample samples.collections.Collections.Sorting.sortedBy */
+ *  @sample kool.buffers.Collections.Sorting.sortedBy */
 inline fun <R : Comparable<R>> FloatBuffer.sortedBy(crossinline selector: (Float) -> R?): List<Float> = sortedWith(compareBy(selector))
 
 /** Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.
- *  @sample samples.collections.Collections.Sorting.sortedBy */
+ *  @sample kool.buffers.Collections.Sorting.sortedBy */
 inline fun <R : Comparable<R>> DoubleBuffer.sortedBy(crossinline selector: (Double) -> R?): List<Double> = sortedWith(compareBy(selector))
 
 /** Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.
- *  @sample samples.collections.Collections.Sorting.sortedBy */
+ *  @sample kool.buffers.Collections.Sorting.sortedBy */
 inline fun <R : Comparable<R>> CharBuffer.sortedBy(crossinline selector: (Char) -> R?): List<Char> = sortedWith(compareBy(selector))
 
 
@@ -3204,7 +3204,7 @@ fun CharArray?.contentHashCode(): Int = this?.hashCode() ?: 0
 
 
 /** Returns a string representation of the contents of the specified array as if it is [List].
- *  @sample samples.collections.Arrays.ContentOperations.contentToString */
+ *  @sample kool.buffers.Arrays.ContentOperations.contentToString */
 fun ByteBuffer?.contentToString(): String {
     if (this == null) return "null"
     val iMax = lim - 1
@@ -3213,15 +3213,15 @@ fun ByteBuffer?.contentToString(): String {
     b.append('[')
     var i = 0
     while (true) {
-        b.append(this[i])
-        if (i == iMax)
-            return b.append(']').toString()
+        b.append(get(i))
+        if (i == iMax) return b.append(']').toString()
         b.append(", ")
+        i++
     }
 }
 
 /** Returns a string representation of the contents of the specified array as if it is [List].
- *  @sample samples.collections.Arrays.ContentOperations.contentToString */
+ *  @sample kool.buffers.Arrays.ContentOperations.contentToString */
 fun ShortBuffer?.contentToString(): String {
     if (this == null) return "null"
     val iMax = lim - 1
@@ -3231,14 +3231,14 @@ fun ShortBuffer?.contentToString(): String {
     var i = 0
     while (true) {
         b.append(this[i])
-        if (i == iMax)
-            return b.append(']').toString()
+        if (i == iMax) return b.append(']').toString()
         b.append(", ")
+        i++
     }
 }
 
 /** Returns a string representation of the contents of the specified array as if it is [List].
- *  @sample samples.collections.Arrays.ContentOperations.contentToString */
+ *  @sample kool.buffers.Arrays.ContentOperations.contentToString */
 fun IntBuffer?.contentToString(): String {
     if (this == null) return "null"
     val iMax = lim - 1
@@ -3248,14 +3248,14 @@ fun IntBuffer?.contentToString(): String {
     var i = 0
     while (true) {
         b.append(this[i])
-        if (i == iMax)
-            return b.append(']').toString()
+        if (i == iMax) return b.append(']').toString()
         b.append(", ")
+        i++
     }
 }
 
 /** Returns a string representation of the contents of the specified array as if it is [List].
- *  @sample samples.collections.Arrays.ContentOperations.contentToString */
+ *  @sample kool.buffers.Arrays.ContentOperations.contentToString */
 fun LongBuffer?.contentToString(): String {
     if (this == null) return "null"
     val iMax = lim - 1
@@ -3265,14 +3265,14 @@ fun LongBuffer?.contentToString(): String {
     var i = 0
     while (true) {
         b.append(this[i])
-        if (i == iMax)
-            return b.append(']').toString()
+        if (i == iMax) return b.append(']').toString()
         b.append(", ")
+        i++
     }
 }
 
 /** Returns a string representation of the contents of the specified array as if it is [List].
- *  @sample samples.collections.Arrays.ContentOperations.contentToString */
+ *  @sample kool.buffers.Arrays.ContentOperations.contentToString */
 fun FloatBuffer?.contentToString(): String {
     if (this == null) return "null"
     val iMax = lim - 1
@@ -3282,14 +3282,14 @@ fun FloatBuffer?.contentToString(): String {
     var i = 0
     while (true) {
         b.append(this[i])
-        if (i == iMax)
-            return b.append(']').toString()
+        if (i == iMax) return b.append(']').toString()
         b.append(", ")
+        i++
     }
 }
 
 /** Returns a string representation of the contents of the specified array as if it is [List].
- *  @sample samples.collections.Arrays.ContentOperations.contentToString */
+ *  @sample kool.buffers.Arrays.ContentOperations.contentToString */
 fun DoubleBuffer?.contentToString(): String {
     if (this == null) return "null"
     val iMax = lim - 1
@@ -3299,14 +3299,14 @@ fun DoubleBuffer?.contentToString(): String {
     var i = 0
     while (true) {
         b.append(this[i])
-        if (i == iMax)
-            return b.append(']').toString()
+        if (i == iMax) return b.append(']').toString()
         b.append(", ")
+        i++
     }
 }
 
 /** Returns a string representation of the contents of the specified array as if it is [List].
- *  @sample samples.collections.Arrays.ContentOperations.contentToString */
+ *  @sample kool.buffers.Arrays.ContentOperations.contentToString */
 fun CharBuffer?.contentToString(): String {
     if (this == null) return "null"
     val iMax = lim - 1
@@ -3316,9 +3316,9 @@ fun CharBuffer?.contentToString(): String {
     var i = 0
     while (true) {
         b.append(this[i])
-        if (i == iMax)
-            return b.append(']').toString()
+        if (i == iMax) return b.append(']').toString()
         b.append(", ")
+        i++
     }
 }
 
@@ -3472,57 +3472,57 @@ fun CharBuffer.copyInto(destination: CharBuffer, destinationOffset: Int = 0, sta
 
 
 /** Returns new array which is a copy of the original array.
- *  @sample samples.collections.Arrays.CopyOfOperations.copyOf */
+ *  @sample kool.buffers.Arrays.CopyOfOperations.copyOf */
 fun ByteBuffer.copyOf(): ByteBuffer {
-    val dst = memAlloc(lim)
+    val dst = memCalloc(lim)
     memCopy(adr, dst.adr, lim.toLong())
     return dst
 }
 
 /** Returns new array which is a copy of the original array.
- *  @sample samples.collections.Arrays.CopyOfOperations.copyOf */
+ *  @sample kool.buffers.Arrays.CopyOfOperations.copyOf */
 fun ShortBuffer.copyOf(): ShortBuffer {
-    val dst = memAllocShort(lim)
+    val dst = memCallocShort(lim)
     memCopy(adr, dst.adr, lim.toLong() * Short.BYTES)
     return dst
 }
 
 /** Returns new array which is a copy of the original array.
- *  @sample samples.collections.Arrays.CopyOfOperations.copyOf */
+ *  @sample kool.buffers.Arrays.CopyOfOperations.copyOf */
 fun IntBuffer.copyOf(): IntBuffer {
-    val dst = memAllocInt(lim)
+    val dst = memCallocInt(lim)
     memCopy(adr, dst.adr, lim.toLong() * Int.BYTES)
     return dst
 }
 
 /** Returns new array which is a copy of the original array.
- *  @sample samples.collections.Arrays.CopyOfOperations.copyOf */
+ *  @sample kool.buffers.Arrays.CopyOfOperations.copyOf */
 fun LongBuffer.copyOf(): LongBuffer {
-    val dst = memAllocLong(lim)
+    val dst = memCallocLong(lim)
     memCopy(adr, dst.adr, lim.toLong() * Long.BYTES)
     return dst
 }
 
 /** Returns new array which is a copy of the original array.
- *  @sample samples.collections.Arrays.CopyOfOperations.copyOf */
+ *  @sample kool.buffers.Arrays.CopyOfOperations.copyOf */
 fun FloatBuffer.copyOf(): FloatBuffer {
-    val dst = memAllocFloat(lim)
+    val dst = memCallocFloat(lim)
     memCopy(adr, dst.adr, lim.toLong() * Float.BYTES)
     return dst
 }
 
 /** Returns new array which is a copy of the original array.
- *  @sample samples.collections.Arrays.CopyOfOperations.copyOf */
+ *  @sample kool.buffers.Arrays.CopyOfOperations.copyOf */
 fun DoubleBuffer.copyOf(): DoubleBuffer {
-    val dst = memAllocDouble(lim)
+    val dst = memCallocDouble(lim)
     memCopy(adr, dst.adr, lim.toLong() * Double.BYTES)
     return dst
 }
 
 /** Returns new array which is a copy of the original array.
- *  @sample samples.collections.Arrays.CopyOfOperations.copyOf */
+ *  @sample kool.buffers.Arrays.CopyOfOperations.copyOf */
 fun CharBuffer.copyOf(): CharBuffer {
-    val dst = memAlloc(lim * Char.BYTES)
+    val dst = memCalloc(lim * Char.BYTES)
     memCopy(adr, dst.adr, lim.toLong() * Char.BYTES)
     return dst.asCharBuffer()
 }
@@ -3535,10 +3535,10 @@ fun CharBuffer.copyOf(): CharBuffer {
  * - If [newSize] is less than the size of the original array, the copy array is truncated to the [newSize].
  * - If [newSize] is greater than the size of the original array, the extra elements in the copy array are filled with zero values.
  *
- * @sample samples.collections.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
+ * @sample kool.buffers.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
  */
 fun ByteBuffer.copyOf(newSize: Int): ByteBuffer {
-    val dst = memAlloc(newSize)
+    val dst = memCalloc(newSize)
     memCopy(adr, dst.adr, min(lim, newSize).toLong())
     return dst
 }
@@ -3550,10 +3550,10 @@ fun ByteBuffer.copyOf(newSize: Int): ByteBuffer {
  * - If [newSize] is less than the size of the original array, the copy array is truncated to the [newSize].
  * - If [newSize] is greater than the size of the original array, the extra elements in the copy array are filled with zero values.
  *
- * @sample samples.collections.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
+ * @sample kool.buffers.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
  */
 fun ShortBuffer.copyOf(newSize: Int): ShortBuffer {
-    val dst = memAllocShort(newSize)
+    val dst = memCallocShort(newSize)
     memCopy(adr, dst.adr, min(lim, newSize).toLong() * Short.BYTES)
     return dst
 }
@@ -3565,10 +3565,10 @@ fun ShortBuffer.copyOf(newSize: Int): ShortBuffer {
  * - If [newSize] is less than the size of the original array, the copy array is truncated to the [newSize].
  * - If [newSize] is greater than the size of the original array, the extra elements in the copy array are filled with zero values.
  *
- * @sample samples.collections.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
+ * @sample kool.buffers.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
  */
 fun IntBuffer.copyOf(newSize: Int): IntBuffer {
-    val dst = memAllocInt(newSize)
+    val dst = memCallocInt(newSize)
     memCopy(adr, dst.adr, min(lim, newSize).toLong() * Int.BYTES)
     return dst
 }
@@ -3580,10 +3580,10 @@ fun IntBuffer.copyOf(newSize: Int): IntBuffer {
  * - If [newSize] is less than the size of the original array, the copy array is truncated to the [newSize].
  * - If [newSize] is greater than the size of the original array, the extra elements in the copy array are filled with zero values.
  *
- * @sample samples.collections.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
+ * @sample kool.buffers.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
  */
 fun LongBuffer.copyOf(newSize: Int): LongBuffer {
-    val dst = memAllocLong(newSize)
+    val dst = memCallocLong(newSize)
     memCopy(adr, dst.adr, min(lim, newSize).toLong() * Long.BYTES)
     return dst
 }
@@ -3595,10 +3595,10 @@ fun LongBuffer.copyOf(newSize: Int): LongBuffer {
  * - If [newSize] is less than the size of the original array, the copy array is truncated to the [newSize].
  * - If [newSize] is greater than the size of the original array, the extra elements in the copy array are filled with zero values.
  *
- * @sample samples.collections.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
+ * @sample kool.buffers.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
  */
 fun FloatBuffer.copyOf(newSize: Int): FloatBuffer {
-    val dst = memAllocFloat(newSize)
+    val dst = memCallocFloat(newSize)
     memCopy(adr, dst.adr, min(lim, newSize).toLong() * Float.BYTES)
     return dst
 }
@@ -3610,10 +3610,10 @@ fun FloatBuffer.copyOf(newSize: Int): FloatBuffer {
  * - If [newSize] is less than the size of the original array, the copy array is truncated to the [newSize].
  * - If [newSize] is greater than the size of the original array, the extra elements in the copy array are filled with zero values.
  *
- * @sample samples.collections.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
+ * @sample kool.buffers.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
  */
 fun DoubleBuffer.copyOf(newSize: Int): DoubleBuffer {
-    val dst = memAllocDouble(newSize)
+    val dst = memCallocDouble(newSize)
     memCopy(adr, dst.adr, min(lim, newSize).toLong() * Double.BYTES)
     return dst
 }
@@ -3625,10 +3625,10 @@ fun DoubleBuffer.copyOf(newSize: Int): DoubleBuffer {
  * - If [newSize] is less than the size of the original array, the copy array is truncated to the [newSize].
  * - If [newSize] is greater than the size of the original array, the extra elements in the copy array are filled with zero values.
  *
- * @sample samples.collections.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
+ * @sample kool.buffers.Arrays.CopyOfOperations.resizedPrimitiveCopyOf
  */
 fun CharBuffer.copyOf(newSize: Int): CharBuffer {
-    val dst = memAlloc(newSize * Char.BYTES)
+    val dst = memCalloc(newSize * Char.BYTES)
     memCopy(adr, dst.adr, min(lim, newSize).toLong() * Char.BYTES)
     return dst.asCharBuffer()
 }
@@ -3645,7 +3645,7 @@ fun CharBuffer.copyOf(newSize: Int): CharBuffer {
  */
 fun ByteBuffer.copyOfRange(fromIndex: Int, toIndex: Int): ByteBuffer {
     val count = toIndex - fromIndex
-    val dst = memAlloc(count)
+    val dst = memCalloc(count)
     memCopy(adr, dst.adr, count.toLong() * Byte.BYTES)
     return dst
 }
@@ -3661,7 +3661,7 @@ fun ByteBuffer.copyOfRange(fromIndex: Int, toIndex: Int): ByteBuffer {
  */
 fun ShortBuffer.copyOfRange(fromIndex: Int, toIndex: Int): ShortBuffer {
     val count = toIndex - fromIndex
-    val dst = memAllocShort(count)
+    val dst = memCallocShort(count)
     memCopy(adr, dst.adr, count.toLong() * Short.BYTES)
     return dst
 }
@@ -3677,7 +3677,7 @@ fun ShortBuffer.copyOfRange(fromIndex: Int, toIndex: Int): ShortBuffer {
  */
 fun IntBuffer.copyOfRange(fromIndex: Int, toIndex: Int): IntBuffer {
     val count = toIndex - fromIndex
-    val dst = memAllocInt(count)
+    val dst = memCallocInt(count)
     memCopy(adr, dst.adr, count.toLong() * Int.BYTES)
     return dst
 }
@@ -3693,7 +3693,7 @@ fun IntBuffer.copyOfRange(fromIndex: Int, toIndex: Int): IntBuffer {
  */
 fun LongBuffer.copyOfRange(fromIndex: Int, toIndex: Int): LongBuffer {
     val count = toIndex - fromIndex
-    val dst = memAllocLong(count)
+    val dst = memCallocLong(count)
     memCopy(adr, dst.adr, count.toLong() * Long.BYTES)
     return dst
 }
@@ -3709,7 +3709,7 @@ fun LongBuffer.copyOfRange(fromIndex: Int, toIndex: Int): LongBuffer {
  */
 fun FloatBuffer.copyOfRange(fromIndex: Int, toIndex: Int): FloatBuffer {
     val count = toIndex - fromIndex
-    val dst = memAllocFloat(count)
+    val dst = memCallocFloat(count)
     memCopy(adr, dst.adr, count.toLong() * Float.BYTES)
     return dst
 }
@@ -3725,7 +3725,7 @@ fun FloatBuffer.copyOfRange(fromIndex: Int, toIndex: Int): FloatBuffer {
  */
 fun DoubleBuffer.copyOfRange(fromIndex: Int, toIndex: Int): DoubleBuffer {
     val count = toIndex - fromIndex
-    val dst = memAllocDouble(count)
+    val dst = memCallocDouble(count)
     memCopy(adr, dst.adr, count.toLong() * Double.BYTES)
     return dst
 }
@@ -3741,7 +3741,7 @@ fun DoubleBuffer.copyOfRange(fromIndex: Int, toIndex: Int): DoubleBuffer {
  */
 fun CharBuffer.copyOfRange(fromIndex: Int, toIndex: Int): CharBuffer {
     val count = toIndex - fromIndex
-    val dst = memAlloc(count * Char.BYTES)
+    val dst = memCalloc(count * Char.BYTES)
     memCopy(adr, dst.adr, count.toLong() * Char.BYTES)
     return dst.asCharBuffer()
 }
@@ -4044,58 +4044,58 @@ val CharBuffer.lastIndex: Int
 
 
 /** Sorts the array in-place.
- *  @sample samples.collections.Arrays.Sorting.sortArray */
+ *  @sample kool.buffers.Arrays.Sorting.sortArray */
 fun ByteBuffer.sort() {
     val array = toByteArray().apply { sort() }
-    for(i in array.indices)
+    for (i in array.indices)
         set(i, array[i])
 }
 
 /** Sorts the array in-place.
- *  @sample samples.collections.Arrays.Sorting.sortArray */
+ *  @sample kool.buffers.Arrays.Sorting.sortArray */
 fun ShortBuffer.sort() {
     val array = toShortArray().apply { sort() }
-    for(i in array.indices)
+    for (i in array.indices)
         set(i, array[i])
 }
 
 /** Sorts the array in-place.
- *  @sample samples.collections.Arrays.Sorting.sortArray */
+ *  @sample kool.buffers.Arrays.Sorting.sortArray */
 fun IntBuffer.sort() {
     val array = toIntArray().apply { sort() }
-    for(i in array.indices)
+    for (i in array.indices)
         set(i, array[i])
 }
 
 /** Sorts the array in-place.
- *  @sample samples.collections.Arrays.Sorting.sortArray */
+ *  @sample kool.buffers.Arrays.Sorting.sortArray */
 fun LongBuffer.sort() {
     val array = toLongArray().apply { sort() }
-    for(i in array.indices)
+    for (i in array.indices)
         set(i, array[i])
 }
 
 /** Sorts the array in-place.
- *  @sample samples.collections.Arrays.Sorting.sortArray */
+ *  @sample kool.buffers.Arrays.Sorting.sortArray */
 fun DoubleBuffer.sort() {
     val array = toDoubleArray().apply { sort() }
-    for(i in array.indices)
+    for (i in array.indices)
         set(i, array[i])
 }
 
 /** Sorts the array in-place.
- *  @sample samples.collections.Arrays.Sorting.sortArray */
+ *  @sample kool.buffers.Arrays.Sorting.sortArray */
 fun FloatBuffer.sort() {
     val array = toFloatArray().apply { sort() }
-    for(i in array.indices)
+    for (i in array.indices)
         set(i, array[i])
 }
 
 /** Sorts the array in-place.
- *  @sample samples.collections.Arrays.Sorting.sortArray */
+ *  @sample kool.buffers.Arrays.Sorting.sortArray */
 fun CharBuffer.sort() {
     val array = toCharArray().apply { sort() }
-    for(i in array.indices)
+    for (i in array.indices)
         set(i, array[i])
 }
 
@@ -4109,11 +4109,11 @@ fun CharBuffer.sort() {
  * @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  * @throws IllegalArgumentException if [fromIndex] is greater than [toIndex].
  *
- * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
+ * @sample kool.buffers.Arrays.Sorting.sortRangeOfArray
  */
 fun ByteBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = ByteArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
-    for(i in fromIndex until toIndex)
+    for (i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
 }
 
@@ -4126,11 +4126,11 @@ fun ByteBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
  * @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  * @throws IllegalArgumentException if [fromIndex] is greater than [toIndex].
  *
- * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
+ * @sample kool.buffers.Arrays.Sorting.sortRangeOfArray
  */
 fun ShortBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = ShortArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
-    for(i in fromIndex until toIndex)
+    for (i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
 }
 
@@ -4143,11 +4143,11 @@ fun ShortBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
  * @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  * @throws IllegalArgumentException if [fromIndex] is greater than [toIndex].
  *
- * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
+ * @sample kool.buffers.Arrays.Sorting.sortRangeOfArray
  */
 fun IntBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = IntArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
-    for(i in fromIndex until toIndex)
+    for (i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
 }
 
@@ -4160,11 +4160,11 @@ fun IntBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
  * @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  * @throws IllegalArgumentException if [fromIndex] is greater than [toIndex].
  *
- * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
+ * @sample kool.buffers.Arrays.Sorting.sortRangeOfArray
  */
 fun LongBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = LongArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
-    for(i in fromIndex until toIndex)
+    for (i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
 }
 
@@ -4177,11 +4177,11 @@ fun LongBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
  * @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  * @throws IllegalArgumentException if [fromIndex] is greater than [toIndex].
  *
- * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
+ * @sample kool.buffers.Arrays.Sorting.sortRangeOfArray
  */
 fun FloatBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = FloatArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
-    for(i in fromIndex until toIndex)
+    for (i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
 }
 
@@ -4194,11 +4194,11 @@ fun FloatBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
  * @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  * @throws IllegalArgumentException if [fromIndex] is greater than [toIndex].
  *
- * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
+ * @sample kool.buffers.Arrays.Sorting.sortRangeOfArray
  */
 fun DoubleBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = DoubleArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
-    for(i in fromIndex until toIndex)
+    for (i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
 }
 
@@ -4211,11 +4211,11 @@ fun DoubleBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
  * @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
  * @throws IllegalArgumentException if [fromIndex] is greater than [toIndex].
  *
- * @sample samples.collections.Arrays.Sorting.sortRangeOfArray
+ * @sample kool.buffers.Arrays.Sorting.sortRangeOfArray
  */
 fun CharBuffer.sort(fromIndex: Int = 0, toIndex: Int = lim) {
     val array = CharArray(toIndex - fromIndex) { this[fromIndex + it] }.apply { sort() }
-    for(i in fromIndex until toIndex)
+    for (i in fromIndex until toIndex)
         this[fromIndex + i] = array[i]
 }
 
@@ -4483,7 +4483,7 @@ fun Array<out Char>.toCharBuffer(): CharBuffer = CharBuffer(size) { get(it) }
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> ByteBuffer.associate(transform: (Byte) -> Pair<K, V>): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4498,7 +4498,7 @@ inline fun <K, V> ByteBuffer.associate(transform: (Byte) -> Pair<K, V>): Map<K, 
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> ShortBuffer.associate(transform: (Short) -> Pair<K, V>): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4513,7 +4513,7 @@ inline fun <K, V> ShortBuffer.associate(transform: (Short) -> Pair<K, V>): Map<K
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> IntBuffer.associate(transform: (Int) -> Pair<K, V>): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4528,7 +4528,7 @@ inline fun <K, V> IntBuffer.associate(transform: (Int) -> Pair<K, V>): Map<K, V>
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> LongBuffer.associate(transform: (Long) -> Pair<K, V>): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4543,7 +4543,7 @@ inline fun <K, V> LongBuffer.associate(transform: (Long) -> Pair<K, V>): Map<K, 
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> FloatBuffer.associate(transform: (Float) -> Pair<K, V>): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4558,7 +4558,7 @@ inline fun <K, V> FloatBuffer.associate(transform: (Float) -> Pair<K, V>): Map<K
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> DoubleBuffer.associate(transform: (Double) -> Pair<K, V>): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4573,7 +4573,7 @@ inline fun <K, V> DoubleBuffer.associate(transform: (Double) -> Pair<K, V>): Map
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitives
  */
 inline fun <K, V> CharBuffer.associate(transform: (Char) -> Pair<K, V>): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4589,7 +4589,7 @@ inline fun <K, V> CharBuffer.associate(transform: (Char) -> Pair<K, V>): Map<K, 
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> ByteBuffer.associateBy(keySelector: (Byte) -> K): Map<K, Byte> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4604,7 +4604,7 @@ inline fun <K> ByteBuffer.associateBy(keySelector: (Byte) -> K): Map<K, Byte> {
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> ShortBuffer.associateBy(keySelector: (Short) -> K): Map<K, Short> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4619,7 +4619,7 @@ inline fun <K> ShortBuffer.associateBy(keySelector: (Short) -> K): Map<K, Short>
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> IntBuffer.associateBy(keySelector: (Int) -> K): Map<K, Int> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4634,7 +4634,7 @@ inline fun <K> IntBuffer.associateBy(keySelector: (Int) -> K): Map<K, Int> {
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> LongBuffer.associateBy(keySelector: (Long) -> K): Map<K, Long> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4649,7 +4649,7 @@ inline fun <K> LongBuffer.associateBy(keySelector: (Long) -> K): Map<K, Long> {
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> FloatBuffer.associateBy(keySelector: (Float) -> K): Map<K, Float> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4664,7 +4664,7 @@ inline fun <K> FloatBuffer.associateBy(keySelector: (Float) -> K): Map<K, Float>
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> DoubleBuffer.associateBy(keySelector: (Double) -> K): Map<K, Double> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4679,7 +4679,7 @@ inline fun <K> DoubleBuffer.associateBy(keySelector: (Double) -> K): Map<K, Doub
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesBy
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesBy
  */
 inline fun <K> CharBuffer.associateBy(keySelector: (Char) -> K): Map<K, Char> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4694,7 +4694,7 @@ inline fun <K> CharBuffer.associateBy(keySelector: (Char) -> K): Map<K, Char> {
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> ByteBuffer.associateBy(keySelector: (Byte) -> K, valueTransform: (Byte) -> V): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4708,7 +4708,7 @@ inline fun <K, V> ByteBuffer.associateBy(keySelector: (Byte) -> K, valueTransfor
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> ShortBuffer.associateBy(keySelector: (Short) -> K, valueTransform: (Short) -> V): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4722,7 +4722,7 @@ inline fun <K, V> ShortBuffer.associateBy(keySelector: (Short) -> K, valueTransf
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> IntBuffer.associateBy(keySelector: (Int) -> K, valueTransform: (Int) -> V): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4736,7 +4736,7 @@ inline fun <K, V> IntBuffer.associateBy(keySelector: (Int) -> K, valueTransform:
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> LongBuffer.associateBy(keySelector: (Long) -> K, valueTransform: (Long) -> V): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4750,7 +4750,7 @@ inline fun <K, V> LongBuffer.associateBy(keySelector: (Long) -> K, valueTransfor
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> FloatBuffer.associateBy(keySelector: (Float) -> K, valueTransform: (Float) -> V): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4764,7 +4764,7 @@ inline fun <K, V> FloatBuffer.associateBy(keySelector: (Float) -> K, valueTransf
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> DoubleBuffer.associateBy(keySelector: (Double) -> K, valueTransform: (Double) -> V): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4778,7 +4778,7 @@ inline fun <K, V> DoubleBuffer.associateBy(keySelector: (Double) -> K, valueTran
  *
  * The returned map preserves the entry iteration order of the original array.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByWithValueTransform
  */
 inline fun <K, V> CharBuffer.associateBy(keySelector: (Char) -> K, valueTransform: (Char) -> V): Map<K, V> {
     val capacity = mapCapacity(lim).coerceAtLeast(16)
@@ -4793,7 +4793,7 @@ inline fun <K, V> CharBuffer.associateBy(keySelector: (Char) -> K, valueTransfor
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByTo
  */
 inline fun <K, M : MutableMap<in K, in Byte>> ByteBuffer.associateByTo(destination: M, keySelector: (Byte) -> K): M {
     for (element in this) destination.put(keySelector(element), element)
@@ -4807,7 +4807,7 @@ inline fun <K, M : MutableMap<in K, in Byte>> ByteBuffer.associateByTo(destinati
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByTo
  */
 inline fun <K, M : MutableMap<in K, in Short>> ShortBuffer.associateByTo(destination: M, keySelector: (Short) -> K): M {
     for (element in this) destination.put(keySelector(element), element)
@@ -4821,7 +4821,7 @@ inline fun <K, M : MutableMap<in K, in Short>> ShortBuffer.associateByTo(destina
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByTo
  */
 inline fun <K, M : MutableMap<in K, in Int>> IntBuffer.associateByTo(destination: M, keySelector: (Int) -> K): M {
     for (element in this) destination.put(keySelector(element), element)
@@ -4835,7 +4835,7 @@ inline fun <K, M : MutableMap<in K, in Int>> IntBuffer.associateByTo(destination
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByTo
  */
 inline fun <K, M : MutableMap<in K, in Long>> LongBuffer.associateByTo(destination: M, keySelector: (Long) -> K): M {
     for (element in this) destination.put(keySelector(element), element)
@@ -4849,7 +4849,7 @@ inline fun <K, M : MutableMap<in K, in Long>> LongBuffer.associateByTo(destinati
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByTo
  */
 inline fun <K, M : MutableMap<in K, in Float>> FloatBuffer.associateByTo(destination: M, keySelector: (Float) -> K): M {
     for (element in this) destination.put(keySelector(element), element)
@@ -4863,7 +4863,7 @@ inline fun <K, M : MutableMap<in K, in Float>> FloatBuffer.associateByTo(destina
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByTo
  */
 inline fun <K, M : MutableMap<in K, in Double>> DoubleBuffer.associateByTo(destination: M, keySelector: (Double) -> K): M {
     for (element in this) destination.put(keySelector(element), element)
@@ -4877,7 +4877,7 @@ inline fun <K, M : MutableMap<in K, in Double>> DoubleBuffer.associateByTo(desti
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByTo
  */
 inline fun <K, M : MutableMap<in K, in Char>> CharBuffer.associateByTo(destination: M, keySelector: (Char) -> K): M {
     for (element in this) destination.put(keySelector(element), element)
@@ -4892,7 +4892,7 @@ inline fun <K, M : MutableMap<in K, in Char>> CharBuffer.associateByTo(destinati
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
  */
 inline fun <K, V, M : MutableMap<in K, in V>> ByteBuffer.associateByTo(destination: M, keySelector: (Byte) -> K, valueTransform: (Byte) -> V): M {
     for (element in this) destination.put(keySelector(element), valueTransform(element))
@@ -4906,7 +4906,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> ByteBuffer.associateByTo(destinati
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
  */
 inline fun <K, V, M : MutableMap<in K, in V>> ShortBuffer.associateByTo(destination: M, keySelector: (Short) -> K, valueTransform: (Short) -> V): M {
     for (element in this) destination.put(keySelector(element), valueTransform(element))
@@ -4920,7 +4920,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> ShortBuffer.associateByTo(destinat
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
  */
 inline fun <K, V, M : MutableMap<in K, in V>> IntBuffer.associateByTo(destination: M, keySelector: (Int) -> K, valueTransform: (Int) -> V): M {
     for (element in this) destination.put(keySelector(element), valueTransform(element))
@@ -4934,7 +4934,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> IntBuffer.associateByTo(destinatio
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
  */
 inline fun <K, V, M : MutableMap<in K, in V>> LongBuffer.associateByTo(destination: M, keySelector: (Long) -> K, valueTransform: (Long) -> V): M {
     for (element in this) destination.put(keySelector(element), valueTransform(element))
@@ -4948,7 +4948,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> LongBuffer.associateByTo(destinati
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
  */
 inline fun <K, V, M : MutableMap<in K, in V>> FloatBuffer.associateByTo(destination: M, keySelector: (Float) -> K, valueTransform: (Float) -> V): M {
     for (element in this) destination.put(keySelector(element), valueTransform(element))
@@ -4962,7 +4962,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> FloatBuffer.associateByTo(destinat
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
  */
 inline fun <K, V, M : MutableMap<in K, in V>> DoubleBuffer.associateByTo(destination: M, keySelector: (Double) -> K, valueTransform: (Double) -> V): M {
     for (element in this) destination.put(keySelector(element), valueTransform(element))
@@ -4976,7 +4976,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> DoubleBuffer.associateByTo(destina
  *
  * If any two elements would have the same key returned by [keySelector] the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesByToWithValueTransform
  */
 inline fun <K, V, M : MutableMap<in K, in V>> CharBuffer.associateByTo(destination: M, keySelector: (Char) -> K, valueTransform: (Char) -> V): M {
     for (element in this) destination.put(keySelector(element), valueTransform(element))
@@ -4990,7 +4990,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> CharBuffer.associateByTo(destinati
  *
  * If any of two pairs would have the same key the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesTo
  */
 inline fun <K, V, M : MutableMap<in K, in V>> ByteBuffer.associateTo(destination: M, transform: (Byte) -> Pair<K, V>): M {
     for (element in this) destination += transform(element)
@@ -5003,7 +5003,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> ByteBuffer.associateTo(destination
  *
  * If any of two pairs would have the same key the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesTo
  */
 inline fun <K, V, M : MutableMap<in K, in V>> ShortBuffer.associateTo(destination: M, transform: (Short) -> Pair<K, V>): M {
     for (element in this) destination += transform(element)
@@ -5016,7 +5016,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> ShortBuffer.associateTo(destinatio
  *
  * If any of two pairs would have the same key the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesTo
  */
 inline fun <K, V, M : MutableMap<in K, in V>> IntBuffer.associateTo(destination: M, transform: (Int) -> Pair<K, V>): M {
     for (element in this) destination += transform(element)
@@ -5029,7 +5029,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> IntBuffer.associateTo(destination:
  *
  * If any of two pairs would have the same key the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesTo
  */
 inline fun <K, V, M : MutableMap<in K, in V>> LongBuffer.associateTo(destination: M, transform: (Long) -> Pair<K, V>): M {
     for (element in this) destination += transform(element)
@@ -5042,7 +5042,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> LongBuffer.associateTo(destination
  *
  * If any of two pairs would have the same key the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesTo
  */
 inline fun <K, V, M : MutableMap<in K, in V>> FloatBuffer.associateTo(destination: M, transform: (Float) -> Pair<K, V>): M {
     for (element in this) destination += transform(element)
@@ -5055,7 +5055,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> FloatBuffer.associateTo(destinatio
  *
  * If any of two pairs would have the same key the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesTo
  */
 inline fun <K, V, M : MutableMap<in K, in V>> DoubleBuffer.associateTo(destination: M, transform: (Double) -> Pair<K, V>): M {
     for (element in this) destination += transform(element)
@@ -5068,7 +5068,7 @@ inline fun <K, V, M : MutableMap<in K, in V>> DoubleBuffer.associateTo(destinati
  *
  * If any of two pairs would have the same key the last one gets added to the map.
  *
- * @sample samples.collections.Arrays.Transformations.associateArrayOfPrimitivesTo
+ * @sample kool.buffers.Arrays.Transformations.associateArrayOfPrimitivesTo
  */
 inline fun <K, V, M : MutableMap<in K, in V>> CharBuffer.associateTo(destination: M, transform: (Char) -> Pair<K, V>): M {
     for (element in this) destination += transform(element)

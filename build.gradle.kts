@@ -68,7 +68,9 @@ tasks {
                     // Suffix which is used to append the line number to the URL. Use #L for GitHub
                     remoteLineSuffix.set("#L")
                 }
-                samples.from("$rootDir/src/test/kotlin/kool/buffers.kt")
+                samples.from(
+                        "$rootDir/src/test/kotlin/kool/buffers/Collections.kt",
+                        "$rootDir/src/test/kotlin/kool/buffers/Arrays.kt")
             }
         }
     }
