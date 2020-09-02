@@ -10,6 +10,7 @@ plugins {
     `maven-publish`
     id("org.jetbrains.dokka") version "1.4.0-dev-62"
     id("com.github.johnrengelman.shadow").version("6.0.0")
+    id("net.linguica.maven-settings") version "0.5"
 }
 
 group = "com.github.kotlin_graphics"
@@ -117,9 +118,19 @@ artifacts {
     archives(sourceJar)
 }
 
-publishing.publications.register("mavenJava", MavenPublication::class) {
-    from(components["java"])
-    artifact(sourceJar)
+publishing {
+    publications.create<MavenPublication>("mavenJava") {
+        from(components["java"])
+        artifact(sourceJar)
+    }
+    repositories.maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/kotlin-graphics/kool")
+        credentials {
+            username = System.getenv("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
 
 // == Add access to the 'modular' variant of kotlin("stdlib"): Put this into a buildSrc plugin and reuse it in all your subprojects
