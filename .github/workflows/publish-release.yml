@@ -44,4 +44,8 @@ jobs:
           echo "GH ref: $GITHUB_REF"
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
+          echo "GITHUB_ACTOR=$GITHUB_ACTOR"
+          echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_REF=$GITHUB_REF"
 #          ./gradlew -Pversion=${NEW_VERSION} publish
