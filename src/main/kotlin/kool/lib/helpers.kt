@@ -1,6 +1,5 @@
 package kool.lib
 
-import kool.cap
 import kool.lim
 import java.nio.*
 
@@ -67,7 +66,6 @@ class CharBufferIterator(private val charBuffer: CharBuffer) : Iterator<Char> {
     override fun next() = charBuffer[position++]
     override fun hasNext() = position < charBuffer.lim
 }
-
 
 
 object maps {
