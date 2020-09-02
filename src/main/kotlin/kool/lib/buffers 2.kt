@@ -5019,7 +5019,7 @@ inline fun DoubleBuffer.reduce(operation: (acc: Double, Double) -> Double): Doub
  *
  * @sample kool.buffers.Collections.Aggregates.reduce
  */
-public inline fun CharArray.reduce(operation: (acc: Char, Char) -> Char): Char {
+inline fun CharArray.reduce(operation: (acc: Char, Char) -> Char): Char {
     if (isEmpty())
         throw UnsupportedOperationException("Empty array can't be reduced.")
     var accumulator = this[0]
