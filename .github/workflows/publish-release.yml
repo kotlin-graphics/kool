@@ -24,6 +24,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
+      - name: Get short SHA
+          id: slug
+          run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
       - name: Publish artifact
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,6 +37,7 @@ jobs:
         # So if we split on '/' and take the 3rd value, we can get the release name.
         run: |
           echo "GITHUB_SHA_SHORT=$GITHUB_SHA_SHORT"
+          echo "GITHUB_SHA_SHORT=${steps.slug.outputs.sha8}"
           echo "GITHUB_SHA_SHORT=$GITHUB_SHA"
 #          NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
 #          echo "GH ref: $GITHUB_REF"
