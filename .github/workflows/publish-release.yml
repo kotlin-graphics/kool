@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: FranzDiebold/github-env-vars-action@v1.2.0
+
       - name: Checkout latest code
         uses: actions/checkout@v2
 
@@ -32,7 +34,7 @@ jobs:
       - name: Publish artifact
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_SHA_SHORT: ${{ steps.vars.outputs.sha_short }}
+#          GITHUB_SHA_SHORT: ${{ steps.vars.outputs.sha_short }}
 
         # The GITHUB_REF tag comes in the format 'refs/tags/xxx'.
         # So if we split on '/' and take the 3rd value, we can get the release name.
