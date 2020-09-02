@@ -2,11 +2,6 @@ package kool.lib
 
 import kool.lim
 import java.nio.*
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashSet
-import kotlin.collections.LinkedHashMap
-import kotlin.collections.LinkedHashSet
 import kotlin.experimental.ExperimentalTypeInference
 
 /**
@@ -2458,8 +2453,6 @@ inline fun CharBuffer.partition(predicate: (Char) -> Boolean): Pair<List<Char>, 
 }
 
 
-
-
 /** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  *  The returned list has length of the shortest collection.
  *  @sample kool.buffers.Iterables.Operations.zipIterable */
@@ -3371,7 +3364,6 @@ fun DoubleBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequen
  */
 fun CharBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Char) -> CharSequence)? = null): String =
         joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
-
 
 
 /** Creates an [Iterable] instance that wraps the original buffer returning its elements when being iterated. */
