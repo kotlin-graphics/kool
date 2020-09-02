@@ -10,7 +10,7 @@ plugins {
     `maven-publish`
     id("org.jetbrains.dokka") version "1.4.0-dev-62"
     id("com.github.johnrengelman.shadow").version("6.0.0")
-    id("net.linguica.maven-settings") version "0.5"
+//    id("net.linguica.maven-settings") version "0.5"
 }
 
 group = "com.github.kotlin_graphics"
