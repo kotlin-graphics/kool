@@ -779,7 +779,7 @@ inline fun <K> CharBuffer.groupBy(keySelector: (Char) -> K): Map<K, List<Char>> 
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V> ByteBuffer.groupBy(keySelector: (Byte) -> K, valueTransform: (Byte) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)
 
@@ -790,7 +790,7 @@ inline fun <K, V> ByteBuffer.groupBy(keySelector: (Byte) -> K, valueTransform: (
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V> ShortBuffer.groupBy(keySelector: (Short) -> K, valueTransform: (Short) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)
 
@@ -801,7 +801,7 @@ inline fun <K, V> ShortBuffer.groupBy(keySelector: (Short) -> K, valueTransform:
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V> IntBuffer.groupBy(keySelector: (Int) -> K, valueTransform: (Int) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)
 
@@ -812,7 +812,7 @@ inline fun <K, V> IntBuffer.groupBy(keySelector: (Int) -> K, valueTransform: (In
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V> LongBuffer.groupBy(keySelector: (Long) -> K, valueTransform: (Long) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)
 
@@ -823,7 +823,7 @@ inline fun <K, V> LongBuffer.groupBy(keySelector: (Long) -> K, valueTransform: (
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V> FloatBuffer.groupBy(keySelector: (Float) -> K, valueTransform: (Float) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)
 
@@ -834,7 +834,7 @@ inline fun <K, V> FloatBuffer.groupBy(keySelector: (Float) -> K, valueTransform:
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V> DoubleBuffer.groupBy(keySelector: (Double) -> K, valueTransform: (Double) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)
 
@@ -845,7 +845,7 @@ inline fun <K, V> DoubleBuffer.groupBy(keySelector: (Double) -> K, valueTransfor
  *
  * The returned map preserves the entry iteration order of the keys produced from the original array.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V> CharBuffer.groupBy(keySelector: (Char) -> K, valueTransform: (Char) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)
 
@@ -856,7 +856,7 @@ inline fun <K, V> CharBuffer.groupBy(keySelector: (Char) -> K, valueTransform: (
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K, M : MutableMap<in K, MutableList<Byte>>> ByteBuffer.groupByTo(destination: M, keySelector: (Byte) -> K): M {
     for (element in this) {
@@ -873,7 +873,7 @@ inline fun <K, M : MutableMap<in K, MutableList<Byte>>> ByteBuffer.groupByTo(des
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K, M : MutableMap<in K, MutableList<Short>>> ShortBuffer.groupByTo(destination: M, keySelector: (Short) -> K): M {
     for (element in this) {
@@ -890,7 +890,7 @@ inline fun <K, M : MutableMap<in K, MutableList<Short>>> ShortBuffer.groupByTo(d
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K, M : MutableMap<in K, MutableList<Int>>> IntBuffer.groupByTo(destination: M, keySelector: (Int) -> K): M {
     for (element in this) {
@@ -907,7 +907,7 @@ inline fun <K, M : MutableMap<in K, MutableList<Int>>> IntBuffer.groupByTo(desti
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K, M : MutableMap<in K, MutableList<Long>>> LongBuffer.groupByTo(destination: M, keySelector: (Long) -> K): M {
     for (element in this) {
@@ -924,7 +924,7 @@ inline fun <K, M : MutableMap<in K, MutableList<Long>>> LongBuffer.groupByTo(des
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K, M : MutableMap<in K, MutableList<Float>>> FloatBuffer.groupByTo(destination: M, keySelector: (Float) -> K): M {
     for (element in this) {
@@ -941,7 +941,7 @@ inline fun <K, M : MutableMap<in K, MutableList<Float>>> FloatBuffer.groupByTo(d
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K, M : MutableMap<in K, MutableList<Double>>> DoubleBuffer.groupByTo(destination: M, keySelector: (Double) -> K): M {
     for (element in this) {
@@ -958,7 +958,7 @@ inline fun <K, M : MutableMap<in K, MutableList<Double>>> DoubleBuffer.groupByTo
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupBy
+ * @sample kool.buffers.Collections.Transformations.groupBy
  */
 inline fun <K, M : MutableMap<in K, MutableList<Char>>> CharBuffer.groupByTo(destination: M, keySelector: (Char) -> K): M {
     for (element in this) {
@@ -977,7 +977,7 @@ inline fun <K, M : MutableMap<in K, MutableList<Char>>> CharBuffer.groupByTo(des
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V, M : MutableMap<in K, MutableList<V>>> ByteBuffer.groupByTo(destination: M, keySelector: (Byte) -> K, valueTransform: (Byte) -> V): M {
     for (element in this) {
@@ -995,7 +995,7 @@ inline fun <K, V, M : MutableMap<in K, MutableList<V>>> ByteBuffer.groupByTo(des
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V, M : MutableMap<in K, MutableList<V>>> ShortBuffer.groupByTo(destination: M, keySelector: (Short) -> K, valueTransform: (Short) -> V): M {
     for (element in this) {
@@ -1013,7 +1013,7 @@ inline fun <K, V, M : MutableMap<in K, MutableList<V>>> ShortBuffer.groupByTo(de
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V, M : MutableMap<in K, MutableList<V>>> IntBuffer.groupByTo(destination: M, keySelector: (Int) -> K, valueTransform: (Int) -> V): M {
     for (element in this) {
@@ -1031,7 +1031,7 @@ inline fun <K, V, M : MutableMap<in K, MutableList<V>>> IntBuffer.groupByTo(dest
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V, M : MutableMap<in K, MutableList<V>>> LongBuffer.groupByTo(destination: M, keySelector: (Long) -> K, valueTransform: (Long) -> V): M {
     for (element in this) {
@@ -1049,7 +1049,7 @@ inline fun <K, V, M : MutableMap<in K, MutableList<V>>> LongBuffer.groupByTo(des
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V, M : MutableMap<in K, MutableList<V>>> FloatBuffer.groupByTo(destination: M, keySelector: (Float) -> K, valueTransform: (Float) -> V): M {
     for (element in this) {
@@ -1067,7 +1067,7 @@ inline fun <K, V, M : MutableMap<in K, MutableList<V>>> FloatBuffer.groupByTo(de
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V, M : MutableMap<in K, MutableList<V>>> DoubleBuffer.groupByTo(destination: M, keySelector: (Double) -> K, valueTransform: (Double) -> V): M {
     for (element in this) {
@@ -1085,7 +1085,7 @@ inline fun <K, V, M : MutableMap<in K, MutableList<V>>> DoubleBuffer.groupByTo(d
  *
  * @return The [destination] map.
  *
- * @sample samples.collections.Collections.Transformations.groupByKeysAndValues
+ * @sample kool.buffers.Collections.Transformations.groupByKeysAndValues
  */
 inline fun <K, V, M : MutableMap<in K, MutableList<V>>> CharBuffer.groupByTo(destination: M, keySelector: (Char) -> K, valueTransform: (Char) -> V): M {
     for (element in this) {
@@ -1281,7 +1281,7 @@ fun CharBuffer.withIndex(): Iterable<IndexedValue<Char>> = IndexingIterable { it
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 fun ByteBuffer.distinct(): List<Byte> = toMutableSet().toList()
 
@@ -1290,7 +1290,7 @@ fun ByteBuffer.distinct(): List<Byte> = toMutableSet().toList()
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 fun ShortBuffer.distinct(): List<Short> = toMutableSet().toList()
 
@@ -1299,7 +1299,7 @@ fun ShortBuffer.distinct(): List<Short> = toMutableSet().toList()
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 fun IntBuffer.distinct(): List<Int> = toMutableSet().toList()
 
@@ -1308,7 +1308,7 @@ fun IntBuffer.distinct(): List<Int> = toMutableSet().toList()
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 fun LongBuffer.distinct(): List<Long> = toMutableSet().toList()
 
@@ -1317,7 +1317,7 @@ fun LongBuffer.distinct(): List<Long> = toMutableSet().toList()
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 fun FloatBuffer.distinct(): List<Float> = toMutableSet().toList()
 
@@ -1326,7 +1326,7 @@ fun FloatBuffer.distinct(): List<Float> = toMutableSet().toList()
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 fun DoubleBuffer.distinct(): List<Double> = toMutableSet().toList()
 
@@ -1335,7 +1335,7 @@ fun DoubleBuffer.distinct(): List<Double> = toMutableSet().toList()
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 fun CharBuffer.distinct(): List<Char> = toMutableSet().toList()
 
@@ -1346,7 +1346,7 @@ fun CharBuffer.distinct(): List<Char> = toMutableSet().toList()
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 inline fun <K> ByteBuffer.distinctBy(selector: (Byte) -> K): List<Byte> {
     val set = HashSet<K>()
@@ -1365,7 +1365,7 @@ inline fun <K> ByteBuffer.distinctBy(selector: (Byte) -> K): List<Byte> {
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 inline fun <K> ShortBuffer.distinctBy(selector: (Short) -> K): List<Short> {
     val set = HashSet<K>()
@@ -1384,7 +1384,7 @@ inline fun <K> ShortBuffer.distinctBy(selector: (Short) -> K): List<Short> {
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 inline fun <K> IntBuffer.distinctBy(selector: (Int) -> K): List<Int> {
     val set = HashSet<K>()
@@ -1403,7 +1403,7 @@ inline fun <K> IntBuffer.distinctBy(selector: (Int) -> K): List<Int> {
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 inline fun <K> LongBuffer.distinctBy(selector: (Long) -> K): List<Long> {
     val set = HashSet<K>()
@@ -1422,7 +1422,7 @@ inline fun <K> LongBuffer.distinctBy(selector: (Long) -> K): List<Long> {
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 inline fun <K> FloatBuffer.distinctBy(selector: (Float) -> K): List<Float> {
     val set = HashSet<K>()
@@ -1441,7 +1441,7 @@ inline fun <K> FloatBuffer.distinctBy(selector: (Float) -> K): List<Float> {
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 inline fun <K> DoubleBuffer.distinctBy(selector: (Double) -> K): List<Double> {
     val set = HashSet<K>()
@@ -1460,7 +1460,7 @@ inline fun <K> DoubleBuffer.distinctBy(selector: (Double) -> K): List<Double> {
  *
  * The elements in the resulting list are in the same order as they were in the source array.
  *
- * @sample samples.collections.Collections.Transformations.distinctAndDistinctBy
+ * @sample kool.buffers.Collections.Transformations.distinctAndDistinctBy
  */
 inline fun <K> CharBuffer.distinctBy(selector: (Char) -> K): List<Char> {
     val set = HashSet<K>()
@@ -2428,7 +2428,7 @@ inline fun CharBuffer.forEachIndexed(action: (index: Int, Char) -> Unit): Unit {
 
 
 /** Returns the first element yielding the largest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.maxByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.maxByOrNull */
 inline fun <R : Comparable<R>> ByteBuffer.maxByOrNull(selector: (Byte) -> R): Byte? {
     if (isEmpty()) return null
     var maxElem = this[0]
@@ -2447,7 +2447,7 @@ inline fun <R : Comparable<R>> ByteBuffer.maxByOrNull(selector: (Byte) -> R): By
 }
 
 /** Returns the first element yielding the largest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.maxByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.maxByOrNull */
 inline fun <R : Comparable<R>> ShortBuffer.maxByOrNull(selector: (Short) -> R): Short? {
     if (isEmpty()) return null
     var maxElem = this[0]
@@ -2466,7 +2466,7 @@ inline fun <R : Comparable<R>> ShortBuffer.maxByOrNull(selector: (Short) -> R): 
 }
 
 /** Returns the first element yielding the largest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.maxByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.maxByOrNull */
 inline fun <R : Comparable<R>> IntBuffer.maxByOrNull(selector: (Int) -> R): Int? {
     if (isEmpty()) return null
     var maxElem = this[0]
@@ -2485,7 +2485,7 @@ inline fun <R : Comparable<R>> IntBuffer.maxByOrNull(selector: (Int) -> R): Int?
 }
 
 /** Returns the first element yielding the largest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.maxByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.maxByOrNull */
 inline fun <R : Comparable<R>> LongBuffer.maxByOrNull(selector: (Long) -> R): Long? {
     if (isEmpty()) return null
     var maxElem = this[0]
@@ -2504,7 +2504,7 @@ inline fun <R : Comparable<R>> LongBuffer.maxByOrNull(selector: (Long) -> R): Lo
 }
 
 /** Returns the first element yielding the largest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.maxByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.maxByOrNull */
 inline fun <R : Comparable<R>> FloatBuffer.maxByOrNull(selector: (Float) -> R): Float? {
     if (isEmpty()) return null
     var maxElem = this[0]
@@ -2523,7 +2523,7 @@ inline fun <R : Comparable<R>> FloatBuffer.maxByOrNull(selector: (Float) -> R): 
 }
 
 /** Returns the first element yielding the largest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.maxByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.maxByOrNull */
 inline fun <R : Comparable<R>> DoubleBuffer.maxByOrNull(selector: (Double) -> R): Double? {
     if (isEmpty()) return null
     var maxElem = this[0]
@@ -2542,7 +2542,7 @@ inline fun <R : Comparable<R>> DoubleBuffer.maxByOrNull(selector: (Double) -> R)
 }
 
 /** Returns the first element yielding the largest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.maxByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.maxByOrNull */
 inline fun <R : Comparable<R>> CharBuffer.maxByOrNull(selector: (Char) -> R): Char? {
     if (isEmpty()) return null
     var maxElem = this[0]
@@ -3506,7 +3506,7 @@ fun CharBuffer.maxWithOrNull(comparator: Comparator<in Char>): Char? {
 
 
 /** Returns the first element yielding the smallest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.minByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.minByOrNull */
 inline fun <R : Comparable<R>> ByteBuffer.minByOrNull(selector: (Byte) -> R): Byte? {
     if (isEmpty()) return null
     var minElem = this[0]
@@ -3525,7 +3525,7 @@ inline fun <R : Comparable<R>> ByteBuffer.minByOrNull(selector: (Byte) -> R): By
 }
 
 /** Returns the first element yielding the smallest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.minByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.minByOrNull */
 inline fun <R : Comparable<R>> ShortBuffer.minByOrNull(selector: (Short) -> R): Short? {
     if (isEmpty()) return null
     var minElem = this[0]
@@ -3544,7 +3544,7 @@ inline fun <R : Comparable<R>> ShortBuffer.minByOrNull(selector: (Short) -> R): 
 }
 
 /** Returns the first element yielding the smallest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.minByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.minByOrNull */
 inline fun <R : Comparable<R>> IntBuffer.minByOrNull(selector: (Int) -> R): Int? {
     if (isEmpty()) return null
     var minElem = this[0]
@@ -3563,7 +3563,7 @@ inline fun <R : Comparable<R>> IntBuffer.minByOrNull(selector: (Int) -> R): Int?
 }
 
 /** Returns the first element yielding the smallest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.minByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.minByOrNull */
 inline fun <R : Comparable<R>> LongBuffer.minByOrNull(selector: (Long) -> R): Long? {
     if (isEmpty()) return null
     var minElem = this[0]
@@ -3582,7 +3582,7 @@ inline fun <R : Comparable<R>> LongBuffer.minByOrNull(selector: (Long) -> R): Lo
 }
 
 /** Returns the first element yielding the smallest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.minByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.minByOrNull */
 inline fun <R : Comparable<R>> FloatBuffer.minByOrNull(selector: (Float) -> R): Float? {
     if (isEmpty()) return null
     var minElem = this[0]
@@ -3601,7 +3601,7 @@ inline fun <R : Comparable<R>> FloatBuffer.minByOrNull(selector: (Float) -> R): 
 }
 
 /** Returns the first element yielding the smallest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.minByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.minByOrNull */
 inline fun <R : Comparable<R>> DoubleBuffer.minByOrNull(selector: (Double) -> R): Double? {
     if (isEmpty()) return null
     var minElem = this[0]
@@ -3620,7 +3620,7 @@ inline fun <R : Comparable<R>> DoubleBuffer.minByOrNull(selector: (Double) -> R)
 }
 
 /** Returns the first element yielding the smallest value of the given function or `null` if there are no elements.
- *  @sample samples.collections.Collections.Aggregates.minByOrNull */
+ *  @sample kool.buffers.Collections.Aggregates.minByOrNull */
 inline fun <R : Comparable<R>> CharBuffer.minByOrNull(selector: (Char) -> R): Char? {
     if (isEmpty()) return null
     var minElem = this[0]
@@ -4891,7 +4891,7 @@ inline fun CharBuffer.onEachIndexed(action: (index: Int, Char) -> Unit): CharBuf
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun ByteBuffer.reduce(operation: (acc: Byte, Byte) -> Byte): Byte {
     if (isEmpty())
@@ -4912,7 +4912,7 @@ inline fun ByteBuffer.reduce(operation: (acc: Byte, Byte) -> Byte): Byte {
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun ShortBuffer.reduce(operation: (acc: Short, Short) -> Short): Short {
     if (isEmpty())
@@ -4933,7 +4933,7 @@ inline fun ShortBuffer.reduce(operation: (acc: Short, Short) -> Short): Short {
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun IntBuffer.reduce(operation: (acc: Int, Int) -> Int): Int {
     if (isEmpty())
@@ -4954,7 +4954,7 @@ inline fun IntBuffer.reduce(operation: (acc: Int, Int) -> Int): Int {
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun LongBuffer.reduce(operation: (acc: Long, Long) -> Long): Long {
     if (isEmpty())
@@ -4975,7 +4975,7 @@ inline fun LongBuffer.reduce(operation: (acc: Long, Long) -> Long): Long {
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun FloatBuffer.reduce(operation: (acc: Float, Float) -> Float): Float {
     if (isEmpty())
@@ -4996,7 +4996,7 @@ inline fun FloatBuffer.reduce(operation: (acc: Float, Float) -> Float): Float {
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun DoubleBuffer.reduce(operation: (acc: Double, Double) -> Double): Double {
     if (isEmpty())
@@ -5017,7 +5017,7 @@ inline fun DoubleBuffer.reduce(operation: (acc: Double, Double) -> Double): Doub
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 public inline fun CharArray.reduce(operation: (acc: Char, Char) -> Char): Char {
     if (isEmpty())

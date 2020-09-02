@@ -1,11 +1,11 @@
 package kool.buffers
 
 import io.kotest.matchers.shouldBe
-import kool.charBufferOf
-import kool.emptyBuffer
-import kool.intBufferOf
+import kool.*
 import kool.lib.*
+import java.nio.CharBuffer
 import kotlin.test.Test
+import kotlin.test.assertFails
 
 // as https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/samples/test/samples/collections/collections.kt
 
@@ -217,39 +217,39 @@ class Collections {
 
         @Test
         fun groupByKeysAndValues() {
-            val nameToTeam = listOf("Alice" to "Marketing", "Bob" to "Sales", "Carol" to "Marketing")
-            val namesByTeam = nameToTeam.groupBy({ it.second }, { it.first })
-            assertPrints(namesByTeam, "{Marketing=[Alice, Carol], Sales=[Bob]}")
+            val nameToTeam = charBufferOf('A', 'B', 'C')
+            val namesByTeam = nameToTeam.groupBy({ it.toInt() }, { it })
+            namesByTeam shouldPrint "{${'A'.toInt()}=[A], ${'B'.toInt()}=[B], ${'C'.toInt()}=[C]}"
 
-            val mutableNamesByTeam = nameToTeam.groupByTo(HashMap(), { it.second }, { it.first })
+            val mutableNamesByTeam = nameToTeam.groupByTo(HashMap(), { it.toInt() }, { it })
             // same content as in namesByTeam map, but the map is mutable
-            assertTrue(mutableNamesByTeam == namesByTeam)
+            mutableNamesByTeam shouldBe namesByTeam
         }
 
 
 
-//        @Sample
-//        fun joinTo() {
-//            val sb = StringBuilder("An existing string and a list: ")
-//            val numbers = listOf(1, 2, 3)
-//            assertPrints(numbers.joinTo(sb, prefix = "[", postfix = "]").toString(), "An existing string and a list: [1, 2, 3]")
-//
-//            val lotOfNumbers: Iterable<Int> = 1..100
-//            val firstNumbers = StringBuilder("First five numbers: ")
-//            assertPrints(lotOfNumbers.joinTo(firstNumbers, limit = 5).toString(), "First five numbers: 1, 2, 3, 4, 5, ...")
-//        }
-//
-//        @Sample
-//        fun joinToString() {
-//            val numbers = listOf(1, 2, 3, 4, 5, 6)
-//            assertPrints(numbers.joinToString(), "1, 2, 3, 4, 5, 6")
-//            assertPrints(numbers.joinToString(prefix = "[", postfix = "]"), "[1, 2, 3, 4, 5, 6]")
-//            assertPrints(numbers.joinToString(prefix = "<", postfix = ">", separator = "•"), "<1•2•3•4•5•6>")
-//
-//            val chars = charArrayOf('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q')
-//            assertPrints(chars.joinToString(limit = 5, truncated = "...!") { it.toUpperCase().toString() }, "A, B, C, D, E, ...!")
-//        }
-//
+        @Test
+        fun joinTo() {
+            val sb = StringBuilder("An existing string and a list: ")
+            val numbers = intBufferOf(1, 2, 3)
+            numbers.joinTo(sb, prefix = "[", postfix = "]") shouldPrint "An existing string and a list: [1, 2, 3]"
+
+            val lotOfNumbers = intBufferOf(1..100)
+            val firstNumbers = StringBuilder("First five numbers: ")
+            lotOfNumbers.joinTo(firstNumbers, limit = 5) shouldPrint "First five numbers: 1, 2, 3, 4, 5, ..."
+        }
+
+        @Test
+        fun joinToString() {
+            val numbers = intBufferOf(1, 2, 3, 4, 5, 6)
+            numbers.joinToString() shouldPrint "1, 2, 3, 4, 5, 6"
+            numbers.joinToString(prefix = "[", postfix = "]") shouldPrint "[1, 2, 3, 4, 5, 6]"
+            numbers.joinToString(prefix = "<", postfix = ">", separator = "•") shouldPrint "<1•2•3•4•5•6>"
+
+            val chars = charBufferOf('a'..'q')
+            chars.joinToString(limit = 5, truncated = "...!") { it.toUpperCase().toString() } shouldPrint "A, B, C, D, E, ...!"
+        }
+
 //        @Sample
 //        fun map() {
 //            val numbers = listOf(1, 2, 3)
@@ -430,14 +430,14 @@ class Collections {
 //            // Jacob Bernoulli only occurs once in the map because only the last pair with the same key gets added
 //            assertPrints(withLengthOfNames, "{Grace Hopper=11, Jacob Bernoulli=14}")
 //        }
-//
-//        @Sample
-//        fun distinctAndDistinctBy() {
-//            val list = listOf('a', 'A', 'b', 'B', 'A', 'a')
-//     +       assertPrints(list.distinct(), "[a, A, b, B]")
-//            assertPrints(list.distinctBy { it.toUpperCase() }, "[a, b]")
-//        }
-//
+
+        @Test
+        fun distinctAndDistinctBy() {
+            val list = charBufferOf('a', 'A', 'b', 'B', 'A', 'a')
+            list.distinct() shouldPrint "[a, A, b, B]"
+            list.distinctBy { it.toUpperCase() } shouldPrint "[a, b]"
+        }
+
 //        @Sample
 //        fun groupByKeysAndValues() {
 //            val nameToTeam = listOf("Alice" to "Marketing", "Bob" to "Sales", "Carol" to "Marketing")
@@ -550,6 +550,153 @@ class Collections {
 //
 //            assertPrints(deltas, "[3, 5, 7, 9, 11]")
 //        }
+    }
+
+    class Aggregates {
+//        @Sample
+//        fun all() {
+//            val isEven: (Int) -> Boolean = { it % 2 == 0 }
+//            val zeroToTen = 0..10
+//            assertFalse(zeroToTen.all { isEven(it) })
+//            assertFalse(zeroToTen.all(isEven))
+//
+//            val evens = zeroToTen.map { it * 2 }
+//            assertTrue(evens.all { isEven(it) })
+//
+//            val emptyList = emptyList<Int>()
+//            assertTrue(emptyList.all { false })
+//        }
+//
+//        @Sample
+//        fun none() {
+//            val emptyList = emptyList<Int>()
+//            assertTrue(emptyList.none())
+//
+//            val nonEmptyList = listOf("one", "two", "three")
+//            assertFalse(nonEmptyList.none())
+//        }
+//
+//        @Sample
+//        fun noneWithPredicate() {
+//            val isEven: (Int) -> Boolean = { it % 2 == 0 }
+//            val zeroToTen = 0..10
+//            assertFalse(zeroToTen.none { isEven(it) })
+//            assertFalse(zeroToTen.none(isEven))
+//
+//            val odds = zeroToTen.map { it * 2 + 1 }
+//            assertTrue(odds.none { isEven(it) })
+//
+//            val emptyList = emptyList<Int>()
+//            assertTrue(emptyList.none { true })
+//        }
+//
+//        @Sample
+//        fun any() {
+//            val emptyList = emptyList<Int>()
+//            assertFalse(emptyList.any())
+//
+//            val nonEmptyList = listOf(1, 2, 3)
+//            assertTrue(nonEmptyList.any())
+//        }
+//
+//        @Sample
+//        fun anyWithPredicate() {
+//            val isEven: (Int) -> Boolean = { it % 2 == 0 }
+//            val zeroToTen = 0..10
+//            assertTrue(zeroToTen.any { isEven(it) })
+//            assertTrue(zeroToTen.any(isEven))
+//
+//            val odds = zeroToTen.map { it * 2 + 1 }
+//            assertFalse(odds.any { isEven(it) })
+//
+//            val emptyList = emptyList<Int>()
+//            assertFalse(emptyList.any { true })
+//        }
+
+        @Test
+        fun maxByOrNull() {
+            val nameToAge = intBufferOf(42, 28, 51)
+            val oldestPerson = nameToAge.maxByOrNull { it }
+            oldestPerson shouldBe 51
+
+            val emptyList = emptyIntBuffer()
+            val emptyMax = emptyList.maxByOrNull { it }
+            emptyMax shouldBe null
+        }
+
+        @Test
+        fun minByOrNull() {
+            val list = charBufferOf('a' .. 'e')
+            val shortestString = list.minByOrNull { it.toInt() }
+            shortestString shouldBe 'a'
+
+            val emptyList = emptyCharBuffer()
+            val emptyMin = emptyList.minByOrNull { it.toInt() }
+            emptyMin shouldBe null
+        }
+
+        @Test
+        fun reduce() {
+            val ints = intBufferOf(0..4)
+            ints.reduce { acc, i -> acc + i } shouldBe 10
+            ints.reduceIndexed { index, acc, i -> acc + i + index } shouldBe 20
+
+            assertFails { emptyIntBuffer().reduce { _, _ -> 0 } }
+        }
+
+        @Test
+        fun reduceRight() {
+            val ints = intBufferOf(0..4)
+            ints.reduceRight { i, acc -> acc + i } shouldBe 10
+            ints.reduceRightIndexed { index, i, acc -> acc + i + index } shouldBe 16
+
+            assertFails { emptyIntBuffer().reduceRight { _, _ -> 0 } }
+        }
+
+        @Test
+        fun reduceOrNull() {
+            val ints = intBufferOf(0..4)
+            ints.reduceOrNull { acc, i -> acc + i } shouldBe 10
+            ints.reduceIndexedOrNull { index, acc, i -> acc + i + index } shouldBe 20
+
+            emptyIntBuffer().reduceOrNull { _, _ -> 0 } shouldBe null
+        }
+
+        @Test
+        fun reduceRightOrNull() {
+            val ints = intBufferOf(0..4)
+            ints.reduceRightOrNull { i, acc -> acc + i } shouldBe 10
+            ints.reduceRightIndexedOrNull { index, i, acc -> acc + i + index } shouldBe 16
+
+            emptyIntBuffer().reduceRightOrNull { _, _ -> 0 } shouldBe null
+        }
+
+        @Test
+        fun scan() {
+            val strings = charBufferOf('a'..'d')
+            strings.scan("s") { acc, string -> acc + string } shouldPrint "[s, sa, sab, sabc, sabcd]"
+            strings.scanIndexed("s") { index, acc, string -> acc + string + index } shouldPrint "[s, sa0, sa0b1, sa0b1c2, sa0b1c2d3]"
+
+            emptyCharBuffer().scan("s") { _, _ -> "X" } shouldPrint "[s]"
+        }
+
+        @Test
+        fun runningFold() {
+            val strings = charBufferOf('a'..'d')
+            strings.runningFold("s") { acc, string -> acc + string } shouldPrint "[s, sa, sab, sabc, sabcd]"
+            strings.runningFoldIndexed("s") { index, acc, string -> acc + string + index } shouldPrint "[s, sa0, sa0b1, sa0b1c2, sa0b1c2d3]"
+
+            emptyCharBuffer().runningFold("s") { _, _ -> "X" } shouldPrint "[s]"
+        }
+
+        @Test
+        fun runningReduce() {
+            val chars = charBufferOf('a'..'d')
+            chars.runningReduce { acc, char -> acc + (char - acc) } shouldPrint "[a, b, c, d]"
+            chars.runningReduceIndexed { index, acc, char -> acc + (char - acc) + index } shouldPrint "[a, c, e, g]"
+
+            emptyCharBuffer().runningReduce { _, _ -> 'X' } shouldPrint "[]"
+        }
     }
 
     class Sorting {

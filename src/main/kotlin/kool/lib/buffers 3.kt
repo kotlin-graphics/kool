@@ -19,7 +19,7 @@ import kotlin.experimental.ExperimentalTypeInference
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun ByteBuffer.reduceIndexed(operation: (index: Int, acc: Byte, Byte) -> Byte): Byte {
     if (isEmpty())
@@ -40,7 +40,7 @@ inline fun ByteBuffer.reduceIndexed(operation: (index: Int, acc: Byte, Byte) -> 
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun ShortBuffer.reduceIndexed(operation: (index: Int, acc: Short, Short) -> Short): Short {
     if (isEmpty())
@@ -61,7 +61,7 @@ inline fun ShortBuffer.reduceIndexed(operation: (index: Int, acc: Short, Short) 
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun IntBuffer.reduceIndexed(operation: (index: Int, acc: Int, Int) -> Int): Int {
     if (isEmpty())
@@ -82,7 +82,7 @@ inline fun IntBuffer.reduceIndexed(operation: (index: Int, acc: Int, Int) -> Int
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun LongBuffer.reduceIndexed(operation: (index: Int, acc: Long, Long) -> Long): Long {
     if (isEmpty())
@@ -103,7 +103,7 @@ inline fun LongBuffer.reduceIndexed(operation: (index: Int, acc: Long, Long) -> 
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun FloatBuffer.reduceIndexed(operation: (index: Int, acc: Float, Float) -> Float): Float {
     if (isEmpty())
@@ -124,7 +124,7 @@ inline fun FloatBuffer.reduceIndexed(operation: (index: Int, acc: Float, Float) 
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun DoubleBuffer.reduceIndexed(operation: (index: Int, acc: Double, Double) -> Double): Double {
     if (isEmpty())
@@ -145,7 +145,7 @@ inline fun DoubleBuffer.reduceIndexed(operation: (index: Int, acc: Double, Doubl
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduce
+ * @sample kool.buffers.Collections.Aggregates.reduce
  */
 inline fun CharBuffer.reduceIndexed(operation: (index: Int, acc: Char, Char) -> Char): Char {
     if (isEmpty())
@@ -166,7 +166,7 @@ inline fun CharBuffer.reduceIndexed(operation: (index: Int, acc: Char, Char) -> 
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun ByteBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Byte, Byte) -> Byte): Byte? {
     if (isEmpty())
@@ -186,7 +186,7 @@ inline fun ByteBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Byte, Byt
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun ShortBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Short, Short) -> Short): Short? {
     if (isEmpty())
@@ -206,7 +206,7 @@ inline fun ShortBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Short, S
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun IntBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Int, Int) -> Int): Int? {
     if (isEmpty())
@@ -226,7 +226,7 @@ inline fun IntBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Int, Int) 
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun LongBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Long, Long) -> Long): Long? {
     if (isEmpty())
@@ -246,7 +246,7 @@ inline fun LongBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Long, Lon
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun FloatBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Float, Float) -> Float): Float? {
     if (isEmpty())
@@ -266,7 +266,7 @@ inline fun FloatBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Float, F
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun DoubleBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Double, Double) -> Double): Double? {
     if (isEmpty())
@@ -286,7 +286,7 @@ inline fun DoubleBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Double,
  * @param [operation] function that takes the index of an element, current accumulator value and the element itself,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun CharBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Char, Char) -> Char): Char? {
     if (isEmpty())
@@ -307,7 +307,7 @@ inline fun CharBuffer.reduceIndexedOrNull(operation: (index: Int, acc: Char, Cha
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun ByteBuffer.reduceOrNull(operation: (acc: Byte, Byte) -> Byte): Byte? {
     if (isEmpty()) return null
@@ -326,7 +326,7 @@ inline fun ByteBuffer.reduceOrNull(operation: (acc: Byte, Byte) -> Byte): Byte? 
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun ShortBuffer.reduceOrNull(operation: (acc: Short, Short) -> Short): Short? {
     if (isEmpty()) return null
@@ -345,7 +345,7 @@ inline fun ShortBuffer.reduceOrNull(operation: (acc: Short, Short) -> Short): Sh
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun IntBuffer.reduceOrNull(operation: (acc: Int, Int) -> Int): Int? {
     if (isEmpty()) return null
@@ -364,7 +364,7 @@ inline fun IntBuffer.reduceOrNull(operation: (acc: Int, Int) -> Int): Int? {
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun LongBuffer.reduceOrNull(operation: (acc: Long, Long) -> Long): Long? {
     if (isEmpty()) return null
@@ -383,7 +383,7 @@ inline fun LongBuffer.reduceOrNull(operation: (acc: Long, Long) -> Long): Long? 
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun FloatBuffer.reduceOrNull(operation: (acc: Float, Float) -> Float): Float? {
     if (isEmpty()) return null
@@ -402,7 +402,7 @@ inline fun FloatBuffer.reduceOrNull(operation: (acc: Float, Float) -> Float): Fl
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun DoubleBuffer.reduceOrNull(operation: (acc: Double, Double) -> Double): Double? {
     if (isEmpty()) return null
@@ -421,7 +421,7 @@ inline fun DoubleBuffer.reduceOrNull(operation: (acc: Double, Double) -> Double)
  * @param [operation] function that takes current accumulator value and an element,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceOrNull
  */
 inline fun CharBuffer.reduceOrNull(operation: (acc: Char, Char) -> Char): Char? {
     if (isEmpty()) return null
@@ -442,7 +442,7 @@ inline fun CharBuffer.reduceOrNull(operation: (acc: Char, Char) -> Char): Char? 
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun ByteBuffer.reduceRight(operation: (Byte, acc: Byte) -> Byte): Byte {
     var index = lastIndex
@@ -463,7 +463,7 @@ inline fun ByteBuffer.reduceRight(operation: (Byte, acc: Byte) -> Byte): Byte {
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun ShortBuffer.reduceRight(operation: (Short, acc: Short) -> Short): Short {
     var index = lastIndex
@@ -484,7 +484,7 @@ inline fun ShortBuffer.reduceRight(operation: (Short, acc: Short) -> Short): Sho
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun IntBuffer.reduceRight(operation: (Int, acc: Int) -> Int): Int {
     var index = lastIndex
@@ -505,7 +505,7 @@ inline fun IntBuffer.reduceRight(operation: (Int, acc: Int) -> Int): Int {
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun LongBuffer.reduceRight(operation: (Long, acc: Long) -> Long): Long {
     var index = lastIndex
@@ -526,7 +526,7 @@ inline fun LongBuffer.reduceRight(operation: (Long, acc: Long) -> Long): Long {
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun FloatBuffer.reduceRight(operation: (Float, acc: Float) -> Float): Float {
     var index = lastIndex
@@ -547,7 +547,7 @@ inline fun FloatBuffer.reduceRight(operation: (Float, acc: Float) -> Float): Flo
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun DoubleBuffer.reduceRight(operation: (Double, acc: Double) -> Double): Double {
     var index = lastIndex
@@ -568,7 +568,7 @@ inline fun DoubleBuffer.reduceRight(operation: (Double, acc: Double) -> Double):
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun CharBuffer.reduceRight(operation: (Char, acc: Char) -> Char): Char {
     var index = lastIndex
@@ -590,7 +590,7 @@ inline fun CharBuffer.reduceRight(operation: (Char, acc: Char) -> Char): Char {
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun ByteBuffer.reduceRightIndexed(operation: (index: Int, Byte, acc: Byte) -> Byte): Byte {
     var index = lastIndex
@@ -613,7 +613,7 @@ inline fun ByteBuffer.reduceRightIndexed(operation: (index: Int, Byte, acc: Byte
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun ShortBuffer.reduceRightIndexed(operation: (index: Int, Short, acc: Short) -> Short): Short {
     var index = lastIndex
@@ -636,7 +636,7 @@ inline fun ShortBuffer.reduceRightIndexed(operation: (index: Int, Short, acc: Sh
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun IntBuffer.reduceRightIndexed(operation: (index: Int, Int, acc: Int) -> Int): Int {
     var index = lastIndex
@@ -659,7 +659,7 @@ inline fun IntBuffer.reduceRightIndexed(operation: (index: Int, Int, acc: Int) -
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun LongBuffer.reduceRightIndexed(operation: (index: Int, Long, acc: Long) -> Long): Long {
     var index = lastIndex
@@ -682,7 +682,7 @@ inline fun LongBuffer.reduceRightIndexed(operation: (index: Int, Long, acc: Long
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun FloatBuffer.reduceRightIndexed(operation: (index: Int, Float, acc: Float) -> Float): Float {
     var index = lastIndex
@@ -705,7 +705,7 @@ inline fun FloatBuffer.reduceRightIndexed(operation: (index: Int, Float, acc: Fl
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun DoubleBuffer.reduceRightIndexed(operation: (index: Int, Double, acc: Double) -> Double): Double {
     var index = lastIndex
@@ -728,7 +728,7 @@ inline fun DoubleBuffer.reduceRightIndexed(operation: (index: Int, Double, acc: 
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRight
+ * @sample kool.buffers.Collections.Aggregates.reduceRight
  */
 inline fun CharBuffer.reduceRightIndexed(operation: (index: Int, Char, acc: Char) -> Char): Char {
     var index = lastIndex
@@ -751,7 +751,7 @@ inline fun CharBuffer.reduceRightIndexed(operation: (index: Int, Char, acc: Char
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun ByteBuffer.reduceRightIndexedOrNull(operation: (index: Int, Byte, acc: Byte) -> Byte): Byte? {
     var index = lastIndex
@@ -773,7 +773,7 @@ inline fun ByteBuffer.reduceRightIndexedOrNull(operation: (index: Int, Byte, acc
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun ShortBuffer.reduceRightIndexedOrNull(operation: (index: Int, Short, acc: Short) -> Short): Short? {
     var index = lastIndex
@@ -795,7 +795,7 @@ inline fun ShortBuffer.reduceRightIndexedOrNull(operation: (index: Int, Short, a
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun IntBuffer.reduceRightIndexedOrNull(operation: (index: Int, Int, acc: Int) -> Int): Int? {
     var index = lastIndex
@@ -817,7 +817,7 @@ inline fun IntBuffer.reduceRightIndexedOrNull(operation: (index: Int, Int, acc: 
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun LongBuffer.reduceRightIndexedOrNull(operation: (index: Int, Long, acc: Long) -> Long): Long? {
     var index = lastIndex
@@ -839,7 +839,7 @@ inline fun LongBuffer.reduceRightIndexedOrNull(operation: (index: Int, Long, acc
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun FloatBuffer.reduceRightIndexedOrNull(operation: (index: Int, Float, acc: Float) -> Float): Float? {
     var index = lastIndex
@@ -861,7 +861,7 @@ inline fun FloatBuffer.reduceRightIndexedOrNull(operation: (index: Int, Float, a
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun DoubleBuffer.reduceRightIndexedOrNull(operation: (index: Int, Double, acc: Double) -> Double): Double? {
     var index = lastIndex
@@ -883,7 +883,7 @@ inline fun DoubleBuffer.reduceRightIndexedOrNull(operation: (index: Int, Double,
  * @param [operation] function that takes the index of an element, the element itself and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun CharBuffer.reduceRightIndexedOrNull(operation: (index: Int, Char, acc: Char) -> Char): Char? {
     var index = lastIndex
@@ -906,7 +906,7 @@ inline fun CharBuffer.reduceRightIndexedOrNull(operation: (index: Int, Char, acc
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun ByteBuffer.reduceRightOrNull(operation: (Byte, acc: Byte) -> Byte): Byte? {
     var index = lastIndex
@@ -926,7 +926,7 @@ inline fun ByteBuffer.reduceRightOrNull(operation: (Byte, acc: Byte) -> Byte): B
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun ShortBuffer.reduceRightOrNull(operation: (Short, acc: Short) -> Short): Short? {
     var index = lastIndex
@@ -946,7 +946,7 @@ inline fun ShortBuffer.reduceRightOrNull(operation: (Short, acc: Short) -> Short
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun IntBuffer.reduceRightOrNull(operation: (Int, acc: Int) -> Int): Int? {
     var index = lastIndex
@@ -966,7 +966,7 @@ inline fun IntBuffer.reduceRightOrNull(operation: (Int, acc: Int) -> Int): Int? 
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun LongBuffer.reduceRightOrNull(operation: (Long, acc: Long) -> Long): Long? {
     var index = lastIndex
@@ -986,7 +986,7 @@ inline fun LongBuffer.reduceRightOrNull(operation: (Long, acc: Long) -> Long): L
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun FloatBuffer.reduceRightOrNull(operation: (Float, acc: Float) -> Float): Float? {
     var index = lastIndex
@@ -1006,7 +1006,7 @@ inline fun FloatBuffer.reduceRightOrNull(operation: (Float, acc: Float) -> Float
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun DoubleBuffer.reduceRightOrNull(operation: (Double, acc: Double) -> Double): Double? {
     var index = lastIndex
@@ -1026,7 +1026,7 @@ inline fun DoubleBuffer.reduceRightOrNull(operation: (Double, acc: Double) -> Do
  * @param [operation] function that takes an element and current accumulator value,
  * and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.reduceRightOrNull
+ * @sample kool.buffers.Collections.Aggregates.reduceRightOrNull
  */
 inline fun CharBuffer.reduceRightOrNull(operation: (Char, acc: Char) -> Char): Char? {
     var index = lastIndex
@@ -1047,7 +1047,7 @@ inline fun CharBuffer.reduceRightOrNull(operation: (Char, acc: Char) -> Char): C
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> ByteBuffer.runningFold(initial: R, operation: (acc: R, Byte) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1069,7 +1069,7 @@ inline fun <R> ByteBuffer.runningFold(initial: R, operation: (acc: R, Byte) -> R
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> ShortBuffer.runningFold(initial: R, operation: (acc: R, Short) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1091,7 +1091,7 @@ inline fun <R> ShortBuffer.runningFold(initial: R, operation: (acc: R, Short) ->
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> IntBuffer.runningFold(initial: R, operation: (acc: R, Int) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1113,7 +1113,7 @@ inline fun <R> IntBuffer.runningFold(initial: R, operation: (acc: R, Int) -> R):
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> LongBuffer.runningFold(initial: R, operation: (acc: R, Long) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1135,7 +1135,7 @@ inline fun <R> LongBuffer.runningFold(initial: R, operation: (acc: R, Long) -> R
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> FloatBuffer.runningFold(initial: R, operation: (acc: R, Float) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1157,7 +1157,7 @@ inline fun <R> FloatBuffer.runningFold(initial: R, operation: (acc: R, Float) ->
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> DoubleBuffer.runningFold(initial: R, operation: (acc: R, Double) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1179,7 +1179,7 @@ inline fun <R> DoubleBuffer.runningFold(initial: R, operation: (acc: R, Double) 
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> CharBuffer.runningFold(initial: R, operation: (acc: R, Char) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1203,7 +1203,7 @@ inline fun <R> CharBuffer.runningFold(initial: R, operation: (acc: R, Char) -> R
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> ByteBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Byte) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1226,7 +1226,7 @@ inline fun <R> ByteBuffer.runningFoldIndexed(initial: R, operation: (index: Int,
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> ShortBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Short) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1249,7 +1249,7 @@ inline fun <R> ShortBuffer.runningFoldIndexed(initial: R, operation: (index: Int
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> IntBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Int) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1272,7 +1272,7 @@ inline fun <R> IntBuffer.runningFoldIndexed(initial: R, operation: (index: Int, 
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> LongBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Long) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1295,7 +1295,7 @@ inline fun <R> LongBuffer.runningFoldIndexed(initial: R, operation: (index: Int,
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> FloatBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Float) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1318,7 +1318,7 @@ inline fun <R> FloatBuffer.runningFoldIndexed(initial: R, operation: (index: Int
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> DoubleBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Double) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1341,7 +1341,7 @@ inline fun <R> DoubleBuffer.runningFoldIndexed(initial: R, operation: (index: In
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningFold
+ * @sample kool.buffers.Collections.Aggregates.runningFold
  */
 inline fun <R> CharBuffer.runningFoldIndexed(initial: R, operation: (index: Int, acc: R, Char) -> R): List<R> {
     if (isEmpty()) return listOf(initial)
@@ -1361,7 +1361,7 @@ inline fun <R> CharBuffer.runningFoldIndexed(initial: R, operation: (index: Int,
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun ByteBuffer.runningReduce(operation: (acc: Byte, Byte) -> Byte): List<Byte> {
     if (isEmpty()) return emptyList()
@@ -1380,7 +1380,7 @@ inline fun ByteBuffer.runningReduce(operation: (acc: Byte, Byte) -> Byte): List<
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun ShortBuffer.runningReduce(operation: (acc: Short, Short) -> Short): List<Short> {
     if (isEmpty()) return emptyList()
@@ -1399,7 +1399,7 @@ inline fun ShortBuffer.runningReduce(operation: (acc: Short, Short) -> Short): L
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun IntBuffer.runningReduce(operation: (acc: Int, Int) -> Int): List<Int> {
     if (isEmpty()) return emptyList()
@@ -1418,7 +1418,7 @@ inline fun IntBuffer.runningReduce(operation: (acc: Int, Int) -> Int): List<Int>
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun LongBuffer.runningReduce(operation: (acc: Long, Long) -> Long): List<Long> {
     if (isEmpty()) return emptyList()
@@ -1437,7 +1437,7 @@ inline fun LongBuffer.runningReduce(operation: (acc: Long, Long) -> Long): List<
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun FloatBuffer.runningReduce(operation: (acc: Float, Float) -> Float): List<Float> {
     if (isEmpty()) return emptyList()
@@ -1456,7 +1456,7 @@ inline fun FloatBuffer.runningReduce(operation: (acc: Float, Float) -> Float): L
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun DoubleBuffer.runningReduce(operation: (acc: Double, Double) -> Double): List<Double> {
     if (isEmpty()) return emptyList()
@@ -1475,7 +1475,7 @@ inline fun DoubleBuffer.runningReduce(operation: (acc: Double, Double) -> Double
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun CharBuffer.runningReduce(operation: (acc: Char, Char) -> Char): List<Char> {
     if (isEmpty()) return emptyList()
@@ -1496,7 +1496,7 @@ inline fun CharBuffer.runningReduce(operation: (acc: Char, Char) -> Char): List<
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun ByteBuffer.runningReduceIndexed(operation: (index: Int, acc: Byte, Byte) -> Byte): List<Byte> {
     if (isEmpty()) return emptyList()
@@ -1516,7 +1516,7 @@ inline fun ByteBuffer.runningReduceIndexed(operation: (index: Int, acc: Byte, By
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun ShortBuffer.runningReduceIndexed(operation: (index: Int, acc: Short, Short) -> Short): List<Short> {
     if (isEmpty()) return emptyList()
@@ -1536,7 +1536,7 @@ inline fun ShortBuffer.runningReduceIndexed(operation: (index: Int, acc: Short, 
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun IntBuffer.runningReduceIndexed(operation: (index: Int, acc: Int, Int) -> Int): List<Int> {
     if (isEmpty()) return emptyList()
@@ -1556,7 +1556,7 @@ inline fun IntBuffer.runningReduceIndexed(operation: (index: Int, acc: Int, Int)
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun LongBuffer.runningReduceIndexed(operation: (index: Int, acc: Long, Long) -> Long): List<Long> {
     if (isEmpty()) return emptyList()
@@ -1576,7 +1576,7 @@ inline fun LongBuffer.runningReduceIndexed(operation: (index: Int, acc: Long, Lo
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun FloatBuffer.runningReduceIndexed(operation: (index: Int, acc: Float, Float) -> Float): List<Float> {
     if (isEmpty()) return emptyList()
@@ -1596,7 +1596,7 @@ inline fun FloatBuffer.runningReduceIndexed(operation: (index: Int, acc: Float, 
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun DoubleBuffer.runningReduceIndexed(operation: (index: Int, acc: Double, Double) -> Double): List<Double> {
     if (isEmpty()) return emptyList()
@@ -1616,7 +1616,7 @@ inline fun DoubleBuffer.runningReduceIndexed(operation: (index: Int, acc: Double
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.runningReduce
+ * @sample kool.buffers.Collections.Aggregates.runningReduce
  */
 inline fun CharBuffer.runningReduceIndexed(operation: (index: Int, acc: Char, Char) -> Char): List<Char> {
     if (isEmpty()) return emptyList()
@@ -1639,7 +1639,7 @@ inline fun CharBuffer.runningReduceIndexed(operation: (index: Int, acc: Char, Ch
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> ByteBuffer.scan(initial: R, operation: (acc: R, Byte) -> R): List<R> = runningFold(initial, operation)
 
@@ -1652,7 +1652,7 @@ inline fun <R> ByteBuffer.scan(initial: R, operation: (acc: R, Byte) -> R): List
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> ShortBuffer.scan(initial: R, operation: (acc: R, Short) -> R): List<R> = runningFold(initial, operation)
 
@@ -1665,7 +1665,7 @@ inline fun <R> ShortBuffer.scan(initial: R, operation: (acc: R, Short) -> R): Li
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> IntBuffer.scan(initial: R, operation: (acc: R, Int) -> R): List<R> = runningFold(initial, operation)
 
@@ -1678,7 +1678,7 @@ inline fun <R> IntBuffer.scan(initial: R, operation: (acc: R, Int) -> R): List<R
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> LongBuffer.scan(initial: R, operation: (acc: R, Long) -> R): List<R> = runningFold(initial, operation)
 
@@ -1691,7 +1691,7 @@ inline fun <R> LongBuffer.scan(initial: R, operation: (acc: R, Long) -> R): List
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> FloatBuffer.scan(initial: R, operation: (acc: R, Float) -> R): List<R> = runningFold(initial, operation)
 
@@ -1704,7 +1704,7 @@ inline fun <R> FloatBuffer.scan(initial: R, operation: (acc: R, Float) -> R): Li
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> DoubleBuffer.scan(initial: R, operation: (acc: R, Double) -> R): List<R> = runningFold(initial, operation)
 
@@ -1717,7 +1717,7 @@ inline fun <R> DoubleBuffer.scan(initial: R, operation: (acc: R, Double) -> R): 
  *
  * @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> CharBuffer.scan(initial: R, operation: (acc: R, Char) -> R): List<R> = runningFold(initial, operation)
 
@@ -1732,7 +1732,7 @@ inline fun <R> CharBuffer.scan(initial: R, operation: (acc: R, Char) -> R): List
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> ByteBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R, Byte) -> R): List<R> = runningFoldIndexed(initial, operation)
 
@@ -1746,7 +1746,7 @@ inline fun <R> ByteBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> ShortBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R, Short) -> R): List<R> = runningFoldIndexed(initial, operation)
 
@@ -1760,7 +1760,7 @@ inline fun <R> ShortBuffer.scanIndexed(initial: R, operation: (index: Int, acc: 
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> IntBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R, Int) -> R): List<R> = runningFoldIndexed(initial, operation)
 
@@ -1774,7 +1774,7 @@ inline fun <R> IntBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R,
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> LongBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R, Long) -> R): List<R> = runningFoldIndexed(initial, operation)
 
@@ -1788,7 +1788,7 @@ inline fun <R> LongBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> FloatBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R, Float) -> R): List<R> = runningFoldIndexed(initial, operation)
 
@@ -1802,7 +1802,7 @@ inline fun <R> FloatBuffer.scanIndexed(initial: R, operation: (index: Int, acc: 
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> DoubleBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R, Double) -> R): List<R> = runningFoldIndexed(initial, operation)
 
@@ -1816,7 +1816,7 @@ inline fun <R> DoubleBuffer.scanIndexed(initial: R, operation: (index: Int, acc:
  * @param [operation] function that takes the index of an element, current accumulator value
  * and the element itself, and calculates the next accumulator value.
  *
- * @sample samples.collections.Collections.Aggregates.scan
+ * @sample kool.buffers.Collections.Aggregates.scan
  */
 inline fun <R> CharBuffer.scanIndexed(initial: R, operation: (index: Int, acc: R, Char) -> R): List<R> = runningFoldIndexed(initial, operation)
 
@@ -2336,7 +2336,7 @@ inline fun CharBuffer.sumOf(selector: (Char) -> ULong): ULong {
  * where *first* list contains elements for which [predicate] yielded `true`,
  * while *second* list contains elements for which [predicate] yielded `false`.
  *
- * @sample samples.collections.Arrays.Transformations.partitionArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.partitionArrayOfPrimitives
  */
 inline fun ByteBuffer.partition(predicate: (Byte) -> Boolean): Pair<List<Byte>, List<Byte>> {
     val first = ArrayList<Byte>()
@@ -2354,7 +2354,7 @@ inline fun ByteBuffer.partition(predicate: (Byte) -> Boolean): Pair<List<Byte>, 
  * where *first* list contains elements for which [predicate] yielded `true`,
  * while *second* list contains elements for which [predicate] yielded `false`.
  *
- * @sample samples.collections.Arrays.Transformations.partitionArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.partitionArrayOfPrimitives
  */
 inline fun ShortBuffer.partition(predicate: (Short) -> Boolean): Pair<List<Short>, List<Short>> {
     val first = ArrayList<Short>()
@@ -2372,7 +2372,7 @@ inline fun ShortBuffer.partition(predicate: (Short) -> Boolean): Pair<List<Short
  * where *first* list contains elements for which [predicate] yielded `true`,
  * while *second* list contains elements for which [predicate] yielded `false`.
  *
- * @sample samples.collections.Arrays.Transformations.partitionArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.partitionArrayOfPrimitives
  */
 inline fun IntBuffer.partition(predicate: (Int) -> Boolean): Pair<List<Int>, List<Int>> {
     val first = ArrayList<Int>()
@@ -2390,7 +2390,7 @@ inline fun IntBuffer.partition(predicate: (Int) -> Boolean): Pair<List<Int>, Lis
  * where *first* list contains elements for which [predicate] yielded `true`,
  * while *second* list contains elements for which [predicate] yielded `false`.
  *
- * @sample samples.collections.Arrays.Transformations.partitionArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.partitionArrayOfPrimitives
  */
 inline fun LongBuffer.partition(predicate: (Long) -> Boolean): Pair<List<Long>, List<Long>> {
     val first = ArrayList<Long>()
@@ -2408,7 +2408,7 @@ inline fun LongBuffer.partition(predicate: (Long) -> Boolean): Pair<List<Long>, 
  * where *first* list contains elements for which [predicate] yielded `true`,
  * while *second* list contains elements for which [predicate] yielded `false`.
  *
- * @sample samples.collections.Arrays.Transformations.partitionArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.partitionArrayOfPrimitives
  */
 inline fun FloatBuffer.partition(predicate: (Float) -> Boolean): Pair<List<Float>, List<Float>> {
     val first = ArrayList<Float>()
@@ -2426,7 +2426,7 @@ inline fun FloatBuffer.partition(predicate: (Float) -> Boolean): Pair<List<Float
  * where *first* list contains elements for which [predicate] yielded `true`,
  * while *second* list contains elements for which [predicate] yielded `false`.
  *
- * @sample samples.collections.Arrays.Transformations.partitionArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.partitionArrayOfPrimitives
  */
 inline fun DoubleBuffer.partition(predicate: (Double) -> Boolean): Pair<List<Double>, List<Double>> {
     val first = ArrayList<Double>()
@@ -2444,7 +2444,7 @@ inline fun DoubleBuffer.partition(predicate: (Double) -> Boolean): Pair<List<Dou
  * where *first* list contains elements for which [predicate] yielded `true`,
  * while *second* list contains elements for which [predicate] yielded `false`.
  *
- * @sample samples.collections.Arrays.Transformations.partitionArrayOfPrimitives
+ * @sample kool.buffers.Arrays.Transformations.partitionArrayOfPrimitives
  */
 inline fun CharBuffer.partition(predicate: (Char) -> Boolean): Pair<List<Char>, List<Char>> {
     val first = ArrayList<Char>()
@@ -2462,37 +2462,37 @@ inline fun CharBuffer.partition(predicate: (Char) -> Boolean): Pair<List<Char>, 
 
 /** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  *  The returned list has length of the shortest collection.
- *  @sample samples.collections.Iterables.Operations.zipIterable */
+ *  @sample kool.buffers.Iterables.Operations.zipIterable */
 infix fun <R> ByteBuffer.zip(other: Array<out R>): List<Pair<Byte, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
 /** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  *  The returned list has length of the shortest collection.
- *  @sample samples.collections.Iterables.Operations.zipIterable */
+ *  @sample kool.buffers.Iterables.Operations.zipIterable */
 infix fun <R> ShortBuffer.zip(other: Array<out R>): List<Pair<Short, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
 /** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  *  The returned list has length of the shortest collection.
- *  @sample samples.collections.Iterables.Operations.zipIterable */
+ *  @sample kool.buffers.Iterables.Operations.zipIterable */
 infix fun <R> IntBuffer.zip(other: Array<out R>): List<Pair<Int, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
 /** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  *  The returned list has length of the shortest collection.
- *  @sample samples.collections.Iterables.Operations.zipIterable */
+ *  @sample kool.buffers.Iterables.Operations.zipIterable */
 infix fun <R> LongBuffer.zip(other: Array<out R>): List<Pair<Long, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
 /** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  *  The returned list has length of the shortest collection.
- *  @sample samples.collections.Iterables.Operations.zipIterable */
+ *  @sample kool.buffers.Iterables.Operations.zipIterable */
 infix fun <R> FloatBuffer.zip(other: Array<out R>): List<Pair<Float, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
 /** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  *  The returned list has length of the shortest collection.
- *  @sample samples.collections.Iterables.Operations.zipIterable */
+ *  @sample kool.buffers.Iterables.Operations.zipIterable */
 infix fun <R> DoubleBuffer.zip(other: Array<out R>): List<Pair<Double, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
 /** Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  *  The returned list has length of the shortest collection.
- *  @sample samples.collections.Iterables.Operations.zipIterable */
+ *  @sample kool.buffers.Iterables.Operations.zipIterable */
 infix fun <R> CharBuffer.zip(other: Array<out R>): List<Pair<Char, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
 
@@ -2501,7 +2501,7 @@ infix fun <R> CharBuffer.zip(other: Array<out R>): List<Pair<Char, R>> = zip(oth
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> ByteBuffer.zip(other: Array<out R>, transform: (a: Byte, b: R) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2517,7 +2517,7 @@ inline fun <R, V> ByteBuffer.zip(other: Array<out R>, transform: (a: Byte, b: R)
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> ShortBuffer.zip(other: Array<out R>, transform: (a: Short, b: R) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2533,7 +2533,7 @@ inline fun <R, V> ShortBuffer.zip(other: Array<out R>, transform: (a: Short, b: 
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> IntBuffer.zip(other: Array<out R>, transform: (a: Int, b: R) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2549,7 +2549,7 @@ inline fun <R, V> IntBuffer.zip(other: Array<out R>, transform: (a: Int, b: R) -
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> LongBuffer.zip(other: Array<out R>, transform: (a: Long, b: R) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2565,7 +2565,7 @@ inline fun <R, V> LongBuffer.zip(other: Array<out R>, transform: (a: Long, b: R)
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> FloatBuffer.zip(other: Array<out R>, transform: (a: Float, b: R) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2581,7 +2581,7 @@ inline fun <R, V> FloatBuffer.zip(other: Array<out R>, transform: (a: Float, b: 
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> DoubleBuffer.zip(other: Array<out R>, transform: (a: Double, b: R) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2597,7 +2597,7 @@ inline fun <R, V> DoubleBuffer.zip(other: Array<out R>, transform: (a: Double, b
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> CharBuffer.zip(other: Array<out R>, transform: (a: Char, b: R) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2613,7 +2613,7 @@ inline fun <R, V> CharBuffer.zip(other: Array<out R>, transform: (a: Char, b: R)
  * Returns a list of pairs built from the elements of `this` collection and [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun <R> ByteBuffer.zip(other: Iterable<R>): List<Pair<Byte, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2621,7 +2621,7 @@ infix fun <R> ByteBuffer.zip(other: Iterable<R>): List<Pair<Byte, R>> = zip(othe
  * Returns a list of pairs built from the elements of `this` collection and [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun <R> ShortBuffer.zip(other: Iterable<R>): List<Pair<Short, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2629,7 +2629,7 @@ infix fun <R> ShortBuffer.zip(other: Iterable<R>): List<Pair<Short, R>> = zip(ot
  * Returns a list of pairs built from the elements of `this` collection and [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun <R> IntBuffer.zip(other: Iterable<R>): List<Pair<Int, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2637,7 +2637,7 @@ infix fun <R> IntBuffer.zip(other: Iterable<R>): List<Pair<Int, R>> = zip(other)
  * Returns a list of pairs built from the elements of `this` collection and [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun <R> LongBuffer.zip(other: Iterable<R>): List<Pair<Long, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2645,7 +2645,7 @@ infix fun <R> LongBuffer.zip(other: Iterable<R>): List<Pair<Long, R>> = zip(othe
  * Returns a list of pairs built from the elements of `this` collection and [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun <R> FloatBuffer.zip(other: Iterable<R>): List<Pair<Float, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2653,7 +2653,7 @@ infix fun <R> FloatBuffer.zip(other: Iterable<R>): List<Pair<Float, R>> = zip(ot
  * Returns a list of pairs built from the elements of `this` collection and [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun <R> DoubleBuffer.zip(other: Iterable<R>): List<Pair<Double, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2661,7 +2661,7 @@ infix fun <R> DoubleBuffer.zip(other: Iterable<R>): List<Pair<Double, R>> = zip(
  * Returns a list of pairs built from the elements of `this` collection and [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun <R> CharBuffer.zip(other: Iterable<R>): List<Pair<Char, R>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2671,7 +2671,7 @@ infix fun <R> CharBuffer.zip(other: Iterable<R>): List<Pair<Char, R>> = zip(othe
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> ByteBuffer.zip(other: Iterable<R>, transform: (a: Byte, b: R) -> V): List<V> {
     val arraySize = lim
@@ -2689,7 +2689,7 @@ inline fun <R, V> ByteBuffer.zip(other: Iterable<R>, transform: (a: Byte, b: R) 
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> ShortBuffer.zip(other: Iterable<R>, transform: (a: Short, b: R) -> V): List<V> {
     val arraySize = lim
@@ -2707,7 +2707,7 @@ inline fun <R, V> ShortBuffer.zip(other: Iterable<R>, transform: (a: Short, b: R
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> IntBuffer.zip(other: Iterable<R>, transform: (a: Int, b: R) -> V): List<V> {
     val arraySize = lim
@@ -2725,7 +2725,7 @@ inline fun <R, V> IntBuffer.zip(other: Iterable<R>, transform: (a: Int, b: R) ->
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> LongBuffer.zip(other: Iterable<R>, transform: (a: Long, b: R) -> V): List<V> {
     val arraySize = lim
@@ -2743,7 +2743,7 @@ inline fun <R, V> LongBuffer.zip(other: Iterable<R>, transform: (a: Long, b: R) 
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> FloatBuffer.zip(other: Iterable<R>, transform: (a: Float, b: R) -> V): List<V> {
     val arraySize = lim
@@ -2761,7 +2761,7 @@ inline fun <R, V> FloatBuffer.zip(other: Iterable<R>, transform: (a: Float, b: R
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> DoubleBuffer.zip(other: Iterable<R>, transform: (a: Double, b: R) -> V): List<V> {
     val arraySize = lim
@@ -2779,7 +2779,7 @@ inline fun <R, V> DoubleBuffer.zip(other: Iterable<R>, transform: (a: Double, b:
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <R, V> CharBuffer.zip(other: Iterable<R>, transform: (a: Char, b: R) -> V): List<V> {
     val arraySize = lim
@@ -2797,7 +2797,7 @@ inline fun <R, V> CharBuffer.zip(other: Iterable<R>, transform: (a: Char, b: R) 
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun ByteBuffer.zip(other: ByteArray): List<Pair<Byte, Byte>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2805,7 +2805,7 @@ infix fun ByteBuffer.zip(other: ByteArray): List<Pair<Byte, Byte>> = zip(other) 
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun ShortBuffer.zip(other: ShortArray): List<Pair<Short, Short>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2813,7 +2813,7 @@ infix fun ShortBuffer.zip(other: ShortArray): List<Pair<Short, Short>> = zip(oth
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun IntBuffer.zip(other: IntArray): List<Pair<Int, Int>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2821,7 +2821,7 @@ infix fun IntBuffer.zip(other: IntArray): List<Pair<Int, Int>> = zip(other) { t1
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun LongBuffer.zip(other: LongArray): List<Pair<Long, Long>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2829,7 +2829,7 @@ infix fun LongBuffer.zip(other: LongArray): List<Pair<Long, Long>> = zip(other) 
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun FloatBuffer.zip(other: FloatArray): List<Pair<Float, Float>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2837,7 +2837,7 @@ infix fun FloatBuffer.zip(other: FloatArray): List<Pair<Float, Float>> = zip(oth
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun DoubleBuffer.zip(other: DoubleArray): List<Pair<Double, Double>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2845,7 +2845,7 @@ infix fun DoubleBuffer.zip(other: DoubleArray): List<Pair<Double, Double>> = zip
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun CharBuffer.zip(other: CharArray): List<Pair<Char, Char>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2855,7 +2855,7 @@ infix fun CharBuffer.zip(other: CharArray): List<Pair<Char, Char>> = zip(other) 
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> ByteBuffer.zip(other: ByteArray, transform: (a: Byte, b: Byte) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2870,7 +2870,7 @@ inline fun <V> ByteBuffer.zip(other: ByteArray, transform: (a: Byte, b: Byte) ->
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> ShortBuffer.zip(other: ShortArray, transform: (a: Short, b: Short) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2885,7 +2885,7 @@ inline fun <V> ShortBuffer.zip(other: ShortArray, transform: (a: Short, b: Short
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> IntBuffer.zip(other: IntArray, transform: (a: Int, b: Int) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2900,7 +2900,7 @@ inline fun <V> IntBuffer.zip(other: IntArray, transform: (a: Int, b: Int) -> V):
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> LongBuffer.zip(other: LongArray, transform: (a: Long, b: Long) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2915,7 +2915,7 @@ inline fun <V> LongBuffer.zip(other: LongArray, transform: (a: Long, b: Long) ->
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> FloatBuffer.zip(other: FloatArray, transform: (a: Float, b: Float) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2930,7 +2930,7 @@ inline fun <V> FloatBuffer.zip(other: FloatArray, transform: (a: Float, b: Float
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> DoubleBuffer.zip(other: DoubleArray, transform: (a: Double, b: Double) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2945,7 +2945,7 @@ inline fun <V> DoubleBuffer.zip(other: DoubleArray, transform: (a: Double, b: Do
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> CharBuffer.zip(other: CharArray, transform: (a: Char, b: Char) -> V): List<V> {
     val size = minOf(lim, other.size)
@@ -2960,7 +2960,7 @@ inline fun <V> CharBuffer.zip(other: CharArray, transform: (a: Char, b: Char) ->
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun ByteBuffer.zip(other: ByteBuffer): List<Pair<Byte, Byte>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2968,7 +2968,7 @@ infix fun ByteBuffer.zip(other: ByteBuffer): List<Pair<Byte, Byte>> = zip(other)
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun ShortBuffer.zip(other: ShortBuffer): List<Pair<Short, Short>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2976,7 +2976,7 @@ infix fun ShortBuffer.zip(other: ShortBuffer): List<Pair<Short, Short>> = zip(ot
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun IntBuffer.zip(other: IntBuffer): List<Pair<Int, Int>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2984,7 +2984,7 @@ infix fun IntBuffer.zip(other: IntBuffer): List<Pair<Int, Int>> = zip(other) { t
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun LongBuffer.zip(other: LongBuffer): List<Pair<Long, Long>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -2992,7 +2992,7 @@ infix fun LongBuffer.zip(other: LongBuffer): List<Pair<Long, Long>> = zip(other)
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun FloatBuffer.zip(other: FloatBuffer): List<Pair<Float, Float>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -3000,7 +3000,7 @@ infix fun FloatBuffer.zip(other: FloatBuffer): List<Pair<Float, Float>> = zip(ot
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun DoubleBuffer.zip(other: DoubleBuffer): List<Pair<Double, Double>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -3008,7 +3008,7 @@ infix fun DoubleBuffer.zip(other: DoubleBuffer): List<Pair<Double, Double>> = zi
  * Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
  * The returned list has length of the shortest collection.
  *
- * @sample samples.collections.Iterables.Operations.zipIterable
+ * @sample kool.buffers.Iterables.Operations.zipIterable
  */
 infix fun CharBuffer.zip(other: CharBuffer): List<Pair<Char, Char>> = zip(other) { t1, t2 -> t1 to t2 }
 
@@ -3018,7 +3018,7 @@ infix fun CharBuffer.zip(other: CharBuffer): List<Pair<Char, Char>> = zip(other)
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> ByteBuffer.zip(other: ByteBuffer, transform: (a: Byte, b: Byte) -> V): List<V> {
     val size = minOf(lim, other.lim)
@@ -3033,7 +3033,7 @@ inline fun <V> ByteBuffer.zip(other: ByteBuffer, transform: (a: Byte, b: Byte) -
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> ShortBuffer.zip(other: ShortBuffer, transform: (a: Short, b: Short) -> V): List<V> {
     val size = minOf(lim, other.lim)
@@ -3048,7 +3048,7 @@ inline fun <V> ShortBuffer.zip(other: ShortBuffer, transform: (a: Short, b: Shor
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> IntBuffer.zip(other: IntBuffer, transform: (a: Int, b: Int) -> V): List<V> {
     val size = minOf(lim, other.lim)
@@ -3063,7 +3063,7 @@ inline fun <V> IntBuffer.zip(other: IntBuffer, transform: (a: Int, b: Int) -> V)
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> LongBuffer.zip(other: LongBuffer, transform: (a: Long, b: Long) -> V): List<V> {
     val size = minOf(lim, other.lim)
@@ -3078,7 +3078,7 @@ inline fun <V> LongBuffer.zip(other: LongBuffer, transform: (a: Long, b: Long) -
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> FloatBuffer.zip(other: FloatBuffer, transform: (a: Float, b: Float) -> V): List<V> {
     val size = minOf(lim, other.lim)
@@ -3093,7 +3093,7 @@ inline fun <V> FloatBuffer.zip(other: FloatBuffer, transform: (a: Float, b: Floa
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> DoubleBuffer.zip(other: DoubleBuffer, transform: (a: Double, b: Double) -> V): List<V> {
     val size = minOf(lim, other.lim)
@@ -3108,7 +3108,7 @@ inline fun <V> DoubleBuffer.zip(other: DoubleBuffer, transform: (a: Double, b: D
  * using the provided [transform] function applied to each pair of elements.
  * The returned list has length of the shortest array.
  *
- * @sample samples.collections.Iterables.Operations.zipIterableWithTransform
+ * @sample kool.buffers.Iterables.Operations.zipIterableWithTransform
  */
 inline fun <V> CharBuffer.zip(other: CharBuffer, transform: (a: Char, b: Char) -> V): List<V> {
     val size = minOf(lim, other.lim)
@@ -3125,7 +3125,7 @@ inline fun <V> CharBuffer.zip(other: CharBuffer, transform: (a: Char, b: Char) -
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinTo
+ * @sample kool.buffers.Collections.Transformations.joinTo
  */
 fun <A : Appendable> ByteBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Byte) -> CharSequence)? = null): A {
     buffer.append(prefix)
@@ -3139,7 +3139,7 @@ fun <A : Appendable> ByteBuffer.joinTo(buffer: A, separator: CharSequence = ", "
                 buffer.append(element.toString())
         else break
     }
-    if (limit >= 0 && count > limit) buffer.append(truncated)
+    if (limit in 0 until count) buffer.append(truncated)
     buffer.append(postfix)
     return buffer
 }
@@ -3150,7 +3150,7 @@ fun <A : Appendable> ByteBuffer.joinTo(buffer: A, separator: CharSequence = ", "
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinTo
+ * @sample kool.buffers.Collections.Transformations.joinTo
  */
 fun <A : Appendable> ShortBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Short) -> CharSequence)? = null): A {
     buffer.append(prefix)
@@ -3164,7 +3164,7 @@ fun <A : Appendable> ShortBuffer.joinTo(buffer: A, separator: CharSequence = ", 
                 buffer.append(element.toString())
         else break
     }
-    if (limit >= 0 && count > limit) buffer.append(truncated)
+    if (limit in 0 until count) buffer.append(truncated)
     buffer.append(postfix)
     return buffer
 }
@@ -3175,7 +3175,7 @@ fun <A : Appendable> ShortBuffer.joinTo(buffer: A, separator: CharSequence = ", 
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinTo
+ * @sample kool.buffers.Collections.Transformations.joinTo
  */
 fun <A : Appendable> IntBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Int) -> CharSequence)? = null): A {
     buffer.append(prefix)
@@ -3189,7 +3189,7 @@ fun <A : Appendable> IntBuffer.joinTo(buffer: A, separator: CharSequence = ", ",
                 buffer.append(element.toString())
         else break
     }
-    if (limit >= 0 && count > limit) buffer.append(truncated)
+    if (limit in 0 until count) buffer.append(truncated)
     buffer.append(postfix)
     return buffer
 }
@@ -3200,7 +3200,7 @@ fun <A : Appendable> IntBuffer.joinTo(buffer: A, separator: CharSequence = ", ",
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinTo
+ * @sample kool.buffers.Collections.Transformations.joinTo
  */
 fun <A : Appendable> LongBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Long) -> CharSequence)? = null): A {
     buffer.append(prefix)
@@ -3214,7 +3214,7 @@ fun <A : Appendable> LongBuffer.joinTo(buffer: A, separator: CharSequence = ", "
                 buffer.append(element.toString())
         else break
     }
-    if (limit >= 0 && count > limit) buffer.append(truncated)
+    if (limit in 0 until count) buffer.append(truncated)
     buffer.append(postfix)
     return buffer
 }
@@ -3225,7 +3225,7 @@ fun <A : Appendable> LongBuffer.joinTo(buffer: A, separator: CharSequence = ", "
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinTo
+ * @sample kool.buffers.Collections.Transformations.joinTo
  */
 fun <A : Appendable> FloatBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Float) -> CharSequence)? = null): A {
     buffer.append(prefix)
@@ -3239,7 +3239,7 @@ fun <A : Appendable> FloatBuffer.joinTo(buffer: A, separator: CharSequence = ", 
                 buffer.append(element.toString())
         else break
     }
-    if (limit >= 0 && count > limit) buffer.append(truncated)
+    if (limit in 0 until count) buffer.append(truncated)
     buffer.append(postfix)
     return buffer
 }
@@ -3250,7 +3250,7 @@ fun <A : Appendable> FloatBuffer.joinTo(buffer: A, separator: CharSequence = ", 
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinTo
+ * @sample kool.buffers.Collections.Transformations.joinTo
  */
 fun <A : Appendable> DoubleBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Double) -> CharSequence)? = null): A {
     buffer.append(prefix)
@@ -3264,7 +3264,7 @@ fun <A : Appendable> DoubleBuffer.joinTo(buffer: A, separator: CharSequence = ",
                 buffer.append(element.toString())
         else break
     }
-    if (limit >= 0 && count > limit) buffer.append(truncated)
+    if (limit in 0 until count) buffer.append(truncated)
     buffer.append(postfix)
     return buffer
 }
@@ -3275,7 +3275,7 @@ fun <A : Appendable> DoubleBuffer.joinTo(buffer: A, separator: CharSequence = ",
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinTo
+ * @sample kool.buffers.Collections.Transformations.joinTo
  */
 fun <A : Appendable> CharBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Char) -> CharSequence)? = null): A {
     buffer.append(prefix)
@@ -3289,7 +3289,7 @@ fun <A : Appendable> CharBuffer.joinTo(buffer: A, separator: CharSequence = ", "
                 buffer.append(element)
         else break
     }
-    if (limit >= 0 && count > limit) buffer.append(truncated)
+    if (limit in 0 until count) buffer.append(truncated)
     buffer.append(postfix)
     return buffer
 }
@@ -3301,7 +3301,7 @@ fun <A : Appendable> CharBuffer.joinTo(buffer: A, separator: CharSequence = ", "
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinToString
+ * @sample kool.buffers.Collections.Transformations.joinToString
  */
 fun ByteBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Byte) -> CharSequence)? = null): String =
         joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
@@ -3312,7 +3312,7 @@ fun ByteBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinToString
+ * @sample kool.buffers.Collections.Transformations.joinToString
  */
 fun ShortBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Short) -> CharSequence)? = null): String =
         joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
@@ -3323,7 +3323,7 @@ fun ShortBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequenc
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinToString
+ * @sample kool.buffers.Collections.Transformations.joinToString
  */
 fun IntBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Int) -> CharSequence)? = null): String =
         joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
@@ -3334,7 +3334,7 @@ fun IntBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence 
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinToString
+ * @sample kool.buffers.Collections.Transformations.joinToString
  */
 fun LongBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Long) -> CharSequence)? = null): String =
         joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
@@ -3345,7 +3345,7 @@ fun LongBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinToString
+ * @sample kool.buffers.Collections.Transformations.joinToString
  */
 fun FloatBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Float) -> CharSequence)? = null): String =
         joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
@@ -3356,7 +3356,7 @@ fun FloatBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequenc
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinToString
+ * @sample kool.buffers.Collections.Transformations.joinToString
  */
 fun DoubleBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Double) -> CharSequence)? = null): String =
         joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
@@ -3367,7 +3367,7 @@ fun DoubleBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequen
  * If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
  * elements will be appended, followed by the [truncated] string (which defaults to "...").
  *
- * @sample samples.collections.Collections.Transformations.joinToString
+ * @sample kool.buffers.Collections.Transformations.joinToString
  */
 fun CharBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: ((Char) -> CharSequence)? = null): String =
         joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()
@@ -3418,49 +3418,49 @@ fun CharBuffer.asIterable(): Iterable<Char> {
 
 
 /** Creates a [Sequence] instance that wraps the original buffer returning its elements when being iterated.
- *  @sample samples.collections.Sequences.Building.sequenceFromArray */
+ *  @sample kool.buffers.Sequences.Building.sequenceFromArray */
 fun ByteBuffer.asSequence(): Sequence<Byte> {
     if (isEmpty()) return emptySequence()
     return Sequence { iterator() }
 }
 
 /** Creates a [Sequence] instance that wraps the original buffer returning its elements when being iterated.
- *  @sample samples.collections.Sequences.Building.sequenceFromArray */
+ *  @sample kool.buffers.Sequences.Building.sequenceFromArray */
 fun ShortBuffer.asSequence(): Sequence<Short> {
     if (isEmpty()) return emptySequence()
     return Sequence { iterator() }
 }
 
 /** Creates a [Sequence] instance that wraps the original buffer returning its elements when being iterated.
- *  @sample samples.collections.Sequences.Building.sequenceFromArray */
+ *  @sample kool.buffers.Sequences.Building.sequenceFromArray */
 fun IntBuffer.asSequence(): Sequence<Int> {
     if (isEmpty()) return emptySequence()
     return Sequence { iterator() }
 }
 
 /** Creates a [Sequence] instance that wraps the original buffer returning its elements when being iterated.
- *  @sample samples.collections.Sequences.Building.sequenceFromArray */
+ *  @sample kool.buffers.Sequences.Building.sequenceFromArray */
 fun LongBuffer.asSequence(): Sequence<Long> {
     if (isEmpty()) return emptySequence()
     return Sequence { iterator() }
 }
 
 /** Creates a [Sequence] instance that wraps the original buffer returning its elements when being iterated.
- *  @sample samples.collections.Sequences.Building.sequenceFromArray */
+ *  @sample kool.buffers.Sequences.Building.sequenceFromArray */
 fun FloatBuffer.asSequence(): Sequence<Float> {
     if (isEmpty()) return emptySequence()
     return Sequence { iterator() }
 }
 
 /** Creates a [Sequence] instance that wraps the original buffer returning its elements when being iterated.
- *  @sample samples.collections.Sequences.Building.sequenceFromArray */
+ *  @sample kool.buffers.Sequences.Building.sequenceFromArray */
 fun DoubleBuffer.asSequence(): Sequence<Double> {
     if (isEmpty()) return emptySequence()
     return Sequence { iterator() }
 }
 
 /** Creates a [Sequence] instance that wraps the original buffer returning its elements when being iterated.
- *  @sample samples.collections.Sequences.Building.sequenceFromArray */
+ *  @sample kool.buffers.Sequences.Building.sequenceFromArray */
 fun CharBuffer.asSequence(): Sequence<Char> {
     if (isEmpty()) return emptySequence()
     return Sequence { iterator() }
