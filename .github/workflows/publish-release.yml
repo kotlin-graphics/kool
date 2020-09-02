@@ -33,5 +33,5 @@ jobs:
         run: |
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "GH ref: $GITHUB_REF"
-          echo "New version: ${$GITHUB_SHA_SHORT}"
+          echo "New version: $GITHUB_SHA_SHORT"
 #          ./gradlew -Pversion=${NEW_VERSION} publish
