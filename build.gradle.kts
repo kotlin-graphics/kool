@@ -70,7 +70,9 @@ tasks {
                 }
                 samples.from(
                         "$rootDir/src/test/kotlin/kool/buffers/Collections.kt",
-                        "$rootDir/src/test/kotlin/kool/buffers/Arrays.kt")
+                        "$rootDir/src/test/kotlin/kool/buffers/Arrays.kt",
+                        "$rootDir/src/test/kotlin/kool/buffers/Iterables.kt",
+                        "$rootDir/src/test/kotlin/kool/buffers/Sequences.kt")
             }
         }
     }
