@@ -1,4 +1,3 @@
-import org.gradle.api.attributes.LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE
 import org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE
 import org.gradle.internal.os.OperatingSystem.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -14,7 +13,6 @@ plugins {
 }
 
 group = "com.github.kotlin_graphics"
-val moduleName = "$group.kool"
 
 val kotestVersion = "4.2.0"
 val lwjglVersion = "3.2.3"
@@ -27,7 +25,7 @@ val lwjglNatives = "natives-" + when (current()) {
 repositories {
     mavenCentral()
     jcenter()
-    maven(url = "https://jitpack.io")
+    maven("https://jitpack.io")
     maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
 }
 

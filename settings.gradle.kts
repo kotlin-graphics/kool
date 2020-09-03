@@ -1,4 +1,4 @@
-rootProject.name = "kool"
+rootProject.name = "kool-jdk8"
 
 pluginManagement {
     repositories {
