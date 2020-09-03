@@ -10,7 +10,6 @@ plugins {
     `maven-publish`
     id("org.jetbrains.dokka") version "1.4.0-dev-62"
     id("com.github.johnrengelman.shadow").version("6.0.0")
-//    id("net.linguica.maven-settings") version "0.5"
 }
 
 group = "com.github.kotlin_graphics"
@@ -62,18 +61,12 @@ tasks {
         dokkaSourceSets {
             configureEach {
                 sourceLink {
-                    // Unix based directory relative path to the root of the project (where you execute gradle respectively).
                     localDirectory.set(file("src/main/kotlin"))
-                    // URL showing where the source code can be accessed through the web browser
                     remoteUrl.set(URL("https://github.com/kotlin-graphics/kool/tree/master/src/main/kotlin"))
-                    // Suffix which is used to append the line number to the URL. Use #L for GitHub
                     remoteLineSuffix.set("#L")
                 }
-                samples.from(
-                        "$rootDir/src/test/kotlin/kool/buffers/Collections.kt",
-                        "$rootDir/src/test/kotlin/kool/buffers/Arrays.kt",
-                        "$rootDir/src/test/kotlin/kool/buffers/Iterables.kt",
-                        "$rootDir/src/test/kotlin/kool/buffers/Sequences.kt")
+                val root = "$rootDir/src/test/kotlin/kool/buffers"
+                samples.from("$root/Collections.kt", "$root/Arrays.kt", "$root/Iterables.kt", "$root/Sequences.kt")
             }
         }
     }
@@ -81,7 +74,7 @@ tasks {
     withType<KotlinCompile>().all {
         kotlinOptions {
             jvmTarget = "11"
-            freeCompilerArgs = listOf("-Xinline-classes", "-Xopt-in=kotlin.RequiresOptIn")
+            freeCompilerArgs += listOf("-Xinline-classes", "-Xopt-in=kotlin.RequiresOptIn")
         }
         sourceCompatibility = "11"
     }
