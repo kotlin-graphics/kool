@@ -29,6 +29,9 @@ inline fun FloatBuffer(size: Int, init: (Int) -> Float) = FloatBuffer(size).also
 fun DoubleBuffer(size: Int): DoubleBuffer = MemoryUtil.memCallocDouble(size)
 inline fun DoubleBuffer(size: Int, init: (Int) -> Double) = DoubleBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
 
+fun CharBuffer(size: Int): CharBuffer = MemoryUtil.memCalloc(size * Char.BYTES).asCharBuffer()
+inline fun CharBuffer(size: Int, init: (Int) -> Char) = CharBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
+
 fun PointerBuffer(size: Int): PointerBuffer = MemoryUtil.memCallocPointer(size)
 inline fun PointerBuffer(size: Int, init: (Int) -> Adr)  = PointerBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
 
@@ -54,6 +57,9 @@ inline fun MemoryStack.FloatBuffer(size: Int, init: (Int) -> Float) = FloatBuffe
 
 fun MemoryStack.DoubleBuffer(size: Int): DoubleBuffer = callocDouble(size)
 inline fun MemoryStack.DoubleBuffer(size: Int, init: (Int) -> Double)= DoubleBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
+
+fun MemoryStack.CharBuffer(size: Int): CharBuffer = calloc(size * Char.BYTES).asCharBuffer()
+inline fun MemoryStack.CharBuffer(size: Int, init: (Int) -> Char) = CharBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
 
 fun MemoryStack.PointerBuffer(size: Int): PointerBuffer = callocPointer(size)
 inline fun MemoryStack.PointerBuffer(size: Int, init: (Int) -> Adr)= PointerBuffer(size).also { for (i in 0 until size) it[i] = init(i) }
@@ -89,3 +95,23 @@ inline fun MemoryStack.PointerAdr(size: Int, init: (Int) -> Adr): Adr {
         MemoryUtil.memPutAddress(address + i * Pointer.POINTER_SIZE, init(i))
     return address
 }
+
+// empty versions
+
+fun emptyBuffer(): ByteBuffer = MemoryUtil.memCalloc(0)
+
+fun emptyByteBuffer(): ByteBuffer = MemoryUtil.memCalloc(0)
+
+fun emptyShortBuffer(): ShortBuffer = MemoryUtil.memCallocShort(0)
+
+fun emptyIntBuffer(): IntBuffer = MemoryUtil.memCallocInt(0)
+
+fun emptyLongBuffer(): LongBuffer = MemoryUtil.memCallocLong(0)
+
+fun emptyFloatBuffer(): FloatBuffer = MemoryUtil.memCallocFloat(0)
+
+fun emptyDoubleBuffer(): DoubleBuffer = MemoryUtil.memCallocDouble(0)
+
+fun emptyCharBuffer(): CharBuffer = MemoryUtil.memCalloc(0).asCharBuffer()
+
+fun emptyPointerBuffer(): PointerBuffer = MemoryUtil.memCallocPointer(0)
