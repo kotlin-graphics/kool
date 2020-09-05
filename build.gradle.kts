@@ -26,8 +26,6 @@ val lwjglNatives = "natives-" + when (current()) {
 repositories {
     mavenCentral()
     jcenter()
-    maven("https://jitpack.io")
-    maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
 }
 
 dependencies {
