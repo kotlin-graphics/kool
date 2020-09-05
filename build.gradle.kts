@@ -8,7 +8,7 @@ plugins {
     java
     kotlin("jvm") version "1.4.0"
     `maven-publish`
-    id("org.jetbrains.dokka") version "1.4.0-dev-62"
+    id("org.jetbrains.dokka") version "1.4.0"
     id("com.github.johnrengelman.shadow").version("6.0.0")
 }
 
@@ -26,7 +26,7 @@ val lwjglNatives = "natives-" + when (current()) {
 repositories {
     mavenCentral()
     jcenter()
-    maven(url = "https://jitpack.io")
+    maven("https://jitpack.io")
     maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
 }
 
@@ -58,16 +58,14 @@ java.modularity.inferModulePath.set(true)
 tasks {
 
     dokkaHtml {
-        dokkaSourceSets {
-            configureEach {
-                sourceLink {
-                    localDirectory.set(file("src/main/kotlin"))
-                    remoteUrl.set(URL("https://github.com/kotlin-graphics/kool/tree/master/src/main/kotlin"))
-                    remoteLineSuffix.set("#L")
-                }
-                val root = "$rootDir/src/test/kotlin/kool/buffers"
-                samples.from("$root/Collections.kt", "$root/Arrays.kt", "$root/Iterables.kt", "$root/Sequences.kt")
+        dokkaSourceSets.configureEach {
+            sourceLink {
+                localDirectory.set(file("src/main/kotlin"))
+                remoteUrl.set(URL("https://github.com/kotlin-graphics/kool/tree/master/src/main/kotlin"))
+                remoteLineSuffix.set("#L")
             }
+            val root = "$rootDir/src/test/kotlin/kool/buffers"
+            samples.from("$root/Collections.kt", "$root/Arrays.kt", "$root/Iterables.kt", "$root/Sequences.kt")
         }
     }
 
@@ -79,8 +77,7 @@ tasks {
         sourceCompatibility = "11"
     }
 
-    compileJava {
-        // this is needed because we have a separate compile step in this example with the 'module-info.java' is in 'main/java' and the Kotlin code is in 'main/kotlin'
+    compileJava { // this is needed because we have a separate compile step in this example with the 'module-info.java' is in 'main/java' and the Kotlin code is in 'main/kotlin'
         options.compilerArgs = listOf("--patch-module", "$moduleName=${sourceSets.main.get().output.asPath}")
     }
 
