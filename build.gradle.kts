@@ -31,7 +31,7 @@ dependencies {
 
     implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
     listOf("", "-jemalloc").forEach {
-        implementation("org.lwjgl", "lwjgl$it", classifier = lwjglNatives)
+        implementation("org.lwjgl", "lwjgl$it")
         runtimeOnly("org.lwjgl", "lwjgl$it", classifier = lwjglNatives)
     }
 
