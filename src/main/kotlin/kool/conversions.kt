@@ -102,7 +102,3 @@ inline fun FloatArray.toFloatAdr(stack: MemoryStack): FloatPtr = toAdr(stack)
 inline fun DoubleArray.toAdr(stack: MemoryStack): DoublePtr = stack.DoublePtr(size) { get(it) }
 inline fun DoubleArray.toByteAdr(stack: MemoryStack): BytePtr = BytePtr(toAdr(stack))
 inline fun DoubleArray.toDoubleAdr(stack: MemoryStack): DoublePtr = toAdr(stack)
-
-
-// TODO expand? others?
-inline fun IntBuffer.toList() = List(rem) { get(it) }

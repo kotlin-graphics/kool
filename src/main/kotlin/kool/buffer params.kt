@@ -25,7 +25,7 @@ inline val Buffer.cap: Int
 inline val Buffer.rem: Int
     get() = remaining()
 
-inline val Buffer.remSize: Int
+inline val Buffer.remByte: Int
     get() = rem * when (this) {
         is ByteBuffer -> 1
         is ShortBuffer, is CharBuffer -> 2
@@ -41,7 +41,7 @@ inline var Buffer.lim: Int
     }
 
 
-// sliceAt
+// sliceAs
 
 fun ByteBuffer.sliceAs(offset: Int, size: Int = lim - offset): ByteBuffer {
     val backupPos = pos
