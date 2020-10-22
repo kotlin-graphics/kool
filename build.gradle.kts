@@ -1,4 +1,3 @@
-import org.gradle.api.attributes.LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE
 import org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE
 import org.gradle.internal.os.OperatingSystem.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -6,16 +5,16 @@ import java.net.URL
 
 plugins {
     java
-    kotlin("jvm") version "1.4.0"
+    kotlin("jvm") version "1.4.10"
     `maven-publish`
-    id("org.jetbrains.dokka") version "1.4.0"
-    id("com.github.johnrengelman.shadow").version("6.0.0")
+    id("org.jetbrains.dokka") version "1.4.10"
+    id("com.github.johnrengelman.shadow").version("6.1.0")
 }
 
 group = "com.github.kotlin_graphics"
 val moduleName = "$group.kool"
 
-val kotestVersion = "4.2.0"
+val kotestVersion = "4.2.5"
 val lwjglVersion = "3.2.3"
 val lwjglNatives = "natives-" + when (current()) {
     WINDOWS -> "windows"
