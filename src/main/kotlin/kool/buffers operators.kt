@@ -57,12 +57,13 @@ operator fun PointerBuffer.set(index: Int, pointer: Pointer): PointerBuffer = pu
 operator fun PointerBuffer.set(index: Int, buffer: Buffer): PointerBuffer = put(index, buffer.adr)
 
 
-operator fun ByteBuffer.invoke(index: Int, byte: Byte): ByteBuffer = put(index, byte)
-operator fun ByteBuffer.invoke(index: Int, short: Short): ByteBuffer = putShort(index, short)
-operator fun ByteBuffer.invoke(index: Int, int: Int): ByteBuffer = putInt(index, int)
-operator fun ByteBuffer.invoke(index: Int, long: Long): ByteBuffer = putLong(index, long)
-operator fun ByteBuffer.invoke(index: Int, float: Float): ByteBuffer = putFloat(index, float)
-operator fun ByteBuffer.invoke(index: Int, double: Double): ByteBuffer = putDouble(index, double)
+// Out.. too much error prone
+//operator fun ByteBuffer.invoke(index: Int, byte: Byte): ByteBuffer = put(index, byte)
+//operator fun ByteBuffer.invoke(index: Int, short: Short): ByteBuffer = putShort(index, short)
+//operator fun ByteBuffer.invoke(index: Int, int: Int): ByteBuffer = putInt(index, int)
+//operator fun ByteBuffer.invoke(index: Int, long: Long): ByteBuffer = putLong(index, long)
+//operator fun ByteBuffer.invoke(index: Int, float: Float): ByteBuffer = putFloat(index, float)
+//operator fun ByteBuffer.invoke(index: Int, double: Double): ByteBuffer = putDouble(index, double)
 
 //operator fun ShortBuffer.invoke(index: Int, short: Short): ShortBuffer = put(index, short)
 //operator fun ShortBuffer.invoke(index: Int, int: Int): ShortBuffer = put(index, int)
