@@ -28,7 +28,6 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
     implementation(kotlin("stdlib-jdk8"))
 
     implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
