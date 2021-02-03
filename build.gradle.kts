@@ -11,7 +11,7 @@ plugins {
     id("com.github.johnrengelman.shadow").version("6.1.0")
 }
 
-group = "com.github.kotlin_graphics"
+group = "com.github.kotlin.graphics"
 val moduleName = "$group.kool"
 
 val kotestVersion = "4.3.2"
