@@ -5,7 +5,8 @@
 [![Release](https://jitpack.io/v/kotlin-graphics/kool.svg)](https://jitpack.io/#kotlin-graphics/kool) 
 ![Size](https://github-size-badge.herokuapp.com/kotlin-graphics/kool.svg)
 [![Github All Releases](https://img.shields.io/github/downloads/kotlin-graphics/kool/total.svg)]()
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+
+[comment]: <> ([![Contributor Covenant]&#40;https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg&#41;]&#40;code_of_conduct.md&#41;)
 
 
 Small util library featuring:

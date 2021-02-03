@@ -5,16 +5,16 @@ import java.net.URL
 
 plugins {
     java
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.4.21"
     `maven-publish`
-    id("org.jetbrains.dokka") version "1.4.10"
+    id("org.jetbrains.dokka") version "1.4.20"
     id("com.github.johnrengelman.shadow").version("6.1.0")
 }
 
 group = "com.github.kotlin_graphics"
 val moduleName = "$group.kool"
 
-val kotestVersion = "4.2.5"
+val kotestVersion = "4.3.2"
 val lwjglVersion = "3.2.3"
 val lwjglNatives = "natives-" + when (current()) {
     WINDOWS -> "windows"
@@ -88,22 +88,14 @@ val dokkaHtmlJar by tasks.register<Jar>("dokkaHtmlJar") {
     archiveClassifier.set("html-doc")
 }
 
-val sourceJar = task("sourceJar", Jar::class) {
-    dependsOn(tasks.classes)
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
-}
-
 artifacts {
     archives(dokkaJavadocJar)
     archives(dokkaHtmlJar)
-    archives(sourceJar)
 }
 
 publishing {
     publications.create<MavenPublication>("mavenJava") {
         from(components["java"])
-        artifact(sourceJar)
     }
     repositories.maven {
         name = "GitHubPackages"
@@ -117,3 +109,5 @@ publishing {
 
 // == Add access to the 'modular' variant of kotlin("stdlib"): Put this into a buildSrc plugin and reuse it in all your subprojects
 configurations.all { attributes.attribute(TARGET_JVM_VERSION_ATTRIBUTE, 11) }
+
+java.withSourcesJar()
