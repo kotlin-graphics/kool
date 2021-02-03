@@ -19,7 +19,7 @@ val lwjglVersion = "3.2.3"
 val lwjglNatives = "natives-" + when (current()) {
     WINDOWS -> "windows"
     LINUX -> "linux"
-    else ->  "macos"
+    else -> "macos"
 }
 
 repositories {
