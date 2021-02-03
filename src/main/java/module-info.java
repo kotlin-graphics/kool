@@ -1,4 +1,4 @@
-module com.github.kotlin.graphics.kool {
+module com.github.kotlin_graphics.kool {
 
     requires kotlin.stdlib;
     requires org.lwjgl;
