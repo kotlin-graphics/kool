@@ -11,7 +11,7 @@ plugins {
     id("com.github.johnrengelman.shadow").version("6.1.0")
 }
 
-group = "com.github.kotlin-graphics"
+group = "com.github.kotlin_graphics"
 
 val kotestVersion = "4.3.2"
 val lwjglVersion = "3.2.3"
