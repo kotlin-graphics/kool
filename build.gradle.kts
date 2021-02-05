@@ -5,10 +5,11 @@ import java.net.URL
 
 plugins {
     java
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.4.30"
     `maven-publish`
-    id("org.jetbrains.dokka") version "1.4.20"
     id("com.github.johnrengelman.shadow").version("6.1.0")
+    id("org.jetbrains.dokka") version "1.4.20"
+    id("docs")
 }
 
 group = "com.github.kotlin_graphics"
@@ -49,18 +50,6 @@ java.modularity.inferModulePath.set(true)
 
 tasks {
 
-    dokkaHtml {
-        dokkaSourceSets.configureEach {
-            sourceLink {
-                localDirectory.set(file("src/main/kotlin"))
-                remoteUrl.set(URL("https://github.com/kotlin-graphics/kool/tree/master/src/main/kotlin"))
-                remoteLineSuffix.set("#L")
-            }
-            val root = "$rootDir/src/test/kotlin/kool/buffers"
-            samples.from("$root/Collections.kt", "$root/Arrays.kt", "$root/Iterables.kt", "$root/Sequences.kt")
-        }
-    }
-
     withType<KotlinCompile>().all {
         kotlinOptions {
             jvmTarget = "11"
@@ -74,23 +63,6 @@ tasks {
     }
 
     withType<Test> { useJUnitPlatform() }
-}
-
-val dokkaJavadocJar by tasks.register<Jar>("dokkaJavadocJar") {
-    dependsOn(tasks.dokkaJavadoc)
-    from(tasks.dokkaJavadoc.get().outputDirectory.get())
-    archiveClassifier.set("javadoc")
-}
-
-val dokkaHtmlJar by tasks.register<Jar>("dokkaHtmlJar") {
-    dependsOn(tasks.dokkaHtml)
-    from(tasks.dokkaHtml.get().outputDirectory.get())
-    archiveClassifier.set("html-doc")
-}
-
-artifacts {
-    archives(dokkaJavadocJar)
-    archives(dokkaHtmlJar)
 }
 
 publishing {
