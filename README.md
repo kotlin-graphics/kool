@@ -8,7 +8,7 @@
 
 [comment]: <> ([![Contributor Covenant]&#40;https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg&#41;]&#40;code_of_conduct.md&#41;)
 
-[<img src="https://unsigned.netlify.app/html/images/docs_logo.svg">](https://kx-kool.netlify.app)
+[<img src="https://unsigned.netlify.app/images/docs_logo.svg">](https://kx-kool.netlify.app)
 
 Small util library featuring:
 
