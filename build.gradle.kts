@@ -6,6 +6,8 @@ import java.net.URL
 plugins {
     java
     kotlin("jvm") version "1.4.30"
+//    `kotlin-dsl`
+//    id("kx.kotlin")
     `maven-publish`
     id("com.github.johnrengelman.shadow").version("6.1.0")
     id("org.jetbrains.dokka") version "1.4.20"
@@ -25,7 +27,6 @@ val lwjglNatives = "natives-" + when (current()) {
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {

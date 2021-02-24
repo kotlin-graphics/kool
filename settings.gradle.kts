@@ -12,3 +12,8 @@ pluginManagement {
         maven("https://jitpack.io")
     }
 }
+
+
+//includeBuild("/home/elect/Downloads/demoModules/build-logic")
+includeBuild("platforms")
+includeBuild("build-logic")
