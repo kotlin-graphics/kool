@@ -1,14 +1,14 @@
 import org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE
 import org.gradle.internal.os.OperatingSystem.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.net.URL
 
 plugins {
-    id("kx.kotlin")
     `kotlin-dsl`
     `maven-publish`
+    id("kx.kotlin")
+    id("kx.dokka")
     id("com.github.johnrengelman.shadow").version("6.1.0")
-    id("org.jetbrains.dokka") version "1.4.20"
+//    id("org.jetbrains.dokka") version "1.4.20"
 //    id("docs")
 }
 
@@ -25,7 +25,7 @@ val lwjglNatives = "natives-" + when (current()) {
 
 repositories {
     mavenCentral()
-//    jcenter()
+    jcenter()
     maven("https://dl.bintray.com/kotlin/dokka")
     maven("https://dl.bintray.com/kotlin/kotlinx/")
 }
@@ -51,33 +51,33 @@ java.modularity.inferModulePath.set(true)
 
 tasks {
 
-    dokkaHtml {
-        enabled = System.getenv("JITPACK") != "true"
-        dokkaSourceSets.configureEach {
-            sourceLink {
-                localDirectory.set(file("src/main/kotlin"))
-                remoteUrl.set(URL("https://github.com/kotlin-graphics/glm/tree/master/src/main/kotlin"))
-                remoteLineSuffix.set("#L")
-            }
-        }
-    }
-
-    val dokkaHtmlJar by register<Jar>("dokkaHtmlJar") {
-        dependsOn(dokkaHtml)
-        from(dokkaHtml.get().outputDirectory.get())
-        archiveClassifier.set("html-doc")
-    }
-
-    val dokkaJavadocJar by register<Jar>("dokkaJavadocJar") {
-        dependsOn(dokkaJavadoc)
-        from(dokkaJavadoc.get().outputDirectory.get())
-        archiveClassifier.set("javadoc")
-    }
-
-    project.artifacts {
-        archives(dokkaJavadocJar)
-        archives(dokkaHtmlJar)
-    }
+//    dokkaHtml {
+//        enabled = System.getenv("JITPACK") != "true"
+//        dokkaSourceSets.configureEach {
+//            sourceLink {
+//                localDirectory.set(file("src/main/kotlin"))
+//                remoteUrl.set(URL("https://github.com/kotlin-graphics/glm/tree/master/src/main/kotlin"))
+//                remoteLineSuffix.set("#L")
+//            }
+//        }
+//    }
+//
+//    val dokkaHtmlJar by register<Jar>("dokkaHtmlJar") {
+//        dependsOn(dokkaHtml)
+//        from(dokkaHtml.get().outputDirectory.get())
+//        archiveClassifier.set("html-doc")
+//    }
+//
+//    val dokkaJavadocJar by register<Jar>("dokkaJavadocJar") {
+//        dependsOn(dokkaJavadoc)
+//        from(dokkaJavadoc.get().outputDirectory.get())
+//        archiveClassifier.set("javadoc")
+//    }
+//
+//    project.artifacts {
+//        archives(dokkaJavadocJar)
+//        archives(dokkaHtmlJar)
+//    }
 
     withType<KotlinCompile>().all {
         kotlinOptions {
