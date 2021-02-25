@@ -2,7 +2,7 @@ plugins {
     `java-platform`
 }
 
-group = "com.example.platform"
+group = "kx.platform"
 
 dependencies {
     constraints {

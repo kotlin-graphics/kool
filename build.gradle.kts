@@ -4,14 +4,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URL
 
 plugins {
-    java
-    kotlin("jvm") version "1.4.30"
-//    `kotlin-dsl`
-//    id("kx.kotlin")
+    id("kx.kotlin")
+    `kotlin-dsl`
     `maven-publish`
     id("com.github.johnrengelman.shadow").version("6.1.0")
     id("org.jetbrains.dokka") version "1.4.20"
-    id("docs")
+//    id("docs")
 }
 
 group = "com.github.kotlin_graphics"
@@ -27,10 +25,12 @@ val lwjglNatives = "natives-" + when (current()) {
 
 repositories {
     mavenCentral()
+//    jcenter()
+    maven("https://dl.bintray.com/kotlin/dokka")
+    maven("https://dl.bintray.com/kotlin/kotlinx/")
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
 
     implementation(platform("org.lwjgl:lwjgl-bom:$lwjglVersion"))
     listOf("", "-jemalloc").forEach {
@@ -50,6 +50,34 @@ dependencies {
 java.modularity.inferModulePath.set(true)
 
 tasks {
+
+    dokkaHtml {
+        enabled = System.getenv("JITPACK") != "true"
+        dokkaSourceSets.configureEach {
+            sourceLink {
+                localDirectory.set(file("src/main/kotlin"))
+                remoteUrl.set(URL("https://github.com/kotlin-graphics/glm/tree/master/src/main/kotlin"))
+                remoteLineSuffix.set("#L")
+            }
+        }
+    }
+
+    val dokkaHtmlJar by register<Jar>("dokkaHtmlJar") {
+        dependsOn(dokkaHtml)
+        from(dokkaHtml.get().outputDirectory.get())
+        archiveClassifier.set("html-doc")
+    }
+
+    val dokkaJavadocJar by register<Jar>("dokkaJavadocJar") {
+        dependsOn(dokkaJavadoc)
+        from(dokkaJavadoc.get().outputDirectory.get())
+        archiveClassifier.set("javadoc")
+    }
+
+    project.artifacts {
+        archives(dokkaJavadocJar)
+        archives(dokkaHtmlJar)
+    }
 
     withType<KotlinCompile>().all {
         kotlinOptions {

@@ -1,7 +1,8 @@
+
 dependencyResolutionManagement {
     repositories {
         gradlePluginPortal()
-//        google()
+        google()
     }
 }
 
@@ -10,4 +11,3 @@ includeBuild("../platforms")
 rootProject.name = "build-logic"
 
 include("commons")
-include("kotlin-library")

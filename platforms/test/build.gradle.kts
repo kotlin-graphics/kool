@@ -2,7 +2,7 @@ plugins {
     `java-platform`
 }
 
-group = "com.example.platform"
+group = "kx.platform"
 
 // allow the definition of dependencies to other platforms like the JUnit 5 BOM
 javaPlatform.allowDependencies()
