@@ -13,7 +13,6 @@ plugins {
 }
 
 group = "com.github.kotlin_graphics"
-val moduleName = "$group.kool"
 
 val kotestVersion = "4.3.2"
 val lwjglVersion = "3.2.3"
@@ -51,34 +50,6 @@ java.modularity.inferModulePath.set(true)
 
 tasks {
 
-//    dokkaHtml {
-//        enabled = System.getenv("JITPACK") != "true"
-//        dokkaSourceSets.configureEach {
-//            sourceLink {
-//                localDirectory.set(file("src/main/kotlin"))
-//                remoteUrl.set(URL("https://github.com/kotlin-graphics/glm/tree/master/src/main/kotlin"))
-//                remoteLineSuffix.set("#L")
-//            }
-//        }
-//    }
-//
-//    val dokkaHtmlJar by register<Jar>("dokkaHtmlJar") {
-//        dependsOn(dokkaHtml)
-//        from(dokkaHtml.get().outputDirectory.get())
-//        archiveClassifier.set("html-doc")
-//    }
-//
-//    val dokkaJavadocJar by register<Jar>("dokkaJavadocJar") {
-//        dependsOn(dokkaJavadoc)
-//        from(dokkaJavadoc.get().outputDirectory.get())
-//        archiveClassifier.set("javadoc")
-//    }
-//
-//    project.artifacts {
-//        archives(dokkaJavadocJar)
-//        archives(dokkaHtmlJar)
-//    }
-
     withType<KotlinCompile>().all {
         kotlinOptions {
             jvmTarget = "11"
@@ -88,7 +59,7 @@ tasks {
     }
 
     compileJava { // this is needed because we have a separate compile step in this example with the 'module-info.java' is in 'main/java' and the Kotlin code is in 'main/kotlin'
-        options.compilerArgs = listOf("--patch-module", "$moduleName=${sourceSets.main.get().output.asPath}")
+        options.compilerArgs = listOf("--patch-module", "$group.${project.name}=${sourceSets.main.get().output.asPath}")
     }
 
     withType<Test> { useJUnitPlatform() }
@@ -110,5 +81,3 @@ publishing {
 
 // == Add access to the 'modular' variant of kotlin("stdlib"): Put this into a buildSrc plugin and reuse it in all your subprojects
 configurations.all { attributes.attribute(TARGET_JVM_VERSION_ATTRIBUTE, 11) }
-
-java.withSourcesJar()
