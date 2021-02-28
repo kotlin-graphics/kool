@@ -1,3 +1,5 @@
+package kx
+
 import org.jetbrains.dokka.gradle.DokkaTask
 import java.net.URL
 
@@ -38,7 +40,6 @@ tasks {
         dokkaSourceSets.configureEach {
             sourceLink {
                 localDirectory.set(file("src/main/kotlin"))
-                println(project.name)
                 remoteUrl.set(URL("https://github.com/kotlin-graphics/${project.name}/tree/master/src/main/kotlin"))
                 remoteLineSuffix.set("#L")
             }
