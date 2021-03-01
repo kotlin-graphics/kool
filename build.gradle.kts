@@ -13,5 +13,8 @@ plugins {
 group = "com.github.kotlin_graphics"
 
 dependencies {
+
+    implementation(platform("kx.platform:source"))
+
     lwjglImplementation(jemalloc)
 }
