@@ -23,12 +23,14 @@ tasks {
 
     // add the netlify badge in the lower right corner
     val addNetlifyBadge by register("netlifyBadge") {
+        enabled = !jitpack
         doLast {
             addInIndex(netlifyBadge) { it.lastIndexOf("</span>") + 7 }
         }
     }
 
     val addGithubCorner by register("githubCorner") {
+        enabled = !jitpack
         doLast {
             addInIndex(githubCorner) { text ->
                 val ofs = text.lastIndexOf("\"searchBar\"></div>") + 18
