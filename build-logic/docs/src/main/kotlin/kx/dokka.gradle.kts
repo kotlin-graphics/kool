@@ -8,6 +8,8 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
+val jitpack by lazy { System.getenv("JITPACK") == "true" }
+
 tasks {
 
     fun addInIndex(snippet: String, getOffset: (String) -> Int) {
@@ -36,7 +38,7 @@ tasks {
     }
 
     dokkaHtml {
-        enabled = System.getenv("JITPACK") != "true"
+        enabled = !jitpack
         dokkaSourceSets.configureEach {
             sourceLink {
                 localDirectory.set(file("src/main/kotlin"))
@@ -48,12 +50,14 @@ tasks {
     }
 
     val dokkaHtmlJar by register<Jar>("dokkaHtmlJar") {
+        enabled = !jitpack
         dependsOn(dokkaHtml)
         from(dokkaHtml.get().outputDirectory.get())
         archiveClassifier.set("html-doc")
     }
 
     val dokkaJavadocJar by register<Jar>("dokkaJavadocJar") {
+        enabled = !jitpack
         dependsOn(dokkaJavadoc)
         from(dokkaJavadoc.get().outputDirectory.get())
         archiveClassifier.set("javadoc")
@@ -63,6 +67,8 @@ tasks {
         archives(dokkaJavadocJar)
         archives(dokkaHtmlJar)
     }
+
+    javadoc { enabled = !jitpack }
 }
 
 fun ArtifactHandler.archives(artifactNotation: Any): PublishArtifact = add("archives", artifactNotation)
