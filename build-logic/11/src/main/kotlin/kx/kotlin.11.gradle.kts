@@ -11,10 +11,7 @@ plugins {
 tasks {
 
     withType<KotlinCompile>().all {
-        kotlinOptions {
-            jvmTarget = "11"
-            freeCompilerArgs += listOf("-Xinline-classes", "-Xopt-in=kotlin.RequiresOptIn")
-        }
+        kotlinOptions.jvmTarget = "11"
         sourceCompatibility = "11"
     }
 

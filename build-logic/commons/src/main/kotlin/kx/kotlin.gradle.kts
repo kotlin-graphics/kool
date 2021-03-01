@@ -1,5 +1,7 @@
 package kx
 
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     `java-library`
     //    id("com.example.jacoco")
@@ -37,6 +39,11 @@ dependencies {
 }
 
 tasks {
+
+    withType<KotlinCompile>().all {
+        kotlinOptions.freeCompilerArgs += listOf("-Xinline-classes", "-Xopt-in=kotlin.RequiresOptIn")
+    }
+
     withType<Test> { useJUnitPlatform() }
 }
 

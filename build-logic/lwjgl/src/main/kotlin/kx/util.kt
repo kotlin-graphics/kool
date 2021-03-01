@@ -1,5 +1,6 @@
 package kx
 
+import kx.LwjglModules.*
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.internal.os.OperatingSystem.*
 import org.gradle.kotlin.dsl.accessors.runtime.addExternalModuleDependencyTo
@@ -47,24 +48,35 @@ enum class LwjglModules(val hasNative: Boolean = true) {
     zstd
 }
 
+object LwjglPreset {
+    val none = emptyArray<LwjglModules>()
+    val everything = LwjglModules.values()
+    val gettingStarted = arrayOf(assimp, bgfx, glfw, nanovg, nuklear, openal, opengl, par, stb, vulkan)
+    val minimalOpenGL = arrayOf(assimp, glfw, openal, opengl, stb)
+    val minimalOpenGLES = arrayOf(assimp, egl, glfw, openal, opengles, stb)
+    val minimalVulkan = arrayOf(assimp, glfw, openal, stb, vulkan)
+}
+
 val lwjglNatives = "natives-" + when (current()) {
     WINDOWS -> "windows"
     LINUX -> "linux"
     else -> "macos"
 }
 
+@JvmName("lwjglImplementation2")
+fun DependencyHandler.lwjglImplementation(modules: Array<LwjglModules>) =
+    lwjglImplementation(*modules)
+
 fun DependencyHandler.lwjglImplementation(vararg modules: LwjglModules) {
     add(false, "")
-    modules.forEach {
-        add(false, "-$it")
-    }
+    for (m in modules)
+        add(false, "-$m")
 }
 
 fun DependencyHandler.lwjglTestImplementation(modules: List<LwjglModules>) {
-    add(false, "")
-    modules.forEach {
-        add(false, "-$it")
-    }
+    add(true, "")
+    for (m in modules)
+        add(true, "-$m")
 }
 
 private fun DependencyHandler.add(test: Boolean, module: String) {
