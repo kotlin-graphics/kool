@@ -3,6 +3,7 @@ plugins {
 }
 
 group = "kx.platform"
+version = "0.0.1"
 
 // allow the definition of dependencies to other platforms like the JUnit 5 BOM
 //javaPlatform.allowDependencies()

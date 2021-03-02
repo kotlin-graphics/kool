@@ -5,7 +5,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     `java-library`
     //    id("com.example.jacoco")
-    kotlin("jvm")
     id("com.github.johnrengelman.shadow")
 }
 
@@ -25,9 +24,9 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("kx.platform:source"))
+    implementation(platform("kx.platform:source:0.0.1"))
 
-    testImplementation(platform("kx.platform:test"))
+    testImplementation(platform("kx.platform:test:0.0.1"))
 
 //    implementation(kotlin("stdlib-jdk8")) already on classpath?
 

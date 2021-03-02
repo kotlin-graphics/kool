@@ -1,9 +1,9 @@
 import kx.LwjglModules.jemalloc
+import kx.LwjglRule
 import kx.lwjglImplementation
 
 plugins {
     `kotlin-dsl`
-    `maven-publish`
     id("kx.kotlin.11")
     id("kx.lwjgl")
     id("kx.dokka")
@@ -12,9 +12,19 @@ plugins {
 
 group = "com.github.kotlin_graphics"
 
+//configurations["runtimeClasspath"].attributes {
+//    attribute(OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE, objects.named("windows"))
+//    attribute(MachineArchitecture.ARCHITECTURE_ATTRIBUTE, objects.named("x86-64"))
+//}
+//configurations["testRuntimeClasspath"].attributes {
+//    attribute(OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE, objects.named("windows"))
+//    attribute(MachineArchitecture.ARCHITECTURE_ATTRIBUTE, objects.named("x86-64"))
+//}
+
 dependencies {
 
-    implementation(platform("kx.platform:source"))
-
     lwjglImplementation(jemalloc)
+
+//    components.withModule<LwjglRule>("org.lwjgl:lwjgl")
+//    implementation("org.lwjgl:lwjgl:3.2.3")
 }
