@@ -2,7 +2,7 @@ import kx.LwjglModules.jemalloc
 import kx.lwjglImplementation
 
 plugins {
-    val build = "0.3.6"
+    val build = "0.4.0"
     id("kx.kotlin.11") version build
     id("kx.lwjgl") version build
     id("kx.dokka") version build
