@@ -11,6 +11,7 @@ plugins {
 }
 
 group = "com.github.kotlin.graphics"
+version = "0.9.0"
 
 repositories {
     maven("https://repo.repsy.io/mvn/elect/kx")
@@ -19,6 +20,7 @@ repositories {
 dependencies {
     lwjglImplementation(jemalloc)
 }
+
 
 publishing {
     publications.create<MavenPublication>("mavenJava") {
