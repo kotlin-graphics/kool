@@ -1,14 +1,9 @@
 rootProject.name = "kool"
 
 pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            if(requested.id.id == "docs")
-                useModule("com.github.elect86:docs:9c008a8b")//.also { println("found") }
-        }
-    }
     repositories {
+//        mavenLocal()
         gradlePluginPortal()
-        maven("https://jitpack.io")
+        maven("https://repo.repsy.io/mvn/elect/kx")
     }
 }
