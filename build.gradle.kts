@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "com.github.kotlin.graphics"
-version = "0.9.0"
+version = "0.9.3"
 
 repositories {
     maven("https://repo.repsy.io/mvn/elect/kx")
@@ -25,5 +25,10 @@ dependencies {
 publishing {
     publications.create<MavenPublication>("mavenJava") {
         from(components["java"])
+    }
+    repositories.maven {
+        name = "repsy"
+        url = uri("https://repo.repsy.io/mvn/elect/kx")
+        credentials(PasswordCredentials::class)
     }
 }
