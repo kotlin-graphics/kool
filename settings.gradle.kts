@@ -1,6 +1,8 @@
-rootProject.name = "kool-jdk8"
+rootProject.name = "kool"
 
-//pluginManagement.repositories {
-//    gradlePluginPortal()
-//    maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
-//}
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven("https://repo.repsy.io/mvn/elect/kx")
+    }
+}
