@@ -3,7 +3,7 @@ import kx.lwjglImplementation
 
 plugins {
     val build = "0.6.4"
-    id("kx.kotlin.11") version build
+    id("kx.kotlin.8") version build
     id("kx.lwjgl") version build
     id("kx.dokka") version build
     id("kx.jitpack") version build

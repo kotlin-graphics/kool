@@ -1,4 +1,4 @@
-rootProject.name = "kool"
+rootProject.name = "kool8"
 
 pluginManagement {
     repositories {
