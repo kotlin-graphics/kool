@@ -22,6 +22,7 @@ Small util library featuring:
 - `Stack` getters and setters
 - other minor utils
 
+### Build-logic and platform dependencies
 
 The build logic has been extracted in dedicated [plugins](https://github.com/elect86/build-logic), as well as the versioning in specific platform [plugins](https://github.com/elect86/platforms).
 
