@@ -10,7 +10,7 @@ plugins {
     java
 }
 
-version = "0.9.0+17"
+version = "0.9.0+18"
 
 dependencies {
     lwjglImplementation(jemalloc)

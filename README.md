@@ -22,19 +22,17 @@ Small util library featuring:
 - `Stack` getters and setters
 - other minor utils
 
-### Build-logic and platform dependencies
+### Publishing
 
-The build logic has been extracted in dedicated [plugins](https://github.com/elect86/build-logic), as well as the versioning in specific platform [plugins](https://github.com/elect86/platforms).
-
-In order to import kool you need then to add the repository where these plugins are getting published for the time being.
-
-In Gradle KTS you can do that by adding the following to your `settings.gradle.kts`:
+Same for the snapshots of this project, they are published on the same repository, if you want to use it, just add to
+your `build.gradle.kts`
 
 ```kotlin
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        maven("https://repo.repsy.io/mvn/elect/kx")
-    }
+repositories {
+    maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
 }
 ```
+
+Releases, which are less frequent, would be instead published on [scijava](https://maven.scijava.org/).
+
+Every build is, nonetheless, still on Jitpack, which although is quite cool and comfortable, its design has some severe criticality.
