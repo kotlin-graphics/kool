@@ -22,17 +22,6 @@ Small util library featuring:
 - `Stack` getters and setters
 - other minor utils
 
-### Publishing
+### How to retrieve it:
 
-Same for the snapshots of this project, they are published on the same repository, if you want to use it, just add to
-your `build.gradle.kts`
-
-```kotlin
-repositories {
-    maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
-}
-```
-
-Releases, which are less frequent, would be instead published on [scijava](https://maven.scijava.org/).
-
-Every build is, nonetheless, still on Jitpack, which although is quite cool and comfortable, its design has some severe criticality.
+You can find all the instructions by [mary](https://github.com/kotlin-graphics/mary)
