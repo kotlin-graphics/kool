@@ -26,7 +26,8 @@ val UNSAFE: Unsafe by lazy {
             } ?: throw UnsupportedOperationException("LWJGL requires sun.misc.Unsafe to be available.")
 }
 
-inline class BytePtr(val adr: Adr) {
+@JvmInline
+value class BytePtr(val adr: Adr) {
 
     inline operator fun get(index: Int): Byte = UNSAFE.getByte(null, adr + index * Byte.BYTES)
     inline operator fun set(index: Int, byte: Byte) = UNSAFE.putByte(null, adr + index * Byte.BYTES, byte)
@@ -58,7 +59,8 @@ inline fun MemoryStack.BytePtr(size: Int, init: (Int) -> Byte): BytePtr {
     return BytePtr(adr)
 }
 
-inline class ShortPtr(val adr: Adr) {
+@JvmInline
+value class ShortPtr(val adr: Adr) {
 
     inline operator fun get(index: Int): Short = UNSAFE.getShort(null, adr + index * Short.BYTES)
     inline operator fun set(index: Int, short: Short) = UNSAFE.putShort(null, adr + index * Short.BYTES, short)
@@ -85,7 +87,8 @@ inline fun MemoryStack.ShortPtr(size: Int, init: (Int) -> Short): ShortPtr {
     return ShortPtr(adr)
 }
 
-inline class IntPtr(val adr: Adr) {
+@JvmInline
+value class IntPtr(val adr: Adr) {
     inline operator fun get(index: Int): Int = UNSAFE.getInt(null, adr + index * Int.BYTES)
     inline operator fun set(index: Int, int: Int) = UNSAFE.putInt(null, adr + index * Int.BYTES, int)
     inline operator fun invoke(): Int = UNSAFE.getInt(null, adr)
@@ -111,7 +114,8 @@ inline fun MemoryStack.IntPtr(size: Int, init: (Int) -> Int): IntPtr {
     return IntPtr(adr)
 }
 
-inline class LongPtr(val adr: Adr) {
+@JvmInline
+value class LongPtr(val adr: Adr) {
 
     inline operator fun get(index: Int): Long = UNSAFE.getLong(null, adr + index * Long.BYTES)
     inline operator fun set(index: Int, long: Long) = UNSAFE.putLong(null, adr + index * Long.BYTES, long)
@@ -138,7 +142,8 @@ inline fun MemoryStack.LongPtr(size: Int, init: (Int) -> Long): LongPtr {
     return LongPtr(adr)
 }
 
-inline class FloatPtr(val adr: Adr) {
+@JvmInline
+value class FloatPtr(val adr: Adr) {
 
     inline operator fun get(index: Int): Float = UNSAFE.getFloat(null, adr + index * Float.BYTES)
     inline operator fun set(index: Int, float: Float) = UNSAFE.putFloat(null, adr + index * Float.BYTES, float)
@@ -165,7 +170,8 @@ inline fun MemoryStack.FloatPtr(size: Int, init: (Int) -> Float): FloatPtr {
     return FloatPtr(adr)
 }
 
-inline class DoublePtr(val adr: Adr) {
+@JvmInline
+value class DoublePtr(val adr: Adr) {
 
     inline operator fun get(index: Int): Double = UNSAFE.getDouble(null, adr + index * Double.BYTES)
     inline operator fun set(index: Int, double: Double) = UNSAFE.putDouble(null, adr + index * Double.BYTES, double)
@@ -192,7 +198,8 @@ inline fun MemoryStack.DoublePtr(size: Int, init: (Int) -> Double): DoublePtr {
     return DoublePtr(adr)
 }
 
-inline class PointerPtr(val adr: Adr) {
+@JvmInline
+value class PointerPtr(val adr: Adr) {
 
     inline operator fun get(index: Int): Ptr = UNSAFE.getLong(null, adr + index * Long.BYTES)
     inline operator fun set(index: Int, ptr: Ptr) = UNSAFE.putLong(null, adr + index * Long.BYTES, ptr)

@@ -50,8 +50,8 @@ fun encodeUTF8(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
     var c = text[i]
 
     // ASCII fast path
-    while (i < len && c.toInt() < 0x80) {
-        UNSAFE.putByte(target + p++, c.toByte())
+    while (i < len && c.code < 0x80) {
+        UNSAFE.putByte(target + p++, c.code.toByte())
         if (++i < len)
             c = text[i]
         else break
@@ -60,11 +60,11 @@ fun encodeUTF8(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
     // Slow path
     while (i < len) {
         c = text[i++]
-        if (c.toInt() < 0x80)
-            UNSAFE.putByte(target + p++, c.toByte())
+        if (c.code < 0x80)
+            UNSAFE.putByte(target + p++, c.code.toByte())
         else {
-            var cp = c.toInt()
-            if (c.toInt() < 0x800) {
+            var cp = c.code
+            if (c.code < 0x800) {
                 UNSAFE.putByte(target + p++, (0xC0 or (cp shr 6)).toByte())
             } else {
                 if (!c.isHighSurrogate())
@@ -90,7 +90,7 @@ fun encodeUTF8(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
 fun encodeASCII(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
     var len = text.length
     for (p in 0 until len)
-        UNSAFE.putByte(target + p, text[p].toByte())
+        UNSAFE.putByte(target + p, text[p].code.toByte())
     if (nullTerminated)
         UNSAFE.putByte(target + len++, 0.toByte())
     return len

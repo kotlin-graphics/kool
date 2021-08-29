@@ -215,10 +215,10 @@ class Transformations : StringSpec() {
 
         "groupByKeysAndValues" {
             val nameToTeam = charBufferOf('A', 'B', 'C')
-            val namesByTeam = nameToTeam.groupBy({ it.toInt() }, { it })
-            namesByTeam shouldPrint "{${'A'.toInt()}=[A], ${'B'.toInt()}=[B], ${'C'.toInt()}=[C]}"
+            val namesByTeam = nameToTeam.groupBy({ it.code }, { it })
+            namesByTeam shouldPrint "{${'A'.code}=[A], ${'B'.code}=[B], ${'C'.code}=[C]}"
 
-            val mutableNamesByTeam = nameToTeam.groupByTo(HashMap(), { it.toInt() }, { it })
+            val mutableNamesByTeam = nameToTeam.groupByTo(HashMap(), { it.code }, { it })
             // same content as in namesByTeam map, but the map is mutable
             mutableNamesByTeam shouldBe namesByTeam
         }
@@ -242,7 +242,7 @@ class Transformations : StringSpec() {
 
             val chars = charBufferOf('a'..'q')
             chars.joinToString(limit = 5, truncated = "...!") {
-                it.toUpperCase().toString()
+                it.uppercaseChar().toString()
             } shouldPrint "A, B, C, D, E, ...!"
         }
 
@@ -427,7 +427,7 @@ class Transformations : StringSpec() {
         "distinctAndDistinctBy" {
             val list = charBufferOf('a', 'A', 'b', 'B', 'A', 'a')
             list.distinct() shouldPrint "[a, A, b, B]"
-            list.distinctBy { it.toUpperCase() } shouldPrint "[a, b]"
+            list.distinctBy { it.uppercaseChar() } shouldPrint "[a, b]"
         }
 
         //        @Sample
@@ -620,11 +620,11 @@ class Aggregates : StringSpec() {
 
         "minByOrNull" {
             val list = charBufferOf('a'..'e')
-            val shortestString = list.minByOrNull { it.toInt() }
+            val shortestString = list.minByOrNull { it.code }
             shortestString shouldBe 'a'
 
             val emptyList = emptyCharBuffer()
-            val emptyMin = emptyList.minByOrNull { it.toInt() }
+            val emptyMin = emptyList.minByOrNull { it.code }
             emptyMin shouldBe null
         }
 

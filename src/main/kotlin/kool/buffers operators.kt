@@ -26,8 +26,8 @@ operator fun ByteBuffer.set(index: Int, byte: Byte): ByteBuffer = put(index, byt
 operator fun ByteBuffer.set(index: Int, int: Int): ByteBuffer = put(index, int.toByte())
 operator fun ByteBuffer.set(index: Int, short: Short): ByteBuffer = put(index, short.toByte())
 operator fun ByteBuffer.set(index: Int, long: Long): ByteBuffer = put(index, long.toByte())
-operator fun ByteBuffer.set(index: Int, float: Float): ByteBuffer = put(index, float.toByte())
-operator fun ByteBuffer.set(index: Int, long: Double): ByteBuffer = put(index, long.toByte())
+operator fun ByteBuffer.set(index: Int, float: Float): ByteBuffer = put(index, float.toInt().toByte())
+operator fun ByteBuffer.set(index: Int, long: Double): ByteBuffer = put(index, long.toInt().toByte())
 
 operator fun ShortBuffer.set(index: Int, byte: Byte): ShortBuffer = put(index, byte.toShort())
 operator fun ShortBuffer.set(index: Int, short: Short): ShortBuffer = put(index, short)

@@ -11,5 +11,5 @@ fun main() {
     println(pr.codePoints().count())
     println("chars")
     for (c in pr)
-        println(c.toInt())
+        println(c.code)
 }
