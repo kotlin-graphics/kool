@@ -202,7 +202,7 @@ inline fun MemoryStack.pointerAdr(pointer: Pointer)= ptrOf(pointer).adr
 inline fun MemoryStack.pointerBuffer(pointer: Pointer)= pointers(pointer)
 
 inline fun MemoryStack.utf8Adr(chars: CharSequence, nullTerminated: Boolean = true): Adr = nmalloc(1, MemoryUtil.memLengthASCII(chars, nullTerminated)).also { encodeUTF8(chars, nullTerminated, it) }
-inline fun MemoryStack.utf8Buffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = UTF8(chars, true)
+inline fun MemoryStack.utf8Buffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = UTF8(chars, nullTerminated)
 
 //@JvmName("utf8AdrSafe")
 //inline fun MemoryStack.utf8Adr(chars: CharSequence?, nullTerminated: Boolean = true): Adr = chars?.let { utf8Adr(it, nullTerminated) } ?: NULL
