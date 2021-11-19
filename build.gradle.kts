@@ -1,15 +1,17 @@
-import kx.Lwjgl
-import kx.Lwjgl.Modules.jemalloc
+import org.lwjgl.Lwjgl
+import org.lwjgl.Lwjgl.Module.jemalloc
 
 plugins {
-    val build = "0.7.3+43"
-    id("kx.kotlin") version build
-    //    id("kx.dokka") version build
-    id("kx.publish") version build
-    id("kx.util") version build
-//    id("kx.dynamic-align") version build
+    fun kx(vararg p: Pair<String, String>) = p.forEach { id("io.github.kotlin-graphics.${it.first}") version it.second }
+    kx("base" to "0.0.9",
+       "publish" to "0.0.5",
+       "utils" to "0.0.5")
+    id("org.lwjgl.plugin") version "0.0.18"
 }
 
 dependencies {
-    Lwjgl { implementation(jemalloc) }
+    Lwjgl {
+        release.`3_2_3`
+        snapshot
+        implementation(jemalloc) }
 }

@@ -1,3 +1,4 @@
+@file:Suppress("NOTHING_TO_INLINE")
 package kool.lib
 
 import kool.*

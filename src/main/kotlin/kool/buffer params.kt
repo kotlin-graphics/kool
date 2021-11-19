@@ -7,7 +7,7 @@ import java.nio.*
 /**
  * Created by elect on 05/03/17.
  */
-
+@Suppress("NOTHING_TO_INLINE")
 inline fun Buffer.free() = MemoryUtil.memFree(this)
 
 inline val Buffer.adr: Adr

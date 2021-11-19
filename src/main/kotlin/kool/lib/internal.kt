@@ -62,7 +62,7 @@ internal class IndexingIterator<out T>(private val iterator: Iterator<T>) : Iter
 internal fun throwIndexOverflow(): Nothing = throw ArithmeticException("Index overflow has happened.")
 
 // from kotlin.collections.CollectionsJVM.kt
-
+@Suppress("NOTHING_TO_INLINE")
 internal inline fun checkIndexOverflow(index: Int): Int {
     if (index < 0) {
         if (apiVersionIsAtLeast(1, 3, 0))
