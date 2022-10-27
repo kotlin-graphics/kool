@@ -7,7 +7,7 @@ const val iterations = 100_000
 
 const val warmup = times
 
-fun main(args: Array<String>) {
+fun main() {
 
     for (i in 0 until times)
         System.nanoTime()
