@@ -3,6 +3,7 @@ import magik.github
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 import org.lwjgl.lwjgl
 import org.lwjgl.lwjgl.Module.jemalloc
+
 //import org.lwjgl.lwjgl.implementation
 
 plugins {
@@ -21,10 +22,9 @@ dependencies {
     implementation("io.kotest:kotest-assertions-core:5.5.2")
 }
 
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
-    }
+kotlin.jvmToolchain {
+    this as JavaToolchainSpec
+    languageVersion.set(JavaLanguageVersion.of(8))
 }
 
 tasks {
