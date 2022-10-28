@@ -10,7 +10,7 @@ pluginManagement {
 
 gradle.rootProject {
     group = "kotlin.graphics"
-    version = "0.9.4"
+    version = "0.9.63"
 }
 
 //includeBuild("../build-logic")
