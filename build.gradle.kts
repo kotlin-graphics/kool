@@ -18,8 +18,8 @@ repositories { mavenCentral() }
 dependencies {
     implementation(kotlin("stdlib-jdk8", embeddedKotlinVersion))
     lwjgl { implementation(jemalloc) }
-    implementation("io.kotest:kotest-runner-junit5:5.5.2")
-    implementation("io.kotest:kotest-assertions-core:5.5.2")
+    implementation("io.kotest:kotest-runner-junit5:5.4.1")
+    implementation("io.kotest:kotest-assertions-core:5.4.1")
 }
 
 kotlin.jvmToolchain {
