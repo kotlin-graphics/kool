@@ -124,18 +124,27 @@ fun strlen64NT1(address: Long, maxLength: Int): Int {
     return i
 }
 
-// Unfortunately Jetbrain went its own way: https://youtrack.jetbrains.com/issue/KT-8247 , let's keep it coherent with Java
-val Byte.Companion.BYTES: Int
+
+// Unfortunately JetBrains went its own way: https://youtrack.jetbrains.com/issue/KT-8247 , let's keep it coherent with Java
+inline val Byte.Companion.BYTES: Int
     get() = java.lang.Byte.BYTES
-val Float.Companion.BYTES: Int
+inline val UByte.Companion.BYTES: Int
+    get() = Byte.BYTES
+inline val Float.Companion.BYTES: Int
     get() = java.lang.Float.BYTES
-val Double.Companion.BYTES: Int
+inline val Double.Companion.BYTES: Int
     get() = java.lang.Double.BYTES
-val Int.Companion.BYTES: Int
+inline val Int.Companion.BYTES: Int
     get() = Integer.BYTES
-val Long.Companion.BYTES: Int
+inline val UInt.Companion.BYTES: Int
+    get() = Int.BYTES
+inline val Long.Companion.BYTES: Int
     get() = java.lang.Long.BYTES
-val Short.Companion.BYTES: Int
+inline val ULong.Companion.BYTES: Int
+    get() = Long.BYTES
+inline val Short.Companion.BYTES: Int
     get() = java.lang.Short.BYTES
-val Char.Companion.BYTES: Int
+inline val UShort.Companion.BYTES: Int
+    get() = Short.BYTES
+inline val Char.Companion.BYTES: Int
     get() = Character.BYTES

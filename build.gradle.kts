@@ -1,3 +1,4 @@
+import kool.gen.GenerateCode
 import magik.createGithubPublication
 import magik.github
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
@@ -16,10 +17,9 @@ plugins {
 repositories { mavenCentral() }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8", embeddedKotlinVersion))
+    implementation(kotlin("stdlib-jdk8"))
     lwjgl { implementation(jemalloc) }
-    implementation("io.kotest:kotest-runner-junit5:5.5.2")
-    implementation("io.kotest:kotest-assertions-core:5.5.2")
+    testImplementation(kotlin("test"))
 }
 
 kotlin.jvmToolchain {
@@ -30,9 +30,14 @@ kotlin.jvmToolchain {
 tasks {
     withType<KotlinCompile<*>>().all {
         kotlinOptions {
-            freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
+            freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn", "-Xcontext-receivers")
         }
     }
+    val generateCode by registering(GenerateCode::class)
+    kotlin.sourceSets {
+        main { kotlin.srcDir(generateCode) }
+    }
+    test { useJUnitPlatform() }
 }
 
 publishing {

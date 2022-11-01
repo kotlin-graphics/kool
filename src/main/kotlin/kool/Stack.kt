@@ -642,7 +642,7 @@ object Stack {
     // --------------------------------------------- getters ---------------------------------------------
 
     inline fun <R> byteAdr(block: (Adr) -> R): Byte = with {
-        val pByte = it.mByte()
+        val pByte = it.BytePtr()
         block(pByte.adr)
         pByte()
     }
