@@ -43,7 +43,7 @@ internal class IndexingIterable<out T>(private val iteratorFactory: () -> Iterat
 /**
  * Returns the size of this iterable if it is known, or the specified [default] value otherwise.
  */
-fun <T> Iterable<T>.collectionSizeOrDefault(default: Int): Int = if (this is Collection<*>) this.size else default
+public fun <T> Iterable<T>.collectionSizeOrDefault(default: Int): Int = if (this is Collection<*>) this.size else default
 
 
 // from kotlin.collections.Iterators.kt

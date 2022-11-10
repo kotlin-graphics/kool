@@ -11,7 +11,7 @@ import java.nio.*
 inline fun Buffer.free() = MemoryUtil.memFree(this)
 
 inline val Buffer.adr: Adr
-    get() = MemoryUtil.memAddress(this)
+    get() = MemoryUtil.memAddress(this).toULong()
 
 inline var Buffer.pos: Int
     get() = position()
@@ -39,83 +39,3 @@ inline var Buffer.lim: Int
     set(value) {
         limit(value)
     }
-
-
-// sliceAs
-
-fun ByteBuffer.sliceAs(offset: Int, size: Int = lim - offset): ByteBuffer {
-    val backupPos = pos
-    val backupLim = lim
-    pos = offset
-    lim = offset + size
-    val res = slice()
-    pos = backupPos
-    lim = backupLim
-    return res
-}
-
-fun ShortBuffer.sliceAs(offset: Int, size: Int = lim - offset): ShortBuffer {
-    val backupPos = pos
-    val backupLim = lim
-    pos = offset
-    lim = offset + size
-    val res = slice()
-    pos = backupPos
-    lim = backupLim
-    return res
-}
-
-fun IntBuffer.sliceAs(offset: Int, size: Int = lim - offset): IntBuffer {
-    val backupPos = pos
-    val backupLim = lim
-    pos = offset
-    lim = offset + size
-    val res = slice()
-    pos = backupPos
-    lim = backupLim
-    return res
-}
-
-fun LongBuffer.sliceAs(offset: Int, size: Int = lim - offset): LongBuffer {
-    val backupPos = pos
-    val backupLim = lim
-    pos = offset
-    lim = offset + size
-    val res = slice()
-    pos = backupPos
-    lim = backupLim
-    return res
-}
-
-fun FloatBuffer.sliceAs(offset: Int, size: Int = lim - offset): FloatBuffer {
-    val backupPos = pos
-    val backupLim = lim
-    pos = offset
-    lim = offset + size
-    val res = slice()
-    pos = backupPos
-    lim = backupLim
-    return res
-}
-
-fun DoubleBuffer.sliceAs(offset: Int, size: Int = lim - offset): DoubleBuffer {
-    val backupPos = pos
-    val backupLim = lim
-    pos = offset
-    lim = offset + size
-    val res = slice()
-    pos = backupPos
-    lim = backupLim
-    return res
-}
-
-fun CharBuffer.sliceAs(offset: Int, size: Int = lim - offset): CharBuffer {
-    val backupPos = pos
-    val backupLim = lim
-    pos = offset
-    lim = offset + size
-    val res = slice()
-    pos = backupPos
-    lim = backupLim
-    return res
-}

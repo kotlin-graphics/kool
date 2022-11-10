@@ -22,7 +22,7 @@ fun main() {
 
     var memory = 0
     val max = Configuration.STACK_SIZE.get(64) * 1024
-    Stack {
+    stack {
         assert(max == it.size)
         println(it.pointer)
         while (memory < max) {

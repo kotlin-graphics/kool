@@ -4,11 +4,11 @@ import org.lwjgl.system.CustomBuffer
 import org.lwjgl.system.MemoryUtil.NULL
 
 inline val <SELF : CustomBuffer<SELF>>CustomBuffer<SELF>.adr: Adr
-    get() = address()
+    get() = address().toULong()
 
 @get:JvmName("adrSafe")
 inline val <SELF : CustomBuffer<SELF>>CustomBuffer<SELF>?.adr: Adr
-    get() = this?.adr ?: NULL
+    get() = this?.adr ?: 0uL
 
 inline val <SELF : CustomBuffer<SELF>>CustomBuffer<SELF>.cap: Int
     get() = capacity()
