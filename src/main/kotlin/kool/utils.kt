@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package kool
 
 import org.lwjgl.PointerBuffer
@@ -8,17 +10,21 @@ import java.nio.*
 import kotlin.reflect.*
 
 inline val Pointer.adr: Adr
-    get() = address()
+    get() = address().toULong()
 
 val Pointer.isInvalid: Boolean
-    get() = adr == MemoryUtil.NULL
+    get() = adr == MemoryUtil.NULL.toULong()
 val Pointer.isValid: Boolean
-    get() = adr != MemoryUtil.NULL
+    get() = adr != MemoryUtil.NULL.toULong()
 
 
-// cant inline class for java compatibility
-typealias Ptr = Long
-typealias Adr = Long
+val a: Ptr<Byte> = Ptr.NULL
+//inline operator fun Ptr<Int>.set(index: Int, value: Byte) {
+//
+//}
+
+inline fun <T> Long.toPtr(): Ptr<T> = Ptr(this.toULong())
+inline fun <T> ULong.toPtr(): Ptr<T> = Ptr(this)
 
 
 fun <R> ByteBuffer.use(block: (ByteBuffer) -> R) = block(this).also { free() }
@@ -31,7 +37,6 @@ fun <R> CharBuffer.use(block: (CharBuffer) -> R) = block(this).also { free() }
 fun <R> PointerBuffer.use(block: (PointerBuffer) -> R) = block(this).also { free() }
 
 
-
 operator fun <R> KMutableProperty0<R>.getValue(host: Any?, property: KProperty<*>): R = get()
 operator fun <R> KMutableProperty0<R>.setValue(host: Any?, property: KProperty<*>, value: R) = set(value)
 
@@ -42,82 +47,65 @@ operator fun <T, R> KMutableProperty1<T, R>.setValue(host: T, metadata: KPropert
 
 operator fun <T, R> KProperty1<T, R>.getValue(host: T, metadata: KProperty<*>): R = get(host)
 
-fun encodeUTF8(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
+fun encodeUTF8(text: CharSequence, nullTerminated: Boolean, target: Ptr<Byte>): Int {
+    var p = 0
     var i = 0
     val len = text.length
-    var p = 0
 
-    var c = text[i]
-
-    // ASCII fast path
-    while (i < len && c.code < 0x80) {
-        UNSAFE.putByte(target + p++, c.code.toByte())
-        if (++i < len)
-            c = text[i]
-        else break
-    }
-
-    // Slow path
     while (i < len) {
-        c = text[i++]
-        if (c.code < 0x80)
-            UNSAFE.putByte(target + p++, c.code.toByte())
+        val c = text[i++]
+        val code = c.code
+        if (code < 0x80)
+            target[p++] = code.toByte()
         else {
-            var cp = c.code
-            if (c.code < 0x800) {
-                UNSAFE.putByte(target + p++, (0xC0 or (cp shr 6)).toByte())
-            } else {
+            var cp = code
+            if (code < 0x800)
+                target[p++] = (0xC0 or (cp shr 6)).toByte()
+            else {
                 if (!c.isHighSurrogate())
-                    UNSAFE.putByte(target + p++, (0xE0 or (cp shr 12)).toByte())
+                    target[p++] = (0xE0 or (cp shr 12)).toByte()
                 else {
                     cp = Character.toCodePoint(c, text[i++])
 
-                    UNSAFE.putByte(target + p++, (0xF0 or (cp shr 18)).toByte())
-                    UNSAFE.putByte(target + p++, (0x80 or (cp shr 12 and 0x3F)).toByte())
+                    target[p++] = (0xF0 or (cp shr 18)).toByte()
+                    target[p++] = (0x80 or ((cp shr 12) and 0x3F)).toByte()
                 }
-                UNSAFE.putByte(target + p++, (0x80 or (cp shr 6 and 0x3F)).toByte())
+                target[p++] = (0x80 or ((cp shr 6) and 0x3F)).toByte()
             }
-            UNSAFE.putByte(target + p++, (0x80 or (cp and 0x3F)).toByte())
+            target[p++] = (0x80 or (cp and 0x3F)).toByte()
         }
     }
 
     if (nullTerminated)
-        UNSAFE.putByte(target + p++, 0.toByte()) // TODO: did we have a bug here?
+        target[p++] = 0
 
     return p
 }
 
-fun encodeASCII(text: CharSequence, nullTerminated: Boolean, target: Ptr): Int {
-    var len = text.length
-    for (p in 0 until len)
-        UNSAFE.putByte(target + p, text[p].code.toByte())
-    if (nullTerminated)
-        UNSAFE.putByte(target + len++, 0.toByte())
-    return len
-}
 
 fun strlen64NT1(address: Long, maxLength: Int): Int {
     var i = 0
     if (8 <= maxLength) {
         val misalignment = address.toInt() and 7
-        if (misalignment != 0) { // Align to 8 bytes
+        if (misalignment != 0) {
+            // Align to 8 bytes
             val len = 8 - misalignment
             while (i < len) {
-                if (UNSAFE.getByte(null, address + i).toInt() == 0)
+                if (unsafe.getByte(null, address + i).toInt() == 0)
                     return i
                 i++
             }
         }
         // Aligned longs for performance
         while (i <= maxLength - 8) {
-            if (MathUtil.mathHasZeroByte(UNSAFE.getLong(null, address + i)))
+            if (MathUtil.mathHasZeroByte(unsafe.getLong(null, address + i)))
                 break
             i += 8
         }
     }
     // Tail
     while (i < maxLength) {
-        if (UNSAFE.getByte(null, address + i).toInt() == 0)
+        if (unsafe.getByte(null, address + i).toInt() == 0)
             break
         i++
     }

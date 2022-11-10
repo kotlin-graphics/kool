@@ -3,7 +3,6 @@ package kool
 import kool.gen.Generator
 import kool.gen.generate
 import java.io.File
-import java.nio.ByteBuffer
 
 fun conversions(target: File) {
 
@@ -11,17 +10,20 @@ fun conversions(target: File) {
 
         `package` = "kool"
 
+        experimentals += Generator.Experimentals.UnsignedTypes
         //        suppressInlineWarning = true
 
         imports += listOf("org.lwjgl.system.MemoryUtil",
                           "java.nio.Buffer")
 
         for (type in types)
-            conversions(type)
+            arrays(type)
+        for (type in types.filter { it != "Char" && it != "Pointer" })
+            pointers(type)
     }
 }
 
-fun Generator.conversions(type: String) {
+fun Generator.arrays(type: String) {
 
     val TypeBuffer = type + "Buffer"
     val TypeArray = type + "Array"
@@ -43,6 +45,7 @@ fun Generator.conversions(type: String) {
         pointer -> listOf(
             "org.lwjgl.PointerBuffer",
             "org.lwjgl.system.Pointer",
+            "org.lwjgl.system.MemoryStack",
                          )
         else -> listOf(
             "java.nio.$TypeBuffer",
@@ -57,7 +60,7 @@ fun Generator.conversions(type: String) {
 
     val t = when {
         "Byte" in type -> "" // unsigned as well
-        type == "Pointer" -> "Long"
+        type == "Pointer" -> return
         else -> if (unsigned) type.drop(1) else type
     }
     alloc()
@@ -71,11 +74,39 @@ fun Generator.conversions(type: String) {
             for (i in indices) 
                 res.put$maybeU$t(i$maybeTimes, get(i))
             return res
+        }
+        fun $TypeArray.to${maybeU}Buffer(stack: MemoryStack): ${maybeU2}ByteBuffer {
+            val res = stack.malloc(size$maybeTimes)$maybeToUBuffer
+            for (i in indices) 
+                res.put$maybeU$t(i$maybeTimes, get(i))
+            return res
         }"""
     alloc()
     +"fun $TypeArray.to${maybeU}ByteBuffer(): ${maybeU2}ByteBuffer = to${maybeU}Buffer()"
+    +"fun $TypeArray.to${maybeU}ByteBuffer(stack: MemoryStack): ${maybeU2}ByteBuffer = to${maybeU}Buffer(stack)"
     if ("Byte" !in type) {
         alloc()
         +"fun $TypeArray.to$TypeBuffer(): $TypeBuffer = $TypeBuffer(size) { get(it) }"
+        +"fun $TypeArray.to$TypeBuffer(stack: MemoryStack): $TypeBuffer = stack.$TypeBuffer(size) { get(it) }"
     }
+}
+
+fun Generator.pointers(type: String) {
+
+    val TypeArray = type + "Array"
+//    val (maybeT, t) = if(type == "Pointer") "<T>" to "Long" else "" to ""
+
+    +"""
+        fun <T> $TypeArray.toPtr(): Ptr<T> {
+            val res = MemoryUtil.nmemAlloc(size.toLong()).toPtr<$type>()
+            for (i in indices) 
+                res[i] = get(i)
+            return res.toPtr()
+        }
+        fun <T> $TypeArray.toPtr(stack: MemoryStack): Ptr<T> {
+            val res = stack.nmalloc(size).toPtr<$type>()
+            for (i in indices) 
+                res[i] = get(i)
+            return res.toPtr()
+        }"""
 }

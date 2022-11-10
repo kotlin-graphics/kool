@@ -43,27 +43,27 @@ fun MemoryStack.PointerBuffer(strings: Collection<String>): PointerBuffer =
         PointerBuffer(strings.size) { i ->
             val string = strings.elementAt(i)
             val length = MemoryUtil.memLengthUTF8(string, true)
-            nmalloc(1, length).also { encodeUTF8(string, true, it) }
+            nmalloc(1, length).also { encodeUTF8(string, true, it.toPtr()) }
         }
 
-@JvmName("PointerAdrSafe")
-fun MemoryStack.PointerAdr(strings: Collection<String>?): Adr = strings?.let { PointerAdr(it) } ?: MemoryUtil.NULL
-
-fun MemoryStack.PointerAdr(strings: Collection<String>): Adr =
-        PointerAdr(strings.size) { i ->
-            val string = strings.elementAt(i)
-            val length = MemoryUtil.memLengthUTF8(string, true)
-            nmalloc(1, length).also { encodeUTF8(string, true, it) }
-        }
-
-inline fun MemoryStack.PointerAdr(size: Int, init: (Int) -> Adr): Adr {
-    val bytes = size * Pointer.POINTER_SIZE
-    val address = nmalloc(Pointer.POINTER_SIZE, bytes)
-    MemoryUtil.memSet(address, 0, bytes.toLong())
-    for (i in 0 until size)
-        MemoryUtil.memPutAddress(address + i * Pointer.POINTER_SIZE, init(i))
-    return address
-}
+//@JvmName("PointerAdrSafe")
+//fun MemoryStack.PointerAdr(strings: Collection<String>?): Adr = strings?.let { PointerAdr(it) } ?: MemoryUtil.NULL
+//
+//fun MemoryStack.PointerAdr(strings: Collection<String>): Adr =
+//        PointerAdr(strings.size) { i ->
+//            val string = strings.elementAt(i)
+//            val length = MemoryUtil.memLengthUTF8(string, true)
+//            nmalloc(1, length).also { encodeUTF8(string, true, it.toPtr()) }
+//        }
+//
+//inline fun MemoryStack.PointerAdr(size: Int, init: (Int) -> Adr): Adr {
+//    val bytes = size * Pointer.POINTER_SIZE
+//    val address = nmalloc(Pointer.POINTER_SIZE, bytes)
+//    MemoryUtil.memSet(address, 0, bytes.toLong())
+//    for (i in 0 until size)
+//        MemoryUtil.memPutAddress(address + i * Pointer.POINTER_SIZE, init(i))
+//    return address
+//}
 
 // empty versions
 

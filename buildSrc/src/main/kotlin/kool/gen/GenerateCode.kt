@@ -43,6 +43,10 @@ abstract class GenerateCode: DefaultTask() {
         pointers(target)
 
         stackExts(target)
+
+        stack(target)
+
+        unsafe(target)
     }
 }
 

@@ -1,31 +1,9 @@
 @file:Suppress("NOTHING_TO_INLINE")
 package kool
 
-import org.lwjgl.system.MemoryStack
-import org.lwjgl.system.MemoryUtil
-import org.lwjgl.system.Pointer
 import sun.misc.Unsafe
-import java.nio.Buffer
 
-/*
-Different runtimes use different names for the Unsafe singleton,
-so we cannot use .getDeclaredField and we scan instead. For example:
 
-Oracle: theUnsafe
-PERC : m_unsafe_instance
-Android: THE_ONE
-*/
-val UNSAFE: Unsafe by lazy {
-    Unsafe::class.java.declaredFields
-            .find {
-                it.type == Unsafe::class.java &&
-                        java.lang.reflect.Modifier.isStatic(it.modifiers)
-                        && java.lang.reflect.Modifier.isFinal(it.modifiers)
-            }?.run {
-                isAccessible = true
-                get(null) as Unsafe
-            } ?: throw UnsupportedOperationException("LWJGL requires sun.misc.Unsafe to be available.")
-}
 
 //@JvmInline
 //value class BytePtr(val adr: Adr) {

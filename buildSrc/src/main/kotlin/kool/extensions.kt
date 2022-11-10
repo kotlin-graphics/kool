@@ -38,7 +38,7 @@ fun Generator.extensions(type: String) {
                           )
         pointer -> listOf(
             "org.lwjgl.PointerBuffer",
-            "org.lwjgl.system.Pointer",
+            //            "org.lwjgl.system.Pointer",
                          )
         else -> listOf(
             "java.nio.$TypeBuffer",
@@ -87,7 +87,7 @@ fun Generator.extensions(type: String) {
     else
         +"""
             inline val $TypeBuffer.adr: Adr
-                get() = MemoryUtil.memAddress(this)"""
+                get() = MemoryUtil.memAddress(this).toULong()"""
 
     docs("""
             This buffer's position.
@@ -134,7 +134,7 @@ fun Generator.extensions(type: String) {
     else if (pointer)
         +"""
             inline val $TypeBuffer.remByte: Int
-                get() = rem * $type.POINTER_SIZE"""
+                get() = rem * org.lwjgl.system.Pointer.POINTER_SIZE"""
     else
         +"""
             inline val $TypeBuffer.remByte: Int
@@ -167,12 +167,15 @@ fun Generator.extensions(type: String) {
     set()
     if (unsigned)
         +"operator fun set(index: Int, $t: $type): $TypeBuffer = put(index, $t)"
-    else
+    else if (pointer) {
+        set()
+        +"operator fun PointerBuffer.set(index: Int, pointer: org.lwjgl.system.Pointer): PointerBuffer = put(index, pointer)"
+        set()
+        +"operator fun PointerBuffer.set(index: Int, pointer: Pointer): PointerBuffer = put(index, pointer.toLong())"
+        set()
+        +"operator fun PointerBuffer.set(index: Int, buffer: Buffer): PointerBuffer = put(index, buffer.adr.toLong())"
+        set()
+        +"operator fun PointerBuffer.set(index: Int, pointer: Long): PointerBuffer = put(index, pointer)"
+    } else
         +"operator fun $TypeBuffer.set(index: Int, $t: $type): $TypeBuffer = put(index, $t)"
-    if (pointer) {
-        set()
-        +"operator fun PointerBuffer.set(index: Int, ptr: Ptr): PointerBuffer = put(index, ptr)"
-        set()
-        +"operator fun PointerBuffer.set(index: Int, buffer: Buffer): PointerBuffer = put(index, buffer.adr)"
-    }
 }

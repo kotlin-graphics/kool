@@ -44,7 +44,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             "kool.forEachIndexed",
             )
 
-    val type = if (type == "Pointer") "Ptr" else type
+    val Type = if (type == "Pointer") "Long" else type
 
     if (part == Generator.Part.TopLevel) {
 
@@ -54,33 +54,33 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             Returns $n *element* from the buffer.
             
             If the size of this array is less than $x, throws an [IndexOutOfBoundsException]""")
-            +"inline operator fun $TypeBuffer.component$x(): $type = get(${x - '1'})"
+            +"inline operator fun $TypeBuffer.component$x(): $Type = get(${x - '1'})"
         }
 
         docs("Returns `true` if [element] is found in the array.")
-        +"operator fun $TypeBuffer.contains(element: $type): Boolean = indexOf(element) >= 0"
+        +"operator fun $TypeBuffer.contains(element: $Type): Boolean = indexOf(element) >= 0"
 
         docs("Returns an element at the given [index] or throws an [IndexOutOfBoundsException] if the [index] is out of bounds of this array.")
-        +"inline fun <T> $TypeBuffer.elementAt(index: Int): $type = get(index)"
+        +"inline fun <T> $TypeBuffer.elementAt(index: Int): $Type = get(index)"
 
         docs("Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this array.")
-        +"inline fun $TypeBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> $type): $type = if (index >= 0 && index <= lastIndex) get(index) else defaultValue(index)"
+        +"inline fun $TypeBuffer.elementAtOrElse(index: Int, defaultValue: (Int) -> $Type): $Type = if (index >= 0 && index <= lastIndex) get(index) else defaultValue(index)"
 
         docs("Returns an element at the given [index] or `null` if the [index] is out of bounds of this array.")
-        +"inline fun $TypeBuffer.elementAtOrNull(index: Int): $type? = this.getOrNull(index)"
+        +"inline fun $TypeBuffer.elementAtOrNull(index: Int): $Type? = this.getOrNull(index)"
 
         docs("Returns the first element matching the given [predicate], or `null` if no such element was found.")
-        +"inline fun $TypeBuffer.find(predicate: ($type) -> Boolean): $type? = firstOrNull(predicate)"
+        +"inline fun $TypeBuffer.find(predicate: ($Type) -> Boolean): $Type? = firstOrNull(predicate)"
 
         docs("Returns the last element matching the given [predicate], or `null` if no such element was found.")
-        +"inline fun $TypeBuffer.findLast(predicate: ($type) -> Boolean): $type? = lastOrNull(predicate)"
+        +"inline fun $TypeBuffer.findLast(predicate: ($Type) -> Boolean): $Type? = lastOrNull(predicate)"
 
         docs("""
             Returns the first element.
             
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            fun $TypeBuffer.first(): $type {
+            fun $TypeBuffer.first(): $Type {
                 if (isEmpty())
                     throw NoSuchElementException("Array is empty.")
                 return this[0]
@@ -90,30 +90,30 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             Returns the first element matching the given [predicate].
             @throws [NoSuchElementException] if no such element is found.""")
         +"""
-            inline fun $TypeBuffer.first(predicate: ($type) -> Boolean): $type {
+            inline fun $TypeBuffer.first(predicate: ($Type) -> Boolean): $Type {
                 for (element in this) if (predicate(element)) return element
                 throw NoSuchElementException("Array contains no element matching the predicate.")
             }"""
 
         docs("Returns the first element, or `null` if the array is empty.")
-        +"fun $TypeBuffer.firstOrNull(): $type? = if (isEmpty()) null else this[0]"
+        +"fun $TypeBuffer.firstOrNull(): $Type? = if (isEmpty()) null else this[0]"
 
         docs("Returns the first element matching the given [predicate], or `null` if element was not found.")
         +"""
-            inline fun $TypeBuffer.firstOrNull(predicate: ($type) -> Boolean): $type? {
+            inline fun $TypeBuffer.firstOrNull(predicate: ($Type) -> Boolean): $Type? {
                 for (element in this) if (predicate(element)) return element
                 return null
             }"""
 
         docs("Returns an element at the given [index] or the result of calling the [defaultValue] function if the [index] is out of bounds of this array.")
-        +"inline fun $TypeBuffer.getOrElse(index: Int, defaultValue: (Int) -> $type): $type = if (index >= 0 && index <= lastIndex) get(index) else defaultValue(index)"
+        +"inline fun $TypeBuffer.getOrElse(index: Int, defaultValue: (Int) -> $Type): $Type = if (index >= 0 && index <= lastIndex) get(index) else defaultValue(index)"
 
         docs("Returns an element at the given [index] or `null` if the [index] is out of bounds of this array.")
-        +"fun $TypeBuffer.getOrNull(index: Int): $type? = if (index >= 0 && index <= lastIndex) get(index) else null"
+        +"fun $TypeBuffer.getOrNull(index: Int): $Type? = if (index >= 0 && index <= lastIndex) get(index) else null"
 
         docs("Returns first index of [element], or -1 if the array does not contain element.")
         +"""
-            fun $TypeBuffer.indexOf(element: $type): Int {
+            fun $TypeBuffer.indexOf(element: $Type): Int {
                 for (index in indices)
                     if (element == this[index])
                         return index
@@ -122,7 +122,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns index of the first element matching the given [predicate], or -1 if the array does not contain such element.")
         +"""
-            inline fun $TypeBuffer.indexOfFirst(predicate: ($type) -> Boolean): Int {
+            inline fun $TypeBuffer.indexOfFirst(predicate: ($Type) -> Boolean): Int {
                 for (index in indices)
                     if (predicate(this[index]))
                         return index
@@ -131,7 +131,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns index of the last element matching the given [predicate], or -1 if the array does not contain such element.")
         +"""
-            inline fun $TypeBuffer.indexOfLast(predicate: ($type) -> Boolean): Int {
+            inline fun $TypeBuffer.indexOfLast(predicate: ($Type) -> Boolean): Int {
                 for (index in indices.reversed())
                     if (predicate(this[index]))
                         return index
@@ -143,7 +143,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            fun $TypeBuffer.last(): $type {
+            fun $TypeBuffer.last(): $Type {
                 if (isEmpty())
                     throw NoSuchElementException("Array is empty.")
                 return this[lastIndex]
@@ -154,7 +154,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             
             @throws NoSuchElementException if no such element is found.""")
         +"""
-            inline fun $TypeBuffer.last(predicate: ($type) -> Boolean): $type {
+            inline fun $TypeBuffer.last(predicate: ($Type) -> Boolean): $Type {
                 for (index in this.indices.reversed()) {
                     val element = this[index]
                     if (predicate(element)) return element
@@ -164,7 +164,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns last index of [element], or -1 if the array does not contain element.")
         +"""
-            fun $TypeBuffer.lastIndexOf(element: $type): Int {
+            fun $TypeBuffer.lastIndexOf(element: $Type): Int {
                 for (index in indices.reversed())
                     if (element == this[index])
                         return index
@@ -172,11 +172,11 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             }"""
 
         docs("Returns the last element, or `null` if the array is empty.")
-        +"fun $TypeBuffer.lastOrNull(): $type? = if (isEmpty()) null else this[rem - 1]"
+        +"fun $TypeBuffer.lastOrNull(): $Type? = if (isEmpty()) null else this[rem - 1]"
 
         docs("Returns the last element matching the given [predicate], or `null` if no such element was found.")
         +"""
-            inline fun $TypeBuffer.lastOrNull(predicate: ($type) -> Boolean): $type? {
+            inline fun $TypeBuffer.lastOrNull(predicate: ($Type) -> Boolean): $Type? {
                 for (index in this.indices.reversed()) {
                     val element = this[index]
                     if (predicate(element)) return element
@@ -188,7 +188,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the single element, or throws an exception if the array is empty or has more than one element.")
         +"""
-            fun $TypeBuffer.single(): $type = when (rem) {
+            fun $TypeBuffer.single(): $Type = when (rem) {
                 0 -> throw NoSuchElementException("Array is empty.")
                 1 -> this[0]
                 else -> throw IllegalArgumentException("Array has more than one element.")
@@ -196,8 +196,8 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the single element matching the given [predicate], or throws exception if there is no or more than one matching element.")
         +"""
-            inline fun $TypeBuffer.single(predicate: ($type) -> Boolean): $type {
-                var single: $type? = null
+            inline fun $TypeBuffer.single(predicate: ($Type) -> Boolean): $Type {
+                var single: $Type? = null
                 var found = false
                 for (element in this)
                     if (predicate(element)) {
@@ -207,16 +207,16 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
                     }
                 if (!found) throw NoSuchElementException("Array contains no element matching the predicate.")
                 @Suppress("UNCHECKED_CAST")
-                return single as $type
+                return single as $Type
             }"""
 
         docs("Returns single element, or `null` if the array is empty or has more than one element.")
-        +"fun $TypeBuffer.singleOrNull(): $type? = if (rem == 1) this[0] else null"
+        +"fun $TypeBuffer.singleOrNull(): $Type? = if (rem == 1) this[0] else null"
 
         docs("Returns the single element matching the given [predicate], or `null` if element was not found or more than one element was found.")
         +"""
-            inline fun $TypeBuffer.singleOrNull(predicate: ($type) -> Boolean): $type? {
-                var single: $type? = null
+            inline fun $TypeBuffer.singleOrNull(predicate: ($Type) -> Boolean): $Type? {
+                var single: $Type? = null
                 var found = false
                 for (element in this)
                     if (predicate(element)) {
@@ -231,18 +231,18 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
         // drop, dropLast, dropLastWhile, dropWhile?
 
         docs("Returns a list containing only elements matching the given [predicate].")
-        +"inline fun $TypeBuffer.filter(predicate: ($type) -> Boolean): List<$type> = filterTo(ArrayList<$type>(), predicate)"
+        +"inline fun $TypeBuffer.filter(predicate: ($Type) -> Boolean): List<$Type> = filterTo(ArrayList<$Type>(), predicate)"
 
         docs("""
             Returns a list containing only elements matching the given [predicate].
             @param [predicate] function that takes the index of an element and the element itself and returns the result of predicate evaluation on the element.""")
-        +"inline fun $TypeBuffer.filterIndexed(predicate: (index: Int, $type) -> Boolean): List<$type> = filterIndexedTo(ArrayList<$type>(), predicate)"
+        +"inline fun $TypeBuffer.filterIndexed(predicate: (index: Int, $Type) -> Boolean): List<$Type> = filterIndexedTo(ArrayList<$Type>(), predicate)"
 
         docs("""
             Appends all elements matching the given [predicate] to the given [destination].
             @param [predicate] function that takes the index of an element and the element itself and returns the result of predicate evaluation on the element.""")
         +"""
-            inline fun <C : MutableCollection<in $type>> $TypeBuffer.filterIndexedTo(destination: C, predicate: (index: Int, $type) -> Boolean): C {
+            inline fun <C : MutableCollection<in $Type>> $TypeBuffer.filterIndexedTo(destination: C, predicate: (index: Int, $Type) -> Boolean): C {
                 forEachIndexed { index, element ->
                     if (predicate(index, element)) destination.add(element)
                 }
@@ -250,18 +250,18 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             }"""
 
         docs("Returns a list containing all elements not matching the given [predicate].")
-        +"inline fun $TypeBuffer.filterNot(predicate: ($type) -> Boolean): List<$type> = filterNotTo(ArrayList<$type>(), predicate)"
+        +"inline fun $TypeBuffer.filterNot(predicate: ($Type) -> Boolean): List<$Type> = filterNotTo(ArrayList<$Type>(), predicate)"
 
         docs("Appends all elements not matching the given [predicate] to the given [destination].")
         +"""
-            inline fun <C : MutableCollection<in $type>> $TypeBuffer.filterNotTo(destination: C, predicate: ($type) -> Boolean): C {
+            inline fun <C : MutableCollection<in $Type>> $TypeBuffer.filterNotTo(destination: C, predicate: ($Type) -> Boolean): C {
                  for (element in this) if (!predicate(element)) destination.add(element)
                  return destination
             }"""
 
         docs("Appends all elements matching the given [predicate] to the given [destination].")
         +"""
-            inline fun <C : MutableCollection<in $type>> $TypeBuffer.filterTo(destination: C, predicate: ($type) -> Boolean): C {
+            inline fun <C : MutableCollection<in $Type>> $TypeBuffer.filterTo(destination: C, predicate: ($Type) -> Boolean): C {
                  for (element in this) if (predicate(element)) destination.add(element)
                  return destination
             }"""
@@ -275,79 +275,82 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns a list containing elements at specified [indices].")
         +"""
-            fun $TypeBuffer.slice(indices: Iterable<Int>): List<$type> {
+            fun $TypeBuffer.slice(indices: Iterable<Int>): List<$Type> {
                 val size = indices.collectionSizeOrDefault(10)
                 if (size == 0) return emptyList()
-                val list = ArrayList<$type>(size)
+                val list = ArrayList<$Type>(size)
                 for (index in indices)
                     list.add(get(index))
                 return list
             }"""
 
-        docs("Returns an array containing elements of this array at specified [indices].")
-        +"""
-            fun $TypeBuffer.sliceArray(indices: Collection<Int>): $TypeArray {
-                val result = $TypeArray(indices.size)
-                var targetIndex = 0
-                for (sourceIndex in indices)
-                    result[targetIndex++] = this[sourceIndex]
-                return result
-            }"""
+        if (type != "Pointer") {
+            docs("Returns an array containing elements of this array at specified [indices].")
+            +"""
+                fun $TypeBuffer.sliceArray(indices: Collection<Int>): $TypeArray {
+                    val result = $TypeArray(indices.size)
+                    var targetIndex = 0
+                    for (sourceIndex in indices)
+                        result[targetIndex++] = this[sourceIndex]
+                    return result
+                }"""
 
-        //    docs("Returns an array containing elements at indices in the specified [indices] range.")
-        //    +"""
-        //        fun $TypeBuffer.sliceArray(indices: IntRange): $TypeArray {
-        //            if (indices.isEmpty()) return $TypeArray(0)
-        //            return copyOfRange(indices.start, indices.endInclusive + 1)
-        //        }"""
+            //    docs("Returns an array containing elements at indices in the specified [indices] range.")
+            //    +"""
+            //        fun $TypeBuffer.sliceArray(indices: IntRange): $TypeArray {
+            //            if (indices.isEmpty()) return $TypeArray(0)
+            //            return copyOfRange(indices.start, indices.endInclusive + 1)
+            //        }"""
 
-        // take, takeLast, takeLastWhile, takeWhile, reverse, reversed, reversedArray, shuffle,
+            // take, takeLast, takeLastWhile, takeWhile, reverse, reversed, reversedArray, shuffle,
 
-        docs("Sorts elements in the array in-place descending according to their natural sort order.")
-        +"""
-            fun $TypeBuffer.sortDescending() {
-                if (rem > 1) {
-                    val array = to$TypeArray().apply{ sortDescending() }
-                    for (i in 0 until rem)
-                        this[pos + i] = array[i]
-                }
-            }"""
+            docs("Sorts elements in the array in-place descending according to their natural sort order.")
+            +"""
+                fun $TypeBuffer.sortDescending() {
+                    if (rem > 1) {
+                        val array = to$TypeArray().apply{ sortDescending() }
+                        for (i in 0 until rem)
+                            this[pos + i] = array[i]
+                    }
+                }"""
+        }
 
         docs("Returns a list of all elements sorted according to their natural sort order.")
-        +"fun $TypeBuffer.sorted(): List<$type> = toTypedArray().apply { sort() }.asList()"
+        +"fun $TypeBuffer.sorted(): List<$Type> = toTypedArray().apply { sort() }.asList()"
 
-        docs("Returns an array with all elements of this array sorted according to their natural sort order.")
-        +"fun $TypeBuffer.sortedArray(): $TypeArray = to$TypeArray().apply { sort() }"
+        if (type != "Pointer") {
+            docs("Returns an array with all elements of this array sorted according to their natural sort order.")
+            +"fun $TypeBuffer.sortedArray(): $TypeArray = to$TypeArray().apply { sort() }"
 
-        docs("Returns an array with all elements of this array sorted descending according to their natural sort order.")
-        +"fun $TypeBuffer.sortedArrayDescending(): $TypeArray = to$TypeArray().apply { sortDescending() }"
+            docs("Returns an array with all elements of this array sorted descending according to their natural sort order.")
+            +"fun $TypeBuffer.sortedArrayDescending(): $TypeArray = to$TypeArray().apply { sortDescending() }"
 
-        docs("Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.")
-        +"inline fun <R : Comparable<R>> $TypeBuffer.sortedBy(crossinline selector: ($type) -> R?): List<$type> = to$TypeArray().sortedWith(compareBy(selector))"
+            docs("Returns a list of all elements sorted according to natural sort order of the value returned by specified [selector] function.")
+            +"inline fun <R : Comparable<R>> $TypeBuffer.sortedBy(crossinline selector: ($Type) -> R?): List<$Type> = to$TypeArray().sortedWith(compareBy(selector))"
 
-        docs("Returns a list of all elements sorted descending according to natural sort order of the value returned by specified [selector] function.")
-        +"inline fun <R : Comparable<R>> $TypeBuffer.sortedByDescending(crossinline selector: ($type) -> R?): List<$type> = to$TypeArray().sortedWith(compareByDescending(selector))"
+            docs("Returns a list of all elements sorted descending according to natural sort order of the value returned by specified [selector] function.")
+            +"inline fun <R : Comparable<R>> $TypeBuffer.sortedByDescending(crossinline selector: ($Type) -> R?): List<$Type> = to$TypeArray().sortedWith(compareByDescending(selector))"
 
-        docs("Returns a list of all elements sorted descending according to their natural sort order.")
-        +"fun $TypeBuffer.sortedDescending(): List<$type> = to$TypeArray().apply { sort() }.reversed()"
-
+            docs("Returns a list of all elements sorted descending according to their natural sort order.")
+            +"fun $TypeBuffer.sortedDescending(): List<$Type> = to$TypeArray().apply { sort() }.reversed()"
+        }
         docs("Returns a list of all elements sorted according to the specified [comparator].")
-        +"fun $TypeBuffer.sortedWith(comparator: Comparator<in $type>): List<$type> = toTypedArray().apply { sortWith(comparator) }.asList()"
+        +"fun $TypeBuffer.sortedWith(comparator: Comparator<in $Type>): List<$Type> = toTypedArray().apply { sortWith(comparator) }.asList()"
 
         // asList,
         // contentEquals, contentHashCode
 
-
-        docs("Sorts the array in-place.")
-        +"""
-            fun $TypeBuffer.sort() {
-                if (rem > 1) {
-                    val array = to$TypeArray().apply{ sort() }
-                    for (i in 0 until rem)
-                        this[pos + i] = array[i]
-                }
-            }"""
-
+        if (type != "Pointer") {
+            docs("Sorts the array in-place.")
+            +"""
+                fun $TypeBuffer.sort() {
+                    if (rem > 1) {
+                        val array = to$TypeArray().apply{ sort() }
+                        for (i in 0 until rem)
+                            this[pos + i] = array[i]
+                    }
+                }"""
+        }
 
 
         docs("Returns a string representation of the contents of the specified array as if it is [List].")
@@ -384,7 +387,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             @throws IndexOutOfBoundsException if [fromIndex] is less than zero or [toIndex] is greater than the size of this array.
             @throws IllegalArgumentException if [fromIndex] is greater than [toIndex].""")
         +"""
-            fun $TypeBuffer.fill(element: $type, fromIndex: Int = pos, toIndex: Int = rem) {
+            fun $TypeBuffer.fill(element: $Type, fromIndex: Int = pos, toIndex: Int = rem) {
                 for (i in fromIndex until toIndex)
                     this[i] = element
             }"""
@@ -407,11 +410,12 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         // plus, sort
 
-        docs("Returns an array of Byte containing all of the elements of this generic array.")
-        +"fun $TypeBuffer.to$TypeArray(): $TypeArray = $TypeArray(rem) { index -> this[index] }"
-
+        if (type != "Pointer") {
+            docs("Returns an array of Byte containing all of the elements of this generic array.")
+            +"fun $TypeBuffer.to$TypeArray(): $TypeArray = $TypeArray(rem) { index -> this[index] }"
+        }
         docs("Returns a *typed* object array containing all of the elements of this primitive array.")
-        +"fun $TypeBuffer.toTypedArray(): Array<$type> = Array(rem) { index -> this[index] }"
+        +"fun $TypeBuffer.toTypedArray(): Array<$Type> = Array(rem) { index -> this[index] }"
 
         docs("""
             Returns a [Map] containing key-value pairs provided by [transform] function applied to elements of the given array.
@@ -420,7 +424,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             The returned map preserves the entry iteration order of the original array.""")
         +"""
-            inline fun <K, V> $TypeBuffer.associate(transform: ($type) -> Pair<K, V>): Map<K, V> {
+            inline fun <K, V> $TypeBuffer.associate(transform: ($Type) -> Pair<K, V>): Map<K, V> {
                 val capacity = mapCapacity(rem).coerceAtLeast(16)
                 return associateTo(LinkedHashMap<K, V>(capacity), transform)
             }"""
@@ -432,9 +436,9 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             The returned map preserves the entry iteration order of the original array.""")
         +"""
-            inline fun <K> $TypeBuffer.associateBy(keySelector: ($type) -> K): Map<K, $type> {
+            inline fun <K> $TypeBuffer.associateBy(keySelector: ($Type) -> K): Map<K, $Type> {
                 val capacity = mapCapacity(rem).coerceAtLeast(16)
-                return associateByTo(LinkedHashMap<K, $type>(capacity), keySelector)
+                return associateByTo(LinkedHashMap<K, $Type>(capacity), keySelector)
             }"""
 
         docs("""
@@ -444,7 +448,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             The returned map preserves the entry iteration order of the original array.""")
         +"""
-            inline fun <K, V> $TypeBuffer.associateBy(keySelector: ($type) -> K, valueTransform: ($type) -> V): Map<K, V> {
+            inline fun <K, V> $TypeBuffer.associateBy(keySelector: ($Type) -> K, valueTransform: ($Type) -> V): Map<K, V> {
                 val capacity = mapCapacity(rem).coerceAtLeast(16)
                 return associateByTo(LinkedHashMap<K, V>(capacity), keySelector, valueTransform)
             }"""
@@ -455,7 +459,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             If any two elements would have the same key returned by [keySelector] the last one gets added to the map.""")
         +"""
-            inline fun <K, M : MutableMap<in K, in $type>> $TypeBuffer.associateByTo(destination: M, keySelector: ($type) -> K): M {
+            inline fun <K, M : MutableMap<in K, in $Type>> $TypeBuffer.associateByTo(destination: M, keySelector: ($Type) -> K): M {
                 for (element in this)
                     destination.put(keySelector(element), element)
                 return destination
@@ -467,7 +471,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             If any two elements would have the same key returned by [keySelector] the last one gets added to the map.""")
         +"""
-            inline fun <K, V, M : MutableMap<in K, in V>> $TypeBuffer.associateByTo(destination: M, keySelector: ($type) -> K, valueTransform: ($type) -> V): M {
+            inline fun <K, V, M : MutableMap<in K, in V>> $TypeBuffer.associateByTo(destination: M, keySelector: ($Type) -> K, valueTransform: ($Type) -> V): M {
                 for (element in this)
                     destination.put(keySelector(element), valueTransform(element))
                 return destination
@@ -479,7 +483,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             If any of two pairs would have the same key the last one gets added to the map.""")
         +"""
-            inline fun <K, V, M : MutableMap<in K, in V>> $TypeBuffer.associateTo(destination: M, transform: ($type) -> Pair<K, V>): M {
+            inline fun <K, V, M : MutableMap<in K, in V>> $TypeBuffer.associateTo(destination: M, transform: ($Type) -> Pair<K, V>): M {
                 for (element in this)
                     destination += transform(element)
                 return destination
@@ -492,8 +496,8 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             The returned map preserves the entry iteration order of the original array.""")
         +"""
-            inline fun <V> $TypeBuffer.associateWith(valueSelector: ($type) -> V): Map<$type, V> {
-                val result = LinkedHashMap<$type, V>(mapCapacity(rem).coerceAtLeast(16))
+            inline fun <V> $TypeBuffer.associateWith(valueSelector: ($Type) -> V): Map<$Type, V> {
+                val result = LinkedHashMap<$Type, V>(mapCapacity(rem).coerceAtLeast(16))
                 return associateWithTo(result, valueSelector)
             }"""
 
@@ -503,7 +507,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             If any two elements are equal, the last one overwrites the former value in the map.""")
         +"""
-            inline fun <V, M : MutableMap<in $type, in V>> $TypeBuffer.associateWithTo(destination: M, valueSelector: ($type) -> V): M {
+            inline fun <V, M : MutableMap<in $Type, in V>> $TypeBuffer.associateWithTo(destination: M, valueSelector: ($Type) -> V): M {
                 for (element in this)
                     destination.put(element, valueSelector(element))
                 return destination
@@ -511,7 +515,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Appends all elements to the given [destination] collection.")
         +"""
-            fun <C : MutableCollection<in $type>> $TypeBuffer.toCollection(destination: C): C {
+            fun <C : MutableCollection<in $Type>> $TypeBuffer.toCollection(destination: C): C {
                 for (item in this)
                     destination.add(item)
                 return destination
@@ -520,16 +524,16 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
         // toHashSet, toList, toMutableList, toSet
 
         docs("Returns a single list of all elements yielded from results of [transform] function being invoked on each element of original array.")
-        +"inline fun <R> $TypeBuffer.flatMap(transform: ($type) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)"
+        +"inline fun <R> $TypeBuffer.flatMap(transform: ($Type) -> Iterable<R>): List<R> = flatMapTo(ArrayList<R>(), transform)"
     }
     if (part == Generator.Part.Class) {
 
         docs("Returns a single list of all elements yielded from results of [transform] function being invoked on each element and its index in the original array.")
-        +"inline fun <R> flatMapIndexed(transform: (index: Int, $type) -> Iterable<R>): List<R> = flatMapIndexedTo(ArrayList<R>(), transform)"
+        +"inline fun <R> flatMapIndexed(transform: (index: Int, $Type) -> Iterable<R>): List<R> = flatMapIndexedTo(ArrayList<R>(), transform)"
 
         docs("Appends all elements yielded from results of [transform] function being invoked on each element and its index in the original array, to the given [destination].")
         +"""
-            inline fun <R, C : MutableCollection<in R>> flatMapIndexedTo(destination: C, transform: (index: Int, $type) -> Iterable<R>): C {
+            inline fun <R, C : MutableCollection<in R>> flatMapIndexedTo(destination: C, transform: (index: Int, $Type) -> Iterable<R>): C {
                 var index = 0
                 for (element in this) {
                     val list = transform(index++, element)
@@ -542,7 +546,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Appends all elements yielded from results of [transform] function being invoked on each element of original array, to the given [destination].")
         +"""
-            inline fun <R, C : MutableCollection<in R>> $TypeBuffer.flatMapTo(destination: C, transform: ($type) -> Iterable<R>): C {
+            inline fun <R, C : MutableCollection<in R>> $TypeBuffer.flatMapTo(destination: C, transform: ($Type) -> Iterable<R>): C {
                 for (element in this) {
                     val list = transform(element)
                     destination.addAll(list)
@@ -555,7 +559,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             each element and returns a map where each group key is associated with a list of corresponding elements.
     
             The returned map preserves the entry iteration order of the keys produced from the original array.""")
-        +"inline fun <K> $TypeBuffer.groupBy(keySelector: ($type) -> K): Map<K, List<$type>> = groupByTo(LinkedHashMap<K, MutableList<$type>>(), keySelector)"
+        +"inline fun <K> $TypeBuffer.groupBy(keySelector: ($Type) -> K): Map<K, List<$Type>> = groupByTo(LinkedHashMap<K, MutableList<$Type>>(), keySelector)"
 
         docs("""
             Groups values returned by the [valueTransform] function applied to each element of the original array
@@ -563,7 +567,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             and returns a map where each group key is associated with a list of corresponding values.
     
             The returned map preserves the entry iteration order of the keys produced from the original array.""")
-        +"inline fun <K, V> $TypeBuffer.groupBy(keySelector: ($type) -> K, valueTransform: ($type) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)"
+        +"inline fun <K, V> $TypeBuffer.groupBy(keySelector: ($Type) -> K, valueTransform: ($Type) -> V): Map<K, List<V>> = groupByTo(LinkedHashMap<K, MutableList<V>>(), keySelector, valueTransform)"
 
         docs("""
             Groups elements of the original array by the key returned by the given [keySelector] function applied to each
@@ -571,10 +575,10 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @return The [destination] map.""")
         +"""
-            inline fun <K, M : MutableMap<in K, MutableList<$type>>> $TypeBuffer.groupByTo(destination: M, keySelector: ($type) -> K): M {
+            inline fun <K, M : MutableMap<in K, MutableList<$Type>>> $TypeBuffer.groupByTo(destination: M, keySelector: ($Type) -> K): M {
                 for (element in this) {
                     val key = keySelector(element)
-                    val list = destination.getOrPut(key) { ArrayList<$type>() }
+                    val list = destination.getOrPut(key) { ArrayList<$Type>() }
                     list.add(element)
                 }
                 return destination
@@ -587,7 +591,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @return The [destination] map.""")
         +"""
-            inline fun <K, V, M : MutableMap<in K, MutableList<V>>> $TypeBuffer.groupByTo(destination: M, keySelector: ($type) -> K, valueTransform: ($type) -> V): M {
+            inline fun <K, V, M : MutableMap<in K, MutableList<V>>> $TypeBuffer.groupByTo(destination: M, keySelector: ($Type) -> K, valueTransform: ($Type) -> V): M {
                 for (element in this) {
                     val key = keySelector(element)
                     val list = destination.getOrPut(key) { ArrayList<V>() }
@@ -602,16 +606,16 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             Returns a list containing only distinct elements from the given array.
             
             The elements in the resulting list are in the same order as they were in the source array.""")
-        +"fun $TypeBuffer.distinct(): List<$type> = this.toMutableSet().toList()"
+        +"fun $TypeBuffer.distinct(): List<$Type> = this.toMutableSet().toList()"
 
         docs("""
             Returns a list containing only elements from the given array having distinct keys returned by the given [selector] function.
             
             The elements in the resulting list are in the same order as they were in the source array.""")
         +"""
-            inline fun <K> $TypeBuffer.distinctBy(selector: ($type) -> K): List<$type> {
+            inline fun <K> $TypeBuffer.distinctBy(selector: ($Type) -> K): List<$Type> {
                 val set = HashSet<K>()
-                val list = ArrayList<$type>()
+                val list = ArrayList<$Type>()
                 for (e in this) {
                     val key = selector(e)
                     if (set.add(key))
@@ -626,23 +630,23 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             Returns a new [MutableSet] containing all distinct elements from the given array.
             
             The returned set preserves the element iteration order of the original array.""")
-        +"fun $TypeBuffer.toMutableSet(): MutableSet<$type> = toCollection(LinkedHashSet<$type>(mapCapacity(rem)))"
+        +"fun $TypeBuffer.toMutableSet(): MutableSet<$Type> = toCollection(LinkedHashSet<$Type>(mapCapacity(rem)))"
 
         // union
 
         docs("Returns a list containing the results of applying the given [transform] function to each element in the original array.")
-        +"inline fun <R> $TypeBuffer.map(transform: ($type) -> R): List<R> = mapTo(ArrayList<R>(rem), transform)"
+        +"inline fun <R> $TypeBuffer.map(transform: ($Type) -> R): List<R> = mapTo(ArrayList<R>(rem), transform)"
 
         docs("""
             Returns a list containing the results of applying the given [transform] function to each element and its index in the original array.
             @param [transform] function that takes the index of an element and the element itself and returns the result of the transform applied to the element.""")
-        +"inline fun <R> $TypeBuffer.mapIndexed(transform: (index: Int, $type) -> R): List<R> = mapIndexedTo(ArrayList<R>(rem), transform)"
+        +"inline fun <R> $TypeBuffer.mapIndexed(transform: (index: Int, $Type) -> R): List<R> = mapIndexedTo(ArrayList<R>(rem), transform)"
 
         docs("""
             Applies the given [transform] function to each element and its index in the original array and appends the results to the given [destination].
             @param [transform] function that takes the index of an element and the element itself and returns the result of the transform applied to the element.""")
         +"""
-            inline fun <R, C : MutableCollection<in R>> $TypeBuffer.mapIndexedTo(destination: C, transform: (index: Int, $type) -> R): C {
+            inline fun <R, C : MutableCollection<in R>> $TypeBuffer.mapIndexedTo(destination: C, transform: (index: Int, $Type) -> R): C {
                 var index = 0
                 for (item in this)
                     destination.add(transform(index++, item))
@@ -651,7 +655,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Applies the given [transform] function to each element of the original array and appends the results to the given [destination].")
         +"""
-            inline fun <R, C : MutableCollection<in R>> $TypeBuffer.mapTo(destination: C, transform: ($type) -> R): C {
+            inline fun <R, C : MutableCollection<in R>> $TypeBuffer.mapTo(destination: C, transform: ($Type) -> R): C {
                 for (item in this)
                     destination.add(transform(item))
                 return destination
@@ -659,7 +663,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns `true` if all elements match the given [predicate].")
         +"""
-            inline fun $TypeBuffer.all(predicate: ($type) -> Boolean): Boolean {
+            inline fun $TypeBuffer.all(predicate: ($Type) -> Boolean): Boolean {
                 for (element in this) if (!predicate(element)) return false
                 return true
             }"""
@@ -669,7 +673,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns `true` if at least one element matches the given [predicate].")
         +"""
-            inline fun $TypeBuffer.any(predicate: ($type) -> Boolean): Boolean {
+            inline fun $TypeBuffer.any(predicate: ($Type) -> Boolean): Boolean {
                 for (element in this) if (predicate(element)) return true
                 return false
             }"""
@@ -679,7 +683,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the number of elements matching the given [predicate].")
         +"""
-            inline fun $TypeBuffer.count(predicate: ($type) -> Boolean): Int {
+            inline fun $TypeBuffer.count(predicate: ($Type) -> Boolean): Int {
                 var count = 0
                 for (element in this) if (predicate(element)) ++count
                 return count
@@ -688,13 +692,13 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
         // fold, foldIndexed, foldRight, foldRightIndexed
 
         docs("Performs the given [action] on each element.")
-        +"inline fun $TypeBuffer.forEach(action: ($type) -> Unit) { for (element in this) action(element) }"
+        +"inline fun $TypeBuffer.forEach(action: ($Type) -> Unit) { for (element in this) action(element) }"
 
         docs("""
             Performs the given [action] on each element, providing sequential index with the element.
             @param [action] function that takes the index of an element and the element itself and performs the action on the element.""")
         +"""
-            inline fun $TypeBuffer.forEachIndexed(action: (index: Int, $type) -> Unit): Unit {
+            inline fun $TypeBuffer.forEachIndexed(action: (index: Int, $Type) -> Unit): Unit {
                 var index = 0
                 for (item in this) action(index++, item)
             }"""
@@ -704,7 +708,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            fun $TypeBuffer.max(): $type {
+            fun $TypeBuffer.max(): $Type {
                 if (isEmpty()) throw NoSuchElementException()
                 var max = this[0]
                 for (i in 1..lastIndex) {
@@ -719,7 +723,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun <R : Comparable<R>> $TypeBuffer.maxBy(selector: ($type) -> R): $type {
+            inline fun <R : Comparable<R>> $TypeBuffer.maxBy(selector: ($Type) -> R): $Type {
                 if (isEmpty()) throw NoSuchElementException()
                 var maxElem = this[0]
                 val lastIndex = this.lastIndex
@@ -738,7 +742,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the first element yielding the largest value of the given function or `null` if there are no elements.")
         +"""
-            inline fun <R : Comparable<R>> $TypeBuffer.maxByOrNull(selector: ($type) -> R): $type? {
+            inline fun <R : Comparable<R>> $TypeBuffer.maxByOrNull(selector: ($Type) -> R): $Type? {
                 if (isEmpty()) return null
                 var maxElem = this[0]
                 val lastIndex = this.lastIndex
@@ -764,7 +768,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun maxOf(selector: ($type) -> Double): Double {
+            inline fun maxOf(selector: ($Type) -> Double): Double {
                 if (isEmpty()) throw NoSuchElementException()
                 var maxValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -781,7 +785,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun maxOf(selector: ($type) -> Float): Float {
+            inline fun maxOf(selector: ($Type) -> Float): Float {
                 if (isEmpty()) throw NoSuchElementException()
                 var maxValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -796,7 +800,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun <R : Comparable<R>> maxOf(selector: ($type) -> R): R {
+            inline fun <R : Comparable<R>> maxOf(selector: ($Type) -> R): R {
                 if (isEmpty()) throw NoSuchElementException()
                 var maxValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -814,7 +818,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             If any of values produced by [selector] function is `NaN`, the returned result is `NaN`.""")
         +"""
-            inline fun maxOfOrNull(selector: ($type) -> Double): Double? {
+            inline fun maxOfOrNull(selector: ($Type) -> Double): Double? {
                 if (isEmpty()) return null
                 var maxValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -826,7 +830,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the largest value among all values produced by [selector] function applied to each element in the array or `null` if there are no elements.")
         +"""
-            inline fun <R : Comparable<R>> maxOfOrNull(selector: ($type) -> R): R? {
+            inline fun <R : Comparable<R>> maxOfOrNull(selector: ($Type) -> R): R? {
                 if (isEmpty()) return null
                 var maxValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -842,7 +846,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun <R> maxOfWith(comparator: Comparator<in R>, selector: ($type) -> R): R {
+            inline fun <R> maxOfWith(comparator: Comparator<in R>, selector: ($Type) -> R): R {
                 if (isEmpty()) throw NoSuchElementException()
                 var maxValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -857,7 +861,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             Returns the largest value according to the provided [comparator] among all values produced by [selector]
             function applied to each element in the array or `null` if there are no elements.""")
         +"""
-            inline fun <R> maxOfWithOrNull(comparator: Comparator<in R>, selector: ($type) -> R): R? {
+            inline fun <R> maxOfWithOrNull(comparator: Comparator<in R>, selector: ($Type) -> R): R? {
                 if (isEmpty()) return null
                 var maxValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -872,7 +876,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the largest element or `null` if there are no elements.")
         +"""
-            fun $TypeBuffer.maxOrNull(): $type? {
+            fun $TypeBuffer.maxOrNull(): $Type? {
                 if (isEmpty()) return null
                 var max = this[0]
                 for (i in 1..lastIndex) {
@@ -887,7 +891,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            fun $TypeBuffer.maxWith(comparator: Comparator<in $type>): $type {
+            fun $TypeBuffer.maxWith(comparator: Comparator<in $Type>): $Type {
                 if (isEmpty()) throw NoSuchElementException()
                 var max = this[0]
                 for (i in 1..lastIndex) {
@@ -899,7 +903,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the first element having the largest value according to the provided [comparator] or `null` if there are no elements.")
         +"""
-            fun $TypeBuffer.maxWithOrNull(comparator: Comparator<in $type>): $type? {
+            fun $TypeBuffer.maxWithOrNull(comparator: Comparator<in $Type>): $Type? {
                 if (isEmpty()) return null
                 var max = this[0]
                 for (i in 1..lastIndex) {
@@ -914,7 +918,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            fun $TypeBuffer.min(): $type {
+            fun $TypeBuffer.min(): $Type {
                 if (isEmpty()) throw NoSuchElementException()
                 var min = this[0]
                 for (i in 1..lastIndex) {
@@ -929,7 +933,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun <R : Comparable<R>> $TypeBuffer.minBy(selector: ($type) -> R): $type {
+            inline fun <R : Comparable<R>> $TypeBuffer.minBy(selector: ($Type) -> R): $Type {
                 if (isEmpty()) throw NoSuchElementException()
                 var minElem = this[0]
                 val lastIndex = this.lastIndex
@@ -951,7 +955,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @sample samples.collections.Collections.Aggregates.minByOrNull""")
         +"""
-            inline fun <R : Comparable<R>> $TypeBuffer.minByOrNull(selector: ($type) -> R): $type? {
+            inline fun <R : Comparable<R>> $TypeBuffer.minByOrNull(selector: ($Type) -> R): $Type? {
                 if (isEmpty()) return null
                 var minElem = this[0]
                 val lastIndex = this.lastIndex
@@ -975,7 +979,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun $TypeBuffer.minOf(selector: ($type) -> Double): Double {
+            inline fun $TypeBuffer.minOf(selector: ($Type) -> Double): Double {
                 if (isEmpty()) throw NoSuchElementException()
                 var minValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -992,7 +996,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun $TypeBuffer.minOf(selector: ($type) -> Float): Float {
+            inline fun $TypeBuffer.minOf(selector: ($Type) -> Float): Float {
                 if (isEmpty()) throw NoSuchElementException()
                 var minValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -1007,7 +1011,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun <R : Comparable<R>> $TypeBuffer.minOf(selector: ($type) -> R): R {
+            inline fun <R : Comparable<R>> $TypeBuffer.minOf(selector: ($Type) -> R): R {
                 if (isEmpty()) throw NoSuchElementException()
                 var minValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -1023,7 +1027,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             If any of values produced by [selector] function is `NaN`, the returned result is `NaN`.""")
         +"""
-            inline fun $TypeBuffer.minOfOrNull(selector: ($type) -> Double): Double? {
+            inline fun $TypeBuffer.minOfOrNull(selector: ($Type) -> Double): Double? {
                 if (isEmpty()) return null
                 var minValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -1038,7 +1042,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             If any of values produced by [selector] function is `NaN`, the returned result is `NaN`.""")
         +"""
-            inline fun $TypeBuffer.minOfOrNull(selector: ($type) -> Float): Float? {
+            inline fun $TypeBuffer.minOfOrNull(selector: ($Type) -> Float): Float? {
                 if (isEmpty()) return null
                 var minValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -1050,7 +1054,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the smallest value among all values produced by [selector] function applied to each element in the array or `null` if there are no elements.")
         +"""
-            inline fun <R : Comparable<R>> $TypeBuffer.minOfOrNull(selector: ($type) -> R): R? {
+            inline fun <R : Comparable<R>> $TypeBuffer.minOfOrNull(selector: ($Type) -> R): R? {
                 if (isEmpty()) return null
                 var minValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -1066,7 +1070,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            inline fun <R> $TypeBuffer.minOfWith(comparator: Comparator<in R>, selector: ($type) -> R): R {
+            inline fun <R> $TypeBuffer.minOfWith(comparator: Comparator<in R>, selector: ($Type) -> R): R {
                 if (isEmpty()) throw NoSuchElementException()
                 var minValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -1081,7 +1085,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             Returns the smallest value according to the provided [comparator] among all values produced by [selector]
             function applied to each element in the array or `null` if there are no elements.""")
         +"""
-            inline fun <R> $TypeBuffer.minOfWithOrNull(comparator: Comparator<in R>, selector: ($type) -> R): R? {
+            inline fun <R> $TypeBuffer.minOfWithOrNull(comparator: Comparator<in R>, selector: ($Type) -> R): R? {
                 if (isEmpty()) return null
                 var minValue = selector(this[0])
                 for (i in 1..lastIndex) {
@@ -1094,7 +1098,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the smallest element or `null` if there are no elements.")
         +"""
-            fun $TypeBuffer.minOrNull(): $type? {
+            fun $TypeBuffer.minOrNull(): $Type? {
                  if (isEmpty()) return null
                  var min = this[0]
                  for (i in 1..lastIndex) {
@@ -1109,7 +1113,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     
             @throws NoSuchElementException if the array is empty.""")
         +"""
-            fun $TypeBuffer.minWith(comparator: Comparator<in $type>): $type {
+            fun $TypeBuffer.minWith(comparator: Comparator<in $Type>): $Type {
                 if (isEmpty()) throw NoSuchElementException()
                 var min = this[0]
                 for (i in 1..lastIndex) {
@@ -1121,7 +1125,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the first element having the smallest value according to the provided [comparator] or `null` if there are no elements.")
         +"""
-            fun $TypeBuffer.minWithOrNull(comparator: Comparator<in $type>): $type? {
+            fun $TypeBuffer.minWithOrNull(comparator: Comparator<in $Type>): $Type? {
                 if (isEmpty()) return null
                 var min = this[0]
                 for (i in 1..lastIndex) {
@@ -1136,18 +1140,18 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns `true` if no elements match the given [predicate].")
         +"""
-            inline fun $TypeBuffer.none(predicate: ($type) -> Boolean): Boolean {
+            inline fun $TypeBuffer.none(predicate: ($Type) -> Boolean): Boolean {
                 for (element in this) if (predicate(element)) return false
                 return true
             }"""
 
         docs("Performs the given [action] on each element and returns the array itself afterwards.")
-        +"inline fun $TypeBuffer.onEach(action: ($type) -> Unit): $TypeBuffer = apply { for (element in this) action(element) }"
+        +"inline fun $TypeBuffer.onEach(action: ($Type) -> Unit): $TypeBuffer = apply { for (element in this) action(element) }"
 
         docs("""
             Performs the given [action] on each element, providing sequential index with the element, and returns the array itself afterwards.
             @param [action] function that takes the index of an element and the element itself and performs the action on the element.""")
-        +"inline fun $TypeBuffer.onEachIndexed(action: (index: Int, $type) -> Unit): $TypeBuffer = apply { forEachIndexed(action) }"
+        +"inline fun $TypeBuffer.onEachIndexed(action: (index: Int, $Type) -> Unit): $TypeBuffer = apply { forEachIndexed(action) }"
 
         docs("""
             Accumulates value starting with the first element and applying [operation] from left to right to current accumulator value and each element.
@@ -1157,7 +1161,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             
             @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.""")
         +"""
-            inline fun $TypeBuffer.reduce(operation: (acc: $type, $type) -> $type): $type {
+            inline fun $TypeBuffer.reduce(operation: (acc: $Type, $Type) -> $Type): $Type {
                 if (isEmpty())
                     throw UnsupportedOperationException("Empty array can't be reduced.")
                 var accumulator = this[0]
@@ -1176,7 +1180,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             @param [operation] function that takes the index of an element, current accumulator value and the element itself,
             and calculates the next accumulator value.""")
         +"""
-            inline fun $TypeBuffer.reduceIndexed(operation: (index: Int, acc: $type, $type) -> $type): $type {
+            inline fun $TypeBuffer.reduceIndexed(operation: (index: Int, acc: $Type, $Type) -> $Type): $Type {
                 if (isEmpty())
                     throw UnsupportedOperationException("Empty array can't be reduced.")
                 var accumulator = this[0]
@@ -1194,7 +1198,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             @param [operation] function that takes the index of an element, current accumulator value and the element itself,
             and calculates the next accumulator value.""")
         +"""
-            inline fun $TypeBuffer.reduceIndexedOrNull(operation: (index: Int, acc: $type, $type) -> $type): $type? {
+            inline fun $TypeBuffer.reduceIndexedOrNull(operation: (index: Int, acc: $Type, $Type) -> $Type): $Type? {
                 if (isEmpty())
                     return null
                 var accumulator = this[0]
@@ -1210,7 +1214,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             
             @param [operation] function that takes current accumulator value and an element, and calculates the next accumulator value.""")
         +"""
-            inline fun $TypeBuffer.reduceOrNull(operation: (acc: $type, $type) -> $type): $type? {
+            inline fun $TypeBuffer.reduceOrNull(operation: (acc: $Type, $Type) -> $Type): $Type? {
                 if (isEmpty())
                     return null
                 var accumulator = this[0]
@@ -1227,7 +1231,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             
             @param [operation] function that takes an element and current accumulator value, and calculates the next accumulator value.""")
         +"""
-            inline fun $TypeBuffer.reduceRight(operation: ($type, acc: $type) -> $type): $type {
+            inline fun $TypeBuffer.reduceRight(operation: ($Type, acc: $Type) -> $Type): $Type {
                 var index = lastIndex
                 if (index < 0) throw UnsupportedOperationException("Empty array can't be reduced.")
                 var accumulator = get(index--)
@@ -1246,7 +1250,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             @param [operation] function that takes the index of an element, the element itself and current accumulator value,
             and calculates the next accumulator value.""")
         +"""
-            inline fun $TypeBuffer.reduceRightIndexed(operation: (index: Int, $type, acc: $type) -> $type): $type {
+            inline fun $TypeBuffer.reduceRightIndexed(operation: (index: Int, $Type, acc: $Type) -> $Type): $Type {
                 var index = lastIndex
                 if (index < 0) throw UnsupportedOperationException("Empty array can't be reduced.")
                 var accumulator = get(index--)
@@ -1266,7 +1270,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             @param [operation] function that takes the index of an element, the element itself and current accumulator value,
             and calculates the next accumulator value.""")
         +"""
-            inline fun $TypeBuffer.reduceRightIndexedOrNull(operation: (index: Int, $type, acc: $type) -> $type): $type? {
+            inline fun $TypeBuffer.reduceRightIndexedOrNull(operation: (index: Int, $Type, acc: $Type) -> $Type): $Type? {
                 var index = lastIndex
                 if (index < 0) return null
                 var accumulator = get(index--)
@@ -1284,7 +1288,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             
             @param [operation] function that takes an element and current accumulator value, and calculates the next accumulator value.""")
         +"""
-            inline fun $TypeBuffer.reduceRightOrNull(operation: ($type, acc: $type) -> $type): $type? {
+            inline fun $TypeBuffer.reduceRightOrNull(operation: ($Type, acc: $Type) -> $Type): $Type? {
                 var index = lastIndex
                 if (index < 0) return null
                 var accumulator = get(index--)
@@ -1299,7 +1303,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
     if (part == Generator.Part.Class) {
         docs("Returns the sum of all values produced by [selector] function applied to each element in the array.")
         +"""
-            inline fun sumOf(selector: ($type) -> Double): Double {
+            inline fun sumOf(selector: ($Type) -> Double): Double {
                 var sum: Double = 0.toDouble()
                 for (element in this)
                     sum += selector(element)
@@ -1308,7 +1312,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the sum of all values produced by [selector] function applied to each element in the array.")
         +"""
-            inline fun sumOf(selector: ($type) -> Int): Int {
+            inline fun sumOf(selector: ($Type) -> Int): Int {
                 var sum: Int = 0.toInt()
                 for (element in this)
                     sum += selector(element)
@@ -1317,7 +1321,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the sum of all values produced by [selector] function applied to each element in the array.")
         +"""
-            inline fun sumOf(selector: ($type) -> Long): Long {
+            inline fun sumOf(selector: ($Type) -> Long): Long {
                 var sum: Long = 0.toLong()
                 for (element in this)
                     sum += selector(element)
@@ -1326,7 +1330,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the sum of all values produced by [selector] function applied to each element in the array.")
         +"""
-            inline fun sumOf(selector: ($type) -> UInt): UInt {
+            inline fun sumOf(selector: ($Type) -> UInt): UInt {
                 var sum: UInt = 0.toUInt()
                 for (element in this)
                     sum += selector(element)
@@ -1335,7 +1339,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
 
         docs("Returns the sum of all values produced by [selector] function applied to each element in the array.")
         +"""
-            inline fun sumOf(selector: ($type) -> ULong): ULong {
+            inline fun sumOf(selector: ($Type) -> ULong): ULong {
                 var sum: ULong = 0.toULong()
                 for (element in this)
                     sum += selector(element)
@@ -1348,9 +1352,9 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             Splits the original array into pair of lists, where *first* list contains elements for which [predicate] 
             yielded `true`, while *second* list contains elements for which [predicate] yielded `false`.""")
         +"""
-            inline fun $TypeBuffer.partition(predicate: ($type) -> Boolean): Pair<List<$type>, List<$type>> {
-                val first = ArrayList<$type>()
-                val second = ArrayList<$type>()
+            inline fun $TypeBuffer.partition(predicate: ($Type) -> Boolean): Pair<List<$Type>, List<$Type>> {
+                val first = ArrayList<$Type>()
+                val second = ArrayList<$Type>()
                 for (element in this)
                     if (predicate(element))
                         first.add(element)
@@ -1362,14 +1366,14 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
         docs("""
             Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
             The returned list has length of the shortest collection.""")
-        +"infix fun <R> $TypeBuffer.zip(other: Array<out R>): List<Pair<$type, R>> = zip(other) { t1, t2 -> t1 to t2 }"
+        +"infix fun <R> $TypeBuffer.zip(other: Array<out R>): List<Pair<$Type, R>> = zip(other) { t1, t2 -> t1 to t2 }"
 
         docs("""
             Returns a list of values built from the elements of `this` array and the [other] array with the same index
             using the provided [transform] function applied to each pair of elements.
             The returned list has length of the shortest collection.""")
         +"""
-            inline fun <R, V> $TypeBuffer.zip(other: Array<out R>, transform: (a: $type, b: R) -> V): List<V> {
+            inline fun <R, V> $TypeBuffer.zip(other: Array<out R>, transform: (a: $Type, b: R) -> V): List<V> {
                 val size = minOf(rem, other.size)
                 val list = ArrayList<V>(size)
                 for (i in 0 until size)
@@ -1380,14 +1384,14 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
         docs("""
             Returns a list of pairs built from the elements of `this` collection and [other] array with the same index.
             The returned list has length of the shortest collection.""")
-        +"infix fun <R> $TypeBuffer.zip(other: Iterable<R>): List<Pair<$type, R>> = zip(other) { t1, t2 -> t1 to t2 }"
+        +"infix fun <R> $TypeBuffer.zip(other: Iterable<R>): List<Pair<$Type, R>> = zip(other) { t1, t2 -> t1 to t2 }"
 
         docs("""
             Returns a list of values built from the elements of `this` array and the [other] collection with the same index
             using the provided [transform] function applied to each pair of elements.
             The returned list has length of the shortest collection.""")
         +"""
-            inline fun <R, V> $TypeBuffer.zip(other: Iterable<R>, transform: (a: $type, b: R) -> V): List<V> {
+            inline fun <R, V> $TypeBuffer.zip(other: Iterable<R>, transform: (a: $Type, b: R) -> V): List<V> {
                 val arraySize = rem
                 val list = ArrayList<V>(minOf(other.collectionSizeOrDefault(10), arraySize))
                 var i = 0
@@ -1398,23 +1402,25 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
                 return list
             }"""
 
-        docs("""
-            Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
-            The returned list has length of the shortest collection.""")
-        +"infix fun $TypeBuffer.zip(other: $TypeArray): List<Pair<$type, $type>> = zip(other) { t1, t2 -> t1 to t2 }"
+        if (type != "Pointer") {
+            docs("""
+                Returns a list of pairs built from the elements of `this` array and the [other] array with the same index.
+                The returned list has length of the shortest collection.""")
+            +"infix fun $TypeBuffer.zip(other: $TypeArray): List<Pair<$Type, $Type>> = zip(other) { t1, t2 -> t1 to t2 }"
 
-        docs("""
-            Returns a list of values built from the elements of `this` array and the [other] array with the same index
-            using the provided [transform] function applied to each pair of elements.
-            The returned list has length of the shortest array.""")
-        +"""
-            inline fun <V> $TypeBuffer.zip(other: $TypeArray, transform: (a: $type, b: $type) -> V): List<V> {
-                val size = minOf(rem, other.size)
-                val list = ArrayList<V>(size)
-                for (i in 0 until size)
-                    list.add(transform(this[i], other[i]))
-                return list
-            }"""
+            docs("""
+                Returns a list of values built from the elements of `this` array and the [other] array with the same index
+                using the provided [transform] function applied to each pair of elements.
+                The returned list has length of the shortest array.""")
+            +"""
+                inline fun <V> $TypeBuffer.zip(other: $TypeArray, transform: (a: $Type, b: $Type) -> V): List<V> {
+                    val size = minOf(rem, other.size)
+                    val list = ArrayList<V>(size)
+                    for (i in 0 until size)
+                        list.add(transform(this[i], other[i]))
+                    return list
+                }"""
+        }
 
         docs("""
             Appends the string from all the elements separated using [separator] and using the given [prefix] and [postfix] if supplied.
@@ -1422,7 +1428,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
             elements will be appended, followed by the [truncated] string (which defaults to "...").""")
         +"""
-            fun <A : Appendable> $TypeBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: (($type) -> CharSequence)? = null): A {
+            fun <A : Appendable> $TypeBuffer.joinTo(buffer: A, separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: (($Type) -> CharSequence)? = null): A {
                 buffer.append(prefix)
                 var count = 0
                 for (element in this) {
@@ -1445,7 +1451,7 @@ fun Generator.bufferJvm(type: String, part: Generator.Part) {
             If the collection could be huge, you can specify a non-negative value of [limit], in which case only the first [limit]
             elements will be appended, followed by the [truncated] string (which defaults to "...").""")
         +"""
-            fun $TypeBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: (($type) -> CharSequence)? = null): String =
+            fun $TypeBuffer.joinToString(separator: CharSequence = ", ", prefix: CharSequence = "", postfix: CharSequence = "", limit: Int = -1, truncated: CharSequence = "...", transform: (($Type) -> CharSequence)? = null): String =
                 joinTo(StringBuilder(), separator, prefix, postfix, limit, truncated, transform).toString()"""
     }
     // asIterable, asSequence, average, sum

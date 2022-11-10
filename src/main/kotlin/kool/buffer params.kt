@@ -11,7 +11,7 @@ import java.nio.*
 inline fun Buffer.free() = MemoryUtil.memFree(this)
 
 inline val Buffer.adr: Adr
-    get() = MemoryUtil.memAddress(this)
+    get() = MemoryUtil.memAddress(this).toULong()
 
 inline var Buffer.pos: Int
     get() = position()

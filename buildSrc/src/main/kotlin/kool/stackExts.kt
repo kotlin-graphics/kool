@@ -22,16 +22,17 @@ fun stackExts(target: File) {
             //            "kool.adr",
                          )
 
-        for (type in types) {
+        for (type in types.filter { it != "Char" && it != "Pointer" }) {
 
-            val typePtr = type + "Ptr"
+            val `Ptr Type` = "Ptr<$type>"
+            val PtrType = "Ptr$type"
             val typeBuffer = type + "Buffer"
             val ts = type.toLowerCase() + 's'
 
             for (i in 1..5) {
                 var biJoint = (1..i).joinToString { "b$it: $type" }
-                "fun MemoryStack.ptrOf($biJoint): $typePtr" {
-                    +"val ptr = $typePtr($i)"
+                "fun MemoryStack.ptrOf($biJoint): $`Ptr Type`" {
+                    +"val ptr = $PtrType($i)"
                     for (j in 0 until i)
                         +"ptr[$j] = b${j + 1}"
                     +"return ptr"
@@ -44,8 +45,8 @@ fun stackExts(target: File) {
                 }
                 if (type == "Pointer") {
                     biJoint = (1..i).joinToString { "b$it: Buffer" }
-                    "fun MemoryStack.ptrOf($biJoint): $typePtr" {
-                        +"val ptr = $typePtr($i)"
+                    "fun MemoryStack.ptrOf($biJoint): $`Ptr Type`" {
+                        +"val ptr = $PtrType($i)"
                         for (j in 0 until i)
                             +"ptr[$j] = b${j + 1}"
                         +"return ptr"
@@ -59,16 +60,16 @@ fun stackExts(target: File) {
                 }
             }
             +"""
-                fun MemoryStack.ptrOf(vararg $ts: $type): $typePtr {
-                    val ptr = $typePtr($ts.size)
+                fun MemoryStack.ptrOf(vararg $ts: $type): $`Ptr Type` {
+                    val ptr = $PtrType($ts.size)
                     for (i in $ts.indices) 
                         ptr[i] = $ts[i]
                     return ptr
                 }"""
             if (type == "Pointer")
                 +"""
-                    fun MemoryStack.ptrOf(vararg $ts: Buffer): $typePtr {
-                        val ptr = $typePtr($ts.size)
+                    fun MemoryStack.ptrOf(vararg $ts: Buffer): $`Ptr Type` {
+                        val ptr = $PtrType($ts.size)
                         for (i in $ts.indices) 
                             ptr[i] = $ts[i]
                         return ptr
@@ -76,36 +77,48 @@ fun stackExts(target: File) {
         }
 
         +"// --------------------------------------------- getters ---------------------------------------------"
-        for (Type in types) {
+
+        +"""
+            inline fun <R, reified T> MemoryStack.read(block: (Adr) -> R): T = when (T::class.java) {
+                Byte::class.java -> readByteFromAdr(block)
+                UByte::class.java -> readUByteFromAdr(block)
+                Short::class.java -> readShortFromAdr(block)
+                UShort::class.java -> readUShortFromAdr(block)
+                Int::class.java -> readIntFromAdr(block)
+                UInt::class.java -> readUIntFromAdr(block)
+                Long::class.java -> readLongFromAdr(block)
+                ULong::class.java -> readULongFromAdr(block)
+                Float::class.java -> readFloatFromAdr(block)
+                Double::class.java -> readDoubleFromAdr(block)
+                else -> error("")
+            } as T"""
+
+        for (Type in types.filter { it != "Char" && it != "Pointer" }) {
+
+            val unsigned = Type[0] == 'U'
 
             if (Type != "Pointer") {
                 imports += when {
-                    Type[0] == 'U' -> "kool.ubuffers.${Type}Buffer"
+                    unsigned -> "kool.ubuffers.${Type}Buffer"
                     else -> "java.nio.${Type}Buffer"
                 }
 
-                val type = Type.decapitalize()
+                val invoke = if (unsigned) "invoke$Type" else "invoke"
+
                 +"""
-                    inline fun <R> MemoryStack.${type}Adr(block: (Adr) -> R): $Type {
-                        val ptr = ${Type}Ptr()
-                        block(ptr.adr)
-                        return ptr()
-                    }
-                    inline fun <R> MemoryStack.${type}Buffer(block: (${Type}Buffer) -> R): $Type {
-                        val buf = ${Type}Buffer(1)
-                        block(buf)
-                        return buf[0]
-                    }"""
+                    inline fun <R> MemoryStack.read${Type}FromAdr(block: (Adr) -> R): $Type = Ptr<$Type>().apply { block(adr) }.$invoke()
+                    inline fun <R> MemoryStack.read${Type}FromBuf(block: (${Type}Buffer) -> R): $Type = ${Type}Buffer(1).also { block(it) }[0]
+                    """
             }
         }
 
         +"""
-            inline fun <R> MemoryStack.pointerAdr(block: (Adr) -> R): Ptr {
+            /*inline fun <R> MemoryStack.pointerAdr(block: (Adr) -> R): Ptr {
                 val ptr = PointerPtr()
                 block(ptr.adr)
                 return ptr()
-            }
-            inline fun <R> MemoryStack.pointerBuffer(block: (PointerBuffer) -> R): Ptr {
+            }*/
+            inline fun <R> MemoryStack.pointerBuffer(block: (PointerBuffer) -> R): Long {
                 val buf = mallocPointer(1)
                 block(buf)
                 return buf[0]
@@ -113,19 +126,20 @@ fun stackExts(target: File) {
 
         for (enc in listOf("ascii", "utf8", "utf16")) {
             val ENC = enc.toUpperCase()
+            val Enc = enc.capitalize()
             +"""
                 /** It mallocs, passes the address and reads the null terminated string */
-                inline fun <R> MemoryStack.${enc}Adr(maxSize: Int, block: (Adr) -> R): String {
+                inline fun <R> MemoryStack.read${Enc}FromAdr(maxSize: Int, block: (Adr) -> R): String {
                     val adr = nmalloc(1, maxSize)
-                    block(adr)
+                    block(adr.toULong())
                     return MemoryUtil.mem$ENC(adr, strlen64NT1(adr, maxSize))
                 }
                 
-                /** It malloc the buffer, passes it and reads the null terminated string */
-                inline fun <R> MemoryStack.${enc}Buffer(maxSize: Int, block: (ByteBuffer) -> R): String {
+                /** It mallocs the buffer, passes it and reads the null terminated string */
+                inline fun <R> MemoryStack.read${Enc}FromBuf(maxSize: Int, block: (ByteBuffer) -> R): String {
                     val buf = malloc(1, maxSize)
                     block(buf)
-                    return MemoryUtil.mem$ENC(buf.adr, maxSize)
+                    return MemoryUtil.mem$ENC(buf.adr.toLong(), maxSize)
                 }"""
         }
 
@@ -135,9 +149,10 @@ fun stackExts(target: File) {
         //                inline fun MemoryStack.pointerBuffer(ptr: Ptr): ByteBuffer = ${type}s($type)"""
         for (enc in listOf("ascii", "utf8", "utf16")) {
             val ENC = enc.toUpperCase()
+            val Enc = enc.capitalize()
             +"""
-                fun MemoryStack.${enc}Adr(chars: CharSequence, nullTerminated: Boolean = true): Adr = n$ENC(chars, nullTerminated).let { pointerAddress }
-                fun MemoryStack.${enc}Buffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = $ENC(chars, nullTerminated)"""
+                fun MemoryStack.write${Enc}ToAdr(chars: CharSequence, nullTerminated: Boolean = true): Adr = n$ENC(chars, nullTerminated).let { pointerAddress }.toULong()
+                fun MemoryStack.write${Enc}ToBuffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = $ENC(chars, nullTerminated)"""
         }
     }
 }

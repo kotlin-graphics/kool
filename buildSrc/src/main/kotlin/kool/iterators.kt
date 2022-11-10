@@ -1,6 +1,5 @@
 package kool
 
-import kool.gen.Generator
 import kool.gen.generate
 import java.io.File
 
@@ -16,14 +15,14 @@ fun iterators(target: File) {
             "kool.pos"
                          )
 
-        for (type in types) {
+        for (Type in types) {
 
-            val typeBuffer = type + "Buffer"
+            val typeBuffer = Type + "Buffer"
             val typeBufferIterator = typeBuffer + "Iterator"
 
-            val type = if (type == "Pointer") "Ptr" else type
+            val type = if (Type == "Pointer") "Long" else Type
 
-            imports += when (type[0]) {
+            imports += when (Type[0]) {
                 'U' -> "kool.ubuffers.$typeBuffer"
                 'P' -> "org.lwjgl.PointerBuffer"
                 else -> "java.nio.$typeBuffer"

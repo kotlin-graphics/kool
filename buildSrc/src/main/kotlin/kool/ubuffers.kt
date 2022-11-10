@@ -11,7 +11,7 @@ fun ubuffers(target: File) {
 
             `package` = "kool.ubuffers"
 
-            experimentals += Generator.Experimentals.TypeInference
+            experimentals += listOf(Generator.Experimentals.TypeInference, Generator.Experimentals.UnsignedTypes)
 
             val t = type.drop(1)
             imports += listOf(

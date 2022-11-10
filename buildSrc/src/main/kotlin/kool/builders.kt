@@ -82,6 +82,7 @@ fun builders(target: File) {
 
             docs("Creates a new empty buffer.")
             +"fun empty$TypeBuffer(): $TypeBuffer = MemoryUtil.memCalloc$allocType(0)$maybeAsUns$maybeAsChar"
+
             size()
             +"fun $TypeBuffer(size: Int): $TypeBuffer = MemoryUtil.memCalloc$allocType(size$maybeTimes)$maybeAsUns$maybeAsChar"
             size()
@@ -90,7 +91,7 @@ fun builders(target: File) {
             val type = if (type == "Pointer") "Ptr" else type
 
             if (type == "Ptr")
-                for ((ret, postfix) in listOf("Ptr" to "", "Pointer" to "", "Buffer" to ".adr")) {
+                for ((ret, postfix) in listOf("Long" to "", "Pointer" to "", "Buffer" to ".adr")) {
                     init()
                     +"""
                         @OverloadResolutionByLambdaReturnType

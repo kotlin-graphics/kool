@@ -30,6 +30,7 @@ kotlin.jvmToolchain {
 tasks {
     withType<KotlinCompile<*>>().all {
         kotlinOptions {
+            languageVersion = "1.8"
             freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn", "-Xcontext-receivers")
         }
     }
