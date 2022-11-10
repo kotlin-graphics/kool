@@ -1,13 +1,13 @@
-package kool.gen
+package gen.gen
 
-import kool.*
+import gen.*
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.OutputDirectory
-import org.gradle.api.tasks.TaskAction
-import java.io.File
 import org.gradle.api.file.Directory
 import org.gradle.api.file.ProjectLayout
 import org.gradle.api.provider.Provider
+import org.gradle.api.tasks.OutputDirectory
+import org.gradle.api.tasks.TaskAction
+import java.io.File
 import javax.inject.Inject
 
 abstract class GenerateCode: DefaultTask() {

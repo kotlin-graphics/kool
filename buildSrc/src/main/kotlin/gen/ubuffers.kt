@@ -1,7 +1,7 @@
-package kool
+package gen
 
-import kool.gen.Generator
-import kool.gen.generate
+import gen.gen.Generator
+import gen.gen.generate
 import java.io.File
 
 fun ubuffers(target: File) {

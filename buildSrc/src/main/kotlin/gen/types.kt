@@ -1,4 +1,4 @@
-package kool
+package gen
 
 val types = listOf("Char", "Byte", "Short", "Int", "Long", "UByte", "UShort", "UInt", "ULong", "Float", "Double", "Pointer")
 val numberTypeInformation = listOf(

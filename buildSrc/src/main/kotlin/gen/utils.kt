@@ -1,4 +1,4 @@
-package kool
+package gen
 
 val jvmInline = "@JvmInline"
 val overloadResolutionByLambdaReturnType = "@OverloadResolutionByLambdaReturnType"

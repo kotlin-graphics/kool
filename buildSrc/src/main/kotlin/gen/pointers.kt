@@ -1,7 +1,7 @@
-package kool
+package gen
 
-import kool.gen.generate
-import kool.gen.Generator
+import gen.gen.generate
+import gen.gen.Generator
 import java.io.File
 
 fun pointers(target: File) {

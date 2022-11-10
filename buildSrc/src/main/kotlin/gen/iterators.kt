@@ -1,6 +1,6 @@
-package kool
+package gen
 
-import kool.gen.generate
+import gen.gen.generate
 import java.io.File
 
 fun iterators(target: File) {

@@ -1,4 +1,4 @@
-import kool.gen.GenerateCode
+import gen.gen.GenerateCode
 import magik.createGithubPublication
 import magik.github
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
@@ -34,7 +34,7 @@ tasks {
             freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn", "-Xcontext-receivers")
         }
     }
-    val generateCode by registering(GenerateCode::class)
+    val generateCode by registering(gen.gen.GenerateCode::class)
     kotlin.sourceSets {
         main { kotlin.srcDir(generateCode) }
     }
