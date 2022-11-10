@@ -1,4 +1,4 @@
-package gen.lib
+package kool.lib
 
 // from kotlin.collections.AbstractList.kt
 

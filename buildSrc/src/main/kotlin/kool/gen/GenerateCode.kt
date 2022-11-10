@@ -1,6 +1,6 @@
-package gen.gen
+package kool.gen
 
-import gen.*
+import kool.*
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.Directory
 import org.gradle.api.file.ProjectLayout

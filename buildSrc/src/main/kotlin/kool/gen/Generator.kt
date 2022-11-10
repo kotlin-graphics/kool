@@ -1,4 +1,4 @@
-package gen.gen
+package kool.gen
 
 import java.io.File
 import java.util.*
