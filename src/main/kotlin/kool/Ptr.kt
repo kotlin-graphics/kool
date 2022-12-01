@@ -7,6 +7,10 @@ import org.lwjgl.system.MemoryUtil
 value class Ptr<out T>  constructor(val address: Address = NULL.address) {
     inline val adr: Adr
         get() = address
+    inline val isValid: Boolean
+        get() = adr != 0uL
+    inline val isNotValid: Boolean
+        get() = adr == 0uL
 
     inline operator fun plus(offset: Int): Ptr<T> = plus(offset.toULong())
     inline operator fun plus(offset: Long): Ptr<T> = plus(offset.toULong())
