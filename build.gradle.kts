@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("stdlib"))
     lwjgl { implementation(jemalloc) }
     testImplementation(kotlin("test"))
 }
