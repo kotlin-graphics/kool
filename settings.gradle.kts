@@ -5,12 +5,12 @@ pluginManagement {
         gradlePluginPortal()
         maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
     }
-//    includeBuild("../build-logic")
+//    includeBuild("../lwjgl3-gradle")
 }
 
 gradle.rootProject {
     group = "kotlin.graphics"
-    version = "0.9.72"
+    version = "0.9.73"
 }
 
 //includeBuild("../build-logic")

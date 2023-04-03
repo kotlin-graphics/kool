@@ -24,4 +24,13 @@ Small util library featuring:
 
 ### How to retrieve it:
 
-You can find all the instructions by [mary](https://github.com/kotlin-graphics/mary)
+```kotlin
+repositories {
+    maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
+    // or with magik plugin
+    //github("kotlin-graphics/mary")
+}
+dependencies {
+    implementation("kotlin.graphics:kool:0.9.73")
+}
+```
