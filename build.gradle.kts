@@ -9,7 +9,7 @@ import org.lwjgl.sonatype
 
 plugins {
     kotlin("jvm") version embeddedKotlinVersion
-    id("org.lwjgl.plugin") version "0.0.33"
+    id("org.lwjgl.plugin") version "0.0.34"
     id("elect86.magik") version "0.3.2"
     `maven-publish`
 }
@@ -21,11 +21,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    lwjgl {
-        version = Snapshot.`3_3_2`
-        implementation(Lwjgl.Preset.gettingStarted + jemalloc)
-    }
-    implementation(Lwjgl.Addons.`joml 1_10_5`)
+    lwjgl { implementation(jemalloc) }
     testImplementation(kotlin("test"))
 }
 

@@ -31,6 +31,6 @@ repositories {
     //github("kotlin-graphics/mary")
 }
 dependencies {
-    implementation("kotlin.graphics:kool:0.9.73")
+    implementation("kotlin.graphics:kool:0.9.74")
 }
 ```
