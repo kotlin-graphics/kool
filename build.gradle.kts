@@ -1,22 +1,19 @@
 import magik.createGithubPublication
 import magik.github
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
-import org.lwjgl.Lwjgl
-import org.lwjgl.lwjgl
 import org.lwjgl.Lwjgl.Module.jemalloc
-import org.lwjgl.Snapshot
-import org.lwjgl.sonatype
+import org.lwjgl.lwjgl
 
 plugins {
     kotlin("jvm") version embeddedKotlinVersion
     id("org.lwjgl.plugin") version "0.0.34"
     id("elect86.magik") version "0.3.2"
     `maven-publish`
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 repositories {
     mavenCentral()
-    sonatype()
 }
 
 dependencies {
@@ -24,9 +21,7 @@ dependencies {
     testImplementation(kotlin("test"))
 }
 
-kotlin.jvmToolchain {
-    languageVersion.set(JavaLanguageVersion.of(8))
-}
+kotlin.jvmToolchain { languageVersion.set(JavaLanguageVersion.of(8)) }
 
 tasks {
     withType<KotlinCompile<*>>().all {
@@ -36,9 +31,7 @@ tasks {
         }
     }
     val generateCode by registering(kool.gen.GenerateCode::class)
-    kotlin.sourceSets {
-        main { kotlin.srcDir(generateCode) }
-    }
+    kotlin.sourceSets { main { kotlin.srcDir(generateCode) } }
     test { useJUnitPlatform() }
 }
 
@@ -49,11 +42,7 @@ publishing {
             suppressAllPomMetadataWarnings()
         }
     }
-    repositories {
-        github {
-            domain = "kotlin-graphics/mary"
-        }
-    }
+    repositories { github { domain = "kotlin-graphics/mary" } }
 }
 
 java.withSourcesJar()
