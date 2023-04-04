@@ -34,3 +34,5 @@ dependencies {
     implementation("kotlin.graphics:kool:0.9.75")
 }
 ```
+
+You can find more info by [mary](https://github.com/kotlin-graphics/mary)
