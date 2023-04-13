@@ -7,6 +7,7 @@ import org.lwjgl.system.MathUtil
 import org.lwjgl.system.MemoryUtil
 import org.lwjgl.system.Pointer
 import java.nio.*
+import java.util.*
 import kotlin.reflect.*
 
 inline val Pointer.adr: Adr

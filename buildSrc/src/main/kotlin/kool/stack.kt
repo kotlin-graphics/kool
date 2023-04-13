@@ -2,6 +2,7 @@ package kool
 
 import kool.gen.Generator
 import kool.gen.generate
+import org.gradle.configurationcache.extensions.capitalized
 import java.io.File
 
 fun stack(target: File) {
@@ -64,15 +65,13 @@ fun stack(target: File) {
                 }
 
                 val maybeAsUns = if (unsigned) ".as$TypeBuffer()" else ""
-                val maybeU = if (unsigned) "U" else ""
                 val mallocType = when (type) {
                     "Byte", "UByte" -> ""
                     else -> if (unsigned) type.drop(1) else type
                 }
-                val invoke = if (unsigned) "invoke$type" else "invoke"
 
                 +"""
-                    inline fun <R> read${type}FromAdr(block: (Adr) -> R): $type = with { Ptr$type().apply { block(adr) }.$invoke() }
+                    inline fun <R> read${type}FromAdr(block: (Adr) -> R): $type = with { Ptr$type().apply { block(adr) }.invoke() }
                 
                     inline fun <R> read${type}FromBuf(block: ($TypeBuffer) -> R): $type = with {
                         val buf = malloc$mallocType(1)$maybeAsUns
@@ -82,8 +81,8 @@ fun stack(target: File) {
             }
 
             for (enc in listOf("ascii", "utf8", "utf16")) {
-                val ENC = enc.toUpperCase()
-                val Enc = enc.capitalize()
+                val ENC = enc.uppercase()
+                val Enc = enc.capitalized()
                 +"""
                     /** It mallocs, passes the address and reads the null terminated string */
                     inline fun <R> read${Enc}FromAdr(maxSize: Int, block: (Adr) -> R): String = with {
@@ -108,15 +107,15 @@ fun stack(target: File) {
                 // --------------------------------------------- setters ---------------------------------------------"""
 
             for (Type in types.filter { it != "Char" && it != "Pointer" }) {
-                val type = Type.toLowerCase()
+                val type = Type.lowercase()
                 +"""
                     inline fun <R> writeToAdr($type: $Type, block: (Adr) -> R): R = with { block(ptrOf($type).adr) }
                     inline fun <R> writeToBuf($type: $Type, block: (${Type}Buffer) -> R): R = with { block(bufferOf($type)) }"""
             }
 
             for (enc in listOf("ascii", "utf8", "utf16")) {
-                val ENC = enc.toUpperCase()
-                val Enc = enc.capitalize()
+                val ENC = enc.uppercase()
+                val Enc = enc.capitalized()
                 +"""
                     inline fun <R> write${Enc}ToAdr(chars: CharSequence, nullTerminated: Boolean = true, block: (Adr) -> R): R = 
                         with {

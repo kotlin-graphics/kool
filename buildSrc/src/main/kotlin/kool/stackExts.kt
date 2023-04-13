@@ -2,6 +2,7 @@ package kool
 
 import kool.gen.Generator
 import kool.gen.generate
+import org.gradle.configurationcache.extensions.capitalized
 import java.io.File
 
 fun stackExts(target: File) {
@@ -27,7 +28,7 @@ fun stackExts(target: File) {
             val `Ptr Type` = "Ptr<$type>"
             val PtrType = "Ptr$type"
             val typeBuffer = type + "Buffer"
-            val ts = type.toLowerCase() + 's'
+            val ts = type.lowercase() + 's'
 
             for (i in 1..5) {
                 var biJoint = (1..i).joinToString { "b$it: $type" }
@@ -103,10 +104,8 @@ fun stackExts(target: File) {
                     else -> "java.nio.${Type}Buffer"
                 }
 
-                val invoke = if (unsigned) "invoke$Type" else "invoke"
-
                 +"""
-                    inline fun <R> MemoryStack.read${Type}FromAdr(block: (Adr) -> R): $Type = Ptr<$Type>().apply { block(adr) }.$invoke()
+                    inline fun <R> MemoryStack.read${Type}FromAdr(block: (Adr) -> R): $Type = Ptr<$Type>().apply { block(adr) }.invoke()
                     inline fun <R> MemoryStack.read${Type}FromBuf(block: (${Type}Buffer) -> R): $Type = ${Type}Buffer(1).also { block(it) }[0]
                     """
             }
@@ -125,8 +124,8 @@ fun stackExts(target: File) {
             }"""
 
         for (enc in listOf("ascii", "utf8", "utf16")) {
-            val ENC = enc.toUpperCase()
-            val Enc = enc.capitalize()
+            val ENC = enc.uppercase()
+            val Enc = enc.capitalized()
             +"""
                 /** It mallocs, passes the address and reads the null terminated string */
                 inline fun <R> MemoryStack.read${Enc}FromAdr(maxSize: Int, block: (Adr) -> R): String {
@@ -148,8 +147,8 @@ fun stackExts(target: File) {
         //                inline fun MemoryStack.pointerAdr(ptr: Ptr): Adr = ptrOf(ptr).adr
         //                inline fun MemoryStack.pointerBuffer(ptr: Ptr): ByteBuffer = ${type}s($type)"""
         for (enc in listOf("ascii", "utf8", "utf16")) {
-            val ENC = enc.toUpperCase()
-            val Enc = enc.capitalize()
+            val ENC = enc.uppercase()
+            val Enc = enc.capitalized()
             +"""
                 fun MemoryStack.write${Enc}ToAdr(chars: CharSequence, nullTerminated: Boolean = true): Adr = n$ENC(chars, nullTerminated).let { pointerAddress }.toULong()
                 fun MemoryStack.write${Enc}ToBuffer(chars: CharSequence, nullTerminated: Boolean = true): ByteBuffer = $ENC(chars, nullTerminated)"""

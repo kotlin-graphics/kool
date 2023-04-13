@@ -36,7 +36,7 @@ fun unsafe(target: File) {
                         }?.run {
                             isAccessible = true
                             get(null) as Unsafe
-                        } ?: throw UnsupportedOperationException("LWJGL requires sun.misc.Unsafe to be available.")
+                        } ?: throw UnsupportedOperationException("Kool requires sun.misc.Unsafe to be available.")
             }
             """
 
