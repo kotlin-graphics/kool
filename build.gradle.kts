@@ -1,3 +1,4 @@
+import kool.gen.GenerateCode
 import magik.createGithubPublication
 import magik.github
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
@@ -30,7 +31,7 @@ tasks {
             freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
         }
     }
-    val generateCode by registering(kool.gen.GenerateCode::class)
+    val generateCode by registering(GenerateCode::class)
     kotlin.sourceSets { main { kotlin.srcDir(generateCode) } }
     test { useJUnitPlatform() }
 }
