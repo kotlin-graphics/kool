@@ -5,6 +5,7 @@ import kotlin.test.Test
 class PointersTest {
 
     val count = 100
+    val lastIndex = count - 1
     val range =  0..99
     @Test
     fun testByte() = stack {
@@ -13,6 +14,10 @@ class PointersTest {
             p[i] = i.toByte()
         for (i in range)
             assert(p[i] == i.toByte())
+        for (i in range)
+            assert((p + i)[0] == i.toByte())
+        for (i in range)
+            assert((p + lastIndex - i)[0] == (lastIndex - i).toByte())
         for (i in range)
             assert(p++[0] == i.toByte())
         p--
@@ -27,6 +32,10 @@ class PointersTest {
         for (i in range)
             assert(p[i] == i.toShort())
         for (i in range)
+            assert((p + i)[0] == i.toShort())
+        for (i in range)
+            assert((p + lastIndex - i)[0] == (lastIndex - i).toShort())
+        for (i in range)
             assert(p++[0] == i.toShort())
         p--
         for (i in range.reversed())
@@ -39,6 +48,10 @@ class PointersTest {
             p[i] = i
         for (i in range)
             assert(p[i] == i)
+        for (i in range)
+            assert((p + i)[0] == i)
+        for (i in range)
+            assert((p + lastIndex - i)[0] == lastIndex - i)
         for (i in range)
             assert(p++[0] == i)
         p--
@@ -53,6 +66,10 @@ class PointersTest {
         for (i in range)
             assert(p[i] == i.toLong())
         for (i in range)
+            assert((p + i)[0] == i.toLong())
+        for (i in range)
+            assert((p + lastIndex - i)[0] == (lastIndex - i).toLong())
+        for (i in range)
             assert(p++[0] == i.toLong())
         p--
         for (i in range.reversed())
@@ -65,6 +82,10 @@ class PointersTest {
             p[i] = i.toUByte()
         for (i in range)
             assert(p[i] == i.toUByte())
+        for (i in range)
+            assert((p + i)[0] == i.toUByte())
+        for (i in range)
+            assert((p + lastIndex - i)[0] == (lastIndex - i).toUByte())
         for (i in range)
             assert(p++[0] == i.toUByte())
         p--
@@ -79,6 +100,10 @@ class PointersTest {
         for (i in range)
             assert(p[i] == i.toUShort())
         for (i in range)
+            assert((p + i)[0] == i.toUShort())
+        for (i in range)
+            assert((p + lastIndex - i)[0] == (lastIndex - i).toUShort())
+        for (i in range)
             assert(p++[0] == i.toUShort())
         p--
         for (i in range.reversed())
@@ -92,6 +117,10 @@ class PointersTest {
         for (i in range)
             assert(p[i] == i.toUInt())
         for (i in range)
+            assert((p + i)[0] == i.toUInt())
+        for (i in range)
+            assert((p + lastIndex - i)[0] == (lastIndex - i).toUInt())
+        for (i in range)
             assert(p++[0] == i.toUInt())
         p--
         for (i in range.reversed())
@@ -104,6 +133,10 @@ class PointersTest {
             p[i] = i.toULong()
         for (i in range)
             assert(p[i] == i.toULong())
+        for (i in range)
+            assert((p + i)[0] == i.toULong())
+        for (i in range)
+            assert((p + lastIndex - i)[0] == (lastIndex - i).toULong())
         for (i in range)
             assert(p++[0] == i.toULong())
         p--
