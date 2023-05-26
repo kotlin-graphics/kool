@@ -72,13 +72,16 @@ fun Generator.arrays(type: String) {
     val maybeU2 = if (unsigned) "U" else ""
     val maybeToUBuffer = if (unsigned) ".asUByteBuffer()" else ""
     for (receiver in listOf(TypeArray, TypeArrayList)) {
+        if (receiver == TypeArrayList) +"@JvmName(\"${type}ToBuffer\")"
         +"""
         fun $receiver.to${maybeU}Buffer(): ${maybeU2}ByteBuffer {
             val res = MemoryUtil.memAlloc(size$maybeTimes)$maybeToUBuffer
             for (i in indices) 
                 res.put$maybeU$t(i$maybeTimes, get(i))
             return res
-        }
+        }"""
+        if (receiver == TypeArrayList) +"@JvmName(\"${type}ToBuffer\")"
+        +"""
         infix fun $receiver.to${maybeU}Buffer(stack: MemoryStack): ${maybeU2}ByteBuffer {
             val res = stack.malloc(size$maybeTimes)$maybeToUBuffer
             for (i in indices) 
@@ -86,7 +89,9 @@ fun Generator.arrays(type: String) {
             return res
         }"""
         alloc()
+        if (receiver == TypeArrayList) +"@JvmName(\"${type}ToByteBuffer\")"
         +"fun $receiver.to${maybeU}ByteBuffer(): ${maybeU2}ByteBuffer = to${maybeU}Buffer()"
+        if (receiver == TypeArrayList) +"@JvmName(\"${type}ToByteBuffer\")"
         +"infix fun $receiver.to${maybeU}ByteBuffer(stack: MemoryStack): ${maybeU2}ByteBuffer = to${maybeU}Buffer(stack)"
         if ("Byte" !in type) {
             alloc()
