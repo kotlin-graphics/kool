@@ -14,7 +14,7 @@ fun conversions(target: File) {
         //        suppressInlineWarning = true
 
         imports += listOf("org.lwjgl.system.MemoryUtil",
-                          "java.nio.Buffer")
+                "java.nio.Buffer")
 
         for (type in types)
             arrays(type)
@@ -27,33 +27,36 @@ fun Generator.arrays(type: String) {
 
     val TypeBuffer = type + "Buffer"
     val TypeArray = type + "Array"
+    val TypeArrayList = "ArrayList<$type>"
     val unsigned = type[0] == 'U'
     val pointer = type[0] == 'P'
 
     imports += when {
         unsigned -> listOf(
-            "kool.sliceAs",
-            "kool.free",
-            "kool.Adr",
-            "kool.adr",
-            "kool.rem",
-            "kool.pos",
-            "kool.cap",
-            "kool.ubuffers.$TypeBuffer",
-            "kool.ubuffers.as$TypeBuffer"
-                          )
+                "kool.sliceAs",
+                "kool.free",
+                "kool.Adr",
+                "kool.adr",
+                "kool.rem",
+                "kool.pos",
+                "kool.cap",
+                "kool.ubuffers.$TypeBuffer",
+                "kool.ubuffers.as$TypeBuffer"
+        )
+
         pointer -> listOf(
-            "org.lwjgl.PointerBuffer",
-            "org.lwjgl.system.Pointer",
-            "org.lwjgl.system.MemoryStack",
-                         )
+                "org.lwjgl.PointerBuffer",
+                "org.lwjgl.system.Pointer",
+                "org.lwjgl.system.MemoryStack",
+        )
+
         else -> listOf(
-            "java.nio.$TypeBuffer",
-                      )
+                "java.nio.$TypeBuffer",
+        )
     }
 
-    fun alloc() = docs("""
-        Allocates a block of memory for the array and copy the data from the array to the new allocated memory.
+    fun alloc(array: Boolean = true) = docs("""
+        Allocates a block of memory for the array${if (array) "" else "list"} and copy the data from the array to the new allocated memory.
         @param: size the number of elements to allocate.
         @return on success, the buffer representing the memory block allocated by the function
         @throws `OutOfMemoryError` if the function failed to allocate the requested block of memory""")
@@ -68,26 +71,28 @@ fun Generator.arrays(type: String) {
     val maybeU = if (unsigned && type != "UByte") "U" else ""
     val maybeU2 = if (unsigned) "U" else ""
     val maybeToUBuffer = if (unsigned) ".asUByteBuffer()" else ""
-    +"""
-        fun $TypeArray.to${maybeU}Buffer(): ${maybeU2}ByteBuffer {
+    for (receiver in listOf(TypeArray, TypeArrayList)) {
+        +"""
+        fun $receiver.to${maybeU}Buffer(): ${maybeU2}ByteBuffer {
             val res = MemoryUtil.memAlloc(size$maybeTimes)$maybeToUBuffer
             for (i in indices) 
                 res.put$maybeU$t(i$maybeTimes, get(i))
             return res
         }
-        fun $TypeArray.to${maybeU}Buffer(stack: MemoryStack): ${maybeU2}ByteBuffer {
+        infix fun $receiver.to${maybeU}Buffer(stack: MemoryStack): ${maybeU2}ByteBuffer {
             val res = stack.malloc(size$maybeTimes)$maybeToUBuffer
             for (i in indices) 
                 res.put$maybeU$t(i$maybeTimes, get(i))
             return res
         }"""
-    alloc()
-    +"fun $TypeArray.to${maybeU}ByteBuffer(): ${maybeU2}ByteBuffer = to${maybeU}Buffer()"
-    +"fun $TypeArray.to${maybeU}ByteBuffer(stack: MemoryStack): ${maybeU2}ByteBuffer = to${maybeU}Buffer(stack)"
-    if ("Byte" !in type) {
         alloc()
-        +"fun $TypeArray.to$TypeBuffer(): $TypeBuffer = $TypeBuffer(size) { get(it) }"
-        +"fun $TypeArray.to$TypeBuffer(stack: MemoryStack): $TypeBuffer = stack.$TypeBuffer(size) { get(it) }"
+        +"fun $receiver.to${maybeU}ByteBuffer(): ${maybeU2}ByteBuffer = to${maybeU}Buffer()"
+        +"infix fun $receiver.to${maybeU}ByteBuffer(stack: MemoryStack): ${maybeU2}ByteBuffer = to${maybeU}Buffer(stack)"
+        if ("Byte" !in type) {
+            alloc()
+            +"fun $receiver.to$TypeBuffer(): $TypeBuffer = $TypeBuffer(size) { get(it) }"
+            +"infix fun $receiver.to$TypeBuffer(stack: MemoryStack): $TypeBuffer = stack.$TypeBuffer(size) { get(it) }"
+        }
     }
 }
 
