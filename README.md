@@ -24,6 +24,7 @@ Small util library featuring:
 
 ### How to retrieve it:
 
+#### mary
 ```kotlin
 repositories {
     maven("https://raw.githubusercontent.com/kotlin-graphics/mary/master")
@@ -31,7 +32,14 @@ repositories {
     //github("kotlin-graphics/mary")
 }
 dependencies {
-    implementation("kotlin.graphics:kool:0.9.75")
+    implementation("kotlin.graphics:kool:0.9.79")
+}
+```
+
+#### maven central
+```kotlin
+dependencies {
+    implementation("io.github.kotlin-graphics:kool:0.9.79")
 }
 ```
 
