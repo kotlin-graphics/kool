@@ -6,9 +6,9 @@ import org.lwjgl.Lwjgl.Module.jemalloc
 import org.lwjgl.lwjgl
 
 plugins {
-    kotlin("jvm") version embeddedKotlinVersion
+    embeddedKotlin("jvm")
     id("org.lwjgl.plugin") version "0.0.34"
-    id("elect86.magik") version "0.3.2"
+    id("elect86.magik") version "0.3.3"
     `maven-publish`
 //    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     lwjgl { implementation(jemalloc) }
-    testImplementation(kotlin("test"))
+    testImplementation(embeddedKotlin("test"))
 }
 
 kotlin.jvmToolchain { languageVersion.set(JavaLanguageVersion.of(8)) }

@@ -3,6 +3,7 @@ package kool.gen
 import kool.*
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.Directory
+import org.gradle.api.file.FileSystemOperations
 import org.gradle.api.file.ProjectLayout
 import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.OutputDirectory
@@ -14,19 +15,22 @@ abstract class GenerateCode: DefaultTask() {
 
     init {
         group = "build"
-        description = "Generate glm code"
+        description = "Generate code"
     }
 
     @get:Inject
     abstract val layout: ProjectLayout
 
+    @get:Inject
+    abstract val files: FileSystemOperations
+
     @get:OutputDirectory
-    val targetDir: Provider<Directory>
-        get() = layout.buildDirectory.dir("generated/common")
+    val targetDir: Directory = layout.projectDirectory.dir("src/mainGen/kotlin")
 
     @TaskAction
     fun generate() {
-        val target = targetDir.get().asFile
+        files.delete { delete(targetDir) }
+        val target = targetDir.asFile
 
         ubuffers(target)
 
