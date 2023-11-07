@@ -4,11 +4,9 @@ import kool.gen.Generator
 import kool.gen.generate
 import java.io.File
 
-fun extensions(target: File) {
+fun extensions() {
 
-    generate(target, "kool/extensions.kt") {
-
-        `package` = "kool"
+    generate("extensions") {
 
         //        suppressInlineWarning = true
 

@@ -5,11 +5,9 @@ import kool.gen.generate
 import org.gradle.configurationcache.extensions.capitalized
 import java.io.File
 
-fun stack(target: File) {
+fun stack() {
 
-    generate(target, "kool/stack.kt") {
-
-        `package` = "kool"
+    generate("stack") {
 
         experimentals += Generator.Experimentals.Contracts
         //        suppressInlineWarning = true

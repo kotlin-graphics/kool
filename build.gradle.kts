@@ -12,7 +12,7 @@ plugins {
     id("elect86.magik") version "0.3.3"
     `maven-publish`
     signing
-//    id("com.github.johnrengelman.shadow") version "8.1.1"
+    //    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 repositories {
@@ -27,12 +27,7 @@ dependencies {
 kotlin.jvmToolchain { languageVersion.set(JavaLanguageVersion.of(8)) }
 
 tasks {
-    withType<KotlinCompile<*>>().all {
-        kotlinOptions {
-            languageVersion = "1.8"
-            freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn")
-        }
-    }
+    withType<KotlinCompile<*>>().all { kotlinOptions { freeCompilerArgs += listOf("-opt-in=kotlin.RequiresOptIn") } }
     val generateCode by registering(GenerateCode::class)
     kotlin.sourceSets { main { kotlin.srcDir(generateCode) } }
     test { useJUnitPlatform() }

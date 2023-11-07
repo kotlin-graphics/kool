@@ -3,11 +3,9 @@ package kool
 import kool.gen.generate
 import java.io.File
 
-fun unsafe(target: File) {
+fun unsafe() {
 
-    generate(target, "kool/unsafe.kt") {
-
-        `package` = "kool"
+    generate("unsafe") {
 
         //        experimentals += Generator.Experimentals.Contracts
         suppressInlineWarning = true

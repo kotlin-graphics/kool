@@ -4,12 +4,10 @@ import kool.gen.Generator
 import kool.gen.generate
 import java.io.File
 
-fun ubuffers(target: File) {
+fun ubuffers() {
 
     for ((type, ext, conv) in numberTypeInformation.filter { it.type in unsignedTypes })
-        generate(target, "kool/ubuffers/${type}Buffer.kt") {
-
-            `package` = "kool.ubuffers"
+        generate("ubuffers/${type}Buffer") {
 
             experimentals += listOf(Generator.Experimentals.TypeInference, Generator.Experimentals.UnsignedTypes)
 

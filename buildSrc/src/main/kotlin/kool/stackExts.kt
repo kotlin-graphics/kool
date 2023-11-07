@@ -5,11 +5,9 @@ import kool.gen.generate
 import org.gradle.configurationcache.extensions.capitalized
 import java.io.File
 
-fun stackExts(target: File) {
+fun stackExts() {
 
-    generate(target, "kool/stackExts.kt") {
-
-        `package` = "kool"
+    generate("stackExts") {
 
         experimentals += Generator.Experimentals.UnsignedTypes
         //        suppressInlineWarning = true

@@ -4,11 +4,9 @@ import kool.gen.Generator
 import kool.gen.generate
 import java.io.File
 
-fun conversions(target: File) {
+fun conversions() {
 
-    generate(target, "kool/conversions.kt") {
-
-        `package` = "kool"
+    generate("conversions") {
 
         experimentals += Generator.Experimentals.UnsignedTypes
         //        suppressInlineWarning = true

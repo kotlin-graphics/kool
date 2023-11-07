@@ -4,11 +4,9 @@ import kool.gen.Generator
 import kool.gen.generate
 import java.io.File
 
-fun builders(target: File) {
+fun builders() {
 
-    generate(target, "kool/builders.kt") {
-
-        `package` = "kool"
+    generate("builders") {
 
         experimentals += Generator.Experimentals.TypeInference
         //        suppressInlineWarning = true

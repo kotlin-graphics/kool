@@ -3,11 +3,9 @@ package kool
 import kool.gen.generate
 import java.io.File
 
-fun iterators(target: File) {
+fun iterators() {
 
-    generate(target, "kool/iterators.kt") {
-
-        `package` = "kool"
+    generate("iterators") {
 
 //        suppressInlineWarning = true
 

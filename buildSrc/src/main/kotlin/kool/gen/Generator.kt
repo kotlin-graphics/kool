@@ -5,12 +5,11 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 
-class Generator(val targetDir: File) {
+class Generator {
 
     val builder = StringBuilder()
     var indentation = ""
 
-    var `package` = ""
     var imports = HashSet<String>()
     val experimentals = ArrayList<Experimentals>()
     var disableNameShadowing = false
@@ -108,8 +107,8 @@ class Generator(val targetDir: File) {
             }
         }
 
-    fun write(kt: String) {
-        File(targetDir, kt).apply {
+    fun write(path: String) {
+        File(targetDir, "kool/$path.kt").apply {
             parentFile.mkdirs()
             writeText(builder.toString())
         }
@@ -150,4 +149,8 @@ class Generator(val targetDir: File) {
 
     // dont change order (+ and - first, then * and /). Quat operator generation relies on this
     val operators = listOf("+" to "plus", "-" to "minus", "*" to "times", "/" to "div")
+
+    companion object {
+        lateinit var targetDir: File
+    }
 }

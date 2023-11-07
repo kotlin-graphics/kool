@@ -1,5 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 package kool
+
 import sun.misc.Unsafe
 
 /**

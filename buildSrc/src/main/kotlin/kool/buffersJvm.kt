@@ -4,11 +4,9 @@ import kool.gen.Generator
 import kool.gen.generate
 import java.io.File
 
-fun buffersJvm(target: File) {
+fun buffersJvm() {
 
-    generate(target, "kool/buffersJvm.kt") {
-
-        `package` = "kool"
+    generate( "buffersJvm") {
 
         suppressInlineWarning = true
         experimentals += Generator.Experimentals.TypeInference

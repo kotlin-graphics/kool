@@ -1,6 +1,7 @@
 @file:Suppress("NOTHING_TO_INLINE")
 @file:OptIn(kotlin.experimental.ExperimentalTypeInference::class)
 package kool
+
 import kool.ubuffers.asUByteBuffer
 import kool.ubuffers.UByteBuffer
 import java.nio.LongBuffer

@@ -5,7 +5,6 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.file.Directory
 import org.gradle.api.file.FileSystemOperations
 import org.gradle.api.file.ProjectLayout
-import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
@@ -24,44 +23,45 @@ abstract class GenerateCode: DefaultTask() {
     @get:Inject
     abstract val files: FileSystemOperations
 
-    @get:OutputDirectory
-    val targetDir: Directory = layout.projectDirectory.dir("src/mainGen/kotlin")
+    @OutputDirectory
+    val targetDir: Directory = layout.projectDirectory.dir("src/main/kotlinGen")
 
     @TaskAction
     fun generate() {
         files.delete { delete(targetDir) }
-        val target = targetDir.asFile
+        Generator.targetDir = targetDir.asFile
 
-        ubuffers(target)
+        ubuffers()
 
-        buffersJvm(target)
+        buffersJvm()
 
-        iterators(target)
+        iterators()
 
-        extensions(target)
+        extensions()
 
-        builders(target)
+        builders()
 
-        conversions(target)
+        conversions()
 
-        pointers(target)
+        pointers()
 
-        stackExts(target)
+        stackExts()
 
-        stack(target)
+        stack()
 
-        unsafe(target)
+        unsafe()
     }
 }
 
-fun generate(targetDir: File, file: String, block: Generator.() -> Unit) {
-    Generator(targetDir).apply {
+fun generate(file: String, block: Generator.() -> Unit) {
+    Generator().apply {
         builder.append('\n')
         block()
         for (import in imports)
             builder.insert(0, "import $import\n")
-        if (`package`.isNotEmpty())
-            builder.insert(0, "package $`package`\n")
+        val f = file.replace('/', '.').substringBefore('.', "")
+        val pack = if (f.isEmpty()) "kool" else "kool.$f"
+        builder.insert(0, "package $pack\n\n")
         if (experimentals.isNotEmpty()) {
             val list = experimentals.joinToString { "${it.pkg}.Experimental${it.name}::class" }
             builder.insert(0, "@file:OptIn($list)\n")

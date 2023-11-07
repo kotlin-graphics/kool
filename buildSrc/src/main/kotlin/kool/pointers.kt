@@ -4,11 +4,9 @@ import kool.gen.generate
 import kool.gen.Generator
 import java.io.File
 
-fun pointers(target: File) {
+fun pointers() {
 
-    generate(target, "kool/pointers.kt") {
-
-        `package` = "kool"
+    generate("pointers") {
 
         experimentals += Generator.Experimentals.TypeInference
         suppressInlineWarning = true
